@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6198d55e99d4e4b8c2deafc804144c, type: 3}
+  m_Name: ItalianXbox
+  m_list:
+  - key: FE_FIXES_CONTROLLERERROR_01
+    translation: "Un Controller Xbox 360 \xE8 stato rimosso. Collegalo di nuovo e
+      premi il pulsante A per continuare."
+  - key: FE_INST_013
+    translation: Quando un pulsante ha una freccia, dopo averlo premuto mantieni LS
+      in quella direzione.
+  - key: FE_INST_014
+    translation: "Quando mantieni LS nella giusta direzione, la freccia cambier\xE0
+      colore per confermare l'azione."
+  - key: FE_INST_020
+    translation: Come nella mossa "mantenere", premi il pulsante e tienilo premuto.
+      Quando appaiono le istruzioni, copia il movimento che viene mostrato usando
+      LS.
+  - key: FE_INST_023
+    translation: Come nella mossa "mantenere", premi il pulsante e tienilo premuto.
+      Quando appaiono le istruzioni, copia il movimento che viene mostrato usando
+      LS.
+  - key: FE_MENU_005
+    translation: Visualizza scheda giocatore
+  - key: FE_MENU_009
+    translation: Obiettivi
+  - key: FE_MENU_031
+    translation: Gamertag
+  - key: FE_MENU_106
+    translation: Esci dal gioco
+  - key: FE_MENU_NOSAVE_09
+    translation: Sei sicuro di voler uscire dal gioco? I progressi andranno persi.
+  - key: FE_NOTIFY_21
+    translation: Devi essere connesso a Xbox LIVE per usare questa funzione.
+  - key: FE_NOTIFY_23
+    translation: Connessione profilo non riuscita. Continuare senza salvare?
+  - key: FE_NOTIFY_24
+    translation: Selezione periferica di memorizzazione non riuscita. I progressi
+      non saranno salvati. Continuare senza salvare?
+  - key: FE_NOTIFY_27
+    translation: "Un Controller Xbox 360 \xE8 stato rimosso. Collegalo di nuovo e
+      premi il pulsante A per continuare."
+  - key: FE_NOTIFY_28
+    translation: A questo punto nel gioco completo avresti sbloccato un Obiettivo.
+      Vuoi acquistare il gioco completo?
+  - key: FE_NOTIFY_4
+    translation: "Il titolo dispone di una funzione di autosalvataggio. Non spegnere/scollegare
+      il console quando questa icona \xE8 visualizzata."
+  - key: FE_OVERLAY_002
+    translation: Sei sicuro di voler uscire dal gioco? Tutti i progressi non salvati
+      andranno persi.
+  - key: FE_OVERLAY_004
+    translation: "Il profilo giocatore attivo \xE8 stato disconnesso. I progressi
+      non salvati andranno persi."
+  - key: FE_TIP_009
+    translation: Sblocca gioco completo presso il di gioco Xbox Games Store.
+  - key: FE_TIP_010
+    translation: Esci dal gioco e torna alla Xbox Dashboard
+  - key: FE_TIP_018
+    translation: Giocatore 2, premi il Pulsante A su qualsiasi controller Xbox 360
+      per partecipare
+  - key: FE_TIP_055
+    translation: Esci dal gioco
+  - key: FE_TUT_016
+    translation: Quando un pulsante ha una freccia, dopo averlo premuto mantieni LS
+      in quella direzione.
+  - key: FE_TUT_018
+    translation: Quando vedi una freccia tra due pulsanti, muovi LS in quella direzione
+      in qualsiasi momento tra i due pulsanti.
+  - key: FE_TUT_019
+    translation: "Quando appare l'indicatore dell'attacco speciale, usa LS o premi
+      il pi\xF9 velocemente possibile i pulsanti nella sequenza mostrata per eseguirlo
+      con successo."
+  - key: FE_TUT_021
+    translation: "Quando la barra delle combo \xE8 piena, premi LB e RB contemporaneamente
+      per scatenare la FURIA, che raddoppia temporaneamente il moltiplicatore del
+      punteggio."

@@ -1,0 +1,1541 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9b9e19185af684c8d6c5c8c0f12fd2, type: 3}
+  m_Name: TexGyreHeros
+  m_bitmapPages:
+  - {fileID: 2800000, guid: cd06d7c032ac9f648977090f9c034a33, type: 3}
+  m_glyphTable:
+  - unicode: 32
+    u0: .984375
+    u1: .98828125
+    v0: 0
+    v1: .005859375
+    x: -1
+    y: 76
+    w: 2
+    h: 3
+    advance: 19
+    page: 0
+    kerning: 0
+  - unicode: 160
+    u0: .984375
+    u1: .98828125
+    v0: 0
+    v1: .005859375
+    x: -1
+    y: 76
+    w: 2
+    h: 3
+    advance: 19
+    page: 0
+    kerning: 0
+  - unicode: 33
+    u0: .95703125
+    u1: .982421875
+    v0: 0
+    v1: .103515625
+    x: 5
+    y: 12
+    w: 13
+    h: 53
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 34
+    u0: .630859375
+    u1: .6875
+    v0: .640625
+    v1: .6796875
+    x: 2
+    y: 12
+    w: 29
+    h: 20
+    advance: 33
+    page: 0
+    kerning: -1
+  - unicode: 35
+    u0: .4375
+    u1: .515625
+    v0: .130859375
+    v1: .236328125
+    x: -1
+    y: 11
+    w: 40
+    h: 54
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 36
+    u0: .466796875
+    u1: .537109375
+    v0: 0
+    v1: .123046875
+    x: 1
+    y: 8
+    w: 36
+    h: 63
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 37
+    u0: .64453125
+    u1: .755859375
+    v0: 0
+    v1: .109375
+    x: 1
+    y: 11
+    w: 57
+    h: 56
+    advance: 62
+    page: 0
+    kerning: -1
+  - unicode: 38
+    u0: .859375
+    u1: .955078125
+    v0: 0
+    v1: .107421875
+    x: 1
+    y: 11
+    w: 49
+    h: 55
+    advance: 50
+    page: 0
+    kerning: -1
+  - unicode: 39
+    u0: .689453125
+    u1: .71484375
+    v0: .63671875
+    v1: .67578125
+    x: 2
+    y: 12
+    w: 13
+    h: 20
+    advance: 16
+    page: 0
+    kerning: -1
+  - unicode: 40
+    u0: .240234375
+    u1: .279296875
+    v0: 0
+    v1: .1328125
+    x: 2
+    y: 11
+    w: 20
+    h: 68
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 41
+    u0: .28125
+    u1: .3203125
+    v0: 0
+    v1: .1328125
+    x: 1
+    y: 11
+    w: 20
+    h: 68
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 42
+    u0: .298828125
+    u1: .353515625
+    v0: .64453125
+    v1: .697265625
+    x: -1
+    y: 11
+    w: 28
+    h: 27
+    advance: 27
+    page: 0
+    kerning: -1
+  - unicode: 43
+    u0: .150390625
+    u1: .224609375
+    v0: .64453125
+    v1: .716796875
+    x: 1
+    y: 20
+    w: 38
+    h: 37
+    advance: 40
+    page: 0
+    kerning: -1
+  - unicode: 44
+    u0: .548828125
+    u1: .57421875
+    v0: .640625
+    v1: .6875
+    x: 3
+    y: 52
+    w: 13
+    h: 24
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 45
+    u0: .857421875
+    u1: .900390625
+    v0: .619140625
+    v1: .642578125
+    x: 2
+    y: 39
+    w: 22
+    h: 12
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 46
+    u0: .83203125
+    u1: .85546875
+    v0: .619140625
+    v1: .64453125
+    x: 4
+    y: 52
+    w: 12
+    h: 13
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 47
+    u0: .337890625
+    u1: .380859375
+    v0: .2421875
+    v1: .34765625
+    x: -1
+    y: 11
+    w: 22
+    h: 54
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 48
+    u0: .142578125
+    u1: .2109375
+    v0: .244140625
+    v1: .349609375
+    x: 1
+    y: 12
+    w: 35
+    h: 54
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 49
+    u0: .748046875
+    u1: .796875
+    v0: .435546875
+    v1: .5390625
+    x: 4
+    y: 12
+    w: 25
+    h: 53
+    advance: 38
+    page: 0
+    kerning: 2
+  - unicode: 50
+    u0: .458984375
+    u1: .529296875
+    v0: .455078125
+    v1: .55859375
+    x: 0
+    y: 12
+    w: 36
+    h: 53
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 51
+    u0: .822265625
+    u1: .892578125
+    v0: .109375
+    v1: .21484375
+    x: 1
+    y: 12
+    w: 36
+    h: 54
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 52
+    u0: .078125
+    u1: .154296875
+    v0: .45703125
+    v1: .560546875
+    x: 0
+    y: 12
+    w: 39
+    h: 53
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 53
+    u0: .67578125
+    u1: .74609375
+    v0: .443359375
+    v1: .546875
+    x: 2
+    y: 13
+    w: 36
+    h: 53
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 54
+    u0: 0
+    u1: .0703125
+    v0: .244140625
+    v1: .349609375
+    x: 1
+    y: 12
+    w: 36
+    h: 54
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 55
+    u0: .84765625
+    u1: .916015625
+    v0: .4296875
+    v1: .53125
+    x: 1
+    y: 13
+    w: 35
+    h: 52
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 56
+    u0: .072265625
+    u1: .140625
+    v0: .244140625
+    v1: .349609375
+    x: 1
+    y: 12
+    w: 35
+    h: 54
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 57
+    u0: .89453125
+    u1: .96484375
+    v0: .109375
+    v1: .21484375
+    x: 1
+    y: 12
+    w: 36
+    h: 54
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 58
+    u0: .97265625
+    u1: .99609375
+    v0: .5078125
+    v1: .583984375
+    x: 5
+    y: 26
+    w: 12
+    h: 39
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 59
+    u0: .91796875
+    u1: .943359375
+    v0: .427734375
+    v1: .525390625
+    x: 4
+    y: 26
+    w: 13
+    h: 50
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 60
+    u0: .376953125
+    u1: .44921875
+    v0: .560546875
+    v1: .640625
+    x: 2
+    y: 18
+    w: 37
+    h: 41
+    advance: 40
+    page: 0
+    kerning: -1
+  - unicode: 61
+    u0: .35546875
+    u1: .4296875
+    v0: .64453125
+    v1: .6953125
+    x: 1
+    y: 26
+    w: 38
+    h: 26
+    advance: 40
+    page: 0
+    kerning: -1
+  - unicode: 62
+    u0: .080078125
+    u1: .15234375
+    v0: .5625
+    v1: .642578125
+    x: 2
+    y: 18
+    w: 37
+    h: 41
+    advance: 40
+    page: 0
+    kerning: -1
+  - unicode: 63
+    u0: .74609375
+    u1: .8203125
+    v0: .111328125
+    v1: .216796875
+    x: 2
+    y: 11
+    w: 38
+    h: 54
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 64
+    u0: 0
+    u1: .1328125
+    v0: 0
+    v1: .1328125
+    x: 1
+    y: 11
+    w: 68
+    h: 68
+    advance: 68
+    page: 0
+    kerning: -1
+  - unicode: 65
+    u0: .5625
+    u1: .666015625
+    v0: .232421875
+    v1: .3359375
+    x: -1
+    y: 12
+    w: 53
+    h: 53
+    advance: 50
+    page: 0
+    kerning: 3
+  - unicode: 66
+    u0: .376953125
+    u1: .462890625
+    v0: .349609375
+    v1: .453125
+    x: 4
+    y: 12
+    w: 44
+    h: 53
+    advance: 50
+    page: 0
+    kerning: -1
+  - unicode: 67
+    u0: .259765625
+    u1: .349609375
+    v0: .134765625
+    v1: .240234375
+    x: 2
+    y: 11
+    w: 46
+    h: 54
+    advance: 50
+    page: 0
+    kerning: -1
+  - unicode: 68
+    u0: .287109375
+    u1: .375
+    v0: .349609375
+    v1: .453125
+    x: 3
+    y: 12
+    w: 45
+    h: 53
+    advance: 50
+    page: 0
+    kerning: -1
+  - unicode: 69
+    u0: .802734375
+    u1: .8828125
+    v0: .32421875
+    v1: .427734375
+    x: 4
+    y: 12
+    w: 41
+    h: 53
+    advance: 46
+    page: 0
+    kerning: -1
+  - unicode: 70
+    u0: .384765625
+    u1: .45703125
+    v0: .455078125
+    v1: .55859375
+    x: 4
+    y: 12
+    w: 37
+    h: 53
+    advance: 42
+    page: 0
+    kerning: 12
+  - unicode: 71
+    u0: 0
+    u1: .095703125
+    v0: .134765625
+    v1: .2421875
+    x: 2
+    y: 11
+    w: 49
+    h: 55
+    advance: 54
+    page: 0
+    kerning: -1
+  - unicode: 72
+    u0: .55078125
+    u1: .6328125
+    v0: .345703125
+    v1: .44921875
+    x: 4
+    y: 12
+    w: 42
+    h: 53
+    advance: 50
+    page: 0
+    kerning: -1
+  - unicode: 73
+    u0: .966796875
+    u1: .9921875
+    v0: .10546875
+    v1: .208984375
+    x: 3
+    y: 12
+    w: 13
+    h: 53
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 74
+    u0: .212890625
+    u1: .28125
+    v0: .244140625
+    v1: .349609375
+    x: 0
+    y: 12
+    w: 35
+    h: 54
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 75
+    u0: .09765625
+    u1: .19140625
+    v0: .3515625
+    v1: .455078125
+    x: 4
+    y: 12
+    w: 48
+    h: 53
+    advance: 50
+    page: 0
+    kerning: -1
+  - unicode: 76
+    u0: .15625
+    u1: .23046875
+    v0: .45703125
+    v1: .560546875
+    x: 4
+    y: 12
+    w: 38
+    h: 53
+    advance: 42
+    page: 0
+    kerning: 15
+  - unicode: 77
+    u0: .66796875
+    u1: .765625
+    v0: .224609375
+    v1: .328125
+    x: 3
+    y: 12
+    w: 50
+    h: 53
+    advance: 58
+    page: 0
+    kerning: -1
+  - unicode: 78
+    u0: .71875
+    u1: .80078125
+    v0: .330078125
+    v1: .43359375
+    x: 4
+    y: 12
+    w: 42
+    h: 53
+    advance: 50
+    page: 0
+    kerning: -1
+  - unicode: 79
+    u0: .7578125
+    u1: .857421875
+    v0: 0
+    v1: .107421875
+    x: 1
+    y: 11
+    w: 51
+    h: 55
+    advance: 54
+    page: 0
+    kerning: -1
+  - unicode: 80
+    u0: .884765625
+    u1: .96484375
+    v0: .322265625
+    v1: .42578125
+    x: 4
+    y: 12
+    w: 41
+    h: 53
+    advance: 46
+    page: 0
+    kerning: 22
+  - unicode: 81
+    u0: .5390625
+    u1: .642578125
+    v0: 0
+    v1: .115234375
+    x: 1
+    y: 11
+    w: 53
+    h: 59
+    advance: 54
+    page: 0
+    kerning: -1
+  - unicode: 82
+    u0: .193359375
+    u1: .28515625
+    v0: .3515625
+    v1: .455078125
+    x: 4
+    y: 12
+    w: 47
+    h: 53
+    advance: 50
+    page: 0
+    kerning: 26
+  - unicode: 83
+    u0: .09765625
+    u1: .181640625
+    v0: .134765625
+    v1: .2421875
+    x: 1
+    y: 11
+    w: 43
+    h: 55
+    advance: 46
+    page: 0
+    kerning: -1
+  - unicode: 84
+    u0: .634765625
+    u1: .716796875
+    v0: .337890625
+    v1: .44140625
+    x: 0
+    y: 12
+    w: 42
+    h: 53
+    advance: 42
+    page: 0
+    kerning: 29
+  - unicode: 85
+    u0: .3515625
+    u1: .435546875
+    v0: .1328125
+    v1: .23828125
+    x: 3
+    y: 12
+    w: 43
+    h: 54
+    advance: 50
+    page: 0
+    kerning: -1
+  - unicode: 86
+    u0: 0
+    u1: .095703125
+    v0: .3515625
+    v1: .455078125
+    x: -1
+    y: 12
+    w: 49
+    h: 53
+    advance: 46
+    page: 0
+    kerning: 45
+  - unicode: 87
+    u0: .427734375
+    u1: .560546875
+    v0: .240234375
+    v1: .34375
+    x: -1
+    y: 12
+    w: 68
+    h: 53
+    advance: 65
+    page: 0
+    kerning: 57
+  - unicode: 88
+    u0: .865234375
+    u1: .9609375
+    v0: .216796875
+    v1: .3203125
+    x: -1
+    y: 12
+    w: 49
+    h: 53
+    advance: 46
+    page: 0
+    kerning: -1
+  - unicode: 89
+    u0: .767578125
+    u1: .86328125
+    v0: .21875
+    v1: .322265625
+    x: -1
+    y: 12
+    w: 49
+    h: 53
+    advance: 46
+    page: 0
+    kerning: 68
+  - unicode: 90
+    u0: .46484375
+    u1: .548828125
+    v0: .345703125
+    v1: .44921875
+    x: -1
+    y: 12
+    w: 43
+    h: 53
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 91
+    u0: .42578125
+    u1: .46484375
+    v0: 0
+    v1: .12890625
+    x: 3
+    y: 12
+    w: 20
+    h: 66
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 92
+    u0: .3828125
+    u1: .42578125
+    v0: .240234375
+    v1: .345703125
+    x: -1
+    y: 11
+    w: 22
+    h: 54
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 93
+    u0: .384765625
+    u1: .423828125
+    v0: 0
+    v1: .12890625
+    x: 0
+    y: 12
+    w: 20
+    h: 66
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 94
+    u0: .2265625
+    u1: .296875
+    v0: .64453125
+    v1: .703125
+    x: 2
+    y: 11
+    w: 36
+    h: 30
+    advance: 40
+    page: 0
+    kerning: -1
+  - unicode: 95
+    u0: .14453125
+    u1: .2265625
+    v0: .72265625
+    v1: .740234375
+    x: -1
+    y: 69
+    w: 42
+    h: 9
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 96
+    u0: .794921875
+    u1: .830078125
+    v0: .619140625
+    v1: .64453125
+    x: 0
+    y: 11
+    w: 18
+    h: 13
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 97
+    u0: .154296875
+    u1: .2265625
+    v0: .5625
+    v1: .642578125
+    x: 1
+    y: 25
+    w: 37
+    h: 41
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 98
+    u0: .669921875
+    u1: .744140625
+    v0: .111328125
+    v1: .216796875
+    x: 3
+    y: 12
+    w: 38
+    h: 54
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 99
+    u0: .228515625
+    u1: .30078125
+    v0: .5625
+    v1: .642578125
+    x: 1
+    y: 25
+    w: 37
+    h: 41
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 100
+    u0: .59375
+    u1: .66796875
+    v0: .1171875
+    v1: .22265625
+    x: 1
+    y: 12
+    w: 38
+    h: 54
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 101
+    u0: .302734375
+    u1: .375
+    v0: .5625
+    v1: .642578125
+    x: 1
+    y: 25
+    w: 37
+    h: 41
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 102
+    u0: .283203125
+    u1: .3359375
+    v0: .2421875
+    v1: .34765625
+    x: -1
+    y: 11
+    w: 27
+    h: 54
+    advance: 23
+    page: 0
+    kerning: 82
+  - unicode: 103
+    u0: .517578125
+    u1: .591796875
+    v0: .125
+    v1: .23046875
+    x: 1
+    y: 25
+    w: 38
+    h: 54
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 104
+    u0: .603515625
+    u1: .673828125
+    v0: .451171875
+    v1: .5546875
+    x: 3
+    y: 12
+    w: 36
+    h: 53
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 105
+    u0: .966796875
+    u1: .990234375
+    v0: .322265625
+    v1: .42578125
+    x: 3
+    y: 12
+    w: 12
+    h: 53
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 106
+    u0: .34375
+    u1: .3828125
+    v0: 0
+    v1: .130859375
+    x: -4
+    y: 12
+    w: 20
+    h: 67
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 107
+    u0: .53125
+    u1: .6015625
+    v0: .451171875
+    v1: .5546875
+    x: 3
+    y: 12
+    w: 36
+    h: 53
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 108
+    u0: .962890625
+    u1: .986328125
+    v0: .216796875
+    v1: .3203125
+    x: 3
+    y: 12
+    w: 12
+    h: 53
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 109
+    u0: .5234375
+    u1: .6328125
+    v0: .560546875
+    v1: .638671875
+    x: 3
+    y: 25
+    w: 56
+    h: 40
+    advance: 62
+    page: 0
+    kerning: -1
+  - unicode: 110
+    u0: .634765625
+    u1: .705078125
+    v0: .556640625
+    v1: .634765625
+    x: 3
+    y: 25
+    w: 36
+    h: 40
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 111
+    u0: 0
+    u1: .078125
+    v0: .5625
+    v1: .642578125
+    x: 1
+    y: 25
+    w: 40
+    h: 41
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 112
+    u0: .232421875
+    u1: .306640625
+    v0: .45703125
+    v1: .560546875
+    x: 3
+    y: 25
+    w: 38
+    h: 53
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 113
+    u0: .30859375
+    u1: .3828125
+    v0: .455078125
+    v1: .55859375
+    x: 2
+    y: 25
+    w: 38
+    h: 53
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 114
+    u0: .9453125
+    u1: .99609375
+    v0: .427734375
+    v1: .505859375
+    x: 3
+    y: 25
+    w: 26
+    h: 40
+    advance: 27
+    page: 0
+    kerning: 83
+  - unicode: 115
+    u0: .451171875
+    u1: .521484375
+    v0: .560546875
+    v1: .640625
+    x: 0
+    y: 25
+    w: 36
+    h: 41
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 116
+    u0: .798828125
+    u1: .845703125
+    v0: .435546875
+    v1: .5390625
+    x: -1
+    y: 13
+    w: 24
+    h: 53
+    advance: 23
+    page: 0
+    kerning: -1
+  - unicode: 117
+    u0: .70703125
+    u1: .77734375
+    v0: .548828125
+    v1: .626953125
+    x: 3
+    y: 26
+    w: 36
+    h: 40
+    advance: 42
+    page: 0
+    kerning: -1
+  - unicode: 118
+    u0: .892578125
+    u1: .970703125
+    v0: .533203125
+    v1: .609375
+    x: -1
+    y: 26
+    w: 40
+    h: 39
+    advance: 38
+    page: 0
+    kerning: 86
+  - unicode: 119
+    u0: .779296875
+    u1: .890625
+    v0: .541015625
+    v1: .6171875
+    x: -1
+    y: 26
+    w: 57
+    h: 39
+    advance: 54
+    page: 0
+    kerning: 88
+  - unicode: 120
+    u0: 0
+    u1: .078125
+    v0: .64453125
+    v1: .720703125
+    x: -1
+    y: 26
+    w: 40
+    h: 39
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 121
+    u0: 0
+    u1: .076171875
+    v0: .45703125
+    v1: .560546875
+    x: -1
+    y: 26
+    w: 39
+    h: 53
+    advance: 38
+    page: 0
+    kerning: 90
+  - unicode: 122
+    u0: .080078125
+    u1: .1484375
+    v0: .64453125
+    v1: .720703125
+    x: 0
+    y: 26
+    w: 35
+    h: 39
+    advance: 35
+    page: 0
+    kerning: -1
+  - unicode: 123
+    u0: .1875
+    u1: .23828125
+    v0: 0
+    v1: .1328125
+    x: 0
+    y: 11
+    w: 26
+    h: 68
+    advance: 27
+    page: 0
+    kerning: -1
+  - unicode: 124
+    u0: .322265625
+    u1: .341796875
+    v0: 0
+    v1: .1328125
+    x: 4
+    y: 11
+    w: 10
+    h: 68
+    advance: 19
+    page: 0
+    kerning: -1
+  - unicode: 125
+    u0: .134765625
+    u1: .185546875
+    v0: 0
+    v1: .1328125
+    x: 0
+    y: 11
+    w: 26
+    h: 68
+    advance: 27
+    page: 0
+    kerning: -1
+  - unicode: 126
+    u0: .716796875
+    u1: .79296875
+    v0: .62890625
+    v1: .662109375
+    x: 1
+    y: 30
+    w: 39
+    h: 17
+    advance: 40
+    page: 0
+    kerning: -1
+  - unicode: 8211
+    u0: .90234375
+    u1: .982421875
+    v0: .611328125
+    v1: .630859375
+    x: -1
+    y: 40
+    w: 41
+    h: 10
+    advance: 38
+    page: 0
+    kerning: -1
+  - unicode: 8212
+    u0: 0
+    u1: .142578125
+    v0: .72265625
+    v1: .7421875
+    x: -1
+    y: 40
+    w: 73
+    h: 10
+    advance: 69
+    page: 0
+    kerning: -1
+  - unicode: 8216
+    u0: .576171875
+    u1: .6015625
+    v0: .640625
+    v1: .6875
+    x: 4
+    y: 11
+    w: 13
+    h: 24
+    advance: 19
+    page: 0
+    kerning: 92
+  - unicode: 8217
+    u0: .603515625
+    u1: .62890625
+    v0: .640625
+    v1: .6875
+    x: 3
+    y: 12
+    w: 13
+    h: 24
+    advance: 19
+    page: 0
+    kerning: 93
+  - unicode: 8220
+    u0: .431640625
+    u1: .48828125
+    v0: .642578125
+    v1: .689453125
+    x: 3
+    y: 11
+    w: 29
+    h: 24
+    advance: 35
+    page: 0
+    kerning: -1
+  - unicode: 8221
+    u0: .490234375
+    u1: .546875
+    v0: .642578125
+    v1: .689453125
+    x: 2
+    y: 12
+    w: 29
+    h: 24
+    advance: 35
+    page: 0
+    kerning: -1
+  - unicode: 8260
+    u0: .18359375
+    u1: .2578125
+    v0: .134765625
+    v1: .2421875
+    x: -12
+    y: 11
+    w: 38
+    h: 55
+    advance: 11
+    page: 0
+    kerning: -1
+  m_kerningTable:
+  - unicodeFirst: 32
+    unicodeSecond: 89
+    offset: -1
+  - unicodeFirst: 32
+    unicodeSecond: 65
+    offset: -2
+  - unicodeFirst: 49
+    unicodeSecond: 49
+    offset: -3
+  - unicodeFirst: 65
+    unicodeSecond: 84
+    offset: -5
+  - unicodeFirst: 65
+    unicodeSecond: 32
+    offset: -2
+  - unicodeFirst: 65
+    unicodeSecond: 86
+    offset: -5
+  - unicodeFirst: 65
+    unicodeSecond: 118
+    offset: -2
+  - unicodeFirst: 65
+    unicodeSecond: 89
+    offset: -6
+  - unicodeFirst: 65
+    unicodeSecond: 87
+    offset: -3
+  - unicodeFirst: 65
+    unicodeSecond: 8217
+    offset: -3
+  - unicodeFirst: 65
+    unicodeSecond: 121
+    offset: -2
+  - unicodeFirst: 65
+    unicodeSecond: 119
+    offset: -1
+  - unicodeFirst: 70
+    unicodeSecond: 65
+    offset: -3
+  - unicodeFirst: 70
+    unicodeSecond: 46
+    offset: -7
+  - unicodeFirst: 70
+    unicodeSecond: 44
+    offset: -7
+  - unicodeFirst: 76
+    unicodeSecond: 87
+    offset: -3
+  - unicodeFirst: 76
+    unicodeSecond: 86
+    offset: -5
+  - unicodeFirst: 76
+    unicodeSecond: 84
+    offset: -5
+  - unicodeFirst: 76
+    unicodeSecond: 8217
+    offset: -3
+  - unicodeFirst: 76
+    unicodeSecond: 121
+    offset: -2
+  - unicodeFirst: 76
+    unicodeSecond: 89
+    offset: -6
+  - unicodeFirst: 76
+    unicodeSecond: 32
+    offset: -1
+  - unicodeFirst: 80
+    unicodeSecond: 44
+    offset: -9
+  - unicodeFirst: 80
+    unicodeSecond: 32
+    offset: -1
+  - unicodeFirst: 80
+    unicodeSecond: 65
+    offset: -5
+  - unicodeFirst: 80
+    unicodeSecond: 46
+    offset: -9
+  - unicodeFirst: 82
+    unicodeSecond: 86
+    offset: -1
+  - unicodeFirst: 82
+    unicodeSecond: 87
+    offset: -1
+  - unicodeFirst: 82
+    unicodeSecond: 89
+    offset: -2
+  - unicodeFirst: 84
+    unicodeSecond: 101
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 105
+    offset: -1
+  - unicodeFirst: 84
+    unicodeSecond: 99
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 79
+    offset: -1
+  - unicodeFirst: 84
+    unicodeSecond: 97
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 114
+    offset: -3
+  - unicodeFirst: 84
+    unicodeSecond: 119
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 117
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 121
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 111
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 115
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 65
+    offset: -5
+  - unicodeFirst: 84
+    unicodeSecond: 45
+    offset: -3
+  - unicodeFirst: 84
+    unicodeSecond: 44
+    offset: -7
+  - unicodeFirst: 84
+    unicodeSecond: 46
+    offset: -7
+  - unicodeFirst: 84
+    unicodeSecond: 58
+    offset: -7
+  - unicodeFirst: 86
+    unicodeSecond: 97
+    offset: -3
+  - unicodeFirst: 86
+    unicodeSecond: 101
+    offset: -3
+  - unicodeFirst: 86
+    unicodeSecond: 58
+    offset: -3
+  - unicodeFirst: 86
+    unicodeSecond: 65
+    offset: -5
+  - unicodeFirst: 86
+    unicodeSecond: 105
+    offset: -1
+  - unicodeFirst: 86
+    unicodeSecond: 117
+    offset: -2
+  - unicodeFirst: 86
+    unicodeSecond: 121
+    offset: -2
+  - unicodeFirst: 86
+    unicodeSecond: 111
+    offset: -5
+  - unicodeFirst: 86
+    unicodeSecond: 114
+    offset: -3
+  - unicodeFirst: 86
+    unicodeSecond: 46
+    offset: -6
+  - unicodeFirst: 86
+    unicodeSecond: 44
+    offset: -6
+  - unicodeFirst: 86
+    unicodeSecond: 45
+    offset: -3
+  - unicodeFirst: 87
+    unicodeSecond: 117
+    offset: -1
+  - unicodeFirst: 87
+    unicodeSecond: 114
+    offset: -1
+  - unicodeFirst: 87
+    unicodeSecond: 46
+    offset: -3
+  - unicodeFirst: 87
+    unicodeSecond: 121
+    offset: -1
+  - unicodeFirst: 87
+    unicodeSecond: 111
+    offset: -1
+  - unicodeFirst: 87
+    unicodeSecond: 65
+    offset: -3
+  - unicodeFirst: 87
+    unicodeSecond: 58
+    offset: -1
+  - unicodeFirst: 87
+    unicodeSecond: 101
+    offset: -1
+  - unicodeFirst: 87
+    unicodeSecond: 97
+    offset: -2
+  - unicodeFirst: 87
+    unicodeSecond: 45
+    offset: -1
+  - unicodeFirst: 87
+    unicodeSecond: 44
+    offset: -3
+  - unicodeFirst: 89
+    unicodeSecond: 65
+    offset: -6
+  - unicodeFirst: 89
+    unicodeSecond: 97
+    offset: -3
+  - unicodeFirst: 89
+    unicodeSecond: 101
+    offset: -3
+  - unicodeFirst: 89
+    unicodeSecond: 45
+    offset: -3
+  - unicodeFirst: 89
+    unicodeSecond: 46
+    offset: -7
+  - unicodeFirst: 89
+    unicodeSecond: 58
+    offset: -5
+  - unicodeFirst: 89
+    unicodeSecond: 113
+    offset: -5
+  - unicodeFirst: 89
+    unicodeSecond: 117
+    offset: -3
+  - unicodeFirst: 89
+    unicodeSecond: 118
+    offset: -3
+  - unicodeFirst: 89
+    unicodeSecond: 105
+    offset: -2
+  - unicodeFirst: 89
+    unicodeSecond: 111
+    offset: -5
+  - unicodeFirst: 89
+    unicodeSecond: 112
+    offset: -3
+  - unicodeFirst: 89
+    unicodeSecond: 32
+    offset: -1
+  - unicodeFirst: 89
+    unicodeSecond: 44
+    offset: -7
+  - unicodeFirst: 102
+    unicodeSecond: 8217
+    offset: 1
+  - unicodeFirst: 114
+    unicodeSecond: 44
+    offset: -3
+  - unicodeFirst: 114
+    unicodeSecond: 46
+    offset: -3
+  - unicodeFirst: 114
+    unicodeSecond: 8217
+    offset: 2
+  - unicodeFirst: 118
+    unicodeSecond: 46
+    offset: -5
+  - unicodeFirst: 118
+    unicodeSecond: 44
+    offset: -5
+  - unicodeFirst: 119
+    unicodeSecond: 44
+    offset: -2
+  - unicodeFirst: 119
+    unicodeSecond: 46
+    offset: -2
+  - unicodeFirst: 121
+    unicodeSecond: 46
+    offset: -5
+  - unicodeFirst: 121
+    unicodeSecond: 44
+    offset: -5
+  - unicodeFirst: 8216
+    unicodeSecond: 8216
+    offset: -2
+  - unicodeFirst: 8217
+    unicodeSecond: 32
+    offset: -3
+  - unicodeFirst: 8217
+    unicodeSecond: 115
+    offset: -2
+  - unicodeFirst: 8217
+    unicodeSecond: 8217
+    offset: -2
+  m_interCharacterSpacing: 0

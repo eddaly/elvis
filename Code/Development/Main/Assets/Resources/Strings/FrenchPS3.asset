@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6198d55e99d4e4b8c2deafc804144c, type: 3}
+  m_Name: FrenchPS3
+  m_list:
+  - key: FE_DATA_02
+    translation: "Donn\xE9es de jeu sauvegard\xE9es"
+  - key: FE_DATA_03
+    translation: "Partie sauvegard\xE9e Way of the Dogg"
+  - key: FE_FIXES_CONTROLLERERROR_01
+    translation: "Une manette a \xE9t\xE9 d\xE9connect\xE9e du port {0}. Reconnectez-la
+      et appuyez au port {0} sur la touche X pour continuer."
+  - key: FE_INST_013
+    translation: "Quand tu vois une touche avec une fl\xE8che, maintiens le joystick\_gauche
+      dans la direction indiqu\xE9e tout en appuyant sur la touche correspondante."
+  - key: FE_INST_014
+    translation: "La fl\xE8che changera de couleur pour confirmer que tu maintiens
+      le joystick gauche dans la bonne direction."
+  - key: FE_INST_020
+    translation: "Comme pour une prise, appuie sur la touche indiqu\xE9e et maintiens-la.
+      Quand la fen\xEAtre d'instruction apparait, reproduis le mouvement en bougeant
+      le joystick\_gauche."
+  - key: FE_INST_023
+    translation: "Comme pour une prise, appuie sur la touche indiqu\xE9e et maintiens-la.
+      Quand la fen\xEAtre d'instruction apparait, reproduis le mouvement en bougeant
+      le joystick\_gauche."
+  - key: FE_MENU_009
+    translation: "Troph\xE9es"
+  - key: FE_MENU_031
+    translation: Joueur
+  - key: FE_MENU_106
+    translation: Retour vers le menu principal
+  - key: FE_MENU_NOSAVE_09
+    translation: Continuer vers le menu principal ?
+  - key: FE_NOTIFY_21
+    translation: "Tu dois se connecter \xE0 PlayStation\xAENetwork pour acc\xE9der
+      \xE0 cette fonctionnalit\xE9"
+  - key: FE_NOTIFY_22
+    translation: "Les donn\xE9es sauvegard\xE9es proviennent d'un autre utilisateur.
+      Impossible de charger ceci et la progression ne sera pas sauvegard\xE9e."
+  - key: FE_NOTIFY_27
+    translation: "Une manette a \xE9t\xE9 d\xE9connect\xE9e. Reconnectez-la et appuyez
+      sur la touche X pour continuer."
+  - key: FE_NOTIFY_28
+    translation: "Vous auriez d\xE9bloqu\xE9 un troph\xE9e dans le jeu complet. Voulez-vous
+      acheter le jeu complet ?"
+  - key: FE_NOTIFY_3
+    translation: "Chargement des donn\xE9es de troph\xE9es"
+  - key: FE_NOTIFY_4
+    translation: "Ce jeu dispose d'une fonction de sauvegarde automatique. Ne pas
+      d\xE9brancher ou \xE9teindre le syst\xE8me PlayStation\xAE3 lorsque cette ic\xF4ne
+      est affich\xE9e."
+  - key: FE_OVERLAY_002
+    translation: "Continuer vers le menu principal ? Toute progression de la partie
+      en cours non sauvegard\xE9e sera perdue."
+  - key: FE_OVERLAY_004
+    translation: "Le profil a \xE9t\xE9 d\xE9connect\xE9. Toute progression non sauvegard\xE9e
+      sera perdue."
+  - key: FE_TIP_009
+    translation: "D\xE9verrouiller le jeu complet dans le PlayStation\xAEStore"
+  - key: FE_TIP_018
+    translation: Joueur 2, appuie sur la touche X d'une manette sans fil pour participer.
+  - key: FE_TIP_055
+    translation: Retour vers le menu principal
+  - key: FE_TUT_016
+    translation: "Quand tu vois une touche avec une fl\xE8che, maintiens le joystick
+      gauche dans la direction indiqu\xE9e tout en appuyant sur la touche correspondante."
+  - key: FE_TUT_018
+    translation: "Quand tu vois une fl\xE8che entre deux touches, pousse le joystick
+      gauche dans cette direction \xE0 n'importe quel moment entre les deux touches"
+  - key: FE_TUT_019
+    translation: "Quand l'indicateur d'attaque sp\xE9ciale apparait, bouge le joystick
+      gauche ou appuie sur les touches dans l'ordre montr\xE9 le plus rapidement possible
+      pour gagner."
+  - key: FE_TUT_021
+    translation: "Quand ta jauge de combo est pleine, appuie simultan\xE9ment sur
+      R1 et R2 pour d\xE9cha\xEEner ta furie, qui double temporairement ton multiplicateur
+      de score."

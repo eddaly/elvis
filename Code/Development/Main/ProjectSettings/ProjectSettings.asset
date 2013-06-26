@@ -1,0 +1,224 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  AndroidProfiler: 0
+  defaultScreenOrientation: 2
+  targetDevice: 2
+  targetGlesGraphics: 1
+  targetResolution: 0
+  accelerometerFrequency: 60
+  companyName: Echo Peak
+  productName: Way of the Dogg
+  defaultCursor: {fileID: 0}
+  cursorHotspot: {x: 0, y: 0}
+  defaultScreenWidth: 1024
+  defaultScreenHeight: 768
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 600
+  m_RenderingPath: 1
+  m_ActiveColorSpace: 0
+  m_MTRendering: 1
+  m_UseDX11: 0
+  iosShowActivityIndicatorOnLoading: -1
+  androidShowActivityIndicatorOnLoading: 2
+  displayResolutionDialog: 1
+  allowedAutorotateToPortrait: 1
+  allowedAutorotateToPortraitUpsideDown: 1
+  allowedAutorotateToLandscapeRight: 1
+  allowedAutorotateToLandscapeLeft: 1
+  useOSAutorotation: 1
+  use32BitDisplayBuffer: 0
+  use24BitDepthBuffer: 1
+  defaultIsFullScreen: 0
+  runInBackground: 0
+  captureSingleScreen: 0
+  Override IPod Music: 0
+  enableHWStatistics: 0
+  usePlayerLog: 1
+  stripPhysics: 0
+  resizableWindow: 0
+  useMacAppStoreValidation: 0
+  xboxSkinOnGPU: 1
+  xboxEnableAvatar: 0
+  xboxEnableKinect: 0
+  xboxEnableKinectAutoTracking: 0
+  xboxEnableFitness: 0
+  macFullscreenMode: 2
+  xboxSpeechDB: 0
+  xboxEnableHeadOrientation: 0
+  wiiHio2Usage: -1
+  wiiLoadingScreenRectPlacement: 0
+  wiiLoadingScreenBackground: {r: 1, g: 1, b: 1, a: 1}
+  wiiLoadingScreenPeriod: 1000
+  wiiLoadingScreenFileName: 
+  wiiLoadingScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_SupportedAspectRatios:
+    4:3: 1
+    5:4: 1
+    16:10: 1
+    16:9: 1
+    Others: 1
+  iPhoneBundleIdentifier: com.Company.ProductName
+  iPhoneBundleVersion: 1.0
+  AndroidBundleVersionCode: 1
+  AndroidMinSdkVersion: 14
+  AndroidPreferredInstallLocation: 1
+  aotOptions: 
+  apiCompatibilityLevel: 2
+  iPhoneStrippingLevel: 2
+  iPhoneScriptCallOptimization: 0
+  ForceInternetPermission: 0
+  ForceSDCardPermission: 0
+  CreateWallpaper: 0
+  APKExpansionFiles: 0
+  StripUnusedMeshComponents: 1
+  iPhoneSdkVersion: 988
+  iPhoneTargetOSVersion: 10
+  uIPrerenderedIcon: 0
+  uIRequiresPersistentWiFi: 0
+  uIStatusBarHidden: 1
+  uIExitOnSuspend: 0
+  uIStatusBarStyle: 0
+  iPhoneSplashScreen: {fileID: 0}
+  iPhoneHighResSplashScreen: {fileID: 0}
+  iPhoneTallHighResSplashScreen: {fileID: 0}
+  iPadPortraitSplashScreen: {fileID: 0}
+  iPadHighResPortraitSplashScreen: {fileID: 0}
+  iPadLandscapeSplashScreen: {fileID: 0}
+  iPadHighResLandscapeSplashScreen: {fileID: 0}
+  AndroidTargetDevice: 0
+  AndroidSplashScreenScale: 0
+  AndroidKeystoreName: 
+  AndroidKeyaliasName: 
+  resolutionDialogBanner: {fileID: 0}
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: 29ddbfb3342e0754988086bf0781cba1, type: 3}
+      m_Size: 128
+  m_BuildTargetBatching:
+  - m_BuildTarget: XBOX360
+    m_StaticBatching: 0
+    m_DynamicBatching: 0
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
+    m_DynamicBatching: 1
+  webPlayerTemplate: APPLICATION:Default
+  m_TemplateCustomTags: {}
+  wiiRegion: 1
+  wiiGameCode: RABA
+  wiiGameVersion: 
+  wiiCompanyCode: ZZ
+  wiiSupportsNunchuk: 0
+  wiiSupportsClassicController: 0
+  wiiSupportsBalanceBoard: 0
+  wiiSupportsMotionPlus: 0
+  wiiControllerCount: 1
+  wiiFloatingPointExceptions: 0
+  wiiScreenCrashDumps: 1
+  XboxTitleId: 58411291
+  XboxImageXexPath: 
+  XboxSpaPath: Assets/Xbox Submission/xbla.spa
+  XboxGenerateSpa: 1
+  XboxDeployKinectResources: 0
+  XboxSplashScreen: {fileID: 0}
+  xboxEnableSpeech: 0
+  xboxAdditionalTitleMemorySize: 0
+  xboxDeployKinectHeadOrientation: 0
+  xboxDeployKinectHeadPosition: 0
+  ps3TitleConfigPath: TITLECONFIG.XML
+  ps3DLCConfigPath: DLCconfig.txt
+  ps3ThumbnailPath: ICON0.png
+  ps3BackgroundPath: BACKGROUND0.PNG
+  ps3SoundPath: 
+  ps3TrophyCommId: NPWR04295_00
+  ps3TrophyPackagePath: Trophies_signed.trp
+  ps3BootCheckMaxSaveGameSizeKB: 1024
+  ps3TrophyCommSig: '0xb9,0xdd,0xe1,0x3b,0x01,0x00,0x00,0x00,
+
+    0x00,0x00,0x00,0x00,0x90,0xdc,0x8a,0xed,
+
+    0xde,0xd3,0xc4,0x55,0x4c,0x57,0xf2,0x60,
+
+    0x80,0x49,0xd9,0x1b,0xc8,0xd2,0x90,0x7c,
+
+    0x84,0xd8,0xc9,0x9c,0xeb,0x92,0x6e,0x6c,
+
+    0x5e,0x87,0xa7,0x93,0x50,0x9e,0x1c,0x16,
+
+    0xa8,0x85,0x9b,0x15,0x3d,0x76,0x55,0x63,
+
+    0xa7,0x19,0x31,0x62,0x72,0x99,0x82,0x64,
+
+    0x7c,0xcf,0xdd,0x0a,0xfc,0x78,0xd8,0xea,
+
+    0x52,0x4b,0xb6,0x6d,0x55,0xa5,0xc6,0x72,
+
+    0xc7,0xae,0xc9,0x80,0xe4,0x7f,0x14,0x45,
+
+    0xb8,0xb5,0x6e,0x71,0x5d,0xd5,0xd8,0xbe,
+
+    0x2f,0xcf,0xa4,0xe5,0x0d,0x7d,0x67,0x47,
+
+    0x11,0x82,0x9a,0x8c,0x3f,0x3b,0x7b,0x81,
+
+    0x04,0x80,0x70,0x5e,0x41,0xdd,0x7f,0xb9,
+
+    0x2e,0x07,0x25,0x12,0x8b,0x14,0x12,0xf3,
+
+    0xff,0xe1,0x58,0x62,0x96,0x59,0x00,0x87,
+
+    0xa7,0xc2,0x25,0xd7,0xb7,0xfb,0x39,0xcd,
+
+    0x74,0x64,0xb1,0x04,0x15,0xd9,0x91,0xdc,
+
+    0x9f,0x10,0x36,0xaf,0xd4,0x39,0xf7,0x81'
+  ps3SaveGameSlots: 1
+  ps3TrialMode: 1
+  flashStrippingLevel: 2
+  scriptingDefineSymbols:
+    data:
+      first: 1
+      second: WOTD_MOBILE;MOBILE_PRE_RELEASE
+    data:
+      first: 5
+      second: 
+    data:
+      first: 6
+      second: 
+    data:
+      first: 7
+      second: WOTD_MOBILE;MOBILE_PRE_RELEASE
+  metroPackageName: 
+  metroPackageLogo: 
+  metroPackageVersion: 
+  metroCertificatePath: 
+  metroCertificatePassword: 
+  metroCertificateSubject: 
+  metroCertificateIssuer: 
+  metroCertificateNotAfter: 0000000000000000
+  metroApplicationDescription: 
+  metroTileLogo: 
+  metroTileWideLogo: 
+  metroTileSmallLogo: 
+  metroTileShortName: 
+  metroCommandLineArgsFile: 
+  metroTileShowName: 0
+  metroTileForegroundText: 1
+  metroTileBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  metroSplashScreenImage: 
+  metroSplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  metroSplashScreenUseBackgroundColor: 0
+  metroCapabilities: {}
+  firstStreamedLevelWithResources: 0
+  unityRebuildLibraryVersion: 9
+  unityForwardCompatibleVersion: 37
+  unityStandardAssetsVersion: 0

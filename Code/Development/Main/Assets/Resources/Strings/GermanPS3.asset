@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6198d55e99d4e4b8c2deafc804144c, type: 3}
+  m_Name: GermanPS3
+  m_list:
+  - key: FE_DATA_02
+    translation: Speicherdaten
+  - key: FE_DATA_03
+    translation: Way of the Dogg-Speicherdaten
+  - key: FE_FIXES_CONTROLLERERROR_01
+    translation: "Ein Controller wurde entfernt von Port {0}. Schlie\xDFe den Controller
+      erneut an Port {0} an und dr\xFCcke die Taste X, um fortzufahren."
+  - key: FE_INST_013
+    translation: "Wenn eine Taste mit einem Pfeil angezeigt wird, dr\xFCcke den linken\_Stick
+      in die angezeigte Richtung, w\xE4hrend du die Taste dr\xFCckst."
+  - key: FE_INST_014
+    translation: "Wenn du den linken Stick in die richtige Richtung dr\xFCckst, \xE4ndert
+      der Pfeil zur Best\xE4tigung die Farbe."
+  - key: FE_INST_020
+    translation: "Halte wie beim Halten die Taste gedr\xFCckt. Sobald das Anweisungsfeld
+      eingeblendet wird, ahme die angezeigte Bewegung mit dem linken\_Stick nach."
+  - key: FE_INST_023
+    translation: "Halte wie beim Halten die Taste gedr\xFCckt. Sobald das Anweisungsfeld
+      eingeblendet wird, ahme die angezeigte Bewegung mit dem linken\_Stick nach."
+  - key: FE_MENU_009
+    translation: "Troph\xE4en"
+  - key: FE_MENU_031
+    translation: Spieler
+  - key: FE_MENU_106
+    translation: "Zur\xFCck zum Titelmen\xFC"
+  - key: FE_MENU_NOSAVE_09
+    translation: "Weiter zum Titelmen\xFC?"
+  - key: FE_NOTIFY_21
+    translation: "Um diese Funktion zu nutzen, musst du dich beim PlayStation\xAENetwork
+      anmelden."
+  - key: FE_NOTIFY_22
+    translation: "Die Speicherdaten stammen von einem anderen Nutzer und k\xF6nnen
+      nicht geladen werden. Der Fortschritt wird nicht gespeichert."
+  - key: FE_NOTIFY_27
+    translation: "Ein Controller wurde entfernt. Schlie\xDFe den Controller erneut
+      an und dr\xFCcke die X-Taste, um fortzufahren."
+  - key: FE_NOTIFY_28
+    translation: "In der Vollversion h\xE4ttest du jetzt einen Erfolg freigeschaltet.
+      M\xF6chtest du die Vollversion kaufen?"
+  - key: FE_NOTIFY_3
+    translation: "Troph\xE4endaten werden geladen"
+  - key: FE_NOTIFY_4
+    translation: "Dieses Spiel verf\xFCgt \xFCber eine automatische Speicherfunktion.
+      Wenn das Symbol angezeigt wird, schalte PlayStation\xAE3-System nicht aus."
+  - key: FE_OVERLAY_002
+    translation: "Weiter zum Titelmen\xFC? Alle nicht gespeicherten Fortschritte des
+      aktuellen Spiels gehen verloren."
+  - key: FE_OVERLAY_004
+    translation: Das Profil wurde abgemeldet. Nicht gespeicherte Fortschritte gehen
+      verloren.
+  - key: FE_TIP_009
+    translation: "Vollst\xE4ndiges Spiel freischalten im PlayStation\xAEStore"
+  - key: FE_TIP_018
+    translation: "Spieler 2: Dr\xFCcke die X-Taste auf einem Wireless-Controller,
+      um dich zu verbinden."
+  - key: FE_TIP_055
+    translation: "Zur\xFCck zum Titelmen\xFC"
+  - key: FE_TUT_016
+    translation: "Wenn eine Taste mit einem Pfeil angezeigt wird, dr\xFCcke den linken
+      Stick in die angezeigte Richtung, w\xE4hrend du die Taste dr\xFCckst."
+  - key: FE_TUT_018
+    translation: "Wenn du einen Pfeil zwischen zwei Tasten siehst, dr\xFCcke den linken
+      Stick zu einem beliebigen Zeitpunkt zwischen den Tasten in die entsprechende
+      Richtung."
+  - key: FE_TUT_019
+    translation: "Wenn Spezialangriff-Markierungen erscheinen, bewege den linken Stick
+      oder dr\xFCcke die Tasten so schnell wie m\xF6glich in der angezeigten Abfolge,
+      um zu gewinnen."
+  - key: FE_TUT_021
+    translation: "Wenn deine Komboanzeige gef\xFCllt ist, dr\xFCcke gleichzeitig R1
+      und R2, um deine Wut zu entfesseln und deinen Multiplikator kurzzeitig zu verdoppeln."

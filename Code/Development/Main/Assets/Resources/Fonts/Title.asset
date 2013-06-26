@@ -1,0 +1,512 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9b9e19185af684c8d6c5c8c0f12fd2, type: 3}
+  m_Name: Title
+  m_bitmapPages:
+  - {fileID: 2800000, guid: 3c7dd8c1138de6549945a0ab3613220e, type: 3}
+  m_glyphTable:
+  - unicode: 32
+    u0: .96875
+    u1: .971679688
+    v0: 0
+    v1: .0029296875
+    x: -1
+    y: -1
+    w: 3
+    h: 3
+    advance: 47
+    page: 0
+    kerning: -1
+  - unicode: 160
+    u0: .96875
+    u1: .971679688
+    v0: 0
+    v1: .0029296875
+    x: -1
+    y: -1
+    w: 3
+    h: 3
+    advance: 47
+    page: 0
+    kerning: -1
+  - unicode: 38
+    u0: .203125
+    u1: .303710938
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 103
+    h: 146
+    advance: 107
+    page: 0
+    kerning: -1
+  - unicode: 46
+    u0: .076171875
+    u1: .11328125
+    v0: .455078125
+    v1: .4921875
+    x: 2
+    y: 184
+    w: 38
+    h: 38
+    advance: 43
+    page: 0
+    kerning: -1
+  - unicode: 48
+    u0: .482421875
+    u1: .5625
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 49
+    u0: .0380859375
+    u1: .0751953125
+    v0: .455078125
+    v1: .596679688
+    x: 2
+    y: 77
+    w: 38
+    h: 145
+    advance: 43
+    page: 0
+    kerning: -1
+  - unicode: 50
+    u0: .56640625
+    u1: .645507812
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 81
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 51
+    u0: .646484375
+    u1: .725585938
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 81
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 52
+    u0: .3046875
+    u1: .39453125
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 92
+    h: 146
+    advance: 96
+    page: 0
+    kerning: -1
+  - unicode: 53
+    u0: .7265625
+    u1: .805664062
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 77
+    w: 81
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 54
+    u0: .563476562
+    u1: .643554688
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 55
+    u0: .668945312
+    u1: .748046875
+    v0: .287109375
+    v1: .428710938
+    x: 2
+    y: 77
+    w: 81
+    h: 145
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 56
+    u0: .806640625
+    u1: .885742188
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 81
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 57
+    u0: .64453125
+    u1: .724609375
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 65
+    u0: .725585938
+    u1: .805664062
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 66
+    u0: .806640625
+    u1: .88671875
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 67
+    u0: .219726562
+    u1: .28515625
+    v0: .287109375
+    v1: .4296875
+    x: 2
+    y: 76
+    w: 67
+    h: 146
+    advance: 71
+    page: 0
+    kerning: -1
+  - unicode: 68
+    u0: .887695312
+    u1: .967773438
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 69
+    u0: .88671875
+    u1: .965820312
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 81
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 70
+    u0: .080078125
+    u1: .15234375
+    v0: .311523438
+    v1: .454101562
+    x: 2
+    y: 76
+    w: 74
+    h: 146
+    advance: 78
+    page: 0
+    kerning: -1
+  - unicode: 71
+    u0: .395507812
+    u1: .481445312
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 88
+    h: 146
+    advance: 91
+    page: 0
+    kerning: -1
+  - unicode: 72
+    u0: .829101562
+    u1: .908203125
+    v0: .287109375
+    v1: .428710938
+    x: 2
+    y: 77
+    w: 81
+    h: 145
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 73
+    u0: 0
+    u1: .037109375
+    v0: .455078125
+    v1: .596679688
+    x: 2
+    y: 77
+    w: 38
+    h: 145
+    advance: 43
+    page: 0
+    kerning: -1
+  - unicode: 74
+    u0: .153320312
+    u1: .21875
+    v0: .287109375
+    v1: .4296875
+    x: 2
+    y: 77
+    w: 67
+    h: 146
+    advance: 71
+    page: 0
+    kerning: -1
+  - unicode: 75
+    u0: .588867188
+    u1: .66796875
+    v0: .287109375
+    v1: .428710938
+    x: 2
+    y: 77
+    w: 81
+    h: 145
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 76
+    u0: .486328125
+    u1: .565429688
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 81
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 77
+    u0: .0810546875
+    u1: .202148438
+    v0: 0
+    v1: .142578125
+    x: 2
+    y: 76
+    w: 124
+    h: 146
+    advance: 128
+    page: 0
+    kerning: -1
+  - unicode: 78
+    u0: 0
+    u1: .0791015625
+    v0: .311523438
+    v1: .454101562
+    x: 2
+    y: 76
+    w: 81
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 79
+    u0: 0
+    u1: .080078125
+    v0: .16796875
+    v1: .310546875
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 80
+    u0: .0810546875
+    u1: .161132812
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 81
+    u0: 0
+    u1: .080078125
+    v0: 0
+    v1: .166992188
+    x: 2
+    y: 76
+    w: 82
+    h: 171
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 82
+    u0: .162109375
+    u1: .2421875
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 83
+    u0: .243164062
+    u1: .323242188
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: 0
+  - unicode: 84
+    u0: .749023438
+    u1: .828125
+    v0: .287109375
+    v1: .428710938
+    x: 1
+    y: 77
+    w: 81
+    h: 145
+    advance: 82
+    page: 0
+    kerning: -1
+  - unicode: 85
+    u0: .32421875
+    u1: .404296875
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 86
+    u0: .504882812
+    u1: .587890625
+    v0: .287109375
+    v1: .428710938
+    x: 0
+    y: 77
+    w: 85
+    h: 145
+    advance: 84
+    page: 0
+    kerning: -1
+  - unicode: 87
+    u0: .286132812
+    u1: .413085938
+    v0: .287109375
+    v1: .428710938
+    x: 0
+    y: 77
+    w: 130
+    h: 145
+    advance: 129
+    page: 0
+    kerning: -1
+  - unicode: 88
+    u0: .4140625
+    u1: .50390625
+    v0: .287109375
+    v1: .428710938
+    x: 2
+    y: 77
+    w: 92
+    h: 145
+    advance: 96
+    page: 0
+    kerning: -1
+  - unicode: 89
+    u0: .405273438
+    u1: .485351562
+    v0: .143554688
+    v1: .286132812
+    x: 2
+    y: 76
+    w: 82
+    h: 146
+    advance: 86
+    page: 0
+    kerning: -1
+  - unicode: 90
+    u0: .909179688
+    u1: .981445312
+    v0: .287109375
+    v1: .428710938
+    x: 2
+    y: 77
+    w: 74
+    h: 145
+    advance: 78
+    page: 0
+    kerning: -1
+  - unicode: 8212
+    u0: .114257812
+    u1: .28125
+    v0: .455078125
+    v1: .474609375
+    x: 2
+    y: 122
+    w: 171
+    h: 20
+    advance: 175
+    page: 0
+    kerning: -1
+  m_kerningTable:
+  - unicodeFirst: 83
+    unicodeSecond: 84
+    offset: -1
+  m_interCharacterSpacing: 0

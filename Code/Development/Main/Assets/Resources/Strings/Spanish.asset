@@ -1,0 +1,2933 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6198d55e99d4e4b8c2deafc804144c, type: 3}
+  m_Name: Spanish
+  m_list:
+  - key: CREDITS_505COMP_001
+    translation: 505 Games s.r.l
+  - key: CREDITS_505DEP_001
+    translation: "Producci\xF3n:"
+  - key: CREDITS_505DEP_002
+    translation: 'Marca:'
+  - key: CREDITS_505DEP_003
+    translation: 'Servicios creativos:'
+  - key: CREDITS_505DEP_004
+    translation: 'Marketing, relaciones comerciales y RRPP:'
+  - key: CREDITS_505DEP_005
+    translation: 'Operaciones:'
+  - key: CREDITS_505DEP_006
+    translation: "Direcci\xF3n"
+  - key: CREDITS_505LEG_001
+    translation: Publicado por 505 Games. 505 Games y el logotipo de 505 Games son
+      marcas registradas de 505 Games. Todos los derechos reservados.
+  - key: CREDITS_505NAME_001
+    translation: John Sweeney
+  - key: CREDITS_505NAME_002
+    translation: Michael Greening
+  - key: CREDITS_505NAME_003
+    translation: Evan Icenbice
+  - key: CREDITS_505NAME_004
+    translation: Michael Meischeid
+  - key: CREDITS_505NAME_005
+    translation: Bryant Bustamante
+  - key: CREDITS_505NAME_006
+    translation: Chiara Pasquini
+  - key: CREDITS_505NAME_007
+    translation: Marcello Monti
+  - key: CREDITS_505NAME_008
+    translation: Davide Racah
+  - key: CREDITS_505NAME_009
+    translation: Esther Partschefeld
+  - key: CREDITS_505NAME_010
+    translation: Stefano Stalla
+  - key: CREDITS_505NAME_011
+    translation: Kimberley Rizzo
+  - key: CREDITS_505NAME_012
+    translation: Tim Woodley
+  - key: CREDITS_505NAME_013
+    translation: Victoria Reeve
+  - key: CREDITS_505NAME_014
+    translation: Melissa Menton
+  - key: CREDITS_505NAME_015
+    translation: Rebecca Meyer
+  - key: CREDITS_505NAME_016
+    translation: Andrea Quinteri
+  - key: CREDITS_505NAME_017
+    translation: James Howes
+  - key: CREDITS_505NAME_018
+    translation: Mark Stevens
+  - key: CREDITS_505NAME_019
+    translation: Lisa Fields
+  - key: CREDITS_505NAME_020
+    translation: Greg Jones
+  - key: CREDITS_505NAME_021
+    translation: Howard Liebeskind
+  - key: CREDITS_505NAME_022
+    translation: Silvana Greenfield
+  - key: CREDITS_505NAME_023
+    translation: Dawn-Marie Sable
+  - key: CREDITS_505NAME_024
+    translation: Ian Howe
+  - key: CREDITS_505NAME_025
+    translation: Nic Ashford
+  - key: CREDITS_505NAME_026
+    translation: Gary Kinnsch
+  - key: CREDITS_505NAME_027
+    translation: Randy Eckhardt
+  - key: CREDITS_505NAME_028
+    translation: Freeform London
+  - key: CREDITS_505NAME_029
+    translation: Techdept
+  - key: CREDITS_505NAME_030
+    translation: Jasy Girl
+  - key: CREDITS_505NAME_031
+    translation: Jayna Jayn
+  - key: CREDITS_505NAME_032
+    translation: Geenie
+  - key: CREDITS_505NAME_033
+    translation: Dancey
+  - key: CREDITS_505TIT_001
+    translation: Coordinador del proyecto
+  - key: CREDITS_505TIT_002
+    translation: "Coordinador de producci\xF3n"
+  - key: CREDITS_505TIT_003
+    translation: Productor
+  - key: CREDITS_505TIT_004
+    translation: Director de desarrollo
+  - key: CREDITS_505TIT_005
+    translation: "Productor s\xE9nior"
+  - key: CREDITS_505TIT_006
+    translation: Productora
+  - key: CREDITS_505TIT_007
+    translation: Coordinador de presentaciones
+  - key: CREDITS_505TIT_008
+    translation: Coordinador del proyecto
+  - key: CREDITS_505TIT_009
+    translation: Coordinadora del control de calidad
+  - key: CREDITS_505TIT_010
+    translation: "Coordinador de producci\xF3n"
+  - key: CREDITS_505TIT_011
+    translation: Ayudante de desarrollo empresarial
+  - key: CREDITS_505TIT_012
+    translation: Director de marca global
+  - key: CREDITS_505TIT_013
+    translation: "Coordinadora s\xE9nior de marca global"
+  - key: CREDITS_505TIT_014
+    translation: Coordinadora principal de marca global
+  - key: CREDITS_505TIT_015
+    translation: "Dise\xF1adores de servicios creativos"
+  - key: CREDITS_505TIT_016
+    translation: Coordinador del estudio
+  - key: CREDITS_505TIT_017
+    translation: Director creativo
+  - key: CREDITS_505TIT_018
+    translation: "Directora de RRPP, Norteam\xE9rica"
+  - key: CREDITS_505TIT_019
+    translation: "Coordinador europeo de relaciones p\xFAblicas"
+  - key: CREDITS_505TIT_020
+    translation: "Coordinador s\xE9nior de servicios de marketing"
+  - key: CREDITS_505TIT_021
+    translation: "Coordinadora de edici\xF3n"
+  - key: CREDITS_505TIT_022
+    translation: Analista de operaciones financieras
+  - key: CREDITS_505TIT_023
+    translation: Presidente, 505 Games Inc
+  - key: CREDITS_505TIT_024
+    translation: Vicepresidente de operaciones
+  - key: CREDITS_505TIT_025
+    translation: Vicepresidente de ventas
+  - key: CREDITS_505TIT_026
+    translation: Agradecimientos especiales
+  - key: CREDITS_CASTCOMP_01
+    translation: Reparto
+  - key: CREDITS_CASTNAME_01
+    translation: Chris Jai Alex
+  - key: CREDITS_CASTNAME_02
+    translation: David Holloway
+  - key: CREDITS_CASTNAME_03
+    translation: Ed Cunningham
+  - key: CREDITS_CASTNAME_04
+    translation: Sylvester Rivers
+  - key: CREDITS_CASTNAME_05
+    translation: Monica Quinn
+  - key: CREDITS_CASTNAME_06
+    translation: Yolanda Sanders
+  - key: CREDITS_CASTNAME_07
+    translation: Snoop Dogg
+  - key: CREDITS_CASTTIT_01
+    translation: AJ/Joven AJ
+  - key: CREDITS_CASTTIT_02
+    translation: Nero/Joven Nero/Gorila
+  - key: CREDITS_CASTTIT_03
+    translation: Don Blank/Hollister/Presentador
+  - key: CREDITS_CASTTIT_04
+    translation: "Teniente/Mat\xF3n/Seguidor del Camino"
+  - key: CREDITS_CASTTIT_05
+    translation: Loca/Vida
+  - key: CREDITS_CASTTIT_06
+    translation: Sierra/Recepcionista
+  - key: CREDITS_CASTTIT_07
+    translation: "\xC9l mismo"
+  - key: CREDITS_CONCOMP_01
+    translation: Conway Studios
+  - key: CREDITS_CONDEP_01
+    translation: Agradecimientos especiales
+  - key: CREDITS_CONNAME_01
+    translation: Eric Weaver
+  - key: CREDITS_CONNAME_02
+    translation: Eric Eylands
+  - key: CREDITS_CONNAME_03
+    translation: Stacy Barnett
+  - key: CREDITS_CONNAME_04
+    translation: Max Martin
+  - key: CREDITS_CONTIT_01
+    translation: Ingeniero
+  - key: CREDITS_CONTIT_02
+    translation: Ayudante de ingeniero
+  - key: CREDITS_CONTIT_03
+    translation: Director del estudio
+  - key: CREDITS_EPCOMP_001
+    translation: Echo Peak
+  - key: CREDITS_EPNAME_001
+    translation: Ciaran Walsh
+  - key: CREDITS_EPNAME_002
+    translation: Ste Curran
+  - key: CREDITS_EPNAME_003
+    translation: Ed Daly
+  - key: CREDITS_EPNAME_004
+    translation: Charles James
+  - key: CREDITS_EPNAME_005
+    translation: Jon Taylor
+  - key: CREDITS_EPNAME_006
+    translation: Fraser Simpson
+  - key: CREDITS_EPNAME_007
+    translation: Dan Lish
+  - key: CREDITS_EPNAME_008
+    translation: Matt West
+  - key: CREDITS_EPNAME_009
+    translation: Paul Sinnett
+  - key: CREDITS_EPNAME_010
+    translation: Ross Gouldthorpe
+  - key: CREDITS_EPNAME_011
+    translation: Ciaran Walsh
+  - key: CREDITS_EPNAME_012
+    translation: Stuart Radforth
+  - key: CREDITS_EPNAME_013
+    translation: Chris McLaughlin
+  - key: CREDITS_EPNAME_014
+    translation: "Lorcan O\u2019Connor"
+  - key: CREDITS_EPNAME_015
+    translation: Tanguy Dewavrin
+  - key: CREDITS_EPNAME_016
+    translation: Pete Thorneycroft
+  - key: CREDITS_EPNAME_017
+    translation: Ash Reemul
+  - key: CREDITS_EPNAME_018
+    translation: Jean Troiani
+  - key: CREDITS_EPNAME_019
+    translation: Ramona Wilhelmsson
+  - key: CREDITS_EPNAME_020
+    translation: Ciaran Walsh
+  - key: CREDITS_EPNAME_021
+    translation: String removed
+  - key: CREDITS_EPNAME_022
+    translation: Nathan McCree
+  - key: CREDITS_EPNAME_023
+    translation: Kirstin, Molly & Sophie Walsh
+  - key: CREDITS_EPNAME_024
+    translation: Alastair Daly
+  - key: CREDITS_EPNAME_025
+    translation: Rachel Dey
+  - key: CREDITS_EPNAME_026
+    translation: Joel Benton
+  - key: CREDITS_EPNAME_027
+    translation: Paul Mottram
+  - key: CREDITS_EPNAME_028
+    translation: Kane Michaels
+  - key: CREDITS_EPNAME_029
+    translation: Cliff Fluett
+  - key: CREDITS_EPNAME_030
+    translation: Kathryn Barbas
+  - key: CREDITS_EPNAME_031
+    translation: Sarah Brin & Simon Wiscombe
+  - key: CREDITS_EPNAME_032
+    translation: Andy Brammall
+  - key: CREDITS_EPNAME_033
+    translation: Jonathan Withey
+  - key: CREDITS_EPTIT_001
+    translation: Director del juego
+  - key: CREDITS_EPTIT_002
+    translation: Director creativo y guionista
+  - key: CREDITS_EPTIT_003
+    translation: Director comercial
+  - key: CREDITS_EPTIT_004
+    translation: "Director t\xE9cnico"
+  - key: CREDITS_EPTIT_005
+    translation: "Director de gr\xE1ficos"
+  - key: CREDITS_EPTIT_006
+    translation: "Jefe de dise\xF1o"
+  - key: CREDITS_EPTIT_007
+    translation: "Dise\xF1os 2D"
+  - key: CREDITS_EPTIT_008
+    translation: "Programaci\xF3n"
+  - key: CREDITS_EPTIT_010
+    translation: "Gr\xE1ficos"
+  - key: CREDITS_EPTIT_011
+    translation: "Animaci\xF3n"
+  - key: CREDITS_EPTIT_012
+    translation: Sonido
+  - key: CREDITS_EPTIT_013
+    translation: 'Echo Peak Special Thanks:'
+  - key: CREDITS_GTLCOMP_01
+    translation: GTL Media
+  - key: CREDITS_GTLNAME_01
+    translation: William Farrell
+  - key: CREDITS_GTLNAME_02
+    translation: Dino Hermann
+  - key: CREDITS_GTLNAME_03
+    translation: Marco Sonzini
+  - key: CREDITS_GTLNAME_04
+    translation: Ryan Nulty
+  - key: CREDITS_GTLNAME_05
+    translation: MJ Lallo
+  - key: CREDITS_GTLTIT_01
+    translation: "Producci\xF3n y direcci\xF3n de elecci\xF3n de reparto"
+  - key: CREDITS_GTLTIT_02
+    translation: Ingeniero jefe de sonido
+  - key: CREDITS_GTLTIT_03
+    translation: Ayudante de ingeniero jefe de sonido
+  - key: CREDITS_GTLTIT_04
+    translation: Coordinador del proyecto
+  - key: CREDITS_GTLTIT_05
+    translation: "Elecci\xF3n de reparto adicional"
+  - key: CREDITS_MUSICCOMP_001
+    translation: Music
+  - key: CREDITS_MUSICNAME01
+    translation: 'Performed by Snoop Dogg.  Under license from BMG Rights Management
+      (US) LLC. Written by Drew Arnaud, Cordozar Calvin Broadus, Donald R.Triggs and
+      Larry Blackman. '
+  - key: CREDITS_MUSICNAME02
+    translation: "Published by BMG Rights Management (US) LLC, \xA9 SONGS OF UNIVERSAL,
+      INC. ON BEHALF OF ITSELF AND BLACK MAN MUSIC (BMI). Used with Permission. All
+      Rights Reserved.  "
+  - key: CREDITS_MUSICNAME03
+    translation: Performed by Snoop Dogg. Under license from BMG Rights Management
+      (US) LLC. Written by Jerome Brailey, Cordozar Calvin Broadus, George Clinton
+      Jr., William Collins, Mose Davis, Garry Shider, Bernard Worrell.
+  - key: CREDITS_MUSICNAME04
+    translation: Published by BMG Rights Management (US) LLC, Bridgeport Music (BMI),
+      Southfield Music (ASCAP). Used with Permission.  All Rights Reserved.
+  - key: CREDITS_MUSICNAME05
+    translation: 'Performed by Snoop Dogg. Under license from BMG Rights Management
+      (US) LLC. Written by Drew Arnaud, Cordozar Calvin Broadus, Warren Griffin III,
+      Rojai Trawick and Andre Romell Young. '
+  - key: CREDITS_MUSICNAME06
+    translation: Published by BMG Rights Management (US) LLC, EMI BLACKWOOD MUSIC
+      INC, Warren G Publishing and Sony/ATV Tunes LLC (ASCAP). Used with Permission.  All
+      Rights Reserved.
+  - key: CREDITS_MUSICNAME07
+    translation: 'Performed by Snoop Dogg. Under license from BMG Rights Management
+      (US) LLC. Written by Cordozar Calvin Broadus, Lil'' Malik and Andre Romell Young.   '
+  - key: CREDITS_MUSICNAME08
+    translation: Published by BMG Rights Management (US) LLC, Sony/ATV Tunes LLC (ASCAP)
+      and Beantribe. Used with Permission.  All Rights Reserved.
+  - key: CREDITS_MUSICNAME09
+    translation: 'Performed by Snoop Dogg. Under license from EMI BLACKWOOD MUSIC
+      INC and EMI APRIL MUSIC INC. Written by Cordozar Calvin Broadus, Roger Troutman,
+      Warryn Campbell, Terrence Harden, Dino Hawkins, Adrian Miller, Eric Vidal and
+      Nick Vidal.  '
+  - key: CREDITS_MUSICNAME10
+    translation: "Published by EMI BLACKWOOD MUSIC INC. and EMI APRIL MUSIC INC.,
+      \ \xA9 2012 Songs of Lastrada (BMI) and Sony/ATV Songs LLC (BMI),   \u201CA\u201D
+      Side Music, LLC d/b/a Modern Works Music Publishing, o/b/o Rubber Band Music
+      (BMI) and (c) UNIVERSAL MUSIC - MGB SONGS ON BEHALF OF ITSELF, A NOTE A SONG
+      MUSIC AND DOS HERMANOS MUSIC / UNIVERSAL MUSIC - CAREERS ON BEHALF OF ITSELF,
+      HAPP DOG MUSIC AND VOLUME TEN MUSIC (ASCAP, BMI). "
+  - key: CREDITS_MUSICNAME11
+    translation: "By arrangement with Sony Music Licensing, contains a sample of \u201CPeter
+      Piper\u201D, performed by Run DMC, courtesy of RCA Records, a division of Sony
+      Music Entertainment. Contains a sample of \u201CCinderfella\u201D, performed
+      by Dana Dane, courtesy of RCA Records, a division of Sony Music Entertainment.
+      \ Used with Permission. All Rights Reserved."
+  - key: CREDITS_MUSICNAME12
+    translation: "Performed by Snoop Dogg. Under license from \xA9UNIVERSAL MUSIC
+      and \xA9SONY MUSIC ENTERTAINMENT. Written by Reginald Hargis, Edward Irons,
+      Raymond Ranson, James Brown, Joseph Simmons, Darryl McDaniels, Herby Azor, Dana
+      MC Cleese, Fonce Mizell, Frederick James Perrin and Priest J. Brooks. "
+  - key: CREDITS_MUSICNAME13
+    translation: "Published by \xA9 2005 H&R Lastrada Music (ASCAP) and Sony/ATV Tunes
+      LLC (ASCAP),  JOBETE MUSIC CO. INC., \xA9 2004 DYNATONE PUBLISHING COMPANY (BMI),
+      RABASSE MUSIC, LTD. (PRS), RUSH-GROOVE RECORD PRODUCTION CORP. (ASCAP), JOBETE
+      MUSIC CO., INC. (ASCAP) AND HIGH PRIEST PUBLISHING (ASCAP) ALL RIGHTS ON BEHALF
+      OF DYNATONE PUBLISHING COMPANY ADMINISTERED BY WARNER-TAMERLANE PUBLISHING CORP."
+  - key: CREDITS_MUSICNAME14
+    translation: ' ALL RIGHTS ON BEHALF OF RABASSE MUSIC, LTD. AND RUSH-GROOVE RECORD
+      PRODUCTION CORP. ADMINISTERED BY WARNER/CHAPPELL MUSIC LTD, and (c) UNIVERSAL
+      MUSIC CORP. ON BEHALF OF PROTOONS, INC. (ASCAP).  Used with Permission.  All
+      Rights Reserved.'
+  - key: CREDITS_MUSICNAME15
+    translation: "Performed by Snoop Dogg. Under license from \xA9UNIVERSAL MUSIC
+      - CAREERS ON BEHALF OF ITSELF AND RAYNCHASER MUSIC (BMI).  Written by Pharrell
+      L. Williams, Cordozar Calvin Broadus and Chad Hugo.  "
+  - key: CREDITS_MUSICNAME16
+    translation: 'Published by SONGS MUSIC PUBLISHING, LLC and EMI BLACKWOOD MUSIC
+      INC. Used with Permission.  All Rights Reserved. '
+  - key: CREDITS_MUSICNAME17
+    translation: Performed by Snoop Dogg. Under license from EMI BLACKWOOD MUSIC INC.
+      Written by Cordozar Calvin Broadus, Pharrell L. Williams, Chad Hugo and Robert
+      S. Kelly.
+  - key: CREDITS_MUSICNAME18
+    translation: "Published by  SONGS MUSIC PUBLISHING, LLC and \xA9 SONGS OF UNIVERSAL,
+      INC. Used with Permission.  All Rights Reserved."
+  - key: CREDITS_MUSICTIT01
+    translation: Gz and Hustlas
+  - key: CREDITS_MUSICTIT02
+    translation: Who Am I (What's My Name)
+  - key: CREDITS_MUSICTIT03
+    translation: Murder Was The Case
+  - key: CREDITS_MUSICTIT04
+    translation: Pump Pump
+  - key: CREDITS_MUSICTIT05
+    translation: Raised In Da Hood
+  - key: CREDITS_MUSICTIT06
+    translation: The Bidness
+  - key: CREDITS_MUSICTIT07
+    translation: 14 Lil' Crips
+  - key: CREDITS_MUSICTIT08
+    translation: From Tha Chuuuch To Da Palace
+  - key: CREDITS_STMCOMP_01
+    translation: "Way of the Dogg es una licencia en colaboraci\xF3n con Snoop Dogg."
+  - key: CREDITS_STMCOMP_02
+    translation: 'Agradecimientos especiales a:'
+  - key: CREDITS_STMCOMP_03
+    translation: Ted Chung, Nick Adler, Tefferi Mogus, Stampede Management y Cashmere
+      Agency.
+  - key: FE_CALIB_001
+    translation: "CALIBRACI\xD3N"
+  - key: FE_CALIB_002
+    translation: "La calibraci\xF3n te ayudar\xE1 a resolver los retrasos en tu configuraci\xF3n
+      de sonido y v\xEDdeo."
+  - key: FE_CALIB_003
+    translation: "Juega en la secuencia corta lo mejor que puedas y el juego se ajustar\xE1
+      a tu ritmo."
+  - key: FE_CALIB_004
+    translation: "Despu\xE9s podr\xE1s aceptar o rechazar los cambios, o volver a
+      intentarlo para realizar m\xE1s ajustes."
+  - key: FE_CALIB_005
+    translation: "CALIBRACI\xD3N COMPLETADA"
+  - key: FE_CALIB_006
+    translation: "Repetir calibraci\xF3n"
+  - key: FE_CALIB_007
+    translation: Volver a predeterminados
+  - key: FE_CALIB_008
+    translation: Guardar y salir
+  - key: FE_CALIB_009
+    translation: Salir sin guardar
+  - key: FE_CHALLENGE_TITLE_01
+    translation: "Desaf\xEDo {0}:"
+  - key: FE_CONT_001
+    translation: "Botones de acci\xF3n"
+  - key: FE_CONT_002
+    translation: Pausa
+  - key: FE_CONT_003
+    translation: "Furia (mant\xE9n los dos a la vez para activarla)"
+  - key: FE_CONT_004
+    translation: Instrucciones y ataques especiales
+  - key: FE_DATA_01
+    translation: Way of the Dogg
+  - key: FE_EXTRAS_AJ_01
+    translation: "Am\xE9rica Jones"
+  - key: FE_EXTRAS_AJ_02
+    translation: "Am\xE9rica Jones ten\xEDa diez a\xF1os cuando su madre, una concejala
+      que puso a su hijo el nombre de la \xFAnica cosa en la que cre\xEDa, muri\xF3
+      de un disparo durante una protesta callejera contra un plan de viviendas. \xBFPor
+      qu\xE9? Qui\xE9n sabe, aunque hay que ser muy valiente para interponerse en
+      el camino de Empresas Blank, para hacer frente a Don Blank. En todo caso, aquello
+      arruin\xF3 para siempre la vida de AJ. Se sent\xEDa perdido, furioso, incapaz
+      de confiar en nadie. Era un chico \"problem\xE1tico\", otra forma de decir \"destrozado\".
+      Se fug\xF3 de distintos hogares y casas de acogida para hallar finalmente cierta
+      estabilidad en un burdel. All\xED conoci\xF3 a Nero, actual l\xEDder de La Legi\xF3n."
+  - key: FE_EXTRAS_AJ_03
+    translation: "El joven Am\xE9rica canalizaba su ira en los combates callejeros,
+      poniendo en pr\xE1ctica la lecci\xF3n que aprendi\xF3 en su turbulenta infancia,
+      las mismas reglas por las que a\xFAn se rige: nadie va a luchar por ti, as\xED
+      que tienes que aprender a defenderte. \xBFPor qu\xE9 pelea Am\xE9rica? Porque
+      es lo mejor que sabe hacer, y lo hace mejor que nadie. No conoce otra cosa."
+  - key: FE_EXTRAS_AJ_04
+    translation: "Y para eso le pagan: para luchar en combates callejeros clandestinos
+      en los que siempre parte como favorito. Parece una buena forma de ganarse enemigos,
+      pero no se lo toma como algo personal. Am\xE9rica sobrevive movi\xE9ndose con
+      cautela entre los l\xEDmites, siempre cambiantes, que dividen los barrios en
+      guerra de la ciudad. No lucha para El Camino, La Legi\xF3n, El Hombre o los
+      polis: solo lo hace por el dinero y por su chica. No se adhiere a ning\xFAn
+      bando, aunque en cualquiera de ellos ser\xEDa bien recibido. Pero Am\xE9rica
+      no cree en el bien o el mal. No espera favores ni muestra clemencia."
+  - key: FE_EXTRAS_BENJAMINS_01
+    translation: Benjamins
+  - key: FE_EXTRAS_BENJAMINS_02
+    translation: "En la planta baja de la Blank Tower est\xE1 Benjamins, un exclusivo
+      club nocturno. Es un regalo que les hizo a Vida y Loca su querido \"papi\".
+      El logotipo de Benjamins luce el verde caracter\xEDstico de su proveedor, tambi\xE9n
+      presente en otros elementos de la sala. Pero los colores dominantes son el plateado
+      y el negro; porque, a fin de cuentas, esto es un club."
+  - key: FE_EXTRAS_BENJAMINS_03
+    translation: "En el centro del club hay una arena octogonal de unos 20 metros
+      de di\xE1metro, por debajo del nivel del suelo. Las luces de la pista de baile
+      se iluminan al ritmo de la m\xFAsica de Loca, como suele pasar en las pistas
+      de baile. La cabina del DJ (tapada por un misterioso tri\xE1ngulo al estilo
+      de la orden de los Iluminados) es el refugio de Vida y su colecci\xF3n de discos,
+      con los que marca el ritmo de la velada. "
+  - key: FE_EXTRAS_BENJAMINS_04
+    translation: "Un enorme y caro puente de luces cuelga sobre la pista de baile.
+      Parece un andamio para escalar: puedes balancearte en \xE9l si te dejas llevar
+      por el entusiasmo o la m\xFAsica se vuelve muy intensa. Pero el departamento
+      de salud y seguridad no te lo recomienda. Y Vida tampoco. Rompe su juguete favorito
+      y ella te romper\xE1 a ti. En mil pedazos."
+  - key: FE_EXTRAS_BLANK_01
+    translation: Don Blank
+  - key: FE_EXTRAS_BLANK_02
+    translation: "Don Blank, pilar de la comunidad... Trajes a medida, sonrisa de
+      labios finos, ojos fr\xEDos del color del dinero. Un hombre de pocas palabras,
+      pero que las usa como si fuesen un arma. Tambi\xE9n dispone de armamento convencional,
+      por supuesto; pero no necesita usarlo porque siempre est\xE1 rodeado de gente.
+      The Mystic es tan solo uno entre sus acompa\xF1antes, porque nunca te faltan
+      amigos cuando se tiene tanto dinero como Don Blank."
+  - key: FE_EXTRAS_BLANK_03
+    translation: "Vayamos al grano, a lo que todos quieren saber. Blank ha amasado
+      su fortuna como cualquier otro hijo de puta: abusando de los d\xE9biles. En
+      las revistas financieras figura como promotor inmobiliario, algo que en cierto
+      sentido es cierto: parece que la mitad de California se ha \"revitalizado\"
+      gracias a Empresas Blank. "
+  - key: FE_EXTRAS_BLANK_04
+    translation: "Oficialmente, es bueno para la ciudad: el suelo se revaloriza, la
+      tasa de cr\xEDmenes desciende. Pero todo depende de lo que entiendas por cr\xEDmenes.
+      Pero pregunta a aquellos expulsados de sus hogares por la polic\xEDa, los que
+      ahora viven hacinados en barrios miserables de las afueras. Es probable que
+      tengan otra visi\xF3n sobre el asunto, y que te la expresen de forma menos educada."
+  - key: FE_EXTRAS_BLANK_05
+    translation: "Pregunta m\xE1s cosas a esa gente. Preg\xFAntales c\xF3mo gan\xF3
+      Don sus primeros cien mil d\xF3lares. Preg\xFAntales por la red de tr\xE1fico
+      de crack que dirig\xEDa. Se sali\xF3 del juego en cuanto consigui\xF3 capital
+      suficiente para hacerse respetable, dicen algunos. Otros dicen que a\xFAn sigue
+      controlando las operaciones desde su cuartel general, un \xE1tico de lujo en
+      el edificio m\xE1s alto del centro. La polic\xEDa no puede hacer nada contra
+      \xE9l. Y tampoco lo intentar\xEDa: Blank les paga muy bien."
+  - key: FE_EXTRAS_FOLLOW_01
+    translation: The Followers
+  - key: FE_EXTRAS_FOLLOW_02
+    translation: "Los seguidores de Snoop son devotos, entusiastas, imperfectos. Est\xE1n
+      deseosos de aprender, de escuchar; seguir\xE1n sus instrucciones hasta la muerte.
+      Pero a veces su ansia por impresionar al l\xEDder choca con lo que el l\xEDder
+      intenta ense\xF1arles. Necesitan calmarse, relajarse. En El Camino prima el
+      equilibrio, no las prisas."
+  - key: FE_EXTRAS_FOLLOW_03
+    translation: "Cada seguidor lleva al menos parte del ch\xE1ndal caracter\xEDstico
+      de El Camino, pero las prendas de la parte superior del cuerpo var\xEDan de
+      una persona a otra. Llevan camisetas con o sin mangas, y algunos tienen muchos
+      tatuajes."
+  - key: FE_EXTRAS_FOLLOW_04
+    translation: "Personalizan su uniforme para hacerlo propio: guantes sin dedos
+      al estilo de los Panteras Negras, gafas de sol, mu\xF1equeras y pulseras, relojes,
+      joyas, parches... Llevan peinados a lo afro, la cabeza rapada o el pelo muy
+      corto. Un estilo pulcro y arreglado, pr\xE1ctico pero elegante. Algunos usan
+      pa\xF1uelos, otros llevan la cara tapada; en sus rostros hay cicatrices, seriedad,
+      sonrisas de suficiencia o gestos taciturnos."
+  - key: FE_EXTRAS_HOLLISTER_01
+    translation: Hollister
+  - key: FE_EXTRAS_HOLLISTER_02
+    translation: "Hubo un tiempo en el que Hollister era un atleta, el capit\xE1n
+      del equipo de lucha libre del instituto. Un cuarto de siglo m\xE1s tarde...
+      las cosas han cambiado. S\xED, bajo el protector sigue habiendo m\xFAsculo,
+      pero ha ganado demasiado peso. La camisa le queda peque\xF1a, lleva una pistola
+      debajo de su americana y una mueca de \"A la mierda todo\" en su cara; tiene
+      el aire desgarbado y los ojos hundidos. Se queja de que padece indigesti\xF3n,
+      debida, seg\xFAn \xE9l, a toda la mierda que tiene que aguantar para mantener
+      a raya a los criminales de La Legi\xF3n, pero es m\xE1s probable que las copas
+      gratis en casa de El Hombre tengan algo que ver. O las rosquillas. Demasiadas
+      rosquillas."
+  - key: FE_EXTRAS_HOLLISTER_03
+    translation: "Hollister recibe sobornos, claro est\xE1. \xBFQui\xE9n puede sobrevivir
+      con el sueldo de un poli? Cobra de los traficantes y chulos que trabajan en
+      las esquinas, de los rateros que organizan peleas callejeras, de los corredores
+      de apuestas que viven de ellas, y hasta de los esbirros mejor posicionados en
+      La Legi\xF3n. Criminales de alto nivel tambi\xE9n lo han sobornado: conseguir
+      los permisos que necesita Empresas Blank no es f\xE1cil, salvo que tengas los
+      contactos adecuados. "
+  - key: FE_EXTRAS_HOLLISTER_04
+    translation: "A ver, Hollister no es mal tipo. No discrimina a nadie. Est\xE1
+      tan harto de todo esto como t\xFA. Ten\xEDa grandes planes cuando entr\xF3 en
+      la polic\xEDa, pero ahora solo quiere llevar una vida tranquila y por fin ha
+      encontrado su lugar en el sistema. Si alguien hace peligrar su posici\xF3n,
+      no dura mucho en la ciudad: se le detiene por infringir el tr\xE1fico y despu\xE9s
+      desaparece. Si encuentran el cad\xE1ver, tendr\xE1 signos propios de pelea contra
+      un cuarent\xF3n cargado de frustraciones. La muerte siempre se produce por un
+      disparo fr\xEDo en la cabeza de la v\xEDctima inconsciente, con un arma imposible
+      de rastrear. En fin, caso cerrado."
+  - key: FE_EXTRAS_MYSTIC_01
+    translation: The Mystic
+  - key: FE_EXTRAS_MYSTIC_02
+    translation: "De edad indefinida, con unos ojos que te taladran y una barba blanca
+      como la nieve, The Mystic es el maestro chino que dirige el destacamento de
+      seguridad de El Hombre. Cubre su cuerpo fibroso con una amplia toga que sugiere
+      y a la vez oculta sus movimientos. The Mystic nunca habla: puede que ni siquiera
+      sepa hablar ingl\xE9s, o que no tenga nada que decir. O quiz\xE1s sea cierto
+      el rumor de que El Hombre le cort\xF3 la lengua. Pero no importa demasiado:
+      sus ojos lo dicen todo."
+  - key: FE_EXTRAS_MYSTIC_03
+    translation: "\xBFQu\xE9 se sabe de su pasado? Form\xF3 parte del grupo de Snoop
+      durante un tiempo, pero termin\xF3 traicion\xE1ndolo. Todos tenemos un precio,
+      monetario o de otra \xEDndole, y por eso ahora es la mano derecha de El Hombre,
+      al que vigila y protege. "
+  - key: FE_EXTRAS_MYSTIC_04
+    translation: "Su estilo de lucha es propio del que ya lo ha visto todo y sabe
+      aprovechar la menor oportunidad: es paciente, le gusta bloquear y espera a que
+      el rival baje la guardia para hacerse con la victoria. S\xED, ya te has enfrentado
+      a buenos luchadores, pero lo suyo es distinto; es como si estuviese dentro de
+      tu cabeza. Sabe d\xF3nde y cu\xE1ndo vas a atacar. \xBFC\xF3mo se puede luchar
+      contra alguien que ya conoce tu siguiente movimiento?"
+  - key: FE_EXTRAS_MYSTIC_05
+    translation: "No parece un gran amante de las joyas, pero siempre lleva un pesado
+      reloj de pulsera en la mu\xF1eca derecha. Puede que este detalle sea de importancia."
+  - key: FE_EXTRAS_NERO_01
+    translation: Nero
+  - key: FE_EXTRAS_NERO_02
+    translation: "El estatus de un hombre se mide de diversas formas. Por el poder
+      que posee o el miedo que inspira. No hay duda de que Nero, el director de La
+      Legi\xF3n, est\xE1 muy bien considerado. Consigui\xF3 escapar del inframundo,
+      sobreviviendo a sus compa\xF1eros por pura casualidad o intencionadamente, para
+      despu\xE9s dar un golpe despiadado y llevarse el liderazgo. Tiene cicatrices
+      en la cara, pero posee el cuerpo de un dios romano. Y tambi\xE9n la actitud:
+      arrogante, vengativa, irascible."
+  - key: FE_EXTRAS_NERO_03
+    translation: "Otro m\xE9todo de medida es el dinero, y Nero tiene mucho: recibe
+      un porcentaje de cada transacci\xF3n turbia que se efect\xFAa bajo el amplio
+      y oscuro cobijo de La Legi\xF3n. En una ciudad tan grande, hay mucha gente a
+      la que cobrar impuestos: traficantes, sicarios, proxenetas, mafiosos y los luchadores
+      callejeros que pelean en su anfiteatro particular antes de pasar a hacerlo clandestinamente."
+  - key: FE_EXTRAS_NERO_04
+    translation: "Pero puede que la mejor forma de valorar a un hombre no sea a trav\xE9s
+      de su riqueza o sus m\xE9todos para conseguirla, sino por la forma en que invierte
+      sus ganancias. Por ejemplo, fijaos en c\xF3mo convirti\xF3 Nero la arena de
+      combate de La Legi\xF3n en un \xE1rea de golf, un deporte m\xE1s adecuado para
+      un hombre del estatus al que aspira. Es un disparate, claro. Puede jugar al
+      golf todo lo que quiera (y eso hace), puede subirse los calcetines y embutir
+      sus muslos de elefante en sus bermudas de golf (tambi\xE9n lo hace), pero todos
+      los que lo rodean se estremecen cada vez que Nero agarra un palo de golf, temerosos
+      de lo que pueda suceder. "
+  - key: FE_EXTRAS_NERO_05
+    translation: "Dicho de otro modo: una rata callejera nunca dejar\xE1 de serlo.
+      M\xE1s vale que no lo olvides."
+  - key: FE_EXTRAS_PENTHOUSE_01
+    translation: The Penthouse
+  - key: FE_EXTRAS_PENTHOUSE_02
+    translation: "Quiz\xE1s sea cierto que la felicidad no se compra con dinero. Pero
+      pensemos en lo que el dinero puede comprar. Como Blank Tower, un t\xF3tem monol\xEDtico
+      erigido en honor a tu prepotencia, un edificio de ochenta plantas que se eleva
+      sobre el cielo de Los \xC1ngeles m\xE1s alto que ning\xFAn otro. Los dos \xFAltimos
+      pisos del edificio son para tu uso personal, y as\xED comenzar el d\xEDa con
+      las vistas m\xE1s exquisitas y estimulantes. La guarida est\xE1 amueblada con
+      toda clase de lujos: mobiliario minimalista como el de esas pel\xEDculas de
+      ciencia-ficci\xF3n en las que a todos nos gustar\xEDa vivir; entretenimientos
+      electr\xF3nicos de \xFAltima generaci\xF3n, reci\xE9n inventados; lo \xFAltimo
+      en seguridad. En definitiva, un estilo de vida con el que reyes y reinas solo
+      pueden so\xF1ar."
+  - key: FE_EXTRAS_PENTHOUSE_03
+    translation: "Y si todo eso no te hace feliz, siempre puedes gastar tu dinero
+      en una piscina de coca\xEDna y sumergirte en ella hasta el fondo. Es imposible
+      encontrar algo mejor que eso."
+  - key: FE_EXTRAS_PENTHOUSE_04
+    translation: "Si tienes el privilegio de visitar el \xE1tico de lujo que Don Blank
+      posee en el centro (es un privilegio para algunos; para otros, la \xFAltima
+      parada de un viaje lleno de decisiones desafortunadas), lo primero que te llamar\xE1
+      la atenci\xF3n es el tama\xF1o, el espacio, el cuidado con el que todo est\xE1
+      dispuesto. El ascensor del centro del edificio te conducir\xE1 a una enorme
+      sala abierta, decorada de forma espartana pero elegante, con varias paredes
+      divisorias estrat\xE9gicamente situadas que definen la cavernosa estancia. La
+      segunda cosa que te sorprender\xE1 es la vista que ofrecen las enormes ventanas
+      que rodean el \xE1tico. Sospechas que es una de las razones por las que los
+      dise\xF1adores de Blank crearon un espacio tan di\xE1fano: \xBFpor qu\xE9 ocultar
+      algo as\xED? \xBFNo es mejor que est\xE9 a la vista de todos?"
+  - key: FE_EXTRAS_PENTHOUSE_05
+    translation: "Y es que este lugar, privado en teor\xEDa, es en realidad una demostraci\xF3n
+      de poder m\xE1s que otra cosa. Todo lo que hay aqu\xED es muy caro, se ha elegido
+      con sumo cuidado y est\xE1 pensado para que el visitante se sienta inferior.
+      As\xED es el mundo de El Hombre. Quiere que aqu\xED seas feliz. \xC9l lo es."
+  - key: FE_EXTRAS_PIER_01
+    translation: Pier 424
+  - key: FE_EXTRAS_PIER_02
+    translation: "El muelle 420 era un \xE1rea de pesca de Los \xC1ngeles con cierta
+      fama, funcional pero sin nada de particular, que actualmente funciona como destino
+      tur\xEDstico. Algo evidente por las luces de ne\xF3n de sus atracciones de feria,
+      visibles a varios kil\xF3metros de distancia, resplandecientes entre la contaminaci\xF3n
+      y la niebla. Tiene una noria, un cohete espacial luminoso, lo \xFAltimo en tecnolog\xEDa
+      para desafiar la gravedad y entretener a los que buscan emociones fuertes, y
+      multitud de puestos de comida r\xE1pida. Hay incluso una minimonta\xF1a rusa
+      que ocupa los \xFAltimos rincones de espacio libre, todo comprimido sobre una
+      plataforma de madera para atraer a los turistas. Hay quien dice que es una vista
+      bonita. Desde lejos."
+  - key: FE_EXTRAS_PIER_03
+    translation: "Pero si las luces brillantes atraen al dinero, en la oscuridad se
+      oculta lo m\xE1s turbio. Sigue en pie la plataforma pesquera que hay al final
+      del muelle y tambi\xE9n las plataformas de atraque, aunque con la madera podrida
+      y las escaleras de acceso cerradas. Esta es la parte del muelle que Hollister
+      frecuenta por las noches. All\xED cierra sus tratos, cobra sus porcentajes y
+      organiza acuerdos de mutuo beneficio que, en su opini\xF3n, mantienen el equilibrio
+      de la ciudad. "
+  - key: FE_EXTRAS_PIER_04
+    translation: "A la luz del d\xEDa, rodeada por una valla de hierro forjado negro
+      con farolas a juego, la plataforma conserva el encanto de otra era, de una \xE9poca
+      m\xE1s respetuosa. Los bancos del exterior ofrecen una bonita vista mar\xEDtima
+      a los turistas, y descanso a los pocos pescadores que siguen en activo. En el
+      centro hay un peque\xF1o punto de informaci\xF3n con detalles sobre la historia
+      del muelle. Pero all\xED casi nunca hay nadie trabajando, y mucho menos por
+      la noche, momento en el que Hollister suele frecuentarlo. Es la dualidad entre
+      la feria y esta zona, la combinaci\xF3n de pecado y santuario, lo que lo convierte
+      en un lugar perfecto para un poli. Eso y la ausencia de c\xE1maras. "
+  - key: FE_EXTRAS_PIER_05
+    translation: "En alta mar pueden verse unos barcos grandes. \xBFEso de all\xED,
+      vacilante, vigilante, es un crucero verde de El Hombre? No te dejes distraer
+      por ellos, o por las luces mareantes de la feria. Es mejor concentrarse en las
+      sombras y en los hombres que las habitan."
+  - key: FE_EXTRAS_PIT_01
+    translation: The Pit
+  - key: FE_EXTRAS_PIT_02
+    translation: "Desde fuera, parece un almac\xE9n abandonado; hay miles como este
+      en Los \xC1ngeles: edificios baratos, ruinosos, oscuros. Pintura descascarada
+      en las paredes, ventanas polvorientas con rejas de hierro. En cada esquina hay
+      hombres con el ce\xF1o fruncido, y alguno m\xE1s apoyado en la puerta met\xE1lica
+      llena de grafitis. Sigue conduciendo. Mira hacia adelante. No te detengas."
+  - key: FE_EXTRAS_PIT_03
+    translation: "Algo es algo: las carreteras del exterior est\xE1n despejadas. Nadie
+      se acerca a esta parte de la ciudad, ni por placer ni por negocios; o al menos,
+      no la clase de negocios que se hacen con tarjetas de cr\xE9dito y faxes. Aqu\xED
+      se celebran los combates callejeros, en los que AJ se gana la vida y otros se
+      aprovechan de su talento innato. Los luchadores, los ama\xF1adores, los que
+      se encargan de las apuestas, los que apuestan, los polis que se llevan su porcentaje:
+      todos est\xE1n aqu\xED, como siluetas en alg\xFAn lugar del escenario."
+  - key: FE_EXTRAS_PIT_04
+    translation: "Si te dejan entrar -reduces la velocidad, pones las luces en intermitente
+      y el tipo de la entrada te da el visto bueno-, la puerta met\xE1lica subir\xE1
+      lentamente. Otros coches, aparcados de cualquier modo con las luces largas encendidas,
+      est\xE1n frente a un agujero grande del suelo, en el que hay un desnivel de
+      unos 30 cent\xEDmetros lleno de basura y con el borde marcado con pintura amarilla.
+      Debe de ser la arena en la que se celebra el combate. Ese debe de ser el ring."
+  - key: FE_EXTRAS_PIT_05
+    translation: "El equipo de sonido hace temblar los barrotes. En una mesa se venden...
+      estimulantes. Es curioso: cuesta imaginar un lugar m\xE1s s\xF3rdido en el que
+      celebrar un torneo, pero cuando est\xE1s en el centro de la arena y solo ves
+      luces y sombras que se mueven, escuchas los gritos reclamando sangre que rebotan
+      en las paredes, mezcl\xE1ndose con el rugido de los motores, tienes la sensaci\xF3n
+      de estar en un estadio."
+  - key: FE_EXTRAS_PIT_06
+    translation: "Cuando el torneo termina, los coches se marchan, los fantasmas se
+      disipan y los fluorescentes del techo se iluminan. Entonces recuerdas qui\xE9n
+      eres y que no est\xE1s en un estadio. El ring es un foso, solo eso; lleno de
+      escupitajos y basura, violencia y gloria, sangre y dinero."
+  - key: FE_EXTRAS_ROOF_01
+    translation: 'Blank Tower: Rooftop'
+  - key: FE_EXTRAS_ROOF_02
+    translation: "Dicen que Los \xC1ngeles solo cobra sentido desde las alturas y
+      de noche: es entonces cuando los detalles se pierden en la oscuridad y la forma
+      de la ciudad se distingue entre su alumbrado naranja, un juego de conectar puntos
+      que se extiende durante varias millas; esta ciudad es la prueba de la impresionante
+      habilidad del ser humano para plantar cara a un desierto inh\xF3spito y decirle:
+      \"J\xF3dete, vas a desaparecer\". Desde lo alto de la Blank Tower no se ven
+      peleas, asesinatos, polic\xEDas o edificios de 50 pisos m\xE1s bajos que el
+      tuyo; tan solo una cuadr\xEDcula perfecta que llega hasta el final del mundo
+      o hasta Hollywood Halls, lo que est\xE9 primero."
+  - key: FE_EXTRAS_ROOF_03
+    translation: "La azotea es el punto m\xE1s alto de Los \xC1ngeles al que puedes
+      llegar sin drogas o m\xE1quinas voladoras. T\xFA ver\xE1s si quieres conseguir
+      lo primero; lo segundo es posible si subes al helipuerto que est\xE1 en el centro
+      de la azotea, donde Blank suele tener aparcado su helic\xF3ptero. "
+  - key: FE_EXTRAS_ROOF_04
+    translation: "Por lo dem\xE1s, es un lugar muy anodino: una superficie \xE1spera
+      que se derrite bajo el sol de Los \xC1ngeles, conductos de ventilaci\xF3n de
+      aluminio erosionado y un par de torres de radio. La fina barandilla que recorre
+      el borde de la azotea parece una ocurrencia absurda, hay que ser un temerario
+      para acercarse siquiera al borde sin sufrir un v\xE9rtigo terrible. Echas en
+      falta plantas en la azotea, o incluso un jard\xEDn. Pero no sobrevivir\xEDan
+      en este clima, con este viento incesante."
+  - key: FE_EXTRAS_ROOF_05
+    translation: "Una vez m\xE1s, es lo de menos. No tiene sentido a\xF1adir adornos
+      porque no podr\xEDan competir con lo \xFAnico que interesa a todo aquel que
+      sube aqu\xED: esa vista incomparable..."
+  - key: FE_EXTRAS_SNOOP_01
+    translation: Snoop
+  - key: FE_EXTRAS_SNOOP_02
+    translation: "Snoop siempre ser\xE1 Snoop Dogg y Snoop siempre ser\xE1 Snoop Lion."
+  - key: FE_EXTRAS_SNOOP_03
+    translation: "Su personalidad Lion es espiritual, en consonancia con los principios
+      del movimiento rastafari. El le\xF3n representa la majestuosidad, la paz, el
+      respeto y el amor. Detr\xE1s est\xE1 el acero, la agresi\xF3n, el calor callejero
+      asociado a Dogg. Ambos elementos se combinan para convertirlo en un l\xEDder
+      sin igual y darle una fuerza luchadora imparable. Los dos esp\xEDritus de Dogg
+      y Lion se combinan para crear El Camino, un grupo cuasi m\xEDtico de luchadores
+      que se entrena a la sombra de Snoop, en lo alto de Hollywood Hills."
+  - key: FE_EXTRAS_SNOOP_04
+    translation: "El Camino es la cuarta fuerza principal de la ciudad, junto con
+      la polic\xEDa, La Legi\xF3n y El Hombre. No siempre est\xE1 del lado de la ley
+      -tampoco la polic\xEDa, a decir verdad- pero su c\xF3digo moral es claro. El
+      Camino conoce las injusticias y desigualdades de la ciudad y sabe que siempre
+      existir\xE1n. No est\xE1 aqu\xED para acabar con la injusticia: sabe que la
+      ciudad es una jungla y que la vida no siempre es f\xE1cil, que todo ecosistema
+      tiene depredadores y presas. Pero si la balanza se inclina en exceso hacia un
+      lado, si un grupo comienza a dominar a otro, si alguien tiene demasiado poder,
+      entonces hay que intervenir. El Camino es el \xE1rbitro en el cuadril\xE1tero,
+      el rey en el trono, el \xE1guila, el le\xF3n."
+  - key: FE_EXTRAS_SNOOP_05
+    translation: "Los miembros de El Camino fuman, hacen fiestas y se divierten. En
+      eso consiste la vida: en disfrutar, respetar a los dem\xE1s, ser positivos y
+      pragm\xE1ticos. El Camino disfruta de su independencia, de su libertad para
+      hacer todas estas cosas, y joder\xE1 a los que pongan en peligro esa libertad."
+  - key: FE_EXTRAS_SNOOP_06
+    translation: "En El Camino se viste de uniforme. Los socios, los alumnos que se
+      entrenan bajo las \xF3rdenes de Snoop y su l\xEDder s\xE9nior, visten con un
+      ch\xE1ndal negro. Los que ya han demostrado su val\xEDa visten de verde. Snoop
+      viste como quiere, claro est\xE1, pero cuando est\xE1 ense\xF1ando a sus alumnos
+      lleva un ch\xE1ndal dorado, holgado y elegante sin pretenderlo. Tambi\xE9n lleva
+      joyas, pero se las quita antes de los combates. A veces se pone un gorro rastafari,
+      otras veces sus trenzas son tan visibles como sus gafas de sol fluorescentes."
+  - key: FE_EXTRAS_SNOOP_07
+    translation: "Snoop es como es: relajado, atento, amenazador, tranquilo. Habla
+      como Snoop, con neologismos sugerentes y citas perfectamente estudiadas. \xBFEs
+      un sabio o est\xE1 colocado? \xBFO quiz\xE1s ambas cosas?"
+  - key: FE_EXTRAS_SOL_01
+    translation: Solomon
+  - key: FE_EXTRAS_SOL_02
+    translation: "Sol era un estudiante de filosof\xEDa, con un futuro prometedor
+      como jugador de baloncesto, que lo dej\xF3 todo a comienzos de los noventa para
+      unirse a El Camino. Es callado, intenso, entregado y seco. La mano derecha de
+      Snoop dirige personalmente a los luchadores de El Camino para que las instrucciones
+      de Dogg se ejecuten a la perfecci\xF3n, y tambi\xE9n se encarga de tomar las
+      decisiones rutinarias del grupo. Para entrar en El Camino, antes debes cumplir
+      con los estrictos requisitos de Sol. Ser\xE1 la primera gran prueba que tienes
+      que superar."
+  - key: FE_EXTRAS_SOL_03
+    translation: "Es un luchador t\xE9cnico, alto y fuerte, tan bien definido y preciso
+      como cabr\xEDa esperar de alguien que ha dedicado su vida a estudiar y entrenarse.
+      Puede que incluso est\xE9 demasiado centrado para representar a El Camino: en
+      todo caso es su manual t\xE9cnico, f\xEDsicamente perfecto pero carente de ciertos
+      sentimientos. Sentimientos con los que se nace, que no se pueden aprender. Quiz\xE1s
+      por eso Sol est\xE9 tan resentido. Ojal\xE1 tuviese tu talento..."
+  - key: FE_EXTRAS_SOL_04
+    translation: "Pulcro e inexpresivo, viste el ch\xE1ndal caracter\xEDstico de los
+      miembros s\xE9nior, con los colores exclusivos propios del segundo de a bordo
+      del grupo. Dar\xEDa su vida por El Camino. Y, sin duda, matar\xEDa por \xE9l."
+  - key: FE_EXTRAS_TAYLOR_01
+    translation: Angelface Taylor
+  - key: FE_EXTRAS_TAYLOR_02
+    translation: "La Legi\xF3n es un ej\xE9rcito, pero no un regimiento. Se nutre,
+      como es habitual en este tipo de organizaciones, de ratas callejeras: un grupo
+      heterog\xE9neo de indeseables que ganan dinero en el lado oscuro del sistema
+      y ceden un diezmo a su l\xEDder. Luchan por separado, para ellos y nadie m\xE1s,
+      pero saben que trabajar en grupo ofrece m\xE1s posibilidades de victoria. Es,
+      por tanto, una alianza inestable e inc\xF3moda."
+  - key: FE_EXTRAS_TAYLOR_03
+    translation: "Taylor es el ejemplo perfecto de la uni\xF3n entre personas por
+      la avaricia m\xE1s que por el deseo: brutal, inflado a esteroides, tenso, inundado
+      por la rabia, lerdo y primitivo. Solo le interesan el dinero y el poder. Taylor
+      informa a Nero, recibe \xF3rdenes y le profesa lealtad, pero Nero sospecha que
+      Taylor est\xE1 tramando algo a sus espaldas, esperando a que llegue el momento
+      para hacerse con el poder. Ese momento solo puede aplazarse, y la violencia
+      es el \xFAnico modo de hacerlo. La vida en La Legi\xF3n suele ser breve, y siempre
+      es brutal y desagradable."
+  - key: FE_EXTRAS_TAYLOR_04
+    translation: "Y as\xED es Cara de \xC1ngel. Mugriento, lleno de cicatrices, un
+      mat\xF3n mal\xE9volo que deja al descubierto toda la humanidad que posee (ninguna).
+      \xC9l es La Legi\xF3n, y La Legi\xF3n son los hombres que temes encontrarte
+      a la vuelta de la esquina. Y alg\xFAn d\xEDa terminar\xE1s encontr\xE1ndotelos.
+      M\xE1s vale que est\xE9s preparado."
+  - key: FE_EXTRAS_TEMPLE_01
+    translation: The Temple
+  - key: FE_EXTRAS_TEMPLE_02
+    translation: "Los caminos suben, serpenteantes, por Hollywood Hills, atraviesan
+      el bosque y llegan hasta las residencias apartadas de los ricos y famosos, los
+      que piden privacidad y los que la exigen. Un mundo muy alejado del paisaje urbano
+      t\xEDpico de Los \xC1ngeles, de sus centros comerciales y el asfalto polvoriento.
+      A los de aqu\xED arriba les gusta vivir as\xED: en una burbuja silenciosa y
+      pintoresca desde la que otean la ciudad, un lugar an\xF3nimo y tranquilo. Por
+      eso es el lugar perfecto para El Camino y su cuartel general, el templo."
+  - key: FE_EXTRAS_TEMPLE_03
+    translation: "Desde fuera, el templo no se diferencia en exceso del resto de residencias
+      palaciegas de la colina. Quiz\xE1s llame la atenci\xF3n su arquitectura de estilo
+      chino, con tejado de pagoda y contraventanas; es f\xE1cil dar por hecho que
+      pertenece a un hombre de negocios asi\xE1tico al que le han ido bien las cosas.
+      El s\xEDmbolo del le\xF3n grabado en las columnas de piedra de sus puertas es
+      id\xE9ntico al de los grafitis del centro de la ciudad. All\xED te pareci\xF3
+      el s\xEDmbolo de una banda callejera, de guerras entre barrios. Pero, \xBFaqu\xED
+      arriba? No puede ser eso. En el balc\xF3n quiz\xE1s haya siluetas trajeadas
+      patrullando pausadamente. Podr\xEDan ser disfraces. \xBFEstamos en Halloween?
+      \xBFY ese humo? La verdad es que este lugar es muy distinto a todos."
+  - key: FE_EXTRAS_TEMPLE_04
+    translation: "Desde luego que s\xED. Es el cuartel general de Snoop, y el edificio
+      principal es el templo: un gimnasio en el que vigila a sus disc\xEDpulos y les
+      ense\xF1a El Camino de Dogg. El templo tiene el tama\xF1o de una cancha de baloncesto
+      (de hecho, tiene canastas en cada extremo) y suelo de madera pulida. En los
+      alrededores de la cancha, cuidadosamente ordenados, vemos lo que parece equipo
+      de entrenamiento: varias armas cuerpo a cuerpo, pesas, barras, todo tipo de
+      protectores y algunos maniqu\xEDes en postes. Hay un trono, flanqueado por dos
+      enormes altavoces, desde el que Snoop observa c\xF3mo se prepara su ej\xE9rcito.
+      Media docena de puertas comunican la arena con distintas partes del edificio.
+      No est\xE1n protegidas, pero es de suponer que, a una se\xF1al del maestro,
+      los siervos de El Camino no dudar\xE1n en desafiarte si te atreves a entrar
+      o a salir de esta sala sin permiso de Snoop."
+  - key: FE_EXTRAS_TEMPLE_05
+    translation: "Las contraventanas, tal y como viste desde el exterior, est\xE1n
+      cerradas, pero hay tragaluces en el techo para surtir de luz natural a la habitaci\xF3n.
+      El sol se filtra a trav\xE9s de los \xE1rboles y proyecta sus rayos divinos
+      en el humo que flota perpetuamente en la habitaci\xF3n. Es un ambiente tranquilo,
+      casi espiritual, y es bueno saber que en este lugar, lejos de la suciedad y
+      la contaminaci\xF3n, alguien nos vigila desde arriba. Alguien que est\xE1 de
+      parte de los \xE1ngeles."
+  - key: FE_EXTRAS_UNLOCK_01
+    translation: "Completa el cap\xEDtulo {0} para desbloquear esto."
+  - key: FE_EXTRAS_UNLOCK_02
+    translation: "Completa el desaf\xEDo {0} para desbloquear esto."
+  - key: FE_EXTRAS_UNLOCK_03
+    translation: "Completa el cap\xEDtulo {0} de la historia para desbloquear esto."
+  - key: FE_EXTRAS_UNLOCK_04
+    translation: "Consigue el rango {0} en el cap\xEDtulo {0} para desbloquear esto."
+  - key: FE_EXTRAS_UNLOCK_05
+    translation: "Consigue el rango {0} en el desaf\xEDo {0} para desbloquear esto."
+  - key: FE_EXTRAS_UNLOCK_06
+    translation: "Consigue el rango {0} en el cap\xEDtulo {0} de la historia para
+      desbloquear esto."
+  - key: FE_EXTRAS_VIDA_01
+    translation: Vida & Loca
+  - key: FE_EXTRAS_VIDA_02
+    translation: "Bajitas, r\xE1pidas y leales hasta la muerte. As\xED son Vida y
+      Loca, dos gemelas quincea\xF1eras brasile\xF1as que trabajan como DJ y camarera
+      en el Benjamins, el club exclusivo que est\xE1 en la planta baja del rascacielos
+      que Don Blank posee en el centro. Sienten devoci\xF3n por su jefe, que complace
+      todos sus caprichos y al que llaman \"Papi\". Pero no son sus hijas. "
+  - key: FE_EXTRAS_VIDA_03
+    translation: "Su verdadero padre era proveedor de Blank en los viejos tiempos.
+      Cuando los negocios se... complicaron, Blank se llev\xF3 a las chicas como garant\xEDa
+      para evitarse m\xE1s decepciones. Blank ya no trabaja con su padre, quien ni
+      siquiera est\xE1 ya entre los vivos. Podr\xEDa parecer una situaci\xF3n problem\xE1tica,
+      pero no fue as\xED: a veces el dinero se antepone a los lazos de sangre. "
+  - key: FE_EXTRAS_VIDA_04
+    translation: "Expertas luchadoras, defienden el club con mucha m\xE1s energ\xEDa
+      que unas simples camareras. Papi cubre sus gastos y ellas protegen la propiedad
+      de Papi. Su t\xE9cnica de lucha es la capoeira, que combina el ritmo de la m\xFAsica
+      con artes marciales. No es f\xE1cil asestarles un golpe, y pelean duro. "
+  - key: FE_EXTRAS_VIDA_05
+    translation: "Por muy gemelas que sean, Vida y Loca est\xE1n lejos de ser id\xE9nticas.
+      A Vida le gusta el champ\xE1n y a Loca los chupitos. Vida se defiende lanzando
+      discos afilados como cuchillas desde la distancia. Loca prefiere las distancias
+      cortas. Como su nombre indica, Loca no est\xE1 en su sano juicio. Y t\xFA tampoco
+      lo est\xE1s, si se te ha pasado por la cabeza acercarte a la pista de baile..."
+  - key: FE_FIXES_TOUCH_01
+    translation: TOUCH ANYWHERE TO CONTINUE
+  - key: FE_FIXES_TOUCH_01
+    translation: TOUCH ANYWHERE TO CONTINUE
+  - key: FE_INST_001
+    translation: "C\xD3MO JUGAR: BOTONES Y TIEMPO"
+  - key: FE_INST_002
+    translation: "C\xD3MO JUGAR: FLECHAS"
+  - key: FE_INST_003
+    translation: "C\xD3MO JUGAR: MANTENER Y MACHACAR"
+  - key: FE_INST_004
+    translation: "C\xD3MO JUGAR: ATAQUES ESPECIALES"
+  - key: FE_INST_005
+    translation: "C\xD3MO JUGAR: POTENCIA DE IMPACTO"
+  - key: FE_INST_006
+    translation: "C\xD3MO JUGAR: FURIA"
+  - key: FE_INST_007
+    translation: Omitir todo
+  - key: FE_INST_008
+    translation: Siguiente
+  - key: FE_INST_009
+    translation: Cancelar
+  - key: FE_INST_010
+    translation: "Cuando el c\xEDrculo que se reduce llegue al borde del bot\xF3n,
+      pulsa el bot\xF3n."
+  - key: FE_INST_011
+    translation: "Los c\xEDrculos solo aparecen en el primer bot\xF3n de un grupo.
+      Despu\xE9s, el contador avanzar\xE1 al siguiente bot\xF3n. Pulsa el bot\xF3n
+      indicado cuando llegue al centro del bot\xF3n."
+  - key: FE_INST_012
+    translation: "\xA1Cuidado! Si lo pulsas demasiado pronto o tarde, no conseguir\xE1s
+      puntos. Tu combo se restablecer\xE1."
+  - key: FE_INST_015
+    translation: "Pulsar el bot\xF3n en el momento justo o elegir la direcci\xF3n
+      correcta no basta. Tienes que hacer las dos cosas para marcar puntos."
+  - key: FE_INST_016
+    translation: "Cuando dos botones aparezcan unidos, mant\xE9n el bot\xF3n pulsado
+      hasta que el marcador llegue hasta el final."
+  - key: FE_INST_017
+    translation: "A esto se le llama Mantener. Recuerda pulsar el \xFAltimo bot\xF3n
+      o perder\xE1s toda la jugada."
+  - key: FE_INST_018
+    translation: "Machacar es como Mantener, pero en vez de mantener pulsado el bot\xF3n,
+      tienes que pulsarlo lo m\xE1s r\xE1pido que puedas."
+  - key: FE_INST_019
+    translation: "Cuando aparezca un icono conectando dos botones, estar\xE1s ante
+      un ataque especial."
+  - key: FE_INST_021
+    translation: "Copia el movimiento y despu\xE9s pulsa r\xE1pidamente el \xFAltimo
+      bot\xF3n, como en Mantener."
+  - key: FE_INST_022
+    translation: "Cuando aparezca un icono conectando dos botones, estar\xE1s ante
+      un ataque especial."
+  - key: FE_INST_024
+    translation: "Copia el movimiento y despu\xE9s pulsa r\xE1pidamente el \xFAltimo
+      bot\xF3n, como en Mantener."
+  - key: FE_INST_025
+    translation: Puedes usar ambas cosas para duplicar temporalmente tu multiplicador.
+  - key: FE_INST_026
+    translation: Para usar tu furia, pulsa los dos botones superiores frontales al
+      mismo tiempo.
+  - key: FE_INST_027
+    translation: "Tienes 3 furias al comienzo de cada nivel. Sigue una estrategia
+      y elige el mejor momento para usarlas para conseguir la mejor puntuaci\xF3n."
+  - key: FE_INST_028
+    translation: Volver
+  - key: FE_INST_029
+    translation: Omitir
+  - key: FE_MENU_001
+    translation: Aceptar
+  - key: FE_MENU_002
+    translation: Cancelar
+  - key: FE_MENU_003
+    translation: Desplazarte
+  - key: FE_MENU_004
+    translation: (Jugador 2) Unirse
+  - key: FE_MENU_006
+    translation: Un jugador
+  - key: FE_MENU_007
+    translation: Multijugador
+  - key: FE_MENU_008
+    translation: "Desaf\xEDos"
+  - key: FE_MENU_010
+    translation: Marcadores
+  - key: FE_MENU_011
+    translation: Extras
+  - key: FE_MENU_012
+    translation: Ayuda y opciones
+  - key: FE_MENU_013
+    translation: Descarga de contenido
+  - key: FE_MENU_014
+    translation: Desbloquear juego completo
+  - key: FE_MENU_015
+    translation: Salir del juego
+  - key: FE_MENU_016
+    translation: Nueva historia
+  - key: FE_MENU_017
+    translation: Batalla individual
+  - key: FE_MENU_018
+    translation: Unirte a partida
+  - key: FE_MENU_019
+    translation: "R\xE9cord personal"
+  - key: FE_MENU_020
+    translation: 'Puntos:'
+  - key: FE_MENU_021
+    translation: "Bonificaci\xF3n golpe %"
+  - key: FE_MENU_022
+    translation: "Bonificaci\xF3n Perfecto"
+  - key: FE_MENU_023
+    translation: Rango
+  - key: FE_MENU_024
+    translation: "Elegir cap\xEDtulo"
+  - key: FE_MENU_025
+    translation: Elegir dificultad
+  - key: FE_MENU_026
+    translation: Empezar partida
+  - key: FE_MENU_027
+    translation: "F\xE1cil"
+  - key: FE_MENU_028
+    translation: Media
+  - key: FE_MENU_029
+    translation: "Dif\xEDcil"
+  - key: FE_MENU_030
+    translation: Rango
+  - key: FE_MENU_032
+    translation: Dificultad
+  - key: FE_MENU_033
+    translation: Puntos
+  - key: FE_MENU_034
+    translation: Amigos
+  - key: FE_MENU_035
+    translation: "Global: r\xE9cord"
+  - key: FE_MENU_036
+    translation: "Global: t\xFA"
+  - key: FE_MENU_037
+    translation: "P\xE1gina {0}/{1}"
+  - key: FE_MENU_038
+    translation: sin usar
+  - key: FE_MENU_039
+    translation: Continuar
+  - key: FE_MENU_040
+    translation: Desbloquear juego completo
+  - key: FE_MENU_041
+    translation: Calibrar
+  - key: FE_MENU_042
+    translation: "Volumen m\xFAsica"
+  - key: FE_MENU_043
+    translation: Volumen efectos
+  - key: FE_MENU_044
+    translation: Volver a predeterminados
+  - key: FE_MENU_045
+    translation: Guardar ajustes
+  - key: FE_MENU_046
+    translation: Repetir cap.
+  - key: FE_MENU_047
+    translation: "Volver al men\xFA principal"
+  - key: FE_MENU_048
+    translation: Guardar y salir
+  - key: FE_MENU_049
+    translation: Resultados
+  - key: FE_MENU_050
+    translation: 'Escenario: {0}'
+  - key: FE_MENU_051
+    translation: "Canci\xF3n: {0}"
+  - key: FE_MENU_052
+    translation: Bloqueado
+  - key: FE_MENU_053
+    translation: "Bonificaci\xF3n nivel:"
+  - key: FE_MENU_054
+    translation: "Bonificaci\xF3n salud:"
+  - key: FE_MENU_055
+    translation: "Bonificaci\xF3n K.O.:"
+  - key: FE_MENU_056
+    translation: 'Total:'
+  - key: FE_MENU_057
+    translation: Ganador
+  - key: FE_MENU_058
+    translation: Marcador de amigos
+  - key: FE_MENU_059
+    translation: Ranking
+  - key: FE_MENU_060
+    translation: El ring
+  - key: FE_MENU_061
+    translation: El templo
+  - key: FE_MENU_062
+    translation: El coliseo
+  - key: FE_MENU_063
+    translation: Muelle 420
+  - key: FE_MENU_064
+    translation: Benjamins
+  - key: FE_MENU_065
+    translation: "El \xE1tico"
+  - key: FE_MENU_066
+    translation: El helipuerto
+  - key: FE_MENU_067
+    translation: "Mando inal\xE1mbrico"
+  - key: FE_MENU_068
+    translation: Nivel {0}
+  - key: FE_MENU_069
+    translation: "Cr\xE9ditos"
+  - key: FE_MENU_070
+    translation: Tutorial
+  - key: FE_MENU_071
+    translation: "R\xE9cord:"
+  - key: FE_MENU_072
+    translation: 'Mejor nivel:'
+  - key: FE_MENU_073
+    translation: Partidas
+  - key: FE_MENU_074
+    translation: "Estad\xEDsticas partida"
+  - key: FE_MENU_075
+    translation: Victorias
+  - key: FE_MENU_076
+    translation: Derrotas
+  - key: FE_MENU_077
+    translation: Empate
+  - key: FE_MENU_078
+    translation: Abandonos
+  - key: FE_MENU_079
+    translation: '{0} golpes'
+  - key: FE_MENU_080
+    translation: 'Objetivo:'
+  - key: FE_MENU_081
+    translation: 'Dificultad: {0}'
+  - key: FE_MENU_082
+    translation: "Elegir desaf\xEDo"
+  - key: FE_MENU_083
+    translation: "Bonificaci\xF3n golpe %:"
+  - key: FE_MENU_084
+    translation: "Bonificaci\xF3n Perfecto:"
+  - key: FE_MENU_085
+    translation: "Nuevo r\xE9cord"
+  - key: FE_MENU_086
+    translation: Jugador 1
+  - key: FE_MENU_087
+    translation: Jugador 2
+  - key: FE_MENU_088
+    translation: Ganador
+  - key: FE_MENU_089
+    translation: S
+  - key: FE_MENU_090
+    translation: A
+  - key: FE_MENU_091
+    translation: B
+  - key: FE_MENU_092
+    translation: C
+  - key: FE_MENU_093
+    translation: Reanudar juego
+  - key: FE_MENU_094
+    translation: "Reiniciar cap\xEDtulo"
+  - key: FE_MENU_095
+    translation: Fallo
+  - key: FE_MENU_096
+    translation: Pausa
+  - key: FE_MENU_097
+    translation: "Salir del cap\xEDtulo"
+  - key: FE_MENU_098
+    translation: 'RESULTADOS:'
+  - key: FE_MENU_099
+    translation: "R\xC9CORD:"
+  - key: FE_MENU_100
+    translation: Combo de {0} golpes
+  - key: FE_MENU_101
+    translation: '{0} golpes perfectos'
+  - key: FE_MENU_102
+    translation: Combo de {0} golpes perfectos
+  - key: FE_MENU_103
+    translation: "\xCDndice de golpes del {0}"
+  - key: FE_MENU_104
+    translation: N/D
+  - key: FE_MENU_105
+    translation: Controles
+  - key: FE_MENU_107
+    translation: Experto
+  - key: FE_MENU_108
+    translation: Hardcore
+  - key: FE_MENU_109
+    translation: Dogg
+  - key: FE_MENU_NOSAVE_01
+    translation: Confirmar y salir
+  - key: FE_MENU_NOSAVE_02
+    translation: Rechazar y salir
+  - key: FE_MENU_NOSAVE_03
+    translation: Aplicar ajustes
+  - key: FE_MENU_NOSAVE_04
+    translation: Aplicar cambios a ajustes de sonido
+  - key: FE_MENU_NOSAVE_05
+    translation: Aceptar
+  - key: FE_MENU_NOSAVE_06
+    translation: Listo
+  - key: FE_MENU_NOSAVE_07
+    translation: "Error al iniciar sesi\xF3n con este perfil. \xBFContinuar?"
+  - key: FE_MENU_NOSAVE_08
+    translation: "El dispositivo de almacenamiento seleccionado se ha extra\xEDdo.
+      La funci\xF3n de autoguardado est\xE1 deshabilitada. Continuar sin guardar."
+  - key: FE_MENU_SKIPTUT_01
+    translation: "\xBFQuieres omitir el tutorial?"
+  - key: FE_MENU_SKIPTUT_02
+    translation: "Puedes ver el tutorial en el men\xFA de ayuda y opciones en cualquier
+      momento."
+  - key: FE_MENU_SKIPTUT_03
+    translation: "\xBFQuieres omitir el tutorial e ir directamente al juego?"
+  - key: FE_MENU_SKIPTUT_04
+    translation: "\xBFOmitir y tutorial?"
+  - key: FE_NOTIFY_1
+    translation: Cargando
+  - key: FE_NOTIFY_10
+    translation: Bloqueado
+  - key: FE_NOTIFY_11
+    translation: "Cap\xEDtulo de historia: {0}"
+  - key: FE_NOTIFY_12
+    translation: 'Extras: {0}'
+  - key: FE_NOTIFY_13
+    translation: "Nuevos desaf\xEDos"
+  - key: FE_NOTIFY_14
+    translation: "Dise\xF1os"
+  - key: FE_NOTIFY_15
+    translation: "Biograf\xEDas personajes"
+  - key: FE_NOTIFY_16
+    translation: Final del juego
+  - key: FE_NOTIFY_17
+    translation: Aviso
+  - key: FE_NOTIFY_18
+    translation: Desbloquear juego completo
+  - key: FE_NOTIFY_19
+    translation: Desbloquear juego completo
+  - key: FE_NOTIFY_2
+    translation: Cargando datos guardados
+  - key: FE_NOTIFY_20
+    translation: Continuar
+  - key: FE_NOTIFY_25
+    translation: "No hay espacio suficiente para guardar. Los avances no se guardar\xE1n"
+  - key: FE_NOTIFY_26
+    translation: "Los datos guardados est\xE1n da\xF1ados. Los avances se perder\xE1n."
+  - key: FE_NOTIFY_29
+    translation: "El servicio online est\xE1 deshabilitado en tu cuenta PlayStation\xAENetwork
+      debido a restricciones de control paterno."
+  - key: FE_NOTIFY_5
+    translation: "Compra el juego para acceder a esta funci\xF3n"
+  - key: FE_NOTIFY_6
+    translation: Comprobando marcadores
+  - key: FE_NOTIFY_7
+    translation: Espera
+  - key: FE_NOTIFY_8
+    translation: Confirmar
+  - key: FE_NOTIFY_9
+    translation: "\xA1Nuevos objetos desbloqueados!"
+  - key: FE_OSD_SCORESHOUT_01
+    translation: "\xA1Bravo!"
+  - key: FE_OSD_SCORESHOUT_02
+    translation: "\xA1Bien!"
+  - key: FE_OSD_SCORESHOUT_03
+    translation: "\xA1Genial!"
+  - key: FE_OSD_SCORESHOUT_04
+    translation: "\xA1Tremendo!"
+  - key: FE_OSD_SCORESHOUT_05
+    translation: "\xA1Impresionante!"
+  - key: FE_OSD_SCORESHOUT_06
+    translation: "\xA1Incre\xEDble!"
+  - key: FE_OSD_SCORESHOUT_07
+    translation: "\xA1Espectacular!"
+  - key: FE_OSD_SCORESHOUT_08
+    translation: "\xA1S\xFAper!"
+  - key: FE_OSD_SCORESHOUT_09
+    translation: "\xA1Vale!"
+  - key: FE_OVERLAY_001
+    translation: "Si empiezas una nueva partida, sobrescribir\xE1s la partida guardada.
+      \xBFSeguro que quieres continuar? "
+  - key: FE_OVERLAY_003
+    translation: "Error al iniciar sesi\xF3n. Tus avances no se guardar\xE1n."
+  - key: FE_OVERLAY_005
+    translation: "Se ha producido un error. Los avances no guardados se perder\xE1n."
+  - key: FE_OVERLAY_006
+    translation: "Si sales de esta p\xE1gina, perder\xE1s todos los cambios no guardados."
+  - key: FE_OVERLAY_007
+    translation: "\xBFEst\xE1s seguro? Perder\xE1s todos los avances en este cap\xEDtulo."
+  - key: FE_OVERLAY_008
+    translation: "El estado de inicio de sesi\xF3n ha cambiado. Se perder\xE1n los
+      avances."
+  - key: FE_PAGE_001
+    translation: "MEN\xDA PRINCIPAL"
+  - key: FE_PAGE_002
+    translation: MODO HISTORIA
+  - key: FE_PAGE_003
+    translation: MULTIJUGADOR
+  - key: FE_SONG_001
+    translation: Murder Was The Case
+  - key: FE_SONG_002
+    translation: 14 Lil Crips
+  - key: FE_SONG_003
+    translation: Gz & Hustlas
+  - key: FE_SONG_004
+    translation: Who Am I? (What's My Name?)
+  - key: FE_SONG_005
+    translation: From Tha Chuuuch To Da Palace
+  - key: FE_SONG_006
+    translation: Pump Pump
+  - key: FE_SONG_007
+    translation: Raised In Da Hood
+  - key: FE_SONG_008
+    translation: Murder Was The Case
+  - key: FE_SONG_009
+    translation: Pump Pump
+  - key: FE_SONG_010
+    translation: Gz & Hustlas
+  - key: FE_SONG_011
+    translation: Who Am I? (What's My Name?)
+  - key: FE_SONG_012
+    translation: From Tha Chuuuch To Da Palace
+  - key: FE_SONG_013
+    translation: Raised In Da Hood
+  - key: FE_SONG_014
+    translation: The Bidness
+  - key: FE_SONG_016
+    translation: Gz & Hustlas (Instrumental)
+  - key: FE_SONG_017
+    translation: Who Am I? (what's My Name?) (Instrumental)
+  - key: FE_SONG_018
+    translation: From Tha Chuuuch To Da Palace (Instrumental)
+  - key: FE_SONG_019
+    translation: Pump Pump (Instrumental)
+  - key: FE_SONG_020
+    translation: Raised In Da Hood (Instrumental)
+  - key: FE_TEMPLE_01
+    translation: 3. Templo 01
+  - key: FE_TEMPLE_02
+    translation: 5. Templo 02
+  - key: FE_TEMPLE_03
+    translation: 7. Templo 03
+  - key: FE_TEMPLE_04
+    translation: 10. Templo 04
+  - key: FE_TEMPLE_05
+    translation: 12. Templo 05
+  - key: FE_TIP_001
+    translation: Comienza una partida de un jugador
+  - key: FE_TIP_002
+    translation: Comienza una partida multijugador
+  - key: FE_TIP_003
+    translation: "Juega desaf\xEDos de puntuaci\xF3n individuales"
+  - key: FE_TIP_004
+    translation: Consulta tus logros en el juego
+  - key: FE_TIP_005
+    translation: Clasificaciones mundiales del juego
+  - key: FE_TIP_006
+    translation: "Consulta tu colecci\xF3n de premios"
+  - key: FE_TIP_007
+    translation: "Ajustes de sonido y calibraci\xF3n"
+  - key: FE_TIP_008
+    translation: Visita la tienda del juego para desbloquear contenidos nuevos
+  - key: FE_TIP_009
+    translation: Desbloquear juego completo en al Tienda Xbox Games.
+  - key: FE_TIP_011
+    translation: "Contin\xFAa una partida guardada del modo Historia"
+  - key: FE_TIP_012
+    translation: Comienza una nueva partida del modo Historia
+  - key: FE_TIP_013
+    translation: Para jugadores inexpertos
+  - key: FE_TIP_014
+    translation: Para jugadores con experiencia
+  - key: FE_TIP_015
+    translation: Para jugadores expertos
+  - key: FE_TIP_016
+    translation: "Si empiezas una nueva partida, sobrescribir\xE1s la partida anterior.
+      \xBFSeguro que quieres continuar?"
+  - key: FE_TIP_017
+    translation: Unirse jugador 2
+  - key: FE_TIP_019
+    translation: Elige un nivel de la lista
+  - key: FE_TIP_020
+    translation: "No disponible. Desbloqu\xE9alo en Historia."
+  - key: FE_TIP_021
+    translation: Elige un nivel de dificultad de la lista
+  - key: FE_TIP_022
+    translation: "Confirma tu selecci\xF3n y empieza a luchar"
+  - key: FE_TIP_023
+    translation: "Global: r\xE9cord"
+  - key: FE_TIP_024
+    translation: "Global: t\xFA"
+  - key: FE_TIP_025
+    translation: Amigos
+  - key: FE_TIP_026
+    translation: Fin del juego 1
+  - key: FE_TIP_027
+    translation: Fin del juego 2
+  - key: FE_TIP_028
+    translation: Fin del juego 3
+  - key: FE_TIP_029
+    translation: Fin del juego 4
+  - key: FE_TIP_030
+    translation: Fin del juego 5
+  - key: FE_TIP_031
+    translation: "Consigue el nivel D en todos los desaf\xEDos de templo para desbloquear"
+  - key: FE_TIP_032
+    translation: "Consigue el nivel C en todos los desaf\xEDos de templo para desbloquear"
+  - key: FE_TIP_033
+    translation: "Consigue el nivel B en todos los desaf\xEDos de templo para desbloquear"
+  - key: FE_TIP_034
+    translation: "Consigue el nivel A en todos los desaf\xEDos de templo para desbloquear"
+  - key: FE_TIP_035
+    translation: "Consigue el nivel S en todos los desaf\xEDos de templo para desbloquear"
+  - key: FE_TIP_036
+    translation: Fondo de personaje 1
+  - key: FE_TIP_037
+    translation: Fondo de personaje 2
+  - key: FE_TIP_038
+    translation: Fondo de personaje 3
+  - key: FE_TIP_039
+    translation: Fondo de personaje 4
+  - key: FE_TIP_040
+    translation: Fondo de personaje 5
+  - key: FE_TIP_041
+    translation: Fondo de escenario 1
+  - key: FE_TIP_042
+    translation: Fondo de escenario 2
+  - key: FE_TIP_043
+    translation: Fondo de escenario 3
+  - key: FE_TIP_044
+    translation: Fondo de escenario 4
+  - key: FE_TIP_045
+    translation: Fondo de escenario 5
+  - key: FE_TIP_046
+    translation: Desbloquear en modo Historia
+  - key: FE_TIP_047
+    translation: Cambia el volumen de los efectos de sonido
+  - key: FE_TIP_048
+    translation: "Cambia el volumen de la m\xFAsica"
+  - key: FE_TIP_049
+    translation: "Calibra los ajustes de sonido y v\xEDdeo de tu televisor para mejorar
+      el ritmo del juego."
+  - key: FE_TIP_050
+    translation: Devuelve todos los ajustes de sonido a sus valores iniciales
+  - key: FE_TIP_051
+    translation: Guarda los cambios en los ajustes de sonido
+  - key: FE_TIP_052
+    translation: "Pasa al siguiente cap\xEDtulo"
+  - key: FE_TIP_053
+    translation: Vuelve a jugar el nivel
+  - key: FE_TIP_054
+    translation: "Vuelve al men\xFA principal"
+  - key: FE_TIP_056
+    translation: Batalla individual
+  - key: FE_TIP_057
+    translation: "Ver los cr\xE9ditos"
+  - key: FE_TIP_058
+    translation: Aprende a jugar con el tutorial interactivo.
+  - key: FE_TIP_059
+    translation: Ver los controles del juego
+  - key: FE_TUT_001
+    translation: Volver
+  - key: FE_TUT_002
+    translation: Pulsa START
+  - key: FE_TUT_003
+    translation: Tutorial
+  - key: FE_TUT_004
+    translation: "Int\xE9ntalo ahora"
+  - key: FE_TUT_005
+    translation: "Int\xE9ntalo de nuevo"
+  - key: FE_TUT_006
+    translation: Conseguido
+  - key: FE_TUT_007
+    translation: 'Objetivo: 3 impactos'
+  - key: FE_TUT_008
+    translation: 'Objetivo: 1 par'
+  - key: FE_TUT_009
+    translation: 'Objetivo: 2 impactos'
+  - key: FE_TUT_010
+    translation: 'Objetivo: 4 impactos'
+  - key: FE_TUT_011
+    translation: "Objetivo: ganar para provocar da\xF1o"
+  - key: FE_TUT_012
+    translation: 'Objetivo: 2 pares'
+  - key: FE_TUT_013
+    translation: 'Objetivo: 2 botones con furia activada.'
+  - key: FE_TUT_014
+    translation: "Cuando el c\xEDrculo que se reduce llegue al borde del bot\xF3n,
+      pulsa el bot\xF3n."
+  - key: FE_TUT_015
+    translation: "Los c\xEDrculos solo aparecen en el primer bot\xF3n, despu\xE9s
+      el marcador pasar\xE1 al siguiente. Cuando el marcador llegue al centro de un
+      bot\xF3n, pulsa ese bot\xF3n para conseguir puntos."
+  - key: FE_TUT_017
+    translation: "Cuando dos botones aparezcan unidos, eso es un Mantener. Mant\xE9n
+      el bot\xF3n pulsado hasta que el marcador llegue hasta el final."
+  - key: FE_TUT_020
+    translation: "Machacar es como Mantener, pero en vez de mantener pulsado el bot\xF3n,
+      tienes que pulsarlo varias veces lo m\xE1s r\xE1pido que puedas."
+  - key: FE_TUT_022
+    translation: "Si consigues ataques especiales, podr\xE1s usar el poder que hayas
+      acumulado jugando y da\xF1ando a tus enemigos. Si no activas el ataque especial,
+      recibir\xE1s da\xF1os."
+  - key: FE_TUT_023
+    translation: "Omitir esta secci\xF3n"
+  - key: FE_TUT_024
+    translation: 'Puntos:'
+  - key: FE_TUT_025
+    translation: 'Objetivo: 2 ataques especiales'
+  - key: FE_UPSELL_TEXT_01
+    translation: "19 cap\xEDtulos de salvajes combates al ritmo de la m\xFAsica"
+  - key: FE_UPSELL_TEXT_02
+    translation: "Exclusivas batallas de acci\xF3n ambientadas al ritmo de temas cl\xE1sicos
+      de Snoop"
+  - key: FE_UPSELL_TEXT_03
+    translation: "Din\xE1micas batallas de ritmo multijugador"
+  - key: FE_UPSELL_TEXT_04
+    translation: "10 desaf\xEDos centrados en habilidades"
+  - key: FE_UPSELL_TEXT_05
+    translation: "Entrenamiento intenso a cargo de Snoop, el mentor m\xEDstico"
+  - key: FE_UPSELL_TEXT_06
+    translation: "Una historia de conspiraci\xF3n y traiciones, inspirada en las pel\xEDculas
+      de blaxploitation"
+  - key: GAME_SHOUT_NEG_01
+    translation: "\xA1ALUCINANTE!"
+  - key: GAME_SHOUT_NEG_02
+    translation: "\xA1AAGH!"
+  - key: GAME_SHOUT_NEG_03
+    translation: "\xA1FLOJO!"
+  - key: GAME_SHOUT_NEG_04
+    translation: "\xA1TORPE!"
+  - key: GAME_SHOUT_NEG_05
+    translation: "AH\xCD VA..."
+  - key: GAME_SHOUT_NEG_06
+    translation: "\xA1TOMA!"
+  - key: GAME_SHOUT_NEG_07
+    translation: ESTO TE VA A DOLER...
+  - key: GAME_SHOUT_NEG_08
+    translation: "\xA1PREP\xC1RATE!"
+  - key: GAME_SHOUT_NEG_09
+    translation: "\xA1SUERTE LA PR\xD3XIMA VEZ!"
+  - key: GAME_SHOUT_NEG_10
+    translation: "\xA1CASI PERO NO!"
+  - key: GAME_SHOUT_NEG_11
+    translation: "\xA1MIEEERDA!"
+  - key: GAME_SHOUT_NEG_12
+    translation: HAS FALLADO...
+  - key: GAME_SHOUT_NEG_13
+    translation: "\xA1NO TE CONCENTRAS!"
+  - key: GAME_SHOUT_NEG_14
+    translation: "\xA1MAL!"
+  - key: GAME_SHOUT_NEG_15
+    translation: "\xA1MALDITA SEA!"
+  - key: GAME_SHOUT_NEG_16
+    translation: "\xA1CABR\xD3N!"
+  - key: GAME_SHOUT_NEG_17
+    translation: "\xA1MIERDA!"
+  - key: GAME_SHOUT_NEG_18
+    translation: "\xA1MUY MAL!"
+  - key: GAME_SHOUT_NEG_19
+    translation: "\xA1NO MOLA!"
+  - key: GAME_SHOUT_NEG_20
+    translation: "\xA1TOMA!"
+  - key: GAME_SHOUT_NEG_21
+    translation: "\xA1BAH, T\xCDOOO!"
+  - key: GAME_SHOUT_NEG_22
+    translation: "\xBFYA EST\xC1?"
+  - key: GAME_SHOUT_NEG_23
+    translation: "\xBFESO ES TODO?"
+  - key: GAME_SHOUT_NEG_24
+    translation: "\xA1ESFU\xC9RZATE M\xC1S!"
+  - key: GAME_SHOUT_NEG_25
+    translation: "\xA1VENGA, HOMBRE!"
+  - key: GAME_SHOUT_NEG_26
+    translation: "\xA1C\xC9NTRATE, T\xCDO!"
+  - key: GAME_SHOUT_NEG_27
+    translation: "\xA1ATENCI\xD3N!"
+  - key: GAME_SHOUT_NEG_28
+    translation: "\xA1ESPABILA!"
+  - key: GAME_SHOUT_NEG_29
+    translation: "\xA1QU\xC9 PENA!"
+  - key: GAME_SHOUT_NEG_30
+    translation: "\xA1MALA SUERTE!"
+  - key: GAME_SHOUT_POS_01
+    translation: "\xA1GENIAL!"
+  - key: GAME_SHOUT_POS_02
+    translation: "\xA1FLIPANTE!"
+  - key: GAME_SHOUT_POS_03
+    translation: "\xA1INCRE\xCDBLE!"
+  - key: GAME_SHOUT_POS_04
+    translation: "\xA1GUAY!"
+  - key: GAME_SHOUT_POS_05
+    translation: "\xA1S\xDAPER!"
+  - key: GAME_SHOUT_POS_06
+    translation: "\xA1BIEN!"
+  - key: GAME_SHOUT_POS_07
+    translation: "\xA1BRUTAL!"
+  - key: GAME_SHOUT_POS_08
+    translation: "\xA1TREMENDO!"
+  - key: GAME_SHOUT_POS_09
+    translation: "\xA1MUY BUENO!"
+  - key: GAME_SHOUT_POS_10
+    translation: "\xA1BESTIAL!"
+  - key: GAME_SHOUT_POS_11
+    translation: "\xA1GRANDE!"
+  - key: GAME_SHOUT_POS_12
+    translation: "\xA1AAAY!"
+  - key: GAME_SHOUT_POS_13
+    translation: "\xA1ESTILO DOGG!"
+  - key: GAME_SHOUT_POS_14
+    translation: "\xA1COJONUDO!"
+  - key: GAME_SHOUT_POS_15
+    translation: "\xA1QU\xC9 CLASE!"
+  - key: GAME_SHOUT_POS_16
+    translation: "\xA1QU\xC9 FLIPE!"
+  - key: GAME_SHOUT_POS_17
+    translation: "\xA1GRANDE!"
+  - key: GAME_SHOUT_POS_18
+    translation: "\xA1SALVAJE!"
+  - key: GAME_SHOUT_POS_19
+    translation: "\xA1A TOPE!"
+  - key: GAME_SHOUT_POS_20
+    translation: "\xA1TOMA!"
+  - key: GAME_SHOUT_POS_21
+    translation: "\xA1ZAS!"
+  - key: GAME_SHOUT_POS_22
+    translation: "\xA1ERES LO M\xC1S!"
+  - key: GAME_SHOUT_POS_23
+    translation: "\xA1ERES EL JEFE!"
+  - key: GAME_SHOUT_POS_24
+    translation: "\xA1SUPERIOR!"
+  - key: GAME_SHOUT_POS_25
+    translation: "\xA1VIVA!"
+  - key: GAME_SHOUT_POS_26
+    translation: GENIAL
+  - key: GAME_SHOUT_POS_27
+    translation: "\xA1PERFECTO!"
+  - key: GAME_SHOUT_SCORE_01
+    translation: "\xA1RACHA DE {0}!"
+  - key: GAME_SHOUT_SCORE_02
+    translation: "\xA1COMBO DE {0}!"
+  - key: GAME_SHOUT_SCORE_03
+    translation: "\xA1MULTIPLICADOR DE {0}!"
+  - key: GAME_SHOUT_SCORE_04
+    translation: "\xA1MULTIPLICADOR M\xC1XIMO!"
+  - key: GAME_SHOUT_SCORE_05
+    translation: "\xA1SUBE EL MULTIPLICADOR!"
+  - key: GAME_SHOUT_SCORE_06
+    translation: "\xA1X{0}!"
+  - key: GAME_SHOUT_SCORE_07
+    translation: "\xA1FURIA!"
+  - key: GAME_SHOUT_SCORE_08
+    translation: "\xA1FURIOSO!"
+  - key: GAME_SHOUT_SCORE_09
+    translation: BIEN
+  - key: GAME_SHOUT_SCORE_10
+    translation: IMPACTO
+  - key: GAME_SHOUT_SCORE_11
+    translation: PERFECTO
+  - key: GAME_SHOUT_SCORE_12
+    translation: IMPACTO PERFECTO
+  - key: GAME_SHOUT_SCORE_13
+    translation: FALLO
+  - key: INGAME_OSD_001
+    translation: MOVIMIENTO
+  - key: INGAME_OSD_002
+    translation: contra
+  - key: INGAME_STRIKES_001
+    translation: "\xA1AJ ATACA!"
+  - key: INGAME_STRIKES_002
+    translation: "\xA1NERO ATACA!"
+  - key: INGAME_STRIKES_003
+    translation: "\xA1CARA DE \xC1NGEL ATACA!"
+  - key: INGAME_STRIKES_004
+    translation: "\xA1EL SEGUIDOR ATACA!"
+  - key: INGAME_STRIKES_005
+    translation: "\xA1SOLOMON ATACA!"
+  - key: INGAME_STRIKES_006
+    translation: "\xA1SNOOP ATACA!"
+  - key: INGAME_STRIKES_007
+    translation: "\xA1HOLLISTER ATACA!"
+  - key: INGAME_STRIKES_008
+    translation: "\xA1VIDA ATACA!"
+  - key: INGAME_STRIKES_009
+    translation: "\xA1LOCA ATACA!"
+  - key: INGAME_STRIKES_010
+    translation: "\xA1THE MYSTIC ATACA!"
+  - key: INGAME_STRIKES_011
+    translation: "\xA1DON BLANK ATACA!"
+  - key: LEVEL_NAME_000
+    translation: Marcador principal
+  - key: LEVEL_NAME_001
+    translation: 1. Too late for prayin'
+  - key: LEVEL_NAME_002
+    translation: 2. Stay focused, young homie
+  - key: LEVEL_NAME_003
+    translation: 4. If you want some, get some
+  - key: LEVEL_NAME_004
+    translation: 6. Hands in the air
+  - key: LEVEL_NAME_005
+    translation: 8. Time to drop it
+  - key: LEVEL_NAME_006
+    translation: "9. If it ain't one thing\u2026"
+  - key: LEVEL_NAME_007
+    translation: 11. Hella far from broke
+  - key: LEVEL_NAME_008
+    translation: 13. Let me take control
+  - key: LEVEL_NAME_009
+    translation: 14. This deadly game
+  - key: LEVEL_NAME_010
+    translation: 15. For the Gz
+  - key: LEVEL_NAME_011
+    translation: 16. 187
+  - key: LEVEL_NAME_012
+    translation: 17. Can't hear the party
+  - key: LEVEL_NAME_013
+    translation: 18. Going to the top
+  - key: LEVEL_NAME_014
+    translation: 19. Gon' be some trouble
+  - key: LEVEL_NAME_015
+    translation: 3. Templo 1
+  - key: LEVEL_NAME_016
+    translation: 5. Templo 2
+  - key: LEVEL_NAME_017
+    translation: 7. Templo 3
+  - key: LEVEL_NAME_018
+    translation: 10. Templo 4
+  - key: LEVEL_NAME_019
+    translation: 12. Templo 5
+  - key: LEVEL_NAME_020
+    translation: Es muy tarde para rezar
+  - key: LEVEL_NAME_021
+    translation: "Conc\xE9ntrate, amigo"
+  - key: LEVEL_NAME_022
+    translation: "Si lo quieres, aqu\xED lo tienes"
+  - key: LEVEL_NAME_023
+    translation: Las manos arriba
+  - key: LEVEL_NAME_024
+    translation: Es hora de pelear
+  - key: LEVEL_NAME_025
+    translation: Si no es una cosa...
+  - key: LEVEL_NAME_026
+    translation: De arruinado nada
+  - key: LEVEL_NAME_027
+    translation: "D\xE9jame el control"
+  - key: LEVEL_NAME_028
+    translation: Un juego mortal
+  - key: LEVEL_NAME_029
+    translation: Por el dinero
+  - key: LEVEL_NAME_030
+    translation: 187
+  - key: LEVEL_NAME_031
+    translation: No se escucha la fiesta
+  - key: LEVEL_NAME_032
+    translation: "Llegando a lo m\xE1s alto"
+  - key: LEVEL_NAME_033
+    translation: Vamos a tener problemas
+  - key: OSD_CHALLENGE_001
+    translation: "Consigue un combo de {0} golpes o m\xE1s"
+  - key: OSD_CHALLENGE_002
+    translation: "Consigue un combo de {0} golpes o m\xE1s"
+  - key: OSD_CHALLENGE_003
+    translation: "Consigue un combo de {0} golpes o m\xE1s"
+  - key: OSD_CHALLENGE_004
+    translation: "Consigue {0} golpes perfectos o m\xE1s en este cap\xEDtulo"
+  - key: OSD_CHALLENGE_005
+    translation: "Consigue {0} golpes perfectos o m\xE1s en este cap\xEDtulo"
+  - key: OSD_CHALLENGE_006
+    translation: "Consigue {0} golpes perfectos o m\xE1s en este cap\xEDtulo"
+  - key: OSD_CHALLENGE_007
+    translation: "Consigue un combo de {0} golpes perfectos o m\xE1s"
+  - key: OSD_CHALLENGE_008
+    translation: "Consigue un combo de {0} golpes perfectos o m\xE1s"
+  - key: OSD_CHALLENGE_009
+    translation: "Consigue un \xEDndice de golpes del {0}% en este cap\xEDtulo"
+  - key: OSD_CHALLENGE_010
+    translation: "Consigue un \xEDndice de golpes del {0}% en este cap\xEDtulo"
+  - key: OSD_CHALLENGE_011
+    translation: Consigue un combo de 100 golpes perfectos
+  - key: OSD_CHALLENGE_012
+    translation: Gana todos los combates
+  - key: OSD_CHALLENGE_013
+    translation: "Consigue un \xEDndice de golpes del 75% o m\xE1s"
+  - key: OSD_CHALLENGE_014
+    translation: "Consigue un \xEDndice de golpes del 85% o m\xE1s"
+  - key: OSD_CHALLENGE_015
+    translation: "Consigue un \xEDndice de golpes del 95% o m\xE1s"
+  - key: OSD_TEXT_001
+    translation: SUBIDA DE NIVEL
+  - key: OSD_TEXT_002
+    translation: BAJADA DE NIVEL
+  - key: OSD_TEXT_003
+    translation: COMBATES
+  - key: OSD_TEXT_004
+    translation: EMPATE
+  - key: OSD_TEXT_005
+    translation: PELEA
+  - key: OSD_TEXT_006
+    translation: GANA
+  - key: OSD_TEXT_007
+    translation: Combo
+  - key: OSD_TEXT_008
+    translation: Tiempo restante
+  - key: OSD_TEXT_009
+    translation: "\xA1TRUCOS DE ANGELFACE!"
+  - key: OSD_TEXT_010
+    translation: "\xA1AJ ATACA!"
+  - key: OSD_TEXT_011
+    translation: "\xA1NERO ATACA!"
+  - key: OSD_TEXT_012
+    translation: "\xA1SNOOP ATACA!"
+  - key: OSD_TEXT_013
+    translation: "\xA1SOLOMON ATACA!"
+  - key: OSD_TEXT_014
+    translation: "\xA1HOLLISTER ATACA!"
+  - key: OSD_TEXT_015
+    translation: "\xA1THE MYSTIC ATACA!"
+  - key: OSD_TEXT_016
+    translation: "\xA1VIDA ATACA!"
+  - key: OSD_TEXT_017
+    translation: "\xA1LOCA ATACA!"
+  - key: OSD_TEXT_018
+    translation: "\xA1EL SEGUIDOR ATACA!"
+  - key: OSD_TEXT_019
+    translation: "\xA1DON BLANK ATACA!"
+  - key: OSD_TEXT_020
+    translation: "\xA1ANGELFACE ATACA!"
+  - key: OSD_TEXT_021
+    translation: Tiempo
+  - key: OSD_TEXT_022
+    translation: Tiempo restante
+  - key: OSD_TEXT_023
+    translation: Siguiente
+  - key: OSD_TEXT_024
+    translation: Rango
+  - key: OSD_TEXT_025
+    translation: Perfecto
+  - key: OSD_TEXT_026
+    translation: Objetivo
+  - key: OSD_TEXT_027
+    translation: "\xCDndice de golpes"
+  - key: OSD_TEXT_028
+    translation: Combo de golpes
+  - key: OSD_TEXT_029
+    translation: Combo perfecto
+  - key: OSD_TEXT_030
+    translation: MIN. NIVEL
+  - key: OSD_TEXT_031
+    translation: MAX. NIVEL
+  - key: TEST_001
+    translation: "\xA9\u20AC\u2122\xC1\xC9\xCD\xD3\xDA\xE1\xE9\xED\xF3\xFA\xD1\xF1\xA1!\xBF?\xAB\xBB\u201C\u201D\u2018\u2019"
+  - key: VO_ENDING_01_AJ_001
+    translation: "\xBFEst\xE1s bien?"
+  - key: VO_ENDING_01_AJ_002
+    translation: "Me has salvado una vez m\xE1s."
+  - key: VO_ENDING_01_AJ_003
+    translation: "Te quiero, cari\xF1o."
+  - key: VO_ENDING_01_AJ_004
+    translation: "S\xED, creo que s\xED. Nos vamos a casa."
+  - key: VO_ENDING_01_SIERRA_001
+    translation: "S\xED, estoy bien."
+  - key: VO_ENDING_01_SIERRA_002
+    translation: "Nos hemos salvado el uno al otro. As\xED hacemos las cosas."
+  - key: VO_ENDING_01_SIERRA_003
+    translation: "\xBFNos vamos a casa?"
+  - key: VO_ENDING_01_SNOOP_001
+    translation: "Desde aqu\xED hay una buena vista. Muy bonita."
+  - key: VO_ENDING_02A_AJ_001
+    translation: "Cari\xF1o..."
+  - key: VO_ENDING_02A_AJ_002
+    translation: Se ha terminado. De verdad, te lo prometo.
+  - key: VO_ENDING_02A_SIERRA_001
+    translation: "Te juro que te matar\xE9, Am\xE9rica Jones, si vuelves a..."
+  - key: VO_ENDING_02A_SNOOP_001
+    translation: "Quiz\xE1s, t\xEDo. Puede que s\xED."
+  - key: VO_ENDING_02B_SNOOP_001
+    translation: "\xA1Sube, t\xEDo!"
+  - key: VO_FIGHT_01_AJ_001
+    translation: "\xBFQu\xE9? Eso no..."
+  - key: VO_FIGHT_01_AJ_002
+    translation: "\xBFQu\xE9 demonios est\xE1 pasando...?"
+  - key: VO_FIGHT_01_ANNOUNCER_001
+    translation: "\xA1Vaya, eso tiene que doler!"
+  - key: VO_FIGHT_01_ANNOUNCER_002
+    translation: "\xA1Le est\xE1 dando una buena!"
+  - key: VO_FIGHT_01_ANNOUNCER_003
+    translation: "\xA1Incre\xEDble que a\xFAn siga en pie!"
+  - key: VO_FIGHT_01_ANNOUNCER_004
+    translation: "\xA1Asombroso!"
+  - key: VO_FIGHT_01_ANNOUNCER_005
+    translation: "\xA1Menudo golpe!"
+  - key: VO_FIGHT_02_LT_001
+    translation: "Ens\xE9\xF1ame de qu\xE9 est\xE1s hecho."
+  - key: VO_FIGHT_02_SNOOP_001
+    translation: Vale, gente. Vamos a conocer a nuestro nuevo amigo.
+  - key: VO_FIGHT_02_SNOOP_002
+    translation: Siguiente...
+  - key: VO_FIGHT_02_SNOOP_003
+    translation: Mmm.
+  - key: VO_FIGHT_02_SNOOP_004
+    translation: "Vale, t\xEDo, a ver..."
+  - key: VO_FIGHT_02_SNOOP_005
+    translation: "Tengo un poco de energ\xEDa."
+  - key: VO_FIGHT_02_SNOOP_006
+    translation: "Uno m\xE1s."
+  - key: VO_FIGHT_02_SNOOP_007
+    translation: "Est\xE1s listo, Sol..."
+  - key: VO_FIGHT_03_AJ_001
+    translation: "Cu\xE1nto tiempo."
+  - key: VO_FIGHT_03_AJ_002
+    translation: Claro.
+  - key: VO_FIGHT_03_AJ_003
+    translation: Encantado.
+  - key: VO_FIGHT_03_AJ_004
+    translation: "\xBFQu\xE9 demonios...?"
+  - key: VO_FIGHT_03_AJ_005
+    translation: "\xBFQu\xE9 pas\xF3 aquella noche?"
+  - key: VO_FIGHT_03_NERO_001
+    translation: Je. Vaya, vaya, vaya. El Camino. Parece que por fin has escogido
+      un bando.
+  - key: VO_FIGHT_03_NERO_002
+    translation: "Sab\xEDa que saldr\xEDas corriendo despu\xE9s de que mi amigo te
+      machacase en el ring."
+  - key: VO_FIGHT_03_NERO_003
+    translation: "\xBFQuieres intentarlo otra vez?"
+  - key: VO_FIGHT_03_NERO_004
+    translation: Mmm. Parece que alguien se ha estado entrenando.
+  - key: VO_FIGHT_03_NERO_005
+    translation: "No s\xE9. Puede que si te hubieses esforzado un poco m\xE1s, ella
+      seguir\xEDa con vida..."
+  - key: VO_FIGHT_03_SNOOP_01
+    translation: "No puedes cambiar el pasado. Pero el futuro es TODO tuyo, t\xEDo."
+  - key: VO_FIGHT_04_AJ_001
+    translation: "\xBFLa mataste t\xFA?"
+  - key: VO_FIGHT_04_AJ_002
+    translation: Hijo de perra.
+  - key: VO_FIGHT_04_AJ_003
+    translation: "\xA1Me pill\xF3 por sorpresa!"
+  - key: VO_FIGHT_04_HOLLISTER_001
+    translation: "\xA1Largo de aqu\xED!"
+  - key: VO_FIGHT_04_HOLLISTER_002
+    translation: Jones. Mis condolencias.
+  - key: VO_FIGHT_04_HOLLISTER_003
+    translation: Vaya, parece que has encontrado un hobby...
+  - key: VO_FIGHT_04_HOLLISTER_004
+    translation: "\xBFY qu\xE9 si lo hice? Una rata callejera menos. Je, je... Con
+      perd\xF3n."
+  - key: VO_FIGHT_04_SNOOP_001
+    translation: Vamos a hablar de las decisiones. A veces no eliges un bando, y eso
+      es tan malo como elegir el bando MALO.
+  - key: VO_FIGHT_05_LOCA_001
+    translation: "\xA1Vida! \xA1Ay\xFAdame!"
+  - key: VO_FIGHT_05_LOCA_002
+    translation: "\xA1Vida! \xA1Tus discos!"
+  - key: VO_FIGHT_05_SNOOP_001
+    translation: Lo que une a las familias no es la sangre, sino los corazones. Sus
+      ritmos pueden ser buenos, o malos...
+  - key: VO_FIGHT_05_VIDA_001
+    translation: "\xA1Cogedlo!"
+  - key: VO_FIGHT_05_VIDA_002
+    translation: "\xA1Cuidado!"
+  - key: VO_FIGHT_06_SNOOP_001
+    translation: "La ira es un sentimiento muy fuerte. Contr\xF3lala o te controlar\xE1
+      ella a ti. \xDAsala como arma."
+  - key: VO_FIGHT_07_BLANK_001
+    translation: Bienvenido. Gracias por unirte a nosotros. Espero que hayas tenido
+      un buen viaje.
+  - key: VO_FIGHT_07_BLANK_002
+    translation: "Te ofrecer\xEDa una copa, pero no s\xE9 si vas a tener tiempo de
+      termin\xE1rtela. Quiero que conozcas a alguien."
+  - key: VO_FIGHT_07_BLANK_003
+    translation: "Os dejar\xE9 solos para que os conozc\xE1is. Hay muchos lugares
+      a los que ir, gente a la que conocer. El tiempo... El tiempo es oro."
+  - key: VO_FIGHT_07_SNOOP_001
+    translation: "A veces, una segunda oportunidad es lo m\xE1s valioso que puede
+      conseguir un hombre. La vida no es un videojuego."
+  - key: VO_FIGHT_08_AJ_001
+    translation: "\xA1T\xFA!"
+  - key: VO_FIGHT_08_SNOOP_001
+    translation: "Cuando pierdes algo, te das cuenta de su valor. Y de lo mucho que
+      est\xE1s dispuesto a luchar por recuperarlo."
+  - key: VO_FIGHT_09_LT_001
+    translation: Vamos a hacerlo.
+  - key: VO_FIGHT_09_SNOOP_001
+    translation: Las acciones tienen consecuencias. Algunas cosas no se pueden arreglar.
+  - key: VO_FIGHT_10_AJ_001
+    translation: Vaya, lo siento.
+  - key: VO_FIGHT_10_AJ_002
+    translation: "Culpa m\xEDa."
+  - key: VO_FIGHT_10_NERO_001
+    translation: "\xBFQu\xE9...?"
+  - key: VO_FIGHT_10_SNOOP_001
+    translation: Pues entonces ya sabes lo que tienes que hacer, fiera. Es hora de
+      que Roma arda.
+  - key: VO_FIGHT_10_SNOOP_002
+    translation: "El que a hierro mata, a hierro muere. La venganza lleva su tiempo.
+      Pero cuanto m\xE1s tarda, m\xE1s dulce sabe..."
+  - key: VO_FIGHT_11_AJ_001
+    translation: Te quiero mucho.
+  - key: VO_FIGHT_11_SIERRA_001
+    translation: "Te dije que no te metieses en l\xEDos."
+  - key: VO_FIGHT_11_SIERRA_002
+    translation: Deja eso para luego. Ahora tenemos problemas.
+  - key: VO_FIGHT_11_SNOOP_001
+    translation: "La corrupci\xF3n es un c\xE1ncer. No puedes salvar la ciudad si
+      no acabas primero con la enfermedad."
+  - key: VO_FIGHT_12_SNOOP_001
+    translation: "\xBFPor qu\xE9 est\xE1s luchando? \xBFPor tu ciudad o por tu chica?
+      \xBFY si no puedes salvar a ambas?"
+  - key: VO_FIGHT_12_VIDA_001
+    translation: "\xA1No hagas da\xF1o a mi hermana!"
+  - key: VO_FIGHT_13_BLANK_001
+    translation: "Mira, un amigo me dijo que la vanidad es la gran enemiga de El Camino,
+      bueno, en realidad lo escribi\xF3, no es muy hablador."
+  - key: VO_FIGHT_13_BLANK_002
+    translation: "Si te quedas en la superficie, no podr\xE1s sentir lo que hay debajo,
+      sentir el ritmo. El Camino necesita el ritmo. T\xFA necesitas el ritmo. \xBFNo
+      es cierto, Jones?"
+  - key: VO_FIGHT_13_BLANK_003
+    translation: "\xBFTienes miedo, AJ? \xBFMiedo a perderla? Vas a pasar por tantos
+      problemas que puede que ella no merezca la pena..."
+  - key: VO_FIGHT_13_SNOOP_001
+    translation: Tus ojos pueden mentir, pero tu instinto no. Escucha. Siente el ritmo
+      fluir.
+  - key: VO_FIGHT_14_SNOOP_001
+    translation: "\xA1Jones, ag\xE1chate!"
+  - key: VO_FIGHT_14_SNOOP_002
+    translation: Como en los viejos tiempos.
+  - key: VO_FIGHT_14_SNOOP_003
+    translation: "No importa cu\xE1nto dinero tengas, solo tienes un intento, solo
+      tienes una vida. Aprov\xE9chala bien."
+  - key: VO_INTRO_01_AJ_001
+    translation: Siempre lo hago bien.
+  - key: VO_INTRO_01_AJ_002
+    translation: Mejor que bien...
+  - key: VO_INTRO_01_ANNOUNCER_001
+    translation: Damas y caballeros. Empieza el combate de hoy...
+  - key: VO_INTRO_01_ANNOUNCER_002
+    translation: "En la esquina azul, luchando con los colores de la Legi\xF3n de
+      Nero: Taylor Cara de \xC1ngel..."
+  - key: VO_INTRO_01_ANNOUNCER_003
+    translation: "Y en la esquina roja, a\xFAn no derrotado en el ring: Am\xE9rica
+      Jones..."
+  - key: VO_INTRO_01_ANNOUNCER_004
+    translation: "Bueno, \xBFempezamos? Empezamos."
+  - key: VO_INTRO_01_SIERRA_001
+    translation: Lucha con cuidado, chico. Hazlo bien.
+  - key: VO_INTRO_01_SNOOP_001
+    translation: 'A ver, escucha: todos seguimos un ritmo.'
+  - key: VO_INTRO_01_SNOOP_002
+    translation: El de algunos es conseguir dinero.
+  - key: VO_INTRO_01_SNOOP_003
+    translation: Otros se mueven por el poder.
+  - key: VO_INTRO_01_SNOOP_004
+    translation: Y luego hay otros ritmos no tan... marcados.
+  - key: VO_INTRO_01_SNOOP_005
+    translation: "Todos esos ritmos se solapan, se mueven, bailan. Y t\xFA, colega,
+      no puedes encontrar un patr\xF3n, un ritmo."
+  - key: VO_INTRO_01_SNOOP_006
+    translation: "Para ti es solo ruido, \xBFno? El ruido de la ciudad, la guerra
+      entre barrios no te importa."
+  - key: VO_INTRO_01_SNOOP_007
+    translation: Solo te importan dos cosas. Tu chica y pelear. Tienes que encontrar
+      tu camino entre ambas cosas.
+  - key: VO_INTRO_01_SNOOP_008
+    translation: "Eras el mejor luchador de la ciudad, Jones. Todos lo sab\xEDan.
+      Por eso participaste en aquel torneo, por eso dejaste que El Hombre te filmase
+      aquella noche."
+  - key: VO_INTRO_01_SNOOP_009
+    translation: "Y por eso est\xE1s aqu\xED."
+  - key: VO_INTRO_02_AJ_001
+    translation: La gente habla mucho.
+  - key: VO_INTRO_02_AJ_002
+    translation: Quiero encontrar El Camino.
+  - key: VO_INTRO_02_AJ_003
+    translation: Mi chica. Ha muerto.
+  - key: VO_INTRO_02_AJ_004
+    translation: "No. Creo que me pod\xE9is hacer m\xE1s fuerte."
+  - key: VO_INTRO_02_AJ_005
+    translation: "No lo suficiente. Perd\xED un combate y quiero saber por qu\xE9."
+  - key: VO_INTRO_02_AJ_006
+    translation: Quiero justicia.
+  - key: VO_INTRO_02_AJ_007
+    translation: "S\xED."
+  - key: VO_INTRO_02_LT_001
+    translation: Pensaba que no nos necesitabas. Que te gustaba luchar solo.
+  - key: VO_INTRO_02_SNOOP_001
+    translation: "He o\xEDdo hablar mucho de ti, chaval."
+  - key: VO_INTRO_02_SNOOP_002
+    translation: "Y hablar es gratis. La calle est\xE1 llena de charlatanes. \xBFQu\xE9
+      haces en mi templo?"
+  - key: VO_INTRO_02_SNOOP_003
+    translation: Ya veo. Has cambiado de idea.
+  - key: VO_INTRO_02_SNOOP_004
+    translation: "\xBFQu\xE9 ha pasado?"
+  - key: VO_INTRO_02_SNOOP_005
+    translation: "\xBFCrees que podemos arreglar eso?"
+  - key: VO_INTRO_02_SNOOP_006
+    translation: Ya me pareces bastante fuerte, amigo.
+  - key: VO_INTRO_02_SNOOP_007
+    translation: "Quieres descubrir qui\xE9n la mat\xF3."
+  - key: VO_INTRO_02_SNOOP_008
+    translation: Quieres vengarte.
+  - key: VO_INTRO_02_SNOOP_009
+    translation: "Entonces demu\xE9strame que te lo mereces."
+  - key: VO_INTRO_03_AJ_001
+    translation: "No, alguien me la jug\xF3."
+  - key: VO_INTRO_03_AJ_002
+    translation: "\xBFY ahora qu\xE9?"
+  - key: VO_INTRO_03_AJ_003
+    translation: Nero...
+  - key: VO_INTRO_03_AJ_004
+    translation: Hemos vivido algunas cosas.
+  - key: VO_INTRO_03_SNOOP_001
+    translation: "Est\xE1s muy verde, pero tienes estilo. \xBFCrees que Cara de \xC1ngel
+      te gan\xF3 de verdad?"
+  - key: VO_INTRO_03_SNOOP_002
+    translation: "Hab\xEDa mucho dinero en ese combate. Muchas razones para hacer
+      lo que hicieron."
+  - key: VO_INTRO_03_SNOOP_003
+    translation: "Sigue el rastro del dinero. Cara de \xC1ngel trabaja para Nero."
+  - key: VO_INTRO_03_SNOOP_004
+    translation: "\xBFConoces a Nero?"
+  - key: VO_INTRO_03_SNOOP_005
+    translation: "Es hora de organizar una reuni\xF3n."
+  - key: VO_INTRO_03_YOUNGAJ_001
+    translation: "Y me har\xE9 m\xE1s fuerte."
+  - key: VO_INTRO_03_YOUNGAJ_002
+    translation: Antes prefiero morirme.
+  - key: VO_INTRO_03_YOUNGNERO_001
+    translation: "Je. Eres bastante fuerte, t\xEDo."
+  - key: VO_INTRO_03_YOUNGNERO_002
+    translation: "\xBFQuieres trabajar?"
+  - key: VO_INTRO_03_YOUNGNERO_003
+    translation: "Siempre es una opci\xF3n."
+  - key: VO_INTRO_04_SNOOP_001
+    translation: "Hollister. Un poli. Corrupto hasta la m\xE9dula. Se lleva un 10%
+      de todos los negocios turbios de la ciudad. Un 50 si no llegas a un acuerdo
+      con \xE9l primero. La gente lista de La Legi\xF3n lo hace todo a trav\xE9s de
+      \xE9l."
+  - key: VO_INTRO_04_SNOOP_002
+    translation: "Es un excampe\xF3n de lucha libre. Ha engordado un poco, pero sigue
+      siendo bueno. No puedes dejar que se te acerque mucho."
+  - key: VO_INTRO_04_SNOOP_003
+    translation: "Pero cuidado, ir\xE1 armado."
+  - key: VO_INTRO_05_AJ_001
+    translation: "H\xE1blame de Don Blank."
+  - key: VO_INTRO_05_AJ_002
+    translation: "\xBFC\xF3mo llego hasta \xE9l?"
+  - key: VO_INTRO_05_AJ_003
+    translation: Y que lo digas.
+  - key: VO_INTRO_05_AJ_004
+    translation: "D\xEDgale a Blank que he venido a hablar con \xE9l. Soy Am\xE9rica
+      Jones. \xC9l sabe qui\xE9n soy."
+  - key: VO_INTRO_05_AJ_005
+    translation: "\xBFD\xF3nde est\xE1s, Blank? \xA1Ven aqu\xED!"
+  - key: VO_INTRO_05_BLANK_001
+    translation: Ah, Sr. Jones. Bienvenido a Benjamins.
+  - key: VO_INTRO_05_BLANK_002
+    translation: "Soy un hombre muy ocupado, AJ. Tengo algo que seguro que te interesa.
+      Pero primero quiero ver cu\xE1nto inter\xE9s tienes."
+  - key: VO_INTRO_05_BOUNCER_001
+    translation: "Venga por aqu\xED, se\xF1or."
+  - key: VO_INTRO_05_RECEPTIONIST_001
+    translation: "Empresas Blank, \xBFpuedo ayudarle?"
+  - key: VO_INTRO_05_RECEPTIONIST_002
+    translation: "Eh... Lo siento, el se\xF1or Blank no est\xE1 disponible..."
+  - key: VO_INTRO_05_SNOOP_001
+    translation: "Es un billonario. Es intocable. Controla esta ciudad como El Hombre
+      ha hecho siempre. \xBFQu\xE9 m\xE1s puedo decir?"
+  - key: VO_INTRO_05_SNOOP_002
+    translation: "Eres ambicioso, t\xEDo."
+  - key: VO_INTRO_05_SNOOP_003
+    translation: La torre Blank es una fortaleza. Empieza por abajo y vete subiendo.
+  - key: VO_INTRO_06_AJ_001
+    translation: Voy a matarte, hijo de perra.
+  - key: VO_INTRO_06_AJ_002
+    translation: "\xC9l asesin\xF3 a Sierra. Dijiste que quer\xEDa vengarme. Creo
+      que es el momento."
+  - key: VO_INTRO_06_AJ_003
+    translation: HE DICHO QUE ES EL MOMENTO.
+  - key: VO_INTRO_06_LT_001
+    translation: Bueno. Ya sabes.
+  - key: VO_INTRO_06_LT_002
+    translation: "\xBFCrees que todo esto es por tu chica y t\xFA? No tienes ni idea."
+  - key: VO_INTRO_06_LT_003
+    translation: "Lo necesitamos para conseguir el reloj. Era la \xFAnica forma. No
+      era nada personal."
+  - key: VO_INTRO_06_LT_004
+    translation: Como quieras, chaval.
+  - key: VO_INTRO_06_SNOOP_001
+    translation: Espera...
+  - key: VO_INTRO_06_SNOOP_002
+    translation: "A m\xED me parece que es por la chica."
+  - key: VO_INTRO_06_SNOOP_003
+    translation: Hola.
+  - key: VO_INTRO_07_AJ_001
+    translation: El reloj.
+  - key: VO_INTRO_07_AJ_002
+    translation: "\xBFQui\xE9n tiene el reloj ahora? \xBFNero?"
+  - key: VO_INTRO_07_AJ_003
+    translation: Y quieres que te lo consiga.
+  - key: VO_INTRO_07_AJ_004
+    translation: "Porque si tuviese el reloj, podr\xEDa salvar a Sierra..."
+  - key: VO_INTRO_07_AJ_005
+    translation: Pero es posible.
+  - key: VO_INTRO_07_AJ_006
+    translation: Vale.
+  - key: VO_INTRO_07_BOUNCER_001
+    translation: "Se\xF1or..."
+  - key: VO_INTRO_07_SNOOP_001
+    translation: "Eras el mejor luchador de la ciudad, Jones. Todos lo sab\xEDan.
+      Por eso participaste en aquel torneo, por eso dejaste que El Hombre te filmase
+      aquella noche."
+  - key: VO_INTRO_07_SNOOP_002
+    translation: "Y por eso est\xE1s aqu\xED."
+  - key: VO_INTRO_07_SNOOP_003
+    translation: "Todos tenemos un ritmo interno. Y ese ritmo est\xE1 conectado a
+      la forma en que avanza el tiempo."
+  - key: VO_INTRO_07_SNOOP_003B
+    translation: "Si consigues sincronizar todos los ritmos, el tuyo, el de tu rival,
+      la forma en que se mueven, se solapan, se transforman... Entonces tambi\xE9n
+      podr\xE1s cambiar el tiempo."
+  - key: VO_INTRO_07_SNOOP_004
+    translation: "Pero solo si conoces El Camino. Y solo en peque\xF1as cantidades,
+      a no ser que tengas el reloj."
+  - key: VO_INTRO_07_SNOOP_005
+    translation: "Es un amplificador conectado a los corazones de todos. De todos.
+      Si lo llevas, podr\xE1s controlar el tiempo por completo. Pero primero tienes
+      que conocer bien El Camino."
+  - key: VO_INTRO_07_SNOOP_006
+    translation: "Qu\xE9 va. Para un macarra como \xE9l, es solo bisuter\xEDa. No,
+      lo tiene Blank. Blank conoce el valor de ese tipo de control. No puede usar
+      el reloj, pero tiene a alguien que lo hace por \xE9l. Un viejo... amigo."
+  - key: VO_INTRO_07_SNOOP_007
+    translation: Ese era el plan de Sol.
+  - key: VO_INTRO_07_SNOOP_008
+    translation: Retroceder tanto requiere habilidad y sensatez.
+  - key: VO_INTRO_07_SNOOP_009
+    translation: "Quiz\xE1s."
+  - key: VO_INTRO_08_AJ_001
+    translation: Vale, probemos esto.
+  - key: VO_INTRO_08_AJ_002
+    translation: "Entonces todo depender\xE1 de m\xED."
+  - key: VO_INTRO_08_AJ_003
+    translation: "Ellos s\xED lo conocer\xE1n."
+  - key: VO_INTRO_08_AJ_004
+    translation: Vaya... Esto... Esto va mal, Sierra...
+  - key: VO_INTRO_08_AJ_005
+    translation: "Cari\xF1o, esc\xFAchame. Mira all\xED. Hay un tipo detr\xE1s de
+      la columna. F\xEDjate bien en \xE9l. No apartes la vista de \xE9l."
+  - key: VO_INTRO_08_AJ_006
+    translation: "No, prom\xE9temelo."
+  - key: VO_INTRO_08_SIERRA_001
+    translation: "\xBFQu\xE9...?"
+  - key: VO_INTRO_08_SIERRA_002
+    translation: Te lo prometo...
+  - key: VO_INTRO_08_SNOOP_001
+    translation: "Primero, encuentra los latidos del coraz\xF3n de Sierra. Despu\xE9s
+      busca un lugar en el que puedas cambiar la historia. Y entonces..."
+  - key: VO_INTRO_08_SNOOP_002
+    translation: "Eso es. Lo mejor es que obtendr\xE1s un poder que nadie conocer\xE1."
+  - key: VO_INTRO_08_SNOOP_003
+    translation: Je. Ya veremos. Buena suerte, amigo.
+  - key: VO_INTRO_09_AJ_001
+    translation: "Te quiero, cari\xF1o."
+  - key: VO_INTRO_09_AJ_002
+    translation: "Es complicado, pero todo va a salir bien. Vete a casa, ponte a salvo.
+      Volver\xE9."
+  - key: VO_INTRO_09_AJ_003
+    translation: He hecho unas promesas. Tengo que cumplirlas.
+  - key: VO_INTRO_09_SIERRA_001
+    translation: "Yo tambi\xE9n te quiero. Pero, \xBFqu\xE9 pasa? "
+  - key: VO_INTRO_09_SIERRA_002
+    translation: "\xA1T\xFA no te vas a ninguna parte!"
+  - key: VO_INTRO_09_SIERRA_003
+    translation: "\xA1AJ...!"
+  - key: VO_INTRO_09_SIERRA_004
+    translation: "\xBFY adem\xE1s, qui\xE9n te ha dado ese reloj?"
+  - key: VO_INTRO_10_AJ_001
+    translation: Parece que tienes un puesto libre.
+  - key: VO_INTRO_10_AJ_002
+    translation: "Porque todo me lo ense\xF1aste t\xFA."
+  - key: VO_INTRO_10_AJ_003
+    translation: Y porque esto es tuyo.
+  - key: VO_INTRO_10_AJ_004
+    translation: Mal. Pero voy a arreglarlo.
+  - key: VO_INTRO_10_AJ_005
+    translation: Ya tengo uno. Matar a todos los que han arruinado mi vida y mi ciudad.
+      Matar a Don Blank.
+  - key: VO_INTRO_10_AJ_006
+    translation: Gracias, maestro.
+  - key: VO_INTRO_10_AJ_007
+    translation: Tenemos un pasado. Y algo de futuro.
+  - key: VO_INTRO_10_SNOOP_001
+    translation: "\xBFPero qu\xE9...? Jones..."
+  - key: VO_INTRO_10_SNOOP_002
+    translation: "Chicas, dejad en paz a este t\xEDo, \xBFvale?"
+  - key: VO_INTRO_10_SNOOP_003
+    translation: "Brutal. Eres muy fuerte, hijo. Pero, \xBFpor qu\xE9 iba a confiar
+      en ti?"
+  - key: VO_INTRO_10_SNOOP_004
+    translation: Mmm.
+  - key: VO_INTRO_10_SNOOP_005
+    translation: "Muy bien. Bienvenido a bordo, teniente. \xBFC\xF3mo se presenta
+      el futuro?"
+  - key: VO_INTRO_10_SNOOP_006
+    translation: Si quieres salvar el mundo, vas a necesitar un plan.
+  - key: VO_INTRO_10_SNOOP_007
+    translation: "Te he ense\xF1ado muy bien..."
+  - key: VO_INTRO_10_SNOOP_008
+    translation: "Pero tienes que empezar desde abajo. Para llegar a Blank, primero
+      tienes que acabar con todos los que trabajan para \xE9l. Empieza desde abajo.
+      Comienza por La Legi\xF3n. \xBFConoces a Nero? "
+  - key: VO_INTRO_11_AJ_001
+    translation: "Cari\xF1o."
+  - key: VO_INTRO_11_AJ_002
+    translation: "S\xED. Solo quer\xEDa saber que est\xE1s bien."
+  - key: VO_INTRO_11_AJ_003
+    translation: "Nada, cari\xF1o. Me voy al 420. Tengo que encargarme de un asunto."
+  - key: VO_INTRO_11_AJ_004
+    translation: "T\xFA qu\xE9date aqu\xED. Prom\xE9teme que no correr\xE1s riesgos.
+      Ya te explicar\xE9..."
+  - key: VO_INTRO_11_AJ_005
+    translation: "Ahora est\xE1 un poco ocupado."
+  - key: VO_INTRO_11_AJ_006
+    translation: Hollister.
+  - key: VO_INTRO_11_AJ_007
+    translation: "Y t\xFA eres el poli que acaba de cobrar su \xFAltima paga."
+  - key: VO_INTRO_11_HENCHMAN_001
+    translation: Je, je...
+  - key: VO_INTRO_11_HOLLISTER_001
+    translation: Un placer hacer negocios contigo. Dale recuerdos a Nero.
+  - key: VO_INTRO_11_HOLLISTER_002
+    translation: "\xBFQui\xE9n anda ah\xED?"
+  - key: VO_INTRO_11_HOLLISTER_003
+    translation: Ah, ya. Eres aquel macarra de las peleas callejeras.
+  - key: VO_INTRO_11_HOLLISTER_004
+    translation: "Je. Has escogido un mal d\xEDa para hacerte el h\xE9roe, hijo."
+  - key: VO_INTRO_11_HOLLISTER_005
+    translation: "Pon las manos donde pueda verlas, campe\xF3n."
+  - key: VO_INTRO_11_HOLLISTER_006
+    translation: Y ahora date la vuelta, poco a poco...
+  - key: VO_INTRO_11_SIERRA_001
+    translation: "AJ, \xBFest\xE1s bien?"
+  - key: VO_INTRO_11_SIERRA_002
+    translation: "\xBFPor qu\xE9 iba a estar mal? En serio, AJ. \xBFQu\xE9 diablos
+      est\xE1 pasando?"
+  - key: VO_INTRO_11_SIERRA_003
+    translation: "\xBFQu\xE9 asunto? \xBFEn qu\xE9 est\xE1s metido? \xBFTiene que
+      ver con la droga? M\xE1s te vale que no sea un asunto de droga. \xBFQu\xE9 pasa?"
+  - key: VO_INTRO_11_SIERRA_004
+    translation: 'Maldita sea, AJ... '
+  - key: VO_INTRO_11_SNOOP_001
+    translation: "Hollister no es el \xFAnico poli corrupto de la ciudad. Pero es
+      el que El Hombre usa para hacerlo todo legal, \xBFentiendes? Estar\xE1 en el
+      muelle, como siempre..."
+  - key: VO_INTRO_12_AJ_001
+    translation: "Ya queda poco. Casi hemos terminado, cari\xF1o."
+  - key: VO_INTRO_12_AJ_002
+    translation: Tengo que ir a ver a Blank.
+  - key: VO_INTRO_12_AJ_003
+    translation: Tengo que ir solo.
+  - key: VO_INTRO_12_AJ_004
+    translation: 'Ya te lo he dicho, es... complicado. '
+  - key: VO_INTRO_12_AJ_005
+    translation: "\xBFQu\xE9?"
+  - key: VO_INTRO_12_AJ_006
+    translation: Ah, es el momento.
+  - key: VO_INTRO_12_AJ_007
+    translation: Sr. Blank.
+  - key: VO_INTRO_12_AJ_008
+    translation: Papi se ha ido, chicas.
+  - key: VO_INTRO_12_BLANK_001
+    translation: "Est\xE1is muy guapas, chicas. Siempre hac\xE9is que me sienta bien. "
+  - key: VO_INTRO_12_BLANK_002
+    translation: "No estoy seguro, chicas. Algo est\xE1 pasando. Creo que alguien
+      intenta quitarnos nuestros juguetes."
+  - key: VO_INTRO_12_BLANK_003
+    translation: "Shh, shh. Lo s\xE9, guapas. Estad listas para cuando llegue el momento,
+      con eso bastar\xE1. "
+  - key: VO_INTRO_12_BLANK_004
+    translation: "Si no te importa, ven por aqu\xED, cari\xF1o."
+  - key: VO_INTRO_12_LOCA_001
+    translation: "\xBFQu\xE9 pasa, papi? Pareces triste."
+  - key: VO_INTRO_12_LOCA_002
+    translation: "\xA1No!"
+  - key: VO_INTRO_12_LOCA_003
+    translation: "\xBFQu\xE9 podemos hacer?"
+  - key: VO_INTRO_12_LOCA_004
+    translation: "\xBFEs \xE9l?"
+  - key: VO_INTRO_12_LOCA_005
+    translation: "\xBFPapi?"
+  - key: VO_INTRO_12_LOCA_006
+    translation: "\xA1Te vas a enterar, imb\xE9cil!"
+  - key: VO_INTRO_12_SIERRA_001
+    translation: "No, T\xDA Y YO hemos terminado como no eches el freno y me digas
+      ahora mismo qu\xE9 est\xE1 pasando."
+  - key: VO_INTRO_12_SIERRA_002
+    translation: "T\xFA no vas a ninguna parte sin m\xED."
+  - key: VO_INTRO_12_SIERRA_003
+    translation: "\xBFPor qu\xE9 Blank? \xBFQu\xE9 es lo que ha hecho, AJ? \xBFY qu\xE9
+      tiene que ver con NOSOTROS? "
+  - key: VO_INTRO_12_SIERRA_004
+    translation: 'Entonces... Entonces... Bah, a la mierda, AJ. '
+  - key: VO_INTRO_12_SIERRA_005
+    translation: "Estamos en esto juntos. Siempre lo hemos estado. As\xED que venga,
+      vamos. "
+  - key: VO_INTRO_12_SIERRA_006
+    translation: "Creo que necesit\xE1is un referente paterno mejor."
+  - key: VO_INTRO_12_SIERRA_007
+    translation: "\xA1AJ!"
+  - key: VO_INTRO_12_SNOOP_001
+    translation: "Blank... Ya sabes que controla la ciudad. Y a estas alturas ya habr\xE1s
+      descubierto c\xF3mo. Si puedes controlar el tiempo, tendr\xE1s todo lo que quieras.
+      Las acciones subir\xE1n o bajar\xE1n, pero t\xFA siempre ir\xE1s un paso por
+      delante. "
+  - key: VO_INTRO_12_SNOOP_001B
+    translation: "Sabr\xE1s c\xF3mo se repartir\xE1n las cartas, cu\xE1ndo apostar
+      por el rojo y cu\xE1ndo por el negro. Y sabr\xE1s por qu\xE9 bando apostar en
+      una pelea, aunque los pron\xF3sticos dicten lo contrario..."
+  - key: VO_INTRO_12_SNOOP_002
+    translation: "Pero el d\xEDa en que pierdas ese control, te quedar\xE1s sin tu
+      \xFAnica fuente de ingresos. Y a partir de ese momento, es solo cuesti\xF3n
+      de tiempo... "
+  - key: VO_INTRO_12_VIDA_001
+    translation: Gracias, papi.
+  - key: VO_INTRO_12_VIDA_002
+    translation: "\xA1Muy triste!"
+  - key: VO_INTRO_12_VIDA_003
+    translation: "\xBFQu\xE9?"
+  - key: VO_INTRO_12_VIDA_004
+    translation: "\xBFPor qu\xE9 iban a hacer eso?"
+  - key: VO_INTRO_12_VIDA_005
+    translation: "\xA1Haremos lo que sea!"
+  - key: VO_INTRO_12_VIDA_006
+    translation: "Papi. \xBFQui\xE9n es este?"
+  - key: VO_INTRO_12_VIDA_007
+    translation: "\xBFY qui\xE9n es... ella?"
+  - key: VO_INTRO_13_AJ_001
+    translation: "\xA1Blank!"
+  - key: VO_INTRO_13_AJ_002
+    translation: "Tranquila, cari\xF1o. Ya voy."
+  - key: VO_INTRO_13_AJ_003
+    translation: "S\xED, hijo de perra, seguro."
+  - key: VO_INTRO_13_AJ_004
+    translation: Lo dudo.
+  - key: VO_INTRO_13_AJ_005
+    translation: Soy un buen tipo.
+  - key: VO_INTRO_13_AJ_006
+    translation: "Y t\xFA sigues escondi\xE9ndote."
+  - key: VO_INTRO_13_AJ_007
+    translation: Es muy tarde para hacer tratos.
+  - key: VO_INTRO_13_BLANK_001
+    translation: "[DISTANTE] \xBFSeguro que eso es buena idea, AJ?"
+  - key: VO_INTRO_13_BLANK_002
+    translation: "Date prisa. La polic\xEDa llegar\xE1 en cualquier momento..."
+  - key: VO_INTRO_13_BLANK_003
+    translation: "\xBFQu\xE9 es eso? \xBFTe crees que solo ten\xEDa a Hollister? Ya
+      hab\xEDa terminado con \xE9l, de todas formas. Me hiciste un favor."
+  - key: VO_INTRO_13_BLANK_004
+    translation: "Eres escoria, basura de la calle, un ladr\xF3n."
+  - key: VO_INTRO_13_BLANK_005
+    translation: "Venga, venga. Devu\xE9lveme lo m\xEDo y puede que yo te devuelva
+      lo tuyo."
+  - key: VO_INTRO_13_BLANK_006
+    translation: "Seguro que te est\xE1s preguntando por qu\xE9 hay tantos espejos
+      aqu\xED. \xBFNo, AJ?"
+  - key: VO_INTRO_13_BLANK_007
+    translation: Por vanidad. Por la vanidad absurda de un empresario excepcional.
+  - key: VO_INTRO_13_BLANK_008
+    translation: Y... por otras razones.
+  - key: VO_INTRO_13_SIERRA_001
+    translation: "\xA1AJ!"
+  - key: VO_INTRO_14_AJ_001
+    translation: No lo tengo.
+  - key: VO_INTRO_14_AJ_002
+    translation: "Te matar\xE9, te matar\xE9 y te volver\xE9 a matar. Y nunca dejar\xE9
+      de matarte, nunca."
+  - key: VO_INTRO_14_AJ_003
+    translation: Marica.
+  - key: VO_INTRO_14_AJ_004
+    translation: "Vosotros, los chupasangres, sois todos iguales. Os cre\xE9is ganadores,
+      pero no jug\xE1is limpio. Apost\xE1is fuerte en una pelea, y os asegur\xE1is
+      de que yo no pueda ganarla."
+  - key: VO_INTRO_14_BLANK_001
+    translation: "Bueno. \xBFY ahora qu\xE9?"
+  - key: VO_INTRO_14_BLANK_002
+    translation: Shh...
+  - key: VO_INTRO_14_BLANK_003
+    translation: Bueno, no nos apresuremos. Dame el reloj.
+  - key: VO_INTRO_14_BLANK_004
+    translation: "Entonces no tenemos nada m\xE1s que hablar."
+  - key: VO_INTRO_14_BLANK_005
+    translation: "Por esa actitud de mat\xF3n te valora tanto Snoop, \xBFverdad? Atadlo,
+      vendadle los ojos. Vamos a ver si conseguimos llegar a un acuerdo."
+  - key: VO_INTRO_14_BLANK_006
+    translation: "Ve y dile al piloto que arranque el helic\xF3ptero. No deber\xEDamos
+      hacer esperar al Le\xF3n."
+  - key: VO_INTRO_14_BLANK_007
+    translation: "Todo este rollo macabeo sobre corazones que bailan, sobre ritmo
+      y ruido... Mira, yo tambi\xE9n puedo escuchar los latidos de la ciudad. Alto
+      y claro. \xBFSabes a qu\xE9 suenan?"
+  - key: VO_INTRO_14_BLANK_008
+    translation: A dinero.
+  - key: VO_INTRO_14_BLANK_009
+    translation: Un marica rico, gracias.
+  - key: VO_INTRO_14_BLANK_010
+    translation: "\xBFEn serio? \xBFEn serio? Vaya. \xBFTe cre\xEDas que todo esto
+      es por ganar dinero? Qu\xE9 bonito."
+  - key: VO_INTRO_14_BLANK_011
+    translation: "Venga, Jones. Eres m\xE1s listo que eso. Con ese reloj puedo ganar
+      todo el dinero que quiera cuando quiera."
+  - key: VO_INTRO_14_BLANK_011B
+    translation: "\xBFPara qu\xE9 me iba a molestar en apostar contra ti si puedo
+      hacerlo contra, no s\xE9, todo el sistema financiero, teniendo la garant\xEDa
+      de que voy a ganar?"
+  - key: VO_INTRO_14_BLANK_012
+    translation: "Tienes que aprender dos cosas, Jones. La primera, que el dinero
+      que ganas no siempre es lo m\xE1s importante. Soy rico. M\xE1s rico de lo que
+      necesito ser. No necesito m\xE1s dinero, cr\xE9eme."
+  - key: VO_INTRO_14_BLANK_013
+    translation: "Lo importante es de d\xF3nde consigues el dinero. Coge una comunidad
+      de miserables, que se aferran al \xFAltimo resquicio de esperanza que tienen:
+      t\xFA. Apuestan por ti, apuestan al negro, y haces que en la ruleta salga el
+      rojo."
+  - key: VO_INTRO_14_BLANK_013B
+    translation: "Te quedas con su dinero, los desmoralizas y pasan a ser tuyos. Y
+      cuando tienes el dinero y adem\xE1s el poder, bueno... Puedes tenerlo todo."
+  - key: VO_INTRO_14_BLANK_014
+    translation: "El segundo punto: a veces lo importante no es el dinero ni el poder.
+      Es el juego. Esto es solo un juego. Y t\xFA, amigo m\xEDo, lo has perdido."
+  - key: VO_INTRO_14_BLANK_015
+    translation: Y ahora vamos a atar los cabos sueltos...
+  - key: VO_INTRO_14_SIERRA_001
+    translation: "\xC9l acaba contigo. \xA1M\xE1talo, AJ!"
+  - key: VO_INTRO_14_SNOOP_001
+    translation: Blank.
+  - key: VO_INTRO_14_SNOOP_002
+    translation: Mmm. Nada de trucos. Te tengo.
+  - key: VO_INTRO_14_SNOOP_003
+    translation: "Tengo que irme, cari\xF1o. No te enfr\xEDes."
+  - key: VO_INTRO_14_SNOOP_004
+    translation: "Me has llamado. He venido lo m\xE1s r\xE1pido que he podido."
+  - key: VO_INTRO_14_SNOOP_005
+    translation: "Cu\xE1nto tiempo, viejo amigo."
+  - key: VO_INTRO_T01_SNOOP_001
+    translation: "Para encontrar El Camino, tendr\xE1s que encontrar el ritmo que
+      dirige el combate. S\xEDgueme, a ver cu\xE1nto aguantas."
+  - key: VO_INTRO_T02_SNOOP_001
+    translation: Vale, alumno. Hay gente que no juega limpio y esta vez vas a tener
+      que moverte.
+  - key: VO_INTRO_T03_SNOOP_001
+    translation: "El poder es dinero, y el dinero supone m\xE1s poder. \xBFQuieres
+      romper esa cadena? Usa tu propio poder, t\xEDo."
+  - key: VO_INTRO_T04_SNOOP_001
+    translation: "Ritmo, movimiento, fuerza. No dudo que tengas talento, pero sin
+      concentraci\xF3n, eso no es nada."
+  - key: VO_INTRO_T05_SNOOP_001
+    translation: "El reloj puede hacer que todo cambie, pero solo si lo usas bien.
+      Vamos a ver qu\xE9 puedes hacer."
+  - key: VO_OUTRO_01A_ANNOUNCER_001
+    translation: "Jones est\xE1 en el suelo. El chico de oro ya no parece de oro.
+      M\xE1s bien est\xE1... amarillo..."
+  - key: VO_OUTRO_01B_ANNOUNCER_001
+    translation: "\xA1Ha tumbado a Jones! \xBFQu\xE9 ha pasado?"
+  - key: VO_OUTRO_01B_SNOOP_001
+    translation: "Y as\xED, de repente, todo cambi\xF3."
+  - key: VO_OUTRO_02A_LT_001
+    translation: Parece que no era tan bueno.
+  - key: VO_OUTRO_02A_SNOOP_001
+    translation: Mm.
+  - key: VO_OUTRO_02B_SNOOP_001
+    translation: "Je, ya ha visto suficiente. R\xEDndete."
+  - key: VO_OUTRO_02B_SNOOP_002
+    translation: "Vale, est\xE1s dentro. Ponte esto. Empezaremos a entrenarte ahora
+      mismo."
+  - key: VO_OUTRO_02C_AJ_001
+    translation: "Parece que lo has intentado. \xBFQu\xE9 tal va eso?"
+  - key: VO_OUTRO_02C_LT_001
+    translation: "Podr\xEDa MATARTE."
+  - key: VO_OUTRO_02C_LT_002
+    translation: Ni te lo imaginas.
+  - key: VO_OUTRO_02C_SNOOP_001
+    translation: "Je, ya ha visto suficiente. R\xEDndete."
+  - key: VO_OUTRO_02C_SNOOP_002
+    translation: "Vale. Tienes algo, chaval. Est\xE1s dentro. Ponte esto. Empezaremos
+      a entrenarte ahora mismo."
+  - key: VO_OUTRO_03A_NERO_001
+    translation: "El chico no supo cu\xE1ndo retirarse."
+  - key: VO_OUTRO_03B_AJ_001
+    translation: "Est\xE1s mintiendo."
+  - key: VO_OUTRO_03B_NERO_001
+    translation: "No lo s\xE9."
+  - key: VO_OUTRO_03B_NERO_002
+    translation: "No lo s\xE9, \xBFvale? Tienes que hablar con Hollister..."
+  - key: VO_OUTRO_03C_AJ_002
+    translation: "Est\xE1s mintiendo."
+  - key: VO_OUTRO_03C_AJ_003
+    translation: "\xBFHollister?"
+  - key: VO_OUTRO_03C_NERO_001
+    translation: "No lo s\xE9."
+  - key: VO_OUTRO_03C_NERO_002
+    translation: "No lo s\xE9, \xBFvale? Tienes que hablar con Hollister..."
+  - key: VO_OUTRO_03C_NERO_003
+    translation: "Estaba aquella noche. Dirige los negocios de El Hombre, se lleva
+      un porcentaje de todo. Yo solo le llev\xE9 a un chico. T\xFA ibas a ganar, te
+      lo juro, pensaba que ibas a ganar..."
+  - key: VO_OUTRO_04A_HOLLISTER_001
+    translation: "Tienes derecho a permanecer en silencio... Ja, a qui\xE9n pretendo
+      enga\xF1ar. "
+  - key: VO_OUTRO_04B_AJ_001
+    translation: "\xBFEntonces qui\xE9n fue, cerdo?"
+  - key: VO_OUTRO_04B_HOLLISTER_001
+    translation: "No fui yo. \xA1Dios, te juro que no fui yo!"
+  - key: VO_OUTRO_04B_HOLLISTER_002
+    translation: "\xBFTe piensas que estoy al mando? \xA1Solo soy un poli! Preg\xFAntale
+      a Don Blank..."
+  - key: VO_OUTRO_04C_AJ_001
+    translation: "\xBFEntonces qui\xE9n fue, cerdo?"
+  - key: VO_OUTRO_04C_AJ_002
+    translation: "\xBFQu\xE9 tiene que ver \xE9l con todo esto?"
+  - key: VO_OUTRO_04C_HOLLISTER_001
+    translation: "No fui yo. \xA1Dios, te juro que no fui yo...! \xA1No, no lo hagas...!"
+  - key: VO_OUTRO_04C_HOLLISTER_002
+    translation: "\xBFTe piensas que estoy al mando? \xA1Solo soy un poli! Preg\xFAntale
+      a Don Blank..."
+  - key: VO_OUTRO_04C_HOLLISTER_003
+    translation: "Se trajo a alguien especial aquella noche. Un invitado. Me dijo
+      que cuidase de \xE9l. Pero no me habl\xF3 nada de disparos... Dijo que fue...
+      por el seguro..."
+  - key: VO_OUTRO_05A_BLANK_001
+    translation: "Bien hecho, chicas. Estoy orgulloso de vosotras. \xBFQuer\xE9is
+      tomar algo?"
+  - key: VO_OUTRO_05B_BLANK_001
+    translation: "Eres todo un h\xE9roe de acci\xF3n, \xBFeh? Un t\xEDo muy enfadado.
+      Pero m\xE1s enfadado vas a estar cuando veas esto."
+  - key: VO_OUTRO_05B_BLANK_002
+    translation: Lo siento, amigo.
+  - key: VO_OUTRO_05C_BLANK_001
+    translation: "Eres todo un h\xE9roe de acci\xF3n, \xBFeh? Un t\xEDo muy enfadado.
+      Pero m\xE1s enfadado vas a estar cuando veas esto."
+  - key: VO_OUTRO_05C_BLANK_002
+    translation: "Lo siento, amigo. Es MUY dif\xEDcil abrirte camino en el mundo estos
+      d\xEDas, \xBFno? Y m\xE1s encontrar El Camino. Pero espero que pod\xE1is arreglar
+      vuestras diferencias como caballeros. Seguro que Solomon tiene sus razones..."
+  - key: VO_OUTRO_06A_LT_001
+    translation: "Siempre son as\xED."
+  - key: VO_OUTRO_06A_SNOOP_001
+    translation: "Qu\xE9 decepci\xF3n."
+  - key: VO_OUTRO_06A_SNOOP_002
+    translation: Pues seguiremos buscando.
+  - key: VO_OUTRO_06B_AJ_001
+    translation: "\xBFQu\xE9...?"
+  - key: VO_OUTRO_06B_LT_001
+    translation: Ni siquiera puedes... hacer eso.
+  - key: VO_OUTRO_06B_SNOOP_001
+    translation: Tenemos que hablar de algo...
+  - key: VO_OUTRO_06C_AJ_001
+    translation: "\xBFQu\xE9...?"
+  - key: VO_OUTRO_06C_LT_001
+    translation: Ni siquiera puedes... hacer eso.
+  - key: VO_OUTRO_06C_SNOOP_001
+    translation: "Los caminos no siempre siguen una l\xEDnea recta, t\xEDo. Sabes
+      que puedes cambiar el futuro. Pero si lo haces bien, puede que tambi\xE9n consigas
+      cambiar el pasado."
+  - key: VO_OUTRO_06C_SNOOP_002
+    translation: Pero para eso tienes que concentrarte. Y puede que ni siquiera baste
+      con eso.
+  - key: VO_OUTRO_07A_MYSTIC_001
+    translation: '...'
+  - key: VO_OUTRO_07B_AJ_001
+    translation: Nos vemos en el pasado.
+  - key: VO_OUTRO_07B_AJ_001
+    translation: Vale, veamos...
+  - key: VO_OUTRO_07C_AJ_001
+    translation: Nos vemos en el pasado.
+  - key: VO_OUTRO_07C_BLANK_001
+    translation: "\xBFCrees que eso va a ayudarte? No puedes tocarme. Soy Don Blank.
+      Soy el due\xF1o de esta ciudad."
+  - key: VO_OUTRO_08B_AJ_001
+    translation: "\xA1Sierra!"
+  - key: VO_OUTRO_08B_LT_001
+    translation: Eh...
+  - key: VO_OUTRO_08B_LT_002
+    translation: "\xA1Mierda!"
+  - key: VO_OUTRO_08B_SIERRA_001
+    translation: "\xA1No, de eso nada!"
+  - key: VO_OUTRO_08C_AJ_001
+    translation: "\xA1Sierra!"
+  - key: VO_OUTRO_08C_AJ_002
+    translation: "L\xE1rgate de aqu\xED. Pero t\xFA y yo no hemos terminado."
+  - key: VO_OUTRO_08C_LT_001
+    translation: Eh...
+  - key: VO_OUTRO_08C_LT_002
+    translation: Mierda, el reloj...
+  - key: VO_OUTRO_08C_LT_003
+    translation: "Ya sabes d\xF3nde encontrarme."
+  - key: VO_OUTRO_08C_SIERRA_001
+    translation: "\xA1No, de eso nada!"
+  - key: VO_OUTRO_09A_LT_001
+    translation: "No est\xE1s a la altura. Ni siquiera deber\xEDas estar aqu\xED.
+      Me haces perder el tiempo."
+  - key: VO_OUTRO_09B_AJ_001
+    translation: "Tienes que tener m\xE1s respeto, hijo."
+  - key: VO_OUTRO_09B_LT_001
+    translation: HAZLO.
+  - key: VO_OUTRO_09C_AJ_001
+    translation: "No est\xE1s en posici\xF3n de exigir nada..."
+  - key: VO_OUTRO_09C_AJ_002
+    translation: No.
+  - key: VO_OUTRO_09C_LT_001
+    translation: "M\xE1s vale que est\xE9s seguro de esto..."
+  - key: VO_OUTRO_09C_LT_002
+    translation: "Porque voy a matarte. Y despu\xE9s matar\xE9 a..."
+  - key: VO_OUTRO_10A_NERO_001
+    translation: "Ten\xEDas que haberte unido a m\xED cuando pod\xEDas, idiota. Juntos
+      habr\xEDamos formado un gran equipo. Podr\xEDas haber sido mi caddie..."
+  - key: VO_OUTRO_10B_AJ_001
+    translation: Hoyo en uno.
+  - key: VO_OUTRO_10C_AJ_001
+    translation: "Esto es por lo de hace 15 a\xF1os, cerdo."
+  - key: VO_OUTRO_10C_AJ_002
+    translation: Supongo que eso es un eagle.
+  - key: VO_OUTRO_11A_HOLLISTER_001
+    translation: Tienes derecho a un abogado, bla, bla, bla...
+  - key: VO_OUTRO_11B_AJ_001
+    translation: "Qu\xE9 gracia que diga eso un poli corrupto con el culo gordo."
+  - key: VO_OUTRO_11B_AJ_002
+    translation: "Vaya, lo siento. \xBFLe he pegado a un tipo en el suelo?"
+  - key: VO_OUTRO_11B_AJ_003
+    translation: "Culpa m\xEDa."
+  - key: VO_OUTRO_11B_HOLLISTER_001
+    translation: Todas las ratas callejeras sois iguales...
+  - key: VO_OUTRO_11B_HOLLISTER_002
+    translation: "Ja, ja, eres un desgraciado. Est\xE1s acabado. En cuanto salga de
+      aqu\xED..."
+  - key: VO_OUTRO_11C_AJ_001
+    translation: "Qu\xE9 gracia que diga eso un poli corrupto y gordo."
+  - key: VO_OUTRO_11C_AJ_002
+    translation: "Culpa m\xEDa."
+  - key: VO_OUTRO_11C_AJ_003
+    translation: "Date un ba\xF1o, t\xEDo."
+  - key: VO_OUTRO_11C_AJ_004
+    translation: No has estado tan limpio en tu vida.
+  - key: VO_OUTRO_11C_HOLLISTER_001
+    translation: Todas las ratas callejeras sois iguales...
+  - key: VO_OUTRO_11C_HOLLISTER_002
+    translation: "Desgraciado... Ja, ja, eres un desgraciado. Est\xE1s acabado..."
+  - key: VO_OUTRO_11C_HOLLISTER_003
+    translation: "Espera... \xBFQu\xE9 haces?"
+  - key: VO_OUTRO_12A_LOCA_001
+    translation: "Qu\xE9 asco."
+  - key: VO_OUTRO_12A_VIDA_001
+    translation: "Puaj, hay sangre suya por todas partes. \xA1Qu\xE9 asco!"
+  - key: VO_OUTRO_12B_LOCA_001
+    translation: "\xA1Intento AYUDARLO!"
+  - key: VO_OUTRO_12B_VIDA_001
+    translation: "\xA1Para!"
+  - key: VO_OUTRO_12B_VIDA_002
+    translation: "\xA1Para! \xA1Todo est\xE1 ardiendo! \xA1Papi se va a enfadar!"
+  - key: VO_OUTRO_12B_VIDA_003
+    translation: "\xA1Lo has echado todo a perder!"
+  - key: VO_OUTRO_12C_BLANK_001
+    translation: "\xBFChicas? \xBFChicas? Decidme que hab\xE9is liquidado a ese desgraciado
+      entrometido. \xBFQu\xE9 es todo ese humo?"
+  - key: VO_OUTRO_12C_BLANK_002
+    translation: Calla, bruja.
+  - key: VO_OUTRO_12C_SIERRA_001
+    translation: Viene a por ti...
+  - key: VO_OUTRO_13A_SIERRA_001
+    translation: "\xA1NOOOOO! \xA1AJ! \xA1No, por favor! \xA1AJ!"
+  - key: VO_OUTRO_13B_BLANK_001
+    translation: "Vale, vale. Hemos empatado, \xBFvale?"
+  - key: VO_OUTRO_13C_BLANK_001
+    translation: "Vale, vale. Hemos empatado, \xBFvale? No querr\xE1s hacer da\xF1o
+      a otro sabio de El Camino como t\xFA, \xBFverdad? Los dos ten\xE9is mucho en
+      com\xFAn."
+  - key: VO_OUTRO_14A_BLANK_001
+    translation: "\xBFY ahora qu\xE9, t\xEDo? "
+  - key: VO_OUTRO_14B_AJ_001
+    translation: "El problema de la gente como t\xFA es que os hab\xE9is olvidado
+      de c\xF3mo es la vida en las calles. \xBFSabes una cosa? Creo que puedo ayudarte
+      con eso."
+  - key: VO_OUTRO_14B_BLANK_001
+    translation: "Pero... \xBFC\xF3mo te atreves? Soy Don Blank. Esta ciudad es m\xEDa."
+  - key: VO_OUTRO_14B_BLANK_002
+    translation: "\xA1Aaaaaaarrrrrrgggghhhh!"
+  - key: VO_OUTRO_14C_AJ_001
+    translation: "Tengo a mi chica, tengo mi ciudad. \xBFQu\xE9 podr\xEDa querer de
+      ti?"
+  - key: VO_OUTRO_14C_BLANK_001
+    translation: Por favor, te lo ruego... L-Lo que quieras... Te lo doy...
+  - key: VO_OUTRO_14D_AJ_001
+    translation: "Ya no te acordar\xE1s, pero una vez me dijiste que no pod\xEDa tocarte.
+      Pues estabas equivocado."
+  - key: VO_OUTRO_14D_BLANK_001
+    translation: "Est\xE1s cometiendo un grave error. Soy Don Blank. Esta ciudad es
+      m\xEDa."
+  - key: VO_OUTRO_14E_AJ_001
+    translation: "Te dir\xE9 lo que has hecho: has dejado a esta ciudad sin vida,
+      maldito\u2026"
+  - key: VO_OUTRO_14E_BLANK_001
+    translation: "\xBFPor qu\xE9? \xBFPor qu\xE9 me haces esto? \xBFQu\xE9 te he hecho
+      yo a ti?"
+  - key: VO_OUTRO_14E_SIERRA_001
+    translation: "\xBFPodemos irnos ya?"
+  - key: VO_OUTRO_14F_SNOOP_001
+    translation: "\xBFD\xF3nde vas, t\xEDo?"
+  - key: VO_OUTRO_14F_SNOOP_002
+    translation: Deja que te ayude a levantarte...
+  - key: VO_OUTRO_14F_SNOOP_003
+    translation: '[Dolorido] Ooohhh... Hay gente que no sabe colocarse.'
+  - key: VO_TAUNTS_AJ_001
+    translation: "Si quieres m\xE1s, solo tienes que decirlo."
+  - key: VO_TAUNTS_AJ_002
+    translation: "Muy f\xE1cil. Demasiado f\xE1cil."
+  - key: VO_TAUNTS_AJ_003
+    translation: "O lo pillas o no, \xBFvale?"
+  - key: VO_TAUNTS_AJ_004
+    translation: "\xBFOtro golpe de suerte? Je, je."
+  - key: VO_TAUNTS_AJ_005
+    translation: "\xA1Que alguien me asegure que esto lo han grabado!"
+  - key: VO_TAUNTS_BLANK_001
+    translation: "Hablar es in\xFAtil. Y t\xFA tambi\xE9n eres un in\xFAtil, Jones."
+  - key: VO_TAUNTS_BLANK_002
+    translation: "No tienes ni idea de lo que es tener fuerza, \xBFverdad?"
+  - key: VO_TAUNTS_BLANK_003
+    translation: "Qu\xE9 lata da alguien tan insignificante."
+  - key: VO_TAUNTS_BLANK_004
+    translation: "\xBFTe duele? Vaya, me rompes el coraz\xF3n."
+  - key: VO_TAUNTS_BLANK_005
+    translation: "Venga, \xF3diame, Am\xE9rica. Eso no te har\xE1 m\xE1s rico."
+  - key: VO_TAUNTS_FOLLOWER_001
+    translation: "Te crees la bomba, \xBFno? \xA1Ven aqu\xED!"
+  - key: VO_TAUNTS_FOLLOWER_002
+    translation: "Venga, t\xEDo. Seguro que puedes hacerlo mejor."
+  - key: VO_TAUNTS_FOLLOWER_003
+    translation: "Vaya, pobre t\xEDo. La primera vez tambi\xE9n me puse nervioso."
+  - key: VO_TAUNTS_FOLLOWER_004
+    translation: "Tienes un intento. Y lo est\xE1s desaprovechando."
+  - key: VO_TAUNTS_FOLLOWER_005
+    translation: "Para eso estudiamos, \xBFsabes? Para no pelear como t\xFA."
+  - key: VO_TAUNTS_HENCHMAN_001
+    translation: "Aaaay. \xBFTe duele?"
+  - key: VO_TAUNTS_HENCHMAN_002
+    translation: "\xA1Venga! \xA1Lucha con ganas! Hazme trabajar."
+  - key: VO_TAUNTS_HENCHMAN_003
+    translation: "Me voy a divertir haci\xE9ndote sangrar."
+  - key: VO_TAUNTS_HENCHMAN_004
+    translation: "Te abuchean. Es broma. \xA1Ja!"
+  - key: VO_TAUNTS_HENCHMAN_005
+    translation: "Vete con tu mam\xE1, Jones. \xA1Llora como un beb\xE9! Je, je, je."
+  - key: VO_TAUNTS_HOLLISTER_001
+    translation: "Mira, qu\xE9date quieto y acabemos con esto cuanto antes."
+  - key: VO_TAUNTS_HOLLISTER_002
+    translation: "Uf, otro golpe en la eterna pelea entre el bien y el mal. \xBFQuieres
+      una tirita?"
+  - key: VO_TAUNTS_HOLLISTER_003
+    translation: "Resistirse a la autoridad es un delito. Incluso si lo haces as\xED
+      de mal."
+  - key: VO_TAUNTS_HOLLISTER_004
+    translation: "\xBFLimpiar las calles de basura como t\xFA? Qu\xE9 trabajo m\xE1s
+      gratificante."
+  - key: VO_TAUNTS_HOLLISTER_005
+    translation: "Me recuerdas a m\xED hace 20 a\xF1os. Era un idiota. Un verdadero
+      idiota."
+  - key: VO_TAUNTS_LOCA_001
+    translation: "Soy muy sexy, \xBFa que s\xED?"
+  - key: VO_TAUNTS_LOCA_002
+    translation: "S\xE9 lo que est\xE1s pensando... y la respuesta es no."
+  - key: VO_TAUNTS_LOCA_003
+    translation: "\xA1Ja, ja! \xA1Qu\xE9 guapo est\xE1s cuando te enfadas!"
+  - key: VO_TAUNTS_LOCA_004
+    translation: "M\xE9tete con otra la pr\xF3xima vez, papi."
+  - key: VO_TAUNTS_LOCA_005
+    translation: "Mi hor\xF3scopo me dijo que iba a vencer a un desconocido alto y
+      moreno."
+  - key: VO_TAUNTS_LT_001
+    translation: "\xBFEn serio, enano? \xBFNo puedes hacerlo mejor?"
+  - key: VO_TAUNTS_LT_002
+    translation: Va a ser un combate corto y genial.
+  - key: VO_TAUNTS_LT_003
+    translation: Me decepcionas, Jones. Pensaba que eras mucho mejor.
+  - key: VO_TAUNTS_LT_004
+    translation: 'No tienes fuerza, ni disciplina, ni estilo. '
+  - key: VO_TAUNTS_LT_005
+    translation: "Un mat\xF3n nunca puede con un luchador de verdad. Estudia m\xE1s."
+  - key: VO_TAUNTS_NERO_001
+    translation: "Diez a\xF1os despu\xE9s y sigues luchando como un ni\xF1o."
+  - key: VO_TAUNTS_NERO_002
+    translation: "Creo que esta vez he pasado la prueba, \xBFeh?"
+  - key: VO_TAUNTS_NERO_003
+    translation: Bien hecho, incluso si lo digo yo.
+  - key: VO_TAUNTS_NERO_004
+    translation: "Antes El Camino ten\xEDa m\xE1s nivel..."
+  - key: VO_TAUNTS_NERO_005
+    translation: "\xA1Toma!"
+  - key: VO_TAUNTS_SNOOP_001
+    translation: '[Improvisado]'
+  - key: VO_TAUNTS_SNOOP_002
+    translation: '[Improvisado]'
+  - key: VO_TAUNTS_SNOOP_003
+    translation: '[Improvisado]'
+  - key: VO_TAUNTS_SNOOP_004
+    translation: '[Improvisado]'
+  - key: VO_TAUNTS_SNOOP_005
+    translation: '[Improvisado]'
+  - key: VO_TAUNTS_VIDA_001
+    translation: "\xA1La pr\xF3xima vez s\xE9 m\xE1s r\xE1pido!"
+  - key: VO_TAUNTS_VIDA_002
+    translation: "Aaay. \xBFTe he hecho da\xF1o?"
+  - key: VO_TAUNTS_VIDA_003
+    translation: "\xA1Cuidado, est\xE1n afiladas!"
+  - key: VO_TAUNTS_VIDA_004
+    translation: "\xA1Lo siento, culpa m\xEDa!"
+  - key: VO_TAUNTS_VIDA_005
+    translation: "\xBFQuieres algo, guapet\xF3n?"
