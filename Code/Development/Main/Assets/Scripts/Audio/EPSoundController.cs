@@ -3,22 +3,21 @@
 //
 // Desc:	Class to control playback of EPSoundSequence and EPSound objects
 //
-// Copyright Echo Peak Ltd 2013
+// Copyright Echo Peak Ltd 2012
 //-----------------------------------------------------------------------------
 
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[ExecuteInEditMode]
 public class EPSoundController : MonoBehaviour 
 {
 	public bool m_PopulateList = false;
 	
 	public List<EPSoundEvent> m_EPSoundEventList = new List<EPSoundEvent>();
 	public List<string> m_EPSoundNames = new List<string>();
-	
-	[HideInInspector]
-	public bool m_flipRigs = false;
+
 	[HideInInspector]
 	public float m_GlobalSFXVolume = 1.0f;
 	[HideInInspector]
@@ -41,7 +40,7 @@ public class EPSoundController : MonoBehaviour
 		GameObject soundControllerObject = GameObject.Find( "SoundController" );
         if( soundControllerObject == null )
         {
-            Console.WriteLine( "!** No sound controller object found (SoundController)" );
+            Debug.Log( "!** No sound controller object found (SoundController)" );
         }
         else
         {
@@ -51,14 +50,13 @@ public class EPSoundController : MonoBehaviour
 		if( ms_soundController != null )
 	        return ms_soundController;
 		
-		Console.WriteLine( "!** Couldn't get EPSoundController component" );
+		Debug.Log( "!** Couldn't get EPSoundController component" );
 		return null;
     }
 	
-	
 	// Use this for initialization
 	void Start()
-	{	
+	{
 		m_DuckingAmount = 1.0f;
 
 		populateLists();
@@ -72,33 +70,68 @@ public class EPSoundController : MonoBehaviour
 	{
 		if( m_PopulateList )
 		{
-			populateLists();
-			
+			populateLists();			
 			m_PopulateList = false;
 		}
+
+
+		/*// Play sound with spacebar
+		if (Input.GetKeyUp(KeyCode.Space))
+		{
+			Play("Motion_special_rise_01");
+		}//*/
+		
+		/*// Play sound with return
+		if (Input.GetKeyUp(KeyCode.Return))
+		{
+			Play("Motion_long_super_01");
+		}//*/
+		
+		/*
+		// Pause sounds
+		if (Input.GetKeyUp (KeyCode.P))
+			Pause();
+		
+		// Resume sounds
+		if (Input.GetKeyUp (KeyCode.R))
+			Resume();
+		*/
 	}
 	
+	// Play sound by name
 	public void Play( string sound_name )
 	{
 		int soundIdx = GetIndex ( sound_name );
 		Play ( soundIdx );
 	}
 	
+	public void Play( string sound_name, float volume, float pitch )
+	{
+		int soundIdx = GetIndex( sound_name );
+		Play( soundIdx, volume, pitch );
+		//Debug.Log("Play sound: " + sound_name);
+	}
+	
+	// Play sound by list ID
 	public void Play( int sound_idx )
 	{
 		m_EPSoundEventList[sound_idx].Play ();
 	}
 	
-	public void Play( string sound_name, float volume, float pitch )
-	{
-		int soundIdx = GetIndex( sound_name );
-		Play(soundIdx, volume, pitch);
-		Console.WriteLine(Channels.PC, "Play sound: " + sound_name);
-	}
-	
 	public void Play( int sound_idx, float volume, float pitch )
 	{
 		m_EPSoundEventList[sound_idx].Play( volume, pitch );
+	}
+	
+	// Play sound by object reference
+	public void Play( EPSoundEvent sound )
+	{
+		sound.Play( 1.0f, 1.0f );
+	}
+	
+	public void Play( EPSoundEvent sound, float volume, float pitch )
+	{
+		sound.Play( volume, pitch );
 	}
 	
 	public void StopAll()
@@ -125,6 +158,7 @@ public class EPSoundController : MonoBehaviour
 		}
 	}
 	
+	// Functions for handling lists and sound name string checking
 	int populateLists()
 	{
 		ClearLists();
@@ -144,7 +178,7 @@ public class EPSoundController : MonoBehaviour
 			}
 		}
 		
-		Console.WriteLine("Sound lists updated.");
+		Debug.Log("Sound lists updated.");
 		return 0;
 	}
 	
@@ -158,7 +192,7 @@ public class EPSoundController : MonoBehaviour
 	{
 		if (m_EPSoundNames.Contains(name))
 		{
-			Console.WriteLine(Channels.General | Channels.Error, "Duplicate name found: " + name + ". List cannot contain duplicates");
+			Debug.Log("Duplicate name found: " + name + ". List cannot contain duplicates");
 			return false;
 		}
 		else
@@ -171,22 +205,12 @@ public class EPSoundController : MonoBehaviour
 	{
 		for( int idx = 0; idx<m_EPSoundNames.Count; idx++ )
 		{
-			//Console.WriteLine ("Index: " + idx);
+			//Debug.Log ("Index: " + idx);
 			if( sound_name == m_EPSoundNames[idx] )
 				return idx;
 		}
 		
-		Console.WriteLine(Channels.General | Channels.Warning, "Sound name not found: " + sound_name);
+		Debug.Log("Sound name not found");
 		return 0;
-	}
-	
-	
-	//Set volume on all sound
-	public void UpdateVolume(float newVolume)
-	{
-		foreach (EPSoundEvent sound in m_EPSoundEventList)
-		{
-			sound.UpdateVolume(newVolume);
-		}
 	}
 }

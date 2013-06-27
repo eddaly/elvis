@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class EPSoundEvent : MonoBehaviour {
-
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -23,7 +23,16 @@ public class EPSoundEvent : MonoBehaviour {
 	
 	public virtual void Resume() {}
 	
-	public virtual void UpdateVolume(float newVolume) { Debug.Log("Should be overriden"); }
+	public virtual void SetVolume( float volume ) {}
+	
+	public virtual float GetVolume()
+	{
+		return 0.0f;
+	}
+	
+	public virtual void SetFade( float endVol, float duration, bool isFadeOut ) {}
+	
+	public virtual void ApplyFade() {}
 	
 	public virtual bool IsPlaying()
 	{
