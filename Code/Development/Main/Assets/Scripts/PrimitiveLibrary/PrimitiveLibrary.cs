@@ -60,7 +60,7 @@ public sealed class PrimitiveLibrary
 	}
 	const int g_FXBatchSize = 1000;
 	const int g_NumbersBatchSize = 70;
-	const int g_FrontendBatchSize = 16;
+	const int g_FrontendBatchSize = 256;
 	
 	GameObject[] m_quadBatches = new GameObject[(int)QuadBatch.NUM];
 
@@ -462,7 +462,7 @@ public sealed class PrimitiveLibrary
 		m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS].m_TexturePage =
 			Resources.Load( "Numbers_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
-			Resources.Load( "Numbers_Atlas" ) as Texture;
+			Resources.Load( "Frontend_Atlas" ) as Texture;
 		
 		//	Set up the FX atlas
 		TextureAtlas fxAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX];		
@@ -497,26 +497,10 @@ public sealed class PrimitiveLibrary
 
 		// And the front-end
 		TextureAtlas frontendAtlas = m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND];		
-		frontendAtlas.m_NumElements = (int)TextureAtlas.Frontend.NUM;		
-		frontendAtlas.m_UVSet = new Vector4[frontendAtlas.m_NumElements];
-
-		for( int n = 0; n<10; n++ )
-		{
-			int column = n%4;
-			int row = 3 - n/4;
-			
-			float uStart = (float)column*0.25f;
-			float vStart = (float)row*0.25f;
-			
-			frontendAtlas.m_UVSet[n] = new Vector4( uStart, vStart, uStart + 0.25f, vStart + 0.25f );
-		}
-		
-		frontendAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_COLON] = new Vector4( 0.0f, 0.0f, 0.25f, 0.25f );
-		frontendAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_PERCENT] = new Vector4( 0.75f, 0.25f, 1.0f, 0.5f );
-		frontendAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_TIMES] = new Vector4( 0.5f, 0.25f, 0.75f, 0.5f );			
+		frontendAtlas.m_NumElements = TextureAtlas.maxFrontendElements;		
+		frontendAtlas.m_UVSet = new Vector4[frontendAtlas.m_NumElements]; // Setup dynamically by FastGUIElement
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 // Class:	TextureAtlas
@@ -565,23 +549,6 @@ public class TextureAtlas
 		NUM
 	}	
 	
-	public enum Frontend
-	{
-		NUM_0 = 0,
-		NUM_1,
-		NUM_2,
-		NUM_3,
-		NUM_4,
-		NUM_5,
-		NUM_6,
-		NUM_7,
-		NUM_8,
-		NUM_9,
-		NUM_PERCENT,
-		NUM_COLON,
-		NUM_TIMES,
-		
-		NUM
-	}
+	static public int maxFrontendElements = 256;
 
 }
