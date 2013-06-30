@@ -11,6 +11,8 @@
 //
 // Copyright Echo Peak Ltd 2013
 //-----------------------------------------------------------------------------
+#if !UNITY_IPHONE
+
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
@@ -130,3 +132,5 @@ public class ElvisEditorCamera : MonoBehaviour
 		Debug.Log( piecesLog );
 	}
 }
+
+#endif
