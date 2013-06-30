@@ -226,8 +226,3 @@ public class PersistentData : MonoBehaviour {
 		Save ();
 	}
 }
-
-/* TODO:
- - test on devices
- 
- */

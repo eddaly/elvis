@@ -4,16 +4,17 @@ using System.Collections;
 public class FastGUIElement
 {
 	static public float safeScreenWidth = 2048f, safeScreenHeight = 1536f;
-	static private int originalAtlasPixelsWidth, originalAtlasPixelsHeight;
+	static protected TextureAtlas frontendAtlas;
+	static protected int originalAtlasPixelsWidth, originalAtlasPixelsHeight;
 	public float widthNormalised, heightNormalised;	// Normalised within bounds of safeScreenWidth / Height, e.g. width of .5 means half the safe width
 	public float width, height; 					// In pixels
 	
 	public enum Position {XCENTRED, YCENTRED, XYCENTRED, TOPLEFT};
 	
 	private static int instanceCount = 0;
-	protected BatchedQuadDef quad;
-	protected int textureIdx;
-	private Rect rect;
+	protected internal BatchedQuadDef quad;
+	protected internal int textureIdx;
+	protected Rect screenRect;
 	
 	// To enable specifying UVs in original pixels need to provide as Unity will rescale Texture
 	static public void SetOriginalAtlasPixels (int width, int height)
@@ -37,7 +38,7 @@ public class FastGUIElement
 		Vector4 uvs, 		// x,y is top-left, z,w is width and height in pixels
 		Position pos = Position.TOPLEFT)
 	{
-		TextureAtlas frontendAtlas = PrimitiveLibrary.Get.m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND];		
+		frontendAtlas = PrimitiveLibrary.Get.m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND];		
 		if (instanceCount + 1 > frontendAtlas.m_NumElements)		
 		{
 			Debug.LogError ("Need to increase frontendAtlas.m_NumElements and PrimitiveLibrary.g_FrontendBatchSize");
@@ -63,7 +64,7 @@ public class FastGUIElement
 		width = uvs.z;
 		height = uvs.w;		
 		
-		// The centre of the quad in world space which is mapped by camera to the safeSceen size ***could set camera in script to be safe
+		// The centre of the quad in world space which is mapped by camera to the safeSceen size ***could work with given camera
 		if (pos == Position.TOPLEFT) {
 			quad.m_Position.x = (-safeScreenWidth * .5f + topLeft.x) + (width * .5f);
 			quad.m_Position.y = (+safeScreenHeight * .5f - topLeft.y) - (height * .5f);
@@ -83,7 +84,7 @@ public class FastGUIElement
 		quad.m_Position.z = 0f;
 		quad.m_Scale.x = width;
 		quad.m_Scale.y = height;
-		rect = ScreenRect (quad);
+		UpdatedQuad ();
 	}
 	
 	// Was the GUIElement tapped
@@ -93,7 +94,7 @@ public class FastGUIElement
 		if (!getTapPos (out tapPos))
 			return false;
 		
-		return (rect.Contains (tapPos));
+		return (screenRect.Contains (tapPos));
 	}
 
 	protected bool getTapPos (out Vector2 tapPos)
@@ -146,14 +147,16 @@ public class FastGUIElement
 		return true;
 	}
 	
-	private Rect ScreenRect (BatchedQuadDef quad)
+	// Call if ever update the quad position (not in accessor to save on the calls)
+	protected internal void UpdatedQuad ()
 	{
 		Vector3 wp0 = new Vector3 (quad.m_Position.x + -.5f * quad.m_Scale.x, quad.m_Position.y + -.5f * quad.m_Scale.y, 0);
 		Vector3 wp1 = new Vector3 (wp0.x + quad.m_Scale.x, wp0.y + quad.m_Scale.y, 0);
+		// Note unoptimal as assuming camera position elsewhere so could derive directly (person effort efficient if not CPU, and halfway toward supporting anywhere cameras!)
 		Vector3 sp0 = Camera.mainCamera.WorldToScreenPoint (wp0);
 		Vector3 sp1 = Camera.mainCamera.WorldToScreenPoint (wp1);
 
-		return new Rect (sp0.x, sp0.y, sp1.x - sp0.x, sp1.y - sp0.y);
+		screenRect = new Rect (sp0.x, sp0.y, sp1.x - sp0.x, sp1.y - sp0.y);
 	}
 }
 
