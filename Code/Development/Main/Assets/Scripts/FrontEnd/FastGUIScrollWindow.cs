@@ -5,24 +5,25 @@ using System.Collections.Generic;
 public class FastGUIScrollWindow : FastGUIElement
 {
 	private Vector2 lastPos, velocity, movement;
-#if UNITY_IPHONE
+#if UNITY_IPHONE || UNITY_ANDROID
 	private bool autoscroll = false;
 #endif
 	private bool scrollStarted = false;
-	private Vector4 uvsTotalAreaNormalised;
+	private Vector4 atlasRectMaxNormalised;
 	private List <FastGUIElement> children;
 	
+	// Make a ScrollWindow, will immediately render
 	public FastGUIScrollWindow (
-		Vector2 topLeft,	// Co-ords origin is top-left in pixels
-		Vector4 uvsWindow, 	// x,y is top-left, z,w is width and height in pixels, the size of the 'window'
-		Vector4 uvsTotal, 	// UVs for the total scrollable area
-		Position pos = Position.TOPLEFT) : base (topLeft, uvsWindow, pos)
+		Vector2 screenPos,			// Position on screen (relative to Position)
+		Vector4 atlasRectWindow, 	// Atlas rectangle window (x,y is top-leftx, z,w is width and height) in pixels
+		Vector4 atlasRectMax, 		// Atlas rectangle for the maximum scrollable area
+		Position pos = Position.TOPLEFT) : base (screenPos, atlasRectWindow, pos)
 	{
-		uvsTotalAreaNormalised = new Vector4 (
-			uvsTotal.x / originalAtlasPixelsWidth,
-			uvsTotal.y / originalAtlasPixelsHeight, 
-			uvsTotal.z / originalAtlasPixelsWidth, 
-			uvsTotal.w / originalAtlasPixelsHeight);
+		atlasRectMaxNormalised = new Vector4 (
+			atlasRectMax.x / originalAtlasPixelsWidth,
+			atlasRectMax.y / originalAtlasPixelsHeight, 
+			atlasRectMax.z / originalAtlasPixelsWidth, 
+			atlasRectMax.w / originalAtlasPixelsHeight);
 		children = new List<FastGUIElement>();
 	}
 	
@@ -43,7 +44,7 @@ public class FastGUIScrollWindow : FastGUIElement
 		//***if in area			
 		
 		// If just touched the screen
-#if UNITY_IPHONE
+#if UNITY_IPHONE || UNITY_ANDROID
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
 		{
 			autoscroll = false;				// Stop previous autoscroll
@@ -56,7 +57,7 @@ public class FastGUIScrollWindow : FastGUIElement
 		}
 		
 		// If moved the touch
-#if UNITY_IPHONE
+#if UNITY_IPHONE || UNITY_ANDROID
 		if (scrollStarted && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
 #else
 		if (scrollStarted && Input.GetMouseButton (0))
@@ -64,7 +65,7 @@ public class FastGUIScrollWindow : FastGUIElement
 		{
 			Vector2 touchPos;
 			getTouchPos (out touchPos);
-#if UNITY_IPHONE			
+#if UNITY_IPHONE || UNITY_ANDROID
 			velocity = Input.GetTouch(0).deltaPosition / Input.GetTouch(0).deltaTime; // Velocity for autoscroll (touch only)
 #endif
 			movement = touchPos - lastPos;	// Movement in frame
@@ -78,7 +79,7 @@ public class FastGUIScrollWindow : FastGUIElement
 		}
 		
 		// If touch ended start autoscroll
-#if UNITY_IPHONE
+#if UNITY_IPHONE || UNITY_ANDROID
 		if (scrollStarted && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
 		{
 			autoscroll = true;
@@ -108,22 +109,24 @@ public class FastGUIScrollWindow : FastGUIElement
 				v.x / originalAtlasPixelsWidth, v.y / originalAtlasPixelsHeight,
 				v.z / originalAtlasPixelsWidth, v.w / originalAtlasPixelsHeight);
 		
+		// Move the UVs
 		frontendAtlas.m_UVSet[textureIdx] -= vNormalised;
 		
 		// Clamp
-		if (frontendAtlas.m_UVSet[textureIdx].x < uvsTotalAreaNormalised.x)
+		if (frontendAtlas.m_UVSet[textureIdx].x < atlasRectMaxNormalised.x)
 		{
-			v.x -= (uvsTotalAreaNormalised.x - frontendAtlas.m_UVSet[textureIdx].x) * originalAtlasPixelsWidth;
-			frontendAtlas.m_UVSet[textureIdx].x = uvsTotalAreaNormalised.x;
-			frontendAtlas.m_UVSet[textureIdx].z = uvsTotalAreaNormalised.x + widthNormalised;
+			v.x -= (atlasRectMaxNormalised.x - frontendAtlas.m_UVSet[textureIdx].x) * originalAtlasPixelsWidth;
+			frontendAtlas.m_UVSet[textureIdx].x = atlasRectMaxNormalised.x;
+			frontendAtlas.m_UVSet[textureIdx].z = atlasRectMaxNormalised.x + widthNormalised;
 		}
-		else if (frontendAtlas.m_UVSet[textureIdx].z > uvsTotalAreaNormalised.z)
+		else if (frontendAtlas.m_UVSet[textureIdx].z > atlasRectMaxNormalised.z)
 		{
-			v.x += (frontendAtlas.m_UVSet[textureIdx].z - uvsTotalAreaNormalised.z) * originalAtlasPixelsWidth;
-			frontendAtlas.m_UVSet[textureIdx].x = uvsTotalAreaNormalised.z - widthNormalised;
-			frontendAtlas.m_UVSet[textureIdx].z = uvsTotalAreaNormalised.z;
+			v.x += (frontendAtlas.m_UVSet[textureIdx].z - atlasRectMaxNormalised.z) * originalAtlasPixelsWidth;
+			frontendAtlas.m_UVSet[textureIdx].x = atlasRectMaxNormalised.z - widthNormalised;
+			frontendAtlas.m_UVSet[textureIdx].z = atlasRectMaxNormalised.z;
 		}
 		
+		// Move the children inline with scrolled background
 		Vector3 p = new Vector3 (v.x, v.y, 0);
 		for (int n = 0; n < children.Count; n++)
 		{
@@ -132,7 +135,8 @@ public class FastGUIScrollWindow : FastGUIElement
 		}
 			
 		// TODO it going outside the window, i.e. clipping it.  However that only needed if is any visible space outside the window
-		// as long as even the unsafe area used by windows this isn't a problem
+		// as long as even the unsafe area used by windows this isn't a problem.  And would probably put a 'mask' over it anyway
 	}
+
 }
 
