@@ -14,7 +14,7 @@ public class FastGUIButton : FastGUIElement
 		: base (scrollWindow, scrollWindowPos, atlasRect)
 	{
 		pressedButton = new FastGUIElement (scrollWindow, scrollWindowPos, atlasRectPressedButton);
-		pressedButton.quad.m_Position += new Vector3 (10000, 0, 0);
+		pressedButton.quad.m_Position += new Vector3 (10000, 0, 0);	// Remove from screen
 	}
 
 	// Make a Button, will immediately render
@@ -26,7 +26,7 @@ public class FastGUIButton : FastGUIElement
 		: base (screenPos, atlasRect, pos)
 	{
 		pressedButton = new FastGUIElement (screenPos, atlasRectPressedButton, pos);
-		pressedButton.quad.m_Position += new Vector3 (10000, 0, 0);
+		pressedButton.quad.m_Position += new Vector3 (10000, 0, 0);	// Remove from screen
 	}
 	
 	// Update to see if pressed, display the pressed texture, return true when press complete
