@@ -136,7 +136,7 @@ public class FastGUIElement
 		}
 		if (touchIdx == -1)
 			return false;
-		tapPos = Input.GetTouch(n).position;
+		touchPos = Input.GetTouch(n).position;
 #else
 	if (!Input.GetMouseButton (0))
 		return false;
