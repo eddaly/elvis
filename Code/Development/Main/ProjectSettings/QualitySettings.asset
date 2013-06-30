@@ -8,22 +8,22 @@ QualitySettings:
   m_QualitySettings:
   - serializedVersion: 2
     name: Mobile
-    pixelLightCount: 1
+    pixelLightCount: 0
     shadows: 0
     shadowResolution: 2
     shadowProjection: 1
-    shadowCascades: 4
+    shadowCascades: 1
     shadowDistance: 150
     blendWeights: 4
     textureQuality: 0
-    anisotropicTextures: 1
+    anisotropicTextures: 0
     antiAliasing: 0
     softParticles: 0
     softVegetation: 1
     vSyncCount: 0
     lodBias: 2
     maximumLODLevel: 0
-    particleRaycastBudget: 4
+    particleRaycastBudget: 1
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
     Android: 0
