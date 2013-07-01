@@ -629,6 +629,7 @@ MonoBehaviour:
   m_MusicVolMaster: .600000024
   m_DuckingAmount: 1
   m_StingQueue: []
+  m_StingGrid: 1
 --- !u!114 &1101783188
 MonoBehaviour:
   m_ObjectHideFlags: 0

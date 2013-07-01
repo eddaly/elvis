@@ -95,7 +95,7 @@ public class EPMusicPlayer : MonoBehaviour {
 			{
 				seg.PlayQueuedMaster();
 				m_QueuedMasterSegment = seg;
-				Debug.Log("Queue segment " + i );
+				//Debug.Log("Queue segment " + i );
 			}
 		}
 	}
@@ -297,7 +297,7 @@ public class EPMusicPlayer : MonoBehaviour {
 			
 			if ( m_loopCountdown < m_syncRes )
 			{
-				Debug.Log ("Loop frame @ " + m_loopCountdown);
+				//Debug.Log ("Loop frame @ " + m_loopCountdown);
 				RetriggerSegments(m_loopCountdown);
 			}
 			

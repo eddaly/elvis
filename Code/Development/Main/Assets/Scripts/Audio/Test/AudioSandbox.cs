@@ -52,5 +52,19 @@ public class AudioSandbox : MonoBehaviour {
 			EPSoundController.Get ().PlaySting("Pickup_01");		
 		}
 		
+		if(GUI.Button(new Rect(210,70,150,22), "Grid: 1/1"))
+		{
+			EPSoundController.Get ().m_StingGrid = EPSoundController.StingGrid.BEAT;
+		}
+		
+		if(GUI.Button(new Rect(210,100,150,22), "Grid: 1/2"))
+		{
+			EPSoundController.Get ().m_StingGrid = EPSoundController.StingGrid.HALFBEAT;	
+		}
+		
+		if(GUI.Button(new Rect(210,130,150,22), "Grid: 1/4"))
+		{
+			EPSoundController.Get ().m_StingGrid = EPSoundController.StingGrid.QUARTERBEAT;	
+		}
 	}// OnGUI
 }

@@ -31,6 +31,16 @@ public class EPSoundController : MonoBehaviour
 	[HideInInspector]
 	public List<EPSoundEvent> m_StingQueue = new List<EPSoundEvent>();
 	
+	public enum StingGrid
+	{
+		BEAT,
+		HALFBEAT,
+		QUARTERBEAT
+	}
+	
+	[HideInInspector]
+	public StingGrid m_StingGrid = StingGrid.HALFBEAT;
+	
 	//	Pseudo-singleton pattern
 	private static EPSoundController ms_soundController = null;
     public static EPSoundController Get()
@@ -146,7 +156,11 @@ public class EPSoundController : MonoBehaviour
 	public void PlaySting ( string sound_name )
 	{
 		int soundIdx = GetIndex ( sound_name );
-		AddToStingQueue ( soundIdx );
+		
+		if ( EPMusicPlayer.Get ().m_MasterSegment == null || !EPMusicPlayer.Get().m_MasterSegment.IsPlaying() )
+			Play ( soundIdx );
+		else
+			AddToStingQueue ( soundIdx );
 	}
 	
 	public void AddToStingQueue ( int sound_idx )
@@ -166,9 +180,23 @@ public class EPSoundController : MonoBehaviour
 		m_StingQueue.Clear();
 	}
 	
+	// Do stuff on beat notifications from EPMusicPlayer
+	public void NotifyBeat ()
+	{
+		if ( m_StingGrid == StingGrid.BEAT )
+			ClearStingQueue();
+	}
+	
+	public void NotifyHalfBeat ()
+	{
+		if ( m_StingGrid == StingGrid.HALFBEAT )
+			ClearStingQueue();
+	}
+	
 	public void NotifyQuarterBeat ()
 	{
-		ClearStingQueue();
+		if ( m_StingGrid == StingGrid.QUARTERBEAT )
+			ClearStingQueue();
 	}
 	
 	public void StopAll()
