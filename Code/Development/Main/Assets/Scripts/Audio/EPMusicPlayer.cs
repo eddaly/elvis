@@ -10,6 +10,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	public float m_LoopBeats;
 	
 	public EPMusicSegment m_MasterSegment = null;
+	EPMusicSegment m_QueuedMasterSegment = null;
 	
 	public float m_loopCountdown;
 	public float m_syncRes = 0.0333f;
@@ -64,6 +65,48 @@ public class EPMusicPlayer : MonoBehaviour {
 		DebugInputs();
 	}
 	
+	// Play functions
+	public void PlaySegmentMaster ( string segName )
+	{
+		int i = GetSegmentIndex( segName );
+		if ( i >= 0 )
+			PlaySegmentMaster ( i );
+	}
+	
+	public void PlaySegmentMaster ( int i )
+	{
+		EPMusicSegment seg = m_Segments[i];
+		
+		if ( seg != null )
+		{
+			if ( m_MasterSegment == null )
+			{
+				SetMaster(seg);
+				seg.Play();
+			}
+			else if ( seg.m_CueType == EPMusicSegment.CueType.INSTANT )
+			{
+				seg.SetTimeSamples( m_MasterSegment.GetTimeSamples() );
+				SetMaster(seg);
+				seg.Play();
+				//Debug.Log("Play segment " + i );
+			}
+			else
+			{
+				seg.PlayQueuedMaster();
+				m_QueuedMasterSegment = seg;
+				Debug.Log("Queue segment " + i );
+			}
+		}
+	}
+	
+	public void PlaySegment ( string segName )
+	{
+		int i = GetSegmentIndex( segName );
+		if ( i >= 0 )
+			PlaySegment ( i );
+	}
+	
 	public void PlaySegment ( int i )
 	{
 		EPMusicSegment seg = m_Segments[i];
@@ -89,6 +132,14 @@ public class EPMusicPlayer : MonoBehaviour {
 		}
 	}
 	
+	// Toggle (play) functions
+	public void ToggleSegment ( string segName )
+	{
+		int i = GetSegmentIndex( segName );
+		if ( i >= 0 )
+			ToggleSegment ( i );
+	}
+	
 	public void ToggleSegment ( int i )
 	{
 		if ( !m_Segments[i].IsPlaying() )
@@ -99,6 +150,33 @@ public class EPMusicPlayer : MonoBehaviour {
 			{
 				StopSegment(i);
 			}
+	}
+	
+	public void ToggleSegmentMaster ( string segName )
+	{
+		int i = GetSegmentIndex( segName );
+		if ( i >= 0 )
+			ToggleSegmentMaster ( i );
+	}
+	
+	public void ToggleSegmentMaster ( int i )
+	{
+		if ( !m_Segments[i].IsPlaying() )
+			{
+				PlaySegmentMaster(i);
+			}
+			else
+			{
+				StopSegment(i);
+			}
+	}
+	
+	// Stop functions
+	public void StopSegment ( string segName )
+	{
+		int i = GetSegmentIndex( segName );
+		if ( i >= 0 )
+			StopSegment ( i );
 	}
 	
 	public void StopSegment( int i )
@@ -114,6 +192,14 @@ public class EPMusicPlayer : MonoBehaviour {
 		}
 	}	
 	
+	// TogglePause functions
+	public void TogglePauseSegment ( string segName )
+	{
+		int i = GetSegmentIndex( segName );
+		if ( i >= 0 )
+			TogglePauseSegment ( i );
+	}
+	
 	public void TogglePauseSegment ( int i )
 	{
 		if ( !m_Segments[i].IsPlaying() )
@@ -126,6 +212,14 @@ public class EPMusicPlayer : MonoBehaviour {
 			}
 	}
 	
+	// Pause functions
+	public void PauseSegment ( string segName )
+	{
+		int i = GetSegmentIndex( segName );
+		if ( i >= 0 )
+			PauseSegment ( i );
+	}
+	
 	public void PauseSegment( int i )
 	{
 		EPMusicSegment seg = m_Segments[i];
@@ -135,7 +229,21 @@ public class EPMusicPlayer : MonoBehaviour {
 			seg.Pause();
 			//Debug.Log("Pause segment " + i );
 		}
-	}	
+	}
+	
+	// Get segment index from name, used for play/toggle/pause functions
+	public int GetSegmentIndex ( string segName )
+	{
+		for ( int i = 0; i < m_Segments.Length; i++ )
+		{
+			if ( m_Segments[i].name == segName )
+			{
+				return i;
+			}
+		}
+		Debug.Log("Segment " + segName + " not found");
+		return -1;
+	}
 	
 	public void StopAll()
 	{
@@ -210,10 +318,20 @@ public class EPMusicPlayer : MonoBehaviour {
 				seg.SetTimeSamples(0);
 			}
 		}
+		if ( m_QueuedMasterSegment != null )
+		{
+			m_MasterSegment.Stop();
+			SetMaster ( m_QueuedMasterSegment );
+			m_QueuedMasterSegment.m_Sources[0].PlayDelayed(delay);
+			m_QueuedMasterSegment.SetTimeSamples(0);
+			m_QueuedMasterSegment.ClearQueue();
+			
+			m_QueuedMasterSegment = null;
+		}
 	}
 	
 	// Set a segment as MasterSegment
-	void SetMaster( EPMusicSegment seg )
+	public void SetMaster( EPMusicSegment seg )
 	{
 		m_MasterSegment = seg;
 	}
@@ -306,9 +424,5 @@ public class EPMusicPlayer : MonoBehaviour {
 		{
 			StopAll();
 		}//*/
-		if ( Input.GetKeyDown (KeyCode.P) )
-		{
-			PlayOneShot("Reactor_01", -12.0f);
-		}
 	}
 }

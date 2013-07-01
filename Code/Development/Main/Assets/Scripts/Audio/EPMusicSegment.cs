@@ -13,19 +13,29 @@ public class EPMusicSegment : EPSound {
 	public float m_LoopPoint;
 	
 	bool m_Queued = false;
+	bool m_QueuedMaster = false;
 	float m_QueueTime;
 		
 	public enum CueType
 	{
 		INSTANT,
 		GRID,
-		POINT
+		BAR,
+		POINT,
+		END
 	}
 	
 	// Use this for initialization
 	void Start ()
 	{
 		m_QueueTime = -1;
+		if ( m_Sources[0] == null )
+		{
+			if ( this.audio != null )
+				m_Sources[0] = this.audio;
+			else
+				Debug.Log("No valid audiosource available in EPMusicSegment " + this.name);
+		}
 	}
 	
 	// Update is called once per frame
@@ -33,6 +43,7 @@ public class EPMusicSegment : EPSound {
 	{
 		if ( m_Queued && m_QueueTime >= 0 )
 		{
+			//Debug.Log ("m_QueueTime = " + m_QueueTime);
 			float now = EPMusicPlayer.Get().m_MasterSegment.GetTime();
 			
 			// Hi-resolution sync
@@ -40,10 +51,18 @@ public class EPMusicSegment : EPSound {
 			
 			if ( triggerDelta < EPMusicPlayer.Get().m_syncRes )
 			{
-				SetTime( m_QueueTime );
+				SetTime( m_QueueTime % m_LoopPoint );
 				this.m_Sources[0].PlayDelayed( triggerDelta );
 				m_Queued = false;
-				Debug.Log ("Playing at " + now + " + " + triggerDelta + " delay");
+				//Debug.Log ("Playing at " + now + " + " + triggerDelta + " delay");
+				
+				if ( m_QueuedMaster == true )
+				{
+					//Debug.Log ("Stop master now");
+					EPMusicPlayer.Get ().m_MasterSegment.Stop();
+					EPMusicPlayer.Get ().SetMaster(this);
+					m_QueuedMaster = false;
+				}
 			}
 		}
 	}// Update	
@@ -55,6 +74,12 @@ public class EPMusicSegment : EPSound {
 	
 	
 	// Member functions
+	public void PlayQueuedMaster ()
+	{
+		m_QueuedMaster = true;
+		PlayQueued ();
+	}
+	
 	public void PlayQueued ()
 	{
 		if ( m_CueType == CueType.POINT )
@@ -67,6 +92,21 @@ public class EPMusicSegment : EPSound {
 			m_QueueTime = GetNextGrid();
 			m_Queued = true;
 		}
+		else if ( m_CueType == CueType.BAR )
+		{
+			m_QueueTime = GetNextBar();
+			m_Queued = true;
+		}
+		else if ( m_CueType == CueType.END )
+		{
+			m_QueueTime = EPMusicPlayer.Get().m_MasterSegment.m_LoopPoint;
+			m_Queued = true;
+			//Debug.Log ("m_QueueTime = " + m_QueueTime);
+		}
+		else
+		{
+			Debug.Log("Can't queue segment, no Cue Type defined");
+		}	
 	}
 	
 	public float GetTime()
@@ -105,5 +145,25 @@ public class EPMusicSegment : EPSound {
 		//Debug.Log ("Now: " + now + " Next: " + next);
 		
 		return next;
+	}
+	
+	float GetNextBar()
+	{
+		float next;
+		float now = EPMusicPlayer.Get().m_MasterSegment.GetTime();
+		float beat = 60.0f / m_BPM;
+		float bar = beat * m_TimeSignatureUpper;
+		//Debug.Log("Grid size: " + grid);
+		
+		next = ( (int)( now / bar ) + 1 ) * bar;
+		//Debug.Log ("Now: " + now + " Next: " + next);
+		
+		return next;
+	}
+	
+	public void ClearQueue()
+	{
+		m_Queued = false;
+		m_QueuedMaster = false;
 	}
 }

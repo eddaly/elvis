@@ -10,7 +10,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class EPSoundController : MonoBehaviour 
 {
 	public bool m_PopulateList = false;
@@ -28,6 +28,8 @@ public class EPSoundController : MonoBehaviour
 	public float m_MusicVolMaster = 0.6f;
 	[HideInInspector]
 	public float m_DuckingAmount = 1.0f;
+	[HideInInspector]
+	public List<EPSoundEvent> m_StingQueue = new List<EPSoundEvent>();
 	
 	//	Pseudo-singleton pattern
 	private static EPSoundController ms_soundController = null;
@@ -63,6 +65,12 @@ public class EPSoundController : MonoBehaviour
 		
 		m_GlobalSFXVolume = m_SFXVolMaster;
 		m_GlobalMusicVolume = m_MusicVolMaster;
+		
+		/// Listen for EPMusicPlayer beat notifications
+		NotificationCenter.DefaultCenter.AddObserver(this, "NotifyBeat");
+		NotificationCenter.DefaultCenter.AddObserver(this, "NotifyHalfBeat");
+		NotificationCenter.DefaultCenter.AddObserver(this, "NotifyQuarterBeat");
+		//*/
 	}
 	
 	// Update is called once per frame
@@ -132,6 +140,35 @@ public class EPSoundController : MonoBehaviour
 	public void Play( EPSoundEvent sound, float volume, float pitch )
 	{
 		sound.Play( volume, pitch );
+	}
+	
+	// Queue sounds in the Sting queue
+	public void PlaySting ( string sound_name )
+	{
+		int soundIdx = GetIndex ( sound_name );
+		AddToStingQueue ( soundIdx );
+	}
+	
+	public void AddToStingQueue ( int sound_idx )
+	{
+		if ( !m_StingQueue.Contains(m_EPSoundEventList[sound_idx]) )
+		{
+			m_StingQueue.Add(m_EPSoundEventList[sound_idx]);
+		}
+	}
+	
+	public void ClearStingQueue ()
+	{
+		for ( int i = 0; i < m_StingQueue.Count; i++ )
+		{
+			m_StingQueue[i].Play();
+		}
+		m_StingQueue.Clear();
+	}
+	
+	public void NotifyQuarterBeat ()
+	{
+		ClearStingQueue();
 	}
 	
 	public void StopAll()
