@@ -7,12 +7,12 @@ public class scrolltest : MonoBehaviour {
 	FastGUIScrollWindow scrollWindow;
 	FastGUIElement levelIcon;
 
+	FastGUIElement popup;
+	FastGUIButton popupButton;
+
 	// Use this for initialization
 	void Start ()
 	{
-		// Need to specify if want to set UVs with original pixels because Unity rescales texture on load
-		FastGUIElement.SetOriginalAtlasPixels (2048, 1536);
-	
 		play = new FastGUIElement (
 			new Vector2 (0, 0),					// Screen position
 			new Vector4 (0, 0, 2048, 768));		// Atlas position
@@ -25,16 +25,35 @@ public class scrolltest : MonoBehaviour {
 		levelIcon = new FastGUIElement (
 			scrollWindow,
 			new Vector2 (0, 100),				// Position within ScrollWindow
-			new Vector4 (0, 0, 128, 128));		// Atlas position		
+			new Vector4 (0, 0, 128, 128));		// Atlas position
+		
+		// Make the popup window
+		popup = new FastGUIElement (
+			new Vector2 (2048*.75f, 1536*.75f),	// Screen position
+			new Vector4 (200, 0, 500, 400),		// Atlas position
+			FastGUIButton.Position.XYCENTRED);	
+		
+		// Make and Add the button to go on it
+		popupButton = new FastGUIButton (
+			new Vector2 (0, 0),					// Screen position (will be ignored)
+			new Vector4 (0, 0, 128, 128),		// Atlas position
+			new Vector4 (128, 0, 128, 128));	// Atlas position when pressed
+		popup.Add (popupButton, new Vector2 (popup.width/2 - popupButton.width/2, popup.height/2 - popupButton.height/2));
+		
+		// Hide it until ready
+		popup.SetDisplayed (false);
 	}
 	
 	// Update is called once per frame
 	void Update ()
-	{
-		FastGUIElement.DebugDrawSafeArea ();
-		
+	{	
 		// Needed to handle inputs
 		scrollWindow.Update ();
+		if (popupButton.UpdateTestPressed ())
+		{
+			Debug.Log ("Tapped RED Button");
+			popup.SetDisplayed (false);
+		}
 		
 		if (play.Tapped ())
 		{
@@ -47,6 +66,7 @@ public class scrolltest : MonoBehaviour {
 		if (levelIcon.Tapped ())
 		{
 			Debug.Log ("Tapped Icon");
+			popup.SetDisplayed (true);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FastGUIElement
 {
@@ -20,6 +21,10 @@ public class FastGUIElement
 	protected internal BatchedQuadDef quad;			// The quad that's rendered
 	protected internal int textureIdx;				// Index in the Frontend Atlas
 	protected Rect screenRect;						// Screen co-ordinates rect
+	protected bool displayed = true;				// Is Element diplayed
+	
+	// Child elements
+	protected List <FastGUIElement> children;
 	
 	// To enable specifying UVs in original pixels need to provide as Unity will rescale Texture
 	static public void SetOriginalAtlasPixels (int width, int height)
@@ -80,7 +85,7 @@ public class FastGUIElement
 		width = atlasRect.z;
 		height = atlasRect.w;		
 		
-		// The centre of the quad in world space which is mapped by camera to the safeSceen size ***could work with given camera
+		// The centre of the quad in world space which is mapped by camera to the safeSceen size
 		if (pos == Position.TOPLEFT) {
 			quad.m_Position.x = (-safeScreenWidth * .5f + screenPos.x) + (width * .5f);
 			quad.m_Position.y = (+safeScreenHeight * .5f - screenPos.y) - (height * .5f);
@@ -101,11 +106,54 @@ public class FastGUIElement
 		quad.m_Scale.x = width;
 		quad.m_Scale.y = height;
 		UpdatedQuad ();
+		children = new List<FastGUIElement>();
+	}
+	
+	// Add a child Element at the provided position
+	public void Add (FastGUIElement child,
+		Vector2 pos)		// x,y is top-left in pixels
+	{
+		children.Add (child);
+		child.AddedBy (this, pos);
+	}
+	
+	// Added by this parent Element at the provided position
+	protected internal virtual void AddedBy (FastGUIElement parent,
+		Vector2 pos)		// x,y is top-left in pixels
+	{
+		quad.m_Position =  new Vector3 (
+			parent.quad.m_Position.x - parent.width/2 + width/2 + pos.x,
+			parent.quad.m_Position.y + parent.height/2 - height/2 - pos.y, 0);
+		UpdatedQuad ();
+	}
+
+	// Display the element
+	public void SetDisplayed (bool show)
+	{
+		if (!show && displayed)
+		{
+			// Pull away the quad
+			quad.m_Position -= new Vector3 (10000, 0, 0);
+			displayed = false;
+		}
+		else if (show && !displayed)
+		{
+			// Replace the quad
+			quad.m_Position += new Vector3 (10000, 0, 0);
+			displayed = true;
+		}
+		foreach (FastGUIElement child in children)
+		{
+			child.SetDisplayed (show);
+		}
 	}
 	
 	// Was the GUIElement tapped
 	public bool Tapped ()
 	{
+		if (!displayed)
+			return false;
+		
 		Vector2 tapPos;
 		if (!getTapPos (out tapPos))
 			return false;

@@ -14,7 +14,7 @@ public class FastGUIButton : FastGUIElement
 		: base (scrollWindow, scrollWindowPos, atlasRect)
 	{
 		pressedButton = new FastGUIElement (scrollWindow, scrollWindowPos, atlasRectPressedButton);
-		pressedButton.quad.m_Position += new Vector3 (10000, 0, 0);	// Remove from screen
+		pressedButton.SetDisplayed (false);
 	}
 
 	// Make a Button, will immediately render
@@ -26,42 +26,65 @@ public class FastGUIButton : FastGUIElement
 		: base (screenPos, atlasRect, pos)
 	{
 		pressedButton = new FastGUIElement (screenPos, atlasRectPressedButton, pos);
-		pressedButton.quad.m_Position += new Vector3 (10000, 0, 0);	// Remove from screen
+		pressedButton.SetDisplayed (false);
+	}
+	
+	// Added by this parent Element at the provided position
+	protected internal override void AddedBy (FastGUIElement parent,
+		Vector2 pos)		// x,y is top-left in pixels
+	{
+		base.AddedBy (parent, pos);
+		pressedButton.SetDisplayed (true);	// Need to display before adding as had moved the quad off screen! (at least because otherwise the displayed flag is confused)
+		pressedButton.AddedBy (parent, pos);
+		pressedButton.SetDisplayed (false);	// And hide again
 	}
 	
 	// Update to see if pressed, display the pressed texture, return true when press complete
 	public bool UpdateTestPressed ()
 	{
-		Vector3 pos;
+		if (!displayed)
+			return false;
+		
+		// Get position
+		Vector3 pos;		
+#if UNITY_IPHONE || UNITY_ANDROID
+		if (Input.touchCount == 0)
+			return false;
+		pos = Input.GetTouch(0).position;
+#else
+		pos = Input.mousePosition;
+#endif			
+		
 #if UNITY_IPHONE || UNITY_ANDROID
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-		{
-			pos = Input.GetTouch(0).position;
 #else
 		if (Input.GetMouseButtonDown(0))
+#endif
 		{
-			pos = Input.mousePosition;
-#endif			
-			// If touched the button
+			// If touched the button, diplay it
 			if (screenRect.Contains (pos))
-			{
-				// Display pressed Button quad (bring back in view and in front of unpressed button)
-				pressedButton.quad.m_Position -= new Vector3 (10000, 0, 0);
-			}
+				pressedButton.SetDisplayed (true);
 		}
 #if UNITY_IPHONE || UNITY_ANDROID			
-		else if (Input.GetTouch(0).phase == TouchPhase.Ended)
+		else if (Input.GetTouch(0).phase == TouchPhase.Moved)
+#else
+		else if (Input.GetMouseButton(0))
+#endif							
 		{
-			pos = Input.GetTouch(0).position;
+			// If moved away from button, don't display pressed button texture
+			if (!screenRect.Contains (pos))
+				pressedButton.SetDisplayed (false);
+		}			
+#if UNITY_IPHONE || UNITY_ANDROID			
+		else if (Input.GetTouch(0).phase == TouchPhase.Ended)
 #else
 		else if (Input.GetMouseButtonUp(0))
+#endif
 		{
-			pos = Input.mousePosition;
-#endif							
-			// Pull away the display pressed button texture
-			pressedButton.quad.m_Position += new Vector3 (10000, 0, 0);
+			// Hide the pressed button texture
+			pressedButton.SetDisplayed (false);
 
-			// If touch ended in the button, press complete, else cancel
+			// If touch ended in the button, press is complete, else cancel
 			return screenRect.Contains (pos);
 		}
 		return false;

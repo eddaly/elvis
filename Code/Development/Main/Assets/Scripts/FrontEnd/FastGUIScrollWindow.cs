@@ -10,7 +10,6 @@ public class FastGUIScrollWindow : FastGUIElement
 #endif
 	private bool scrollStarted = false;
 	private Vector4 atlasRectMaxNormalised;
-	private List <FastGUIElement> children;
 	
 	// Make a ScrollWindow, will immediately render
 	public FastGUIScrollWindow (
@@ -24,25 +23,14 @@ public class FastGUIScrollWindow : FastGUIElement
 			atlasRectMax.y / originalAtlasPixelsHeight, 
 			atlasRectMax.z / originalAtlasPixelsWidth, 
 			atlasRectMax.w / originalAtlasPixelsHeight);
-		children = new List<FastGUIElement>();
-	}
-	
-	// Add an Element to the ScrollWindow at the provided position
-	public void Add (FastGUIElement child,
-		Vector2 pos)		// x,y is top-left in pixels
-	{
-		children.Add (child);
-		child.quad.m_Position =  new Vector3 (
-			quad.m_Position.x - width/2 + child.width/2 + pos.x,
-			quad.m_Position.y + height/2 - child.height/2 - pos.y, 0);
-		child.UpdatedQuad ();
 	}
 	
 	// Update should be called once per frame to update
 	public void Update ()
 	{
-		//***if in area			
-		
+		if (!displayed)
+			return;
+
 		// If just touched the screen
 #if UNITY_IPHONE || UNITY_ANDROID
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -128,10 +116,10 @@ public class FastGUIScrollWindow : FastGUIElement
 		
 		// Move the children inline with scrolled background
 		Vector3 p = new Vector3 (v.x, v.y, 0);
-		for (int n = 0; n < children.Count; n++)
+		foreach (FastGUIElement child in children)
 		{
-			children[n].quad.m_Position += p;
-			children[n].UpdatedQuad ();
+			child.quad.m_Position += p;
+			child.UpdatedQuad ();
 		}
 			
 		// TODO it going outside the window, i.e. clipping it.  However that only needed if is any visible space outside the window
