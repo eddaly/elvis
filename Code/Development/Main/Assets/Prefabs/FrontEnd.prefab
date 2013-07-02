@@ -75,45 +75,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b12dbba63ffa4cd2a49f5e614ae4e9f, type: 3}
   m_Name: 
-  m_GoldDiscsPriceCoins: 10000
-  m_GoldDiscsPriceCashGBP: .99000001
-  m_JumpsuitRedUnlockLevel: 1
-  m_JumpsuitRedPriceCoins: 5000
-  m_JumpsuitRedPriceGoldDiscs: 1
-  m_JumpsuitSilverUnlockLevel: 10
-  m_JumpsuitSilverPriceCoins: 25000
-  m_JumpsuitSilverPriceGoldDiscs: 5
-  m_JumpsuitGoldUnlockLevel: 20
-  m_JumpsuitGoldPriceCoins: 150000
-  m_JumpsuitGoldPriceGoldDiscs: 20
-  m_BlueSuedeShoesUnlockLevel: 5
-  m_BlueSuedeShoesPriceCoins: 10000
-  m_BlueSuedeShoesPriceGoldDiscs: 0
-  m_SpeedwayHelmetUnlockLevel: 12
-  m_SpeedwayHelmetPriceCoins: 40000
-  m_SpeedwayHelmetPriceGoldDiscs: 1
-  m_ArmyGunUnlockLevel: 16
-  m_ArmyGunPriceCoins: 100000
-  m_ArmyGunPriceGoldDiscs: 5
-  m_LevelUpXP2: 500
-  m_LevelUpXP3: 600
-  m_LevelUpXP4: 700
-  m_LevelUpXP5: 900
-  m_LevelUpXP6: 1000
-  m_LevelUpXP7: 1200
-  m_LevelUpXP8: 1500
-  m_LevelUpXP9: 1800
-  m_LevelUpXP10: 2100
-  m_LevelUpXP11: 2600
-  m_LevelUpXP12: 3100
-  m_LevelUpXP13: 3700
-  m_LevelUpXP14: 4500
-  m_LevelUpXP15: 5300
-  m_LevelUpXP16: 6400
-  m_LevelUpXP17: 7700
-  m_LevelUpXP18: 9200
-  m_LevelUpXP19: 11100
-  m_LevelUpXP20: 13300
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

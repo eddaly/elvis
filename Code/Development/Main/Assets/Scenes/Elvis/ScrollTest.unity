@@ -153,6 +153,123 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &691978810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+  m_PrefabInternal: {fileID: 1134520490}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 691978812}
+  - 114: {fileID: 691978811}
+  m_Layer: 0
+  m_Name: PersistentData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &691978811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 739eb2a32befe4907958e898de1ee35d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1134520490}
+  m_GameObject: {fileID: 691978810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b12dbba63ffa4cd2a49f5e614ae4e9f, type: 3}
+  m_Name: 
+--- !u!4 &691978812
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+  m_PrefabInternal: {fileID: 1134520490}
+  m_GameObject: {fileID: 691978810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1154770718}
+--- !u!1001 &1134520490
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+  m_RootGameObject: {fileID: 1154770717}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
+--- !u!1 &1154770717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+  m_PrefabInternal: {fileID: 1134520490}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1154770718}
+  - 114: {fileID: 1154770719}
+  m_Layer: 0
+  m_Name: FrontEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1154770718
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+  m_PrefabInternal: {fileID: 1134520490}
+  m_GameObject: {fileID: 1154770717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 691978812}
+  m_Father: {fileID: 0}
+--- !u!114 &1154770719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 739eb2a32befe4907958e898de1ee35d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1134520490}
+  m_GameObject: {fileID: 1154770717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
+  m_Name: 
 --- !u!1 &1922735874
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,79 +307,3 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1 &2083056767
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2083056768}
-  - 114: {fileID: 2083056769}
-  m_Layer: 0
-  m_Name: PersistentData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2083056768
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2083056767}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
---- !u!114 &2083056769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2083056767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b12dbba63ffa4cd2a49f5e614ae4e9f, type: 3}
-  m_Name: 
-  m_GoldDiscsPriceCoins: 10000
-  m_GoldDiscsPriceCashGBP: .99000001
-  m_JumpsuitRedUnlockLevel: 1
-  m_JumpsuitRedPriceCoins: 5000
-  m_JumpsuitRedPriceGoldDiscs: 1
-  m_JumpsuitSilverUnlockLevel: 10
-  m_JumpsuitSilverPriceCoins: 25000
-  m_JumpsuitSilverPriceGoldDiscs: 5
-  m_JumpsuitGoldUnlockLevel: 20
-  m_JumpsuitGoldPriceCoins: 150000
-  m_JumpsuitGoldPriceGoldDiscs: 20
-  m_BlueSuedeShoesUnlockLevel: 5
-  m_BlueSuedeShoesPriceCoins: 10000
-  m_BlueSuedeShoesPriceGoldDiscs: 0
-  m_SpeedwayHelmetUnlockLevel: 12
-  m_SpeedwayHelmetPriceCoins: 40000
-  m_SpeedwayHelmetPriceGoldDiscs: 1
-  m_ArmyGunUnlockLevel: 16
-  m_ArmyGunPriceCoins: 100000
-  m_ArmyGunPriceGoldDiscs: 5
-  m_LevelUpXP2: 500
-  m_LevelUpXP3: 600
-  m_LevelUpXP4: 700
-  m_LevelUpXP5: 900
-  m_LevelUpXP6: 1000
-  m_LevelUpXP7: 1200
-  m_LevelUpXP8: 1500
-  m_LevelUpXP9: 1800
-  m_LevelUpXP10: 2100
-  m_LevelUpXP11: 2600
-  m_LevelUpXP12: 3100
-  m_LevelUpXP13: 3700
-  m_LevelUpXP14: 4500
-  m_LevelUpXP15: 5300
-  m_LevelUpXP16: 6400
-  m_LevelUpXP17: 7700
-  m_LevelUpXP18: 9200
-  m_LevelUpXP19: 11100
-  m_LevelUpXP20: 13300
