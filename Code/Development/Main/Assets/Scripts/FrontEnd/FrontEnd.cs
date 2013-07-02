@@ -5,6 +5,7 @@ public class FrontEnd : MonoBehaviour {
 	
 	private PersistentData persistentData;
 	public Metagame metagame;
+	public static string atlasFile = "test_atlus";
 	
 	// This is effectively a singleton
 	public static FrontEnd instance {get; private set;}
@@ -41,7 +42,7 @@ public class FrontEnd : MonoBehaviour {
 		Camera.mainCamera.farClipPlane = 11;
 		
 		// Need to specify if want to set UVs with original pixels because Unity rescales texture on load
-		FastGUIElement.SetOriginalAtlasPixels (2048, 1536);
+		FastGUIElement.SetOriginalAtlasPixels (4096, 4096);
 	}
 	
 	// Update is called once per frame

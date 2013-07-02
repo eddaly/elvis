@@ -3,7 +3,7 @@ using System.Collections;
 
 public class scrolltest : MonoBehaviour {
 	
-	FastGUIElement play;
+	FastGUIElement play,box;
 	FastGUIScrollWindow scrollWindow;
 	FastGUIElement levelIcon;
 
@@ -13,7 +13,10 @@ public class scrolltest : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		play = new FastGUIElement (
+		box = new FastGUIElement (
+			new Vector2 (0, 0),					// Screen position
+			new Vector4 (0, 0, 2048, 1536));		// Atlas position
+		/*play = new FastGUIElement (
 			new Vector2 (0, 0),					// Screen position
 			new Vector4 (0, 0, 2048, 768));		// Atlas position
 		
@@ -42,13 +45,13 @@ public class scrolltest : MonoBehaviour {
 		
 		// Hide it until ready
 		popup.SetDisplayed (false);
-	}
+	*/}
 	
 	// Update is called once per frame
 	void Update ()
 	{	
 		// Needed to handle inputs
-		scrollWindow.Update ();
+	/*	scrollWindow.Update ();
 		if (popupButton.UpdateTestPressed ())
 		{
 			Debug.Log ("Tapped RED Button");
@@ -67,6 +70,6 @@ public class scrolltest : MonoBehaviour {
 		{
 			Debug.Log ("Tapped Icon");
 			popup.SetDisplayed (true);
-		}
+		}*/
 	}
 }
