@@ -250,7 +250,7 @@ public class PrimitiveQuadBatch
 			if( quadDef.m_Active )
 			{
 				//	Needed to avoid overflowing texels
-				const float tempHackFudge = 0.002f;
+				const float tempHackFudge = 0;//.002f;
 				
 				info.m_UVs[vert] = new Vector2
 					( atlas.m_UVSet[quadDef.m_TextureIdx].x + tempHackFudge, atlas.m_UVSet[quadDef.m_TextureIdx].y + tempHackFudge );
