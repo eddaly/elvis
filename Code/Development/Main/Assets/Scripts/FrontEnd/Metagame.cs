@@ -63,8 +63,8 @@ public class Metagame
 		public int goldDiscsPrice;
 	};
 	static public Mission [] missions = {
-		new Mission {name = "Mission1", coinsPrize = 50, coinsPrice = 500, goldDiscsPrice = 1},
-		new Mission {name = "Mission2", coinsPrize = 100, coinsPrice = 1000, goldDiscsPrice = 2}
+		new Mission {name = "Mission1", coinsPrize = 50,	coinsPrice = 500,	goldDiscsPrice = 1},
+		new Mission {name = "Mission2", coinsPrize = 100,	coinsPrice = 1000,	goldDiscsPrice = 2}
 	};
 }
 
