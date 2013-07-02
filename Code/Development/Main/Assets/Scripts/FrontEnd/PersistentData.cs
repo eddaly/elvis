@@ -1,17 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-/*
- * INSTRUCTIONS
- * 
- * Adding an upgrade or an item:
- * 
- * 1. Add an entry to Upgrades or Items enum
- * 2. Add UnlockLevel, PriceCoins and PriceGoldDiscs properties
- * 3. Update the UI
- * 
-*/
-
 public class PersistentData : MonoBehaviour {
 	
 	// This is a singleton
