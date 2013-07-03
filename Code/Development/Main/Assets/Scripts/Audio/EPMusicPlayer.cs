@@ -10,7 +10,10 @@ public class EPMusicPlayer : MonoBehaviour {
 	public float m_LoopBeats;
 	
 	public EPMusicSegment m_MasterSegment = null;
-	EPMusicSegment m_QueuedMasterSegment = null;
+	
+	EPMusicSegment m_QueuedSegment = null;
+	bool m_QueuedMaster;
+	float m_QueueTime = -1;
 	
 	public float m_loopCountdown;
 	public float m_syncRes = 0.0333f;
@@ -19,6 +22,16 @@ public class EPMusicPlayer : MonoBehaviour {
 	int m_LastNotifiedBeat = 0;
 	int m_LastNotifiedHalfBeat = 0;
 	int m_LastNotifiedQuarterBeat = 0;
+	
+	public enum Flags
+	{
+		None = 0,
+		IsMaster = 1,
+		Cue_Grid = 2,
+		Cue_Bar = 4,
+		Cue_Point = 8,
+		Cue_End = 16
+	}
 	
 	//	Pseudo-singleton pattern
 	private static EPMusicPlayer ms_musicPlayer = null;
@@ -62,18 +75,23 @@ public class EPMusicPlayer : MonoBehaviour {
 			DoNotifyQuarterBeat();
 		}
 		
+		if ( m_QueuedSegment != null )
+		{
+			ProcessSegmentQueue();
+		}
+		
 		DebugInputs();
 	}
 	
 	// Play functions
-	public void PlaySegmentMaster ( string segName )
+	public void PlaySegment ( string segName, Flags flags = Flags.None )
 	{
 		int i = GetSegmentIndex( segName );
 		if ( i >= 0 )
-			PlaySegmentMaster ( i );
+			PlaySegment ( i, flags );
 	}
 	
-	public void PlaySegmentMaster ( int i )
+	public void PlaySegment ( int i, Flags flags = Flags.None )
 	{
 		EPMusicSegment seg = m_Segments[i];
 		
@@ -87,83 +105,64 @@ public class EPMusicPlayer : MonoBehaviour {
 			else if ( seg.m_CueType == EPMusicSegment.CueType.INSTANT )
 			{
 				seg.SetTimeSamples( m_MasterSegment.GetTimeSamples() );
-				SetMaster(seg);
+				
+				if ( ( flags & Flags.IsMaster ) == Flags.IsMaster )
+				{
+					SetMaster(seg);
+				}
+				
 				seg.Play();
 				//Debug.Log("Play segment " + i );
 			}
 			else
 			{
-				seg.PlayQueuedMaster();
-				m_QueuedMasterSegment = seg;
-				//Debug.Log("Queue segment " + i );
-			}
-		}
-	}
-	
-	public void PlaySegment ( string segName )
-	{
-		int i = GetSegmentIndex( segName );
-		if ( i >= 0 )
-			PlaySegment ( i );
-	}
-	
-	public void PlaySegment ( int i )
-	{
-		EPMusicSegment seg = m_Segments[i];
-		
-		if ( seg != null )
-		{
-			if ( m_MasterSegment == null )
-			{
-				SetMaster(seg);
-				seg.Play();
-			}
-			else if ( seg.m_CueType == EPMusicSegment.CueType.INSTANT )
-			{
-				seg.SetTimeSamples( m_MasterSegment.GetTimeSamples() );
-				seg.Play();
-				//Debug.Log("Play segment " + i );
-			}
-			else
-			{
-				seg.PlayQueued();
+				if ( seg.m_CueType == EPMusicSegment.CueType.POINT )
+				{
+					m_QueueTime = seg.m_CuePoint;
+				}
+				else if ( seg.m_CueType == EPMusicSegment.CueType.GRID )
+				{
+					m_QueueTime = GetNextGrid();
+				}
+				else if ( seg.m_CueType == EPMusicSegment.CueType.BAR )
+				{
+					m_QueueTime = GetNextBar();
+				}
+				else if ( seg.m_CueType == EPMusicSegment.CueType.END )
+				{
+					m_QueueTime = m_MasterSegment.m_LoopPoint;
+					//Debug.Log ("m_QueueTime = " + m_QueueTime);
+				}
+				else
+				{
+					Debug.Log("Can't queue segment, no Cue Type defined");
+				}
+				
+				m_QueuedSegment = seg;
+				
+				if ( ( flags & Flags.IsMaster ) == Flags.IsMaster )
+				{
+					m_QueuedMaster = true;
+				}
+					
 				//Debug.Log("Queue segment " + i );
 			}
 		}
 	}
 	
 	// Toggle (play) functions
-	public void ToggleSegment ( string segName )
+	public void ToggleSegment ( string segName, Flags flags = Flags.None  )
 	{
 		int i = GetSegmentIndex( segName );
 		if ( i >= 0 )
-			ToggleSegment ( i );
+			ToggleSegment ( i, flags );
 	}
 	
-	public void ToggleSegment ( int i )
+	public void ToggleSegment ( int i, Flags flags = Flags.None  )
 	{
 		if ( !m_Segments[i].IsPlaying() )
 			{
-				PlaySegment(i);
-			}
-			else
-			{
-				StopSegment(i);
-			}
-	}
-	
-	public void ToggleSegmentMaster ( string segName )
-	{
-		int i = GetSegmentIndex( segName );
-		if ( i >= 0 )
-			ToggleSegmentMaster ( i );
-	}
-	
-	public void ToggleSegmentMaster ( int i )
-	{
-		if ( !m_Segments[i].IsPlaying() )
-			{
-				PlaySegmentMaster(i);
+				PlaySegment(i, flags);
 			}
 			else
 			{
@@ -190,6 +189,8 @@ public class EPMusicPlayer : MonoBehaviour {
 			if ( seg == m_MasterSegment )
 				m_MasterSegment = null;
 		}
+		
+		ClearQueue();
 	}	
 	
 	// TogglePause functions
@@ -230,6 +231,35 @@ public class EPMusicPlayer : MonoBehaviour {
 			//Debug.Log("Pause segment " + i );
 		}
 	}
+	
+	// Deal with queued segments
+	public void ProcessSegmentQueue ()
+	{
+		if ( m_QueueTime >= 0 )
+		{
+			//Debug.Log ("m_QueueTime = " + m_QueueTime);
+			float now = m_MasterSegment.GetTime();
+			
+			// Hi-resolution sync
+			float triggerDelta = m_QueueTime - now;
+			
+			if ( triggerDelta < m_syncRes )
+			{
+				m_QueuedSegment.SetTime( m_QueueTime % m_QueuedSegment.m_LoopPoint );
+				m_QueuedSegment.m_Sources[0].PlayDelayed( triggerDelta );
+				//Debug.Log ("Playing at " + now + " + " + triggerDelta + " delay");
+				
+				if ( m_QueuedMaster == true )
+				{
+					//Debug.Log ("Stop master now");
+					m_MasterSegment.Stop();
+					SetMaster(m_QueuedSegment);
+					m_QueuedSegment = null;
+				}
+			}
+		}
+	}
+	
 	
 	// Get segment index from name, used for play/toggle/pause functions
 	public int GetSegmentIndex ( string segName )
@@ -318,15 +348,16 @@ public class EPMusicPlayer : MonoBehaviour {
 				seg.SetTimeSamples(0);
 			}
 		}
-		if ( m_QueuedMasterSegment != null )
+		if ( m_QueuedSegment != null )
 		{
-			m_MasterSegment.Stop();
-			SetMaster ( m_QueuedMasterSegment );
-			m_QueuedMasterSegment.m_Sources[0].PlayDelayed(delay);
-			m_QueuedMasterSegment.SetTimeSamples(0);
-			m_QueuedMasterSegment.ClearQueue();
-			
-			m_QueuedMasterSegment = null;
+			if ( m_QueuedMaster )
+			{
+				m_MasterSegment.Stop();
+				SetMaster ( m_QueuedSegment );
+			}
+			m_QueuedSegment.m_Sources[0].PlayDelayed(delay);
+			m_QueuedSegment.SetTimeSamples(0);
+			ClearQueue();
 		}
 	}
 	
@@ -402,6 +433,40 @@ public class EPMusicPlayer : MonoBehaviour {
 		}
 		
 		m_LastNotifiedQuarterBeat = i;
+	}
+		// Move all of these to the player
+	float GetNextGrid()
+	{
+		float next;
+		float now = m_MasterSegment.GetTime();
+		float beat = 60.0f / m_BPM;
+		float grid = beat * m_MasterSegment.m_GridSize;
+		//Debug.Log("Grid size: " + grid);
+		
+		next = ( (int)( now / grid ) + 1 ) * grid;
+		//Debug.Log ("Now: " + now + " Next: " + next);
+		
+		return next;
+	}
+	
+	float GetNextBar()
+	{
+		float next;
+		float now = m_MasterSegment.GetTime();
+		float beat = 60.0f / m_BPM;
+		float bar = beat * m_MasterSegment.m_TimeSignatureUpper;
+		//Debug.Log("Grid size: " + grid);
+		
+		next = ( (int)( now / bar ) + 1 ) * bar;
+		//Debug.Log ("Now: " + now + " Next: " + next);
+		
+		return next;
+	}
+	
+	public void ClearQueue()
+	{
+		m_QueuedSegment = null;
+		m_QueuedMaster = false;
 	}
 	
 	void DebugInputs()

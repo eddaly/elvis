@@ -22,26 +22,26 @@ public class AudioSandbox : MonoBehaviour {
 	void OnGUI () {
 		
 		// Master music segments
-		GUI.Box(new Rect(10,10,170,150), "Master Segments");
+		GUI.Box(new Rect(10,10,170,180), "Master Segments");
 		
 		if(GUI.Button(new Rect(20,40,150,22), "Toggle Intro_01"))
 		{
-			EPMusicPlayer.Get().ToggleSegmentMaster("VLV_Intro_01");		
+			EPMusicPlayer.Get().ToggleSegment("VLV_Intro_01", EPMusicPlayer.Flags.IsMaster );		
 		}
 		
 		if(GUI.Button(new Rect(20,70,150,22), "Toggle Intro_02"))
 		{
-			EPMusicPlayer.Get().ToggleSegmentMaster("VLV_Intro_02");
+			EPMusicPlayer.Get().ToggleSegment("VLV_Intro_02", EPMusicPlayer.Flags.IsMaster );
 		}	
 		
 		if(GUI.Button(new Rect(20,100,150,22), "Toggle Main_01"))
 		{
-			EPMusicPlayer.Get().ToggleSegmentMaster("VLV_Main_01");
+			EPMusicPlayer.Get().ToggleSegment("VLV_Main_01", EPMusicPlayer.Flags.IsMaster );
 		}	
 		
 		if(GUI.Button(new Rect(20,130,150,22), "Toggle Outro_01"))
 		{
-			EPMusicPlayer.Get().ToggleSegmentMaster("VLV_Outro_01");
+			EPMusicPlayer.Get().ToggleSegment("VLV_Outro_01", EPMusicPlayer.Flags.IsMaster );
 		}
 		
 		// Stings
