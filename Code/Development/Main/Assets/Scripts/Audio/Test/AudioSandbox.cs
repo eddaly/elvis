@@ -22,7 +22,7 @@ public class AudioSandbox : MonoBehaviour {
 	void OnGUI () {
 		
 		// Master music segments
-		GUI.Box(new Rect(10,10,170,180), "Master Segments");
+		GUI.Box(new Rect(10,10,170,150), "Master Segments");
 		
 		if(GUI.Button(new Rect(20,40,150,22), "Toggle Intro_01"))
 		{
@@ -65,6 +65,24 @@ public class AudioSandbox : MonoBehaviour {
 		if(GUI.Button(new Rect(210,130,150,22), "Grid: 1/4"))
 		{
 			EPSoundController.Get ().m_StingGrid = EPSoundController.StingGrid.QUARTERBEAT;	
+		}
+		
+		// Fades
+		GUI.Box(new Rect(200,170,170,120), "Fades");
+		
+		if(GUI.Button(new Rect(210,200,150,22), "Vol To 0"))
+		{
+			EPMusicPlayer.Get().m_MasterSegment.SetFade(0.1f, 1.0f, 3.0f, true);		
+		}
+		
+		if(GUI.Button(new Rect(210,230,150,22), "Pitch To 0.1"))
+		{
+			EPMusicPlayer.Get().m_MasterSegment.SetFade(1.0f, 0.1f, 3.0f, true);		
+		}
+		
+		if(GUI.Button(new Rect(210,260,150,22), "Vol/Pitch Combined"))
+		{
+			EPMusicPlayer.Get().m_MasterSegment.SetFade(0.2f, 0.1f, 5.0f, true);		
 		}
 	}// OnGUI
 }

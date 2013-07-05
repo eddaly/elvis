@@ -31,10 +31,13 @@ public class EPSound : EPSoundEvent {
 	int m_PlayIndex = -1;
 	
 	// Fade controls
-	bool m_Fading = false;
+	[HideInInspector]
+	public bool m_Fading = false;
 	bool m_StopAfterFade = false;
-	float m_FadeStartLevel;
-	float m_FadeEndLevel;
+	float m_FadeStartVol;
+	float m_FadeEndVol;
+	float m_FadeStartPitch;
+	float m_FadeEndPitch;
 	float m_FadeStartTime;
 	float m_FadeDuration;
 	
@@ -49,6 +52,7 @@ public class EPSound : EPSoundEvent {
 	{
 		if ( m_Fading )
 		{
+			Debug.Log("Fading");
 			ApplyFade();
 		}
 	}// Update
@@ -148,6 +152,17 @@ public class EPSound : EPSoundEvent {
 		}
 	}
 	
+	public override void SetPitch( float pitch )
+	{
+		foreach ( AudioSource source in m_Sources )
+		{
+			if ( source.isPlaying )
+			{
+				source.pitch = pitch;
+			}
+		}
+	}
+	
 	public override float GetVolume()
 	{
 		foreach ( AudioSource source in m_Sources )
@@ -160,12 +175,26 @@ public class EPSound : EPSoundEvent {
 		return 0.0f;
 	}
 	
-	public override void SetFade( float endVol, float duration, bool isFadeOut )
+	public override float GetPitch()
+	{
+		foreach ( AudioSource source in m_Sources )
+		{
+			if ( source != null && source.isPlaying )
+			{
+				return source.pitch;
+			}
+		}
+		return 0.0f;
+	}
+	
+	public override void SetFade( float endVol, float endPitch, float duration, bool isFadeOut )
 	{
 		m_FadeStartTime = Time.time;
 		m_FadeDuration = duration;
-		m_FadeStartLevel = GetVolume();
-		m_FadeEndLevel = endVol;
+		m_FadeStartVol = GetVolume();
+		m_FadeStartPitch = GetPitch();
+		m_FadeEndVol = endVol;
+		m_FadeEndPitch = endPitch;
 		m_StopAfterFade = isFadeOut;
 		m_Fading = true;
 	}
@@ -175,18 +204,31 @@ public class EPSound : EPSoundEvent {
 			float fadeClock = Time.time - m_FadeStartTime;
 			if ( fadeClock < m_FadeDuration )
 			{
-				float vol = m_FadeStartLevel + (( fadeClock / m_FadeDuration ) * ( m_FadeEndLevel - m_FadeStartLevel ));
-				SetVolume ( vol );
+				if ( m_FadeStartVol != m_FadeEndVol )
+				{
+					float vol = m_FadeStartVol + (( fadeClock / m_FadeDuration ) * ( m_FadeEndVol - m_FadeStartVol ));
+					SetVolume ( vol );
+				}
+				if ( m_FadeStartPitch != m_FadeEndPitch )
+				{
+					float pitch = m_FadeStartPitch + (( fadeClock / m_FadeDuration ) * ( m_FadeEndPitch - m_FadeStartPitch ));
+					SetPitch ( pitch );
+				}
 			}
 			else if ( !m_StopAfterFade )
 			{
-				SetVolume ( m_FadeEndLevel );
+				SetVolume ( m_FadeEndVol );
+				SetPitch ( m_FadeEndPitch );
 				m_Fading = false;
 			}
 			else
 			{
 				Stop ();
 				m_Fading = false;
+			
+				// Restore original pitch/volume after fade out
+				SetVolume ( m_FadeStartVol );
+				SetPitch ( m_FadeStartPitch );
 			}
 	}
 	

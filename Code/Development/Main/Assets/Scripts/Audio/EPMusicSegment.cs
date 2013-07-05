@@ -36,6 +36,10 @@ public class EPMusicSegment : EPSound {
 	// Update is called once per frame
 	void Update ()
 	{
+		if ( m_Fading )
+		{
+			ApplyFade();
+		}
 	}// Update	
 	
 	// Member functions

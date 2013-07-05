@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class EPSoundEvent : MonoBehaviour {
-	
+
+		
 	// Use this for initialization
 	void Start () {
 	
@@ -25,12 +26,19 @@ public class EPSoundEvent : MonoBehaviour {
 	
 	public virtual void SetVolume( float volume ) {}
 	
+	public virtual void SetPitch( float pitch ) {}
+	
 	public virtual float GetVolume()
 	{
 		return 0.0f;
 	}
 	
-	public virtual void SetFade( float endVol, float duration, bool isFadeOut ) {}
+	public virtual float GetPitch()
+	{
+		return 0.0f;
+	}
+	
+	public virtual void SetFade( float endVol, float endPitch, float duration, bool isFadeOut ) {}
 	
 	public virtual void ApplyFade() {}
 	

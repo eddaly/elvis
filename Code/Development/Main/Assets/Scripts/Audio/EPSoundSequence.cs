@@ -24,8 +24,10 @@ public class EPSoundSequence : EPSoundEvent {
 	// Fade controls
 	bool m_Fading = false;
 	bool m_StopAfterFade = false;
-	float m_FadeStartLevel;
-	float m_FadeEndLevel;
+	float m_FadeStartVol;
+	float m_FadeEndVol;
+	float m_FadeStartPitch;
+	float m_FadeEndPitch;
 	float m_FadeStartTime;
 	float m_FadeDuration;
 	
@@ -138,13 +140,26 @@ public class EPSoundSequence : EPSoundEvent {
 			}
 		}
 	}
+		
+	public override void SetPitch( float pitch )
+	{
+		foreach ( EPSound sound in m_EPSounds )
+		{
+			if ( sound != null && sound.IsPlaying() )
+			{
+				sound.SetPitch( pitch );
+			}
+		}
+	}
 	
-	public override void SetFade( float endVol, float duration, bool isFadeOut )
+	public override void SetFade( float endVol, float endPitch, float duration, bool isFadeOut )
 	{
 		m_FadeStartTime = Time.time;
 		m_FadeDuration = duration;
-		m_FadeStartLevel = m_InstanceVolume;
-		m_FadeEndLevel = endVol;
+		m_FadeStartVol = m_InstanceVolume;
+		m_FadeEndVol = endVol;
+		m_FadeStartPitch = m_InstancePitch;
+		m_FadeEndPitch = endPitch;
 		m_StopAfterFade = isFadeOut;
 		m_Fading = true;
 	}
@@ -154,18 +169,31 @@ public class EPSoundSequence : EPSoundEvent {
 			float fadeClock = Time.time - m_FadeStartTime;
 			if ( fadeClock < m_FadeDuration )
 			{
-				float vol = m_FadeStartLevel + (( fadeClock / m_FadeDuration ) * ( m_FadeEndLevel - m_FadeStartLevel ));
-				SetVolume ( vol );
+				if ( m_FadeStartVol != m_FadeEndVol )
+				{
+					float vol = m_FadeStartVol + (( fadeClock / m_FadeDuration ) * ( m_FadeEndVol - m_FadeStartVol ));
+					SetVolume ( vol );
+				}
+				if ( m_FadeStartPitch != m_FadeEndPitch )
+				{
+					float pitch = m_FadeStartPitch + (( fadeClock / m_FadeDuration ) * ( m_FadeEndPitch - m_FadeStartPitch ));
+					SetPitch ( pitch );
+				}
 			}
 			else if ( !m_StopAfterFade )
 			{
-				SetVolume ( m_FadeEndLevel );
+				SetVolume ( m_FadeEndVol );
+				SetPitch ( m_FadeEndPitch );
 				m_Fading = false;
 			}
 			else
 			{
 				Stop ();
 				m_Fading = false;
+			
+				// Restore original pitch/volume after fade out
+				SetVolume ( m_FadeStartVol );
+				SetPitch ( m_FadeStartPitch );
 			}
 	}
 	
