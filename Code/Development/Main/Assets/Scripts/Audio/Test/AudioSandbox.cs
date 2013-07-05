@@ -84,5 +84,14 @@ public class AudioSandbox : MonoBehaviour {
 		{
 			EPMusicPlayer.Get().m_MasterSegment.SetFade(0.2f, 0.1f, 5.0f, true);		
 		}
+		
+		
+		// Layers
+		GUI.Box(new Rect(10,170,170,120), "Layers");
+		
+		if(GUI.Button(new Rect(20,200,150,22), "Bongo Loop"))
+		{
+			EPMusicPlayer.Get().ToggleSegment("VLV_BongoLoop", EPMusicPlayer.Flags.None);		
+		}
 	}// OnGUI
 }

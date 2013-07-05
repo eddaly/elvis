@@ -52,7 +52,7 @@ public class EPSound : EPSoundEvent {
 	{
 		if ( m_Fading )
 		{
-			Debug.Log("Fading");
+			//Debug.Log("Fading");
 			ApplyFade();
 		}
 	}// Update

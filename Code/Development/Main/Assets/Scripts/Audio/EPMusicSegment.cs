@@ -11,6 +11,7 @@ public class EPMusicSegment : EPSound {
 	public CueType m_CueType;
 	public float m_CuePoint;
 	public float m_LoopPoint;
+	public float m_Duration;
 			
 	public enum CueType
 	{
@@ -31,6 +32,8 @@ public class EPMusicSegment : EPSound {
 			else
 				Debug.Log("No valid audiosource available in EPMusicSegment " + this.name);
 		}
+		
+		m_Duration = m_Sources[0].clip.length;
 	}
 	
 	// Update is called once per frame
@@ -41,6 +44,23 @@ public class EPMusicSegment : EPSound {
 			ApplyFade();
 		}
 	}// Update	
+	
+	// Overrides
+	public override void Stop()
+	{
+		foreach ( AudioSource source in m_Sources )
+		{
+			if ( source != null )
+			{
+				source.Stop();
+				if ( this == EPMusicPlayer.Get ().m_MasterSegment )
+				{
+					EPMusicPlayer.Get ().m_MasterSegment = null;
+				}
+			}
+		}
+	}
+	
 	
 	// Member functions
 	public float GetTime()

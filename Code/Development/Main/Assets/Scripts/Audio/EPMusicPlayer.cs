@@ -162,6 +162,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	{
 		if ( !m_Segments[i].IsPlaying() )
 			{
+				//Debug.Log("Starting");
 				PlaySegment(i, flags);
 			}
 			else
@@ -440,7 +441,7 @@ public class EPMusicPlayer : MonoBehaviour {
 		float next;
 		float now = m_MasterSegment.GetTime();
 		float beat = 60.0f / m_BPM;
-		float grid = beat * m_MasterSegment.m_GridSize;
+		float grid = beat * ( 4 / m_MasterSegment.m_GridSize );
 		//Debug.Log("Grid size: " + grid);
 		
 		next = ( (int)( now / grid ) + 1 ) * grid;
