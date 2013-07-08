@@ -68,7 +68,7 @@ public class AudioSandbox : MonoBehaviour {
 		}
 		
 		// Fades
-		GUI.Box(new Rect(200,170,170,120), "Fades");
+		GUI.Box(new Rect(200,170,170,150), "Fades");
 		
 		if(GUI.Button(new Rect(210,200,150,22), "Vol To 0"))
 		{
@@ -82,7 +82,12 @@ public class AudioSandbox : MonoBehaviour {
 		
 		if(GUI.Button(new Rect(210,260,150,22), "Vol/Pitch Combined"))
 		{
-			EPMusicPlayer.Get().m_MasterSegment.SetFade(0.2f, 0.1f, 5.0f, true);		
+			EPMusicPlayer.Get().m_MasterSegment.SetFade(0.0f, 0.1f, 5.0f, true);		
+		}
+		
+		if(GUI.Button(new Rect(210,290,150,22), "Vol/Pitch Fade All"))
+		{
+			EPMusicPlayer.Get().FadeAll(0.0f, 0.1f, 5.0f, true);		
 		}
 		
 		
@@ -92,6 +97,42 @@ public class AudioSandbox : MonoBehaviour {
 		if(GUI.Button(new Rect(20,200,150,22), "Bongo Loop"))
 		{
 			EPMusicPlayer.Get().ToggleSegment("VLV_BongoLoop", EPMusicPlayer.Flags.None);		
+		}
+		
+		// Other controls
+		GUI.Box (new Rect(390,10,170,150), "Misc");
+		
+		if(GUI.Button(new Rect(400,40,150,22), "Pause"))
+		{
+			EPSoundController.Get ().Pause();		
+		}
+		
+		if(GUI.Button(new Rect(400,70,150,22), "Resume"))
+		{
+			EPSoundController.Get ().Resume();		
+		}
+		
+		if(GUI.Button(new Rect(400,100,150,22), "GlobalMusicVolume +"))
+		{
+			float vol = EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC];
+			
+			if ( vol < 1.0f)
+			{
+				vol += 0.1f;
+				EPSoundController.Get ().SetMixGroupVolume(EPSoundController.MixGroup.MUSIC, vol );
+				Debug.Log("Music MixGroup Volume: " + EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC]);
+			}
+		}
+		
+		if(GUI.Button(new Rect(400,130,150,22), "GlobalMusicVolume -"))
+		{
+			float vol = EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC];
+			if ( vol > 0 )
+			{
+				vol -= 0.1f;
+				EPSoundController.Get ().SetMixGroupVolume(EPSoundController.MixGroup.MUSIC, vol );
+				Debug.Log("Music MixGroup Volume: " + EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC]);
+			}
 		}
 	}// OnGUI
 }

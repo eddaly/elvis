@@ -152,6 +152,11 @@ public class EPSoundSequence : EPSoundEvent {
 		}
 	}
 	
+	public override float GetEventVolume()
+	{
+		return m_MasterVolume;
+	}
+	
 	public override void SetFade( float endVol, float endPitch, float duration, bool isFadeOut )
 	{
 		m_FadeStartTime = Time.time;

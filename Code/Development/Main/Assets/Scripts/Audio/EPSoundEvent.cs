@@ -33,6 +33,11 @@ public class EPSoundEvent : MonoBehaviour {
 		return 0.0f;
 	}
 	
+	public virtual float GetEventVolume()
+	{
+		return 0.0f;
+	}
+	
 	public virtual float GetPitch()
 	{
 		return 0.0f;

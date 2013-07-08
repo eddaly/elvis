@@ -19,6 +19,7 @@ public class EPSound : EPSoundEvent {
 	public float m_Pitch = 1.0f;
 	public float m_PitchVariance;
 	public PlayOrder m_PlayOrder;
+	public EPSoundController.MixGroup m_MixGroup;
 	//public EPMusicGlobals.MIDIpitch m_RootNote = EPMusicGlobals.MIDIpitch.C_4;
 	
 	public enum PlayOrder {
@@ -45,6 +46,7 @@ public class EPSound : EPSoundEvent {
 	void Start ()
 	{
 		GetSize();
+		m_MixGroup = EPSoundController.MixGroup.SFX;
 	}
 	
 	// Update is called once per frame
@@ -100,7 +102,7 @@ public class EPSound : EPSoundEvent {
 		m_Sources[m_PlayIndex].volume = volume * ( m_Volume + ( (m_VolumeVariance * Random.value) - (m_VolumeVariance / 2) ) );
 		m_Sources[m_PlayIndex].pitch = pitch * ( m_Pitch + ( (m_PitchVariance * Random.value) - (m_PitchVariance / 2) ) );
 		
-		m_Sources[m_PlayIndex].volume *= EPSoundController.Get().m_GlobalSFXVolume;
+		m_Sources[m_PlayIndex].volume *= EPSoundController.Get().m_MixGroupVolumes[(int)m_MixGroup];
 		
 		// Play Sound
 		m_Sources[m_PlayIndex].Play();
@@ -143,23 +145,21 @@ public class EPSound : EPSoundEvent {
 	
 	public override void SetVolume( float volume )
 	{
+		m_Volume = volume;
+		
 		foreach ( AudioSource source in m_Sources )
 		{
-			if ( source.isPlaying )
-			{
-				source.volume = volume;
-			}
+			source.volume = m_Volume * EPSoundController.Get ().m_MixGroupVolumes[(int)m_MixGroup];
 		}
 	}
 	
 	public override void SetPitch( float pitch )
 	{
+		m_Pitch = pitch;
+		
 		foreach ( AudioSource source in m_Sources )
 		{
-			if ( source.isPlaying )
-			{
-				source.pitch = pitch;
-			}
+			source.pitch = m_Pitch;
 		}
 	}
 	
@@ -173,6 +173,11 @@ public class EPSound : EPSoundEvent {
 			}
 		}
 		return 0.0f;
+	}
+	
+	public override float GetEventVolume()
+	{
+		return m_Volume;
 	}
 	
 	public override float GetPitch()
@@ -191,7 +196,7 @@ public class EPSound : EPSoundEvent {
 	{
 		m_FadeStartTime = Time.time;
 		m_FadeDuration = duration;
-		m_FadeStartVol = GetVolume();
+		m_FadeStartVol = GetEventVolume();
 		m_FadeStartPitch = GetPitch();
 		m_FadeEndVol = endVol;
 		m_FadeEndPitch = endPitch;

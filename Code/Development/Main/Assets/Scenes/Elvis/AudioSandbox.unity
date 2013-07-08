@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 0
   m_Fading: 0
 --- !u!1 &458737108
 GameObject:
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 0
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
@@ -386,7 +388,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: c845ba3b5bf3d4282b6d7a59a043fe6b, type: 2}
       propertyPath: m_CueType
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200006, guid: c845ba3b5bf3d4282b6d7a59a043fe6b, type: 2}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c845ba3b5bf3d4282b6d7a59a043fe6b, type: 2}
@@ -496,6 +502,7 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 0
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
@@ -536,7 +543,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -598,13 +605,14 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 0
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
   m_TimeSignatureLower: 4
   m_GridSize: 4
   m_CuePointSync: 1
-  m_CueType: 0
+  m_CueType: 1
   m_CuePoint: 0
   m_LoopPoint: 3.69199991
   m_Duration: 0
@@ -785,10 +793,10 @@ MonoBehaviour:
   - VLV_Main_01
   - VLV_Outro_01
   - Pickup_01
+  m_MixGroupVolumes: []
   m_GlobalSFXVolume: 1
   m_GlobalMusicVolume: .600000024
-  m_SFXVolMaster: 1
-  m_MusicVolMaster: .600000024
+  m_GlobalVOVolume: 1
   m_DuckingAmount: 1
   m_StingQueue: []
   m_StingGrid: 1
@@ -919,6 +927,7 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 0
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
@@ -1032,6 +1041,7 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 0
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4

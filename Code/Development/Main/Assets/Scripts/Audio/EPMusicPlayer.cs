@@ -73,12 +73,15 @@ public class EPMusicPlayer : MonoBehaviour {
 			DoNotifyBeat();
 			DoNotifyHalfBeat();
 			DoNotifyQuarterBeat();
+			
+			if ( m_QueuedSegment != null )
+			{
+				ProcessSegmentQueue();
+			}
+			
+			SyncToMasterPitch();
 		}
 		
-		if ( m_QueuedSegment != null )
-		{
-			ProcessSegmentQueue();
-		}
 		
 		DebugInputs();
 	}
@@ -247,7 +250,7 @@ public class EPMusicPlayer : MonoBehaviour {
 			if ( triggerDelta < m_syncRes )
 			{
 				m_QueuedSegment.SetTime( m_QueueTime % m_QueuedSegment.m_LoopPoint );
-				m_QueuedSegment.m_Sources[0].PlayDelayed( triggerDelta );
+				m_QueuedSegment.PlayDelayed( triggerDelta );
 				//Debug.Log ("Playing at " + now + " + " + triggerDelta + " delay");
 				
 				if ( m_QueuedMaster == true )
@@ -255,8 +258,8 @@ public class EPMusicPlayer : MonoBehaviour {
 					//Debug.Log ("Stop master now");
 					m_MasterSegment.Stop();
 					SetMaster(m_QueuedSegment);
-					m_QueuedSegment = null;
 				}
+				m_QueuedSegment = null;
 			}
 		}
 	}
@@ -344,9 +347,9 @@ public class EPMusicPlayer : MonoBehaviour {
 			if ( seg.IsPlaying() )
 			{				
 				//Debug.Log ("Playing " + seg + " with delay: " + delay);
-				
-				seg.m_Sources[0].PlayDelayed(delay);
-				seg.SetTimeSamples(0);
+
+				seg.PlayDelayed(delay);
+				seg.SetTime(0);
 			}
 		}
 		if ( m_QueuedSegment != null )
@@ -356,8 +359,8 @@ public class EPMusicPlayer : MonoBehaviour {
 				m_MasterSegment.Stop();
 				SetMaster ( m_QueuedSegment );
 			}
-			m_QueuedSegment.m_Sources[0].PlayDelayed(delay);
-			m_QueuedSegment.SetTimeSamples(0);
+			m_QueuedSegment.PlayDelayed(delay);
+			m_QueuedSegment.SetTime(0);
 			ClearQueue();
 		}
 	}
@@ -468,6 +471,25 @@ public class EPMusicPlayer : MonoBehaviour {
 	{
 		m_QueuedSegment = null;
 		m_QueuedMaster = false;
+	}
+	
+	public void SyncToMasterPitch()
+	{
+		foreach ( EPMusicSegment seg in m_Segments )
+		{
+			if ( seg.IsPlaying() )
+				seg.SetPitch( m_MasterSegment.m_Pitch );
+		}
+	}
+	
+	public void FadeAll ( float endVol, float endPitch, float duration, bool isFadeOut )
+	{
+		foreach ( EPMusicSegment seg in m_Segments )
+		{
+			if ( seg.IsPlaying () )
+				seg.SetFade ( endVol, endPitch, duration, isFadeOut );
+		}		
+		ClearQueue();
 	}
 	
 	void DebugInputs()

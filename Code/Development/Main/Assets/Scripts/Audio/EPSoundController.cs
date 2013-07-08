@@ -17,15 +17,15 @@ public class EPSoundController : MonoBehaviour
 	
 	public List<EPSoundEvent> m_EPSoundEventList = new List<EPSoundEvent>();
 	public List<string> m_EPSoundNames = new List<string>();
-
+	
+	[HideInInspector]
+	public float[] m_MixGroupVolumes;
 	[HideInInspector]
 	public float m_GlobalSFXVolume = 1.0f;
 	[HideInInspector]
 	public float m_GlobalMusicVolume = 1.0f;
 	[HideInInspector]
-	public float m_SFXVolMaster = 1.0f;
-	[HideInInspector]
-	public float m_MusicVolMaster = 0.6f;
+	public float m_GlobalVOVolume = 1.0f;
 	[HideInInspector]
 	public float m_DuckingAmount = 1.0f;
 	[HideInInspector]
@@ -40,6 +40,14 @@ public class EPSoundController : MonoBehaviour
 	
 	[HideInInspector]
 	public StingGrid m_StingGrid = StingGrid.HALFBEAT;
+	
+	public enum MixGroup
+	{
+		SFX,
+		MUSIC,
+		VO,
+		COUNT
+	}
 	
 	//	Pseudo-singleton pattern
 	private static EPSoundController ms_soundController = null;
@@ -69,12 +77,13 @@ public class EPSoundController : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		m_DuckingAmount = 1.0f;
-
 		populateLists();
 		
-		m_GlobalSFXVolume = m_SFXVolMaster;
-		m_GlobalMusicVolume = m_MusicVolMaster;
+		m_MixGroupVolumes = new float[(int)MixGroup.COUNT];
+		
+		m_MixGroupVolumes[(int)MixGroup.SFX] = 1.0f;
+		m_MixGroupVolumes[(int)MixGroup.MUSIC] = 1.0f;
+		m_MixGroupVolumes[(int)MixGroup.VO] = 1.0f;
 		
 		/// Listen for EPMusicPlayer beat notifications
 		NotificationCenter.DefaultCenter.AddObserver(this, "NotifyBeat");
@@ -220,6 +229,15 @@ public class EPSoundController : MonoBehaviour
 		foreach (EPSoundEvent sound in m_EPSoundEventList)
 		{
 			sound.Resume ();
+		}
+	}
+	
+	public void SetMixGroupVolume ( MixGroup grp, float vol )
+	{
+		m_MixGroupVolumes[(int)grp] = vol;
+		foreach ( EPSoundEvent snd in m_EPSoundEventList )
+		{
+			snd.SetVolume ( snd.GetEventVolume() );
 		}
 	}
 	

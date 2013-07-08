@@ -34,6 +34,7 @@ public class EPMusicSegment : EPSound {
 		}
 		
 		m_Duration = m_Sources[0].clip.length;
+		m_MixGroup = EPSoundController.MixGroup.MUSIC;
 	}
 	
 	// Update is called once per frame
@@ -46,6 +47,16 @@ public class EPMusicSegment : EPSound {
 	}// Update	
 	
 	// Overrides
+	public override void Play()
+	{
+		base.Play();
+	}
+	
+	public void PlayDelayed(float delay)
+	{
+		m_Sources[0].PlayDelayed(delay);
+	}
+	
 	public override void Stop()
 	{
 		foreach ( AudioSource source in m_Sources )
