@@ -19,6 +19,8 @@ public class EPSound : EPSoundEvent {
 	public float m_Pitch = 1.0f;
 	public float m_PitchVariance;
 	public PlayOrder m_PlayOrder;
+	public EPSoundController.MixGroup m_MixGroup;
+	//public EPMusicGlobals.MIDIpitch m_RootNote = EPMusicGlobals.MIDIpitch.C_4;
 	
 	public enum PlayOrder {
 		RANDOM,
@@ -29,17 +31,38 @@ public class EPSound : EPSoundEvent {
 	int m_Size;
 	int m_PlayIndex = -1;
 	
+	// Fade controls
+	[HideInInspector]
+	public bool m_Fading = false;
+	bool m_StopAfterFade = false;
+	float m_FadeStartVol;
+	float m_FadeEndVol;
+	float m_FadeStartPitch;
+	float m_FadeEndPitch;
+	float m_FadeStartTime;
+	float m_FadeDuration;
+	
 	// Use this for initialization
 	void Start ()
 	{
-		m_Size = m_Sources.GetLength(0);
+		GetSize();
+		m_MixGroup = EPSoundController.MixGroup.SFX;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
+		if ( m_Fading )
+		{
+			//Debug.Log("Fading");
+			ApplyFade();
+		}
 	}// Update
+	
+	void GetSize()
+	{
+		m_Size = m_Sources.GetLength(0);
+	}
 	
 	void m_UpdatePlayIndex()
 	{
@@ -60,12 +83,12 @@ public class EPSound : EPSoundEvent {
 		}
 		else
 		{
-			EchoDebugLog.LogWarning ("Invalid PlayOrder");
+			Debug.LogWarning ("Invalid PlayOrder");
 			m_PlayIndex = 0;
 		}
 	}
 	
-	
+	// Overrides for EPSoundEvent functions
 	public override void Play()
 	{
 		Play (1.0f, 1.0f);
@@ -79,11 +102,11 @@ public class EPSound : EPSoundEvent {
 		m_Sources[m_PlayIndex].volume = volume * ( m_Volume + ( (m_VolumeVariance * Random.value) - (m_VolumeVariance / 2) ) );
 		m_Sources[m_PlayIndex].pitch = pitch * ( m_Pitch + ( (m_PitchVariance * Random.value) - (m_PitchVariance / 2) ) );
 		
-		m_Sources[m_PlayIndex].volume *= EPSoundController.Get().m_GlobalSFXVolume;
+		m_Sources[m_PlayIndex].volume *= EPSoundController.Get().m_MixGroupVolumes[(int)m_MixGroup];
 		
 		// Play Sound
 		m_Sources[m_PlayIndex].Play();
-
+		
 		//Console.WriteLine("Playing sound " + (m_PlayIndex+1) + " of " + m_Size);
 	}
 	
@@ -109,17 +132,6 @@ public class EPSound : EPSoundEvent {
 		}
 	}
 	
-	public override void UpdateVolume(float newVolume)
-	{
-		foreach ( AudioSource source in m_Sources )
-		{
-			if ( source != null && source.isPlaying )
-			{
-				source.volume = newVolume;
-			}
-		}
-	}
-	
 	public override void Resume()
 	{
 		foreach ( AudioSource source in m_Sources )
@@ -129,6 +141,100 @@ public class EPSound : EPSoundEvent {
 				source.Play();
 			}
 		}
+	}
+	
+	public override void SetVolume( float volume )
+	{
+		m_Volume = volume;
+		
+		foreach ( AudioSource source in m_Sources )
+		{
+			source.volume = m_Volume * EPSoundController.Get ().m_MixGroupVolumes[(int)m_MixGroup];
+		}
+	}
+	
+	public override void SetPitch( float pitch )
+	{
+		m_Pitch = pitch;
+		
+		foreach ( AudioSource source in m_Sources )
+		{
+			source.pitch = m_Pitch;
+		}
+	}
+	
+	public override float GetVolume()
+	{
+		foreach ( AudioSource source in m_Sources )
+		{
+			if ( source != null && source.isPlaying )
+			{
+				return source.volume;
+			}
+		}
+		return 0.0f;
+	}
+	
+	public override float GetEventVolume()
+	{
+		return m_Volume;
+	}
+	
+	public override float GetPitch()
+	{
+		foreach ( AudioSource source in m_Sources )
+		{
+			if ( source != null && source.isPlaying )
+			{
+				return source.pitch;
+			}
+		}
+		return 0.0f;
+	}
+	
+	public override void SetFade( float endVol, float endPitch, float duration, bool isFadeOut )
+	{
+		m_FadeStartTime = Time.time;
+		m_FadeDuration = duration;
+		m_FadeStartVol = GetEventVolume();
+		m_FadeStartPitch = GetPitch();
+		m_FadeEndVol = endVol;
+		m_FadeEndPitch = endPitch;
+		m_StopAfterFade = isFadeOut;
+		m_Fading = true;
+	}
+	
+	public override void ApplyFade()
+	{
+			float fadeClock = Time.time - m_FadeStartTime;
+			if ( fadeClock < m_FadeDuration )
+			{
+				if ( m_FadeStartVol != m_FadeEndVol )
+				{
+					float vol = m_FadeStartVol + (( fadeClock / m_FadeDuration ) * ( m_FadeEndVol - m_FadeStartVol ));
+					SetVolume ( vol );
+				}
+				if ( m_FadeStartPitch != m_FadeEndPitch )
+				{
+					float pitch = m_FadeStartPitch + (( fadeClock / m_FadeDuration ) * ( m_FadeEndPitch - m_FadeStartPitch ));
+					SetPitch ( pitch );
+				}
+			}
+			else if ( !m_StopAfterFade )
+			{
+				SetVolume ( m_FadeEndVol );
+				SetPitch ( m_FadeEndPitch );
+				m_Fading = false;
+			}
+			else
+			{
+				Stop ();
+				m_Fading = false;
+			
+				// Restore original pitch/volume after fade out
+				SetVolume ( m_FadeStartVol );
+				SetPitch ( m_FadeStartPitch );
+			}
 	}
 	
 	public override bool IsPlaying()

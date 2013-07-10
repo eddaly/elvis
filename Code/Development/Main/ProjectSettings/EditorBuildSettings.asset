@@ -5,3 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes: []
+  - enabled: 0
+    path: Assets/Scenes/Elvis/startup.unity
+  - enabled: 0
+    path: Assets/Scenes/Elvis/ScrollTest.unity

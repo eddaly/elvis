@@ -54,11 +54,13 @@ public sealed class PrimitiveLibrary
 	{
 		FX_BATCH = 0,
 		NUMBERS_BATCH,
+		FRONTEND_BATCH,
 		
 		NUM
 	}
 	const int g_FXBatchSize = 1000;
 	const int g_NumbersBatchSize = 70;
+	const int g_FrontendBatchSize = 256;
 	
 	GameObject[] m_quadBatches = new GameObject[(int)QuadBatch.NUM];
 
@@ -138,6 +140,13 @@ public sealed class PrimitiveLibrary
 			);
 		m_quadBatches[(int)QuadBatch.NUMBERS_BATCH].transform.localPosition = Vector3.zero;
 		
+		m_quadBatches[(int)QuadBatch.FRONTEND_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_FrontendBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND], 
+			(int)TextureAtlas.AtlasID.FRONTEND, 
+			false, false, false, 8 
+			);
+		m_quadBatches[(int)QuadBatch.FRONTEND_BATCH].transform.localPosition = Vector3.zero;
 		
 		for( int q = 0; q<(int)QuadBatch.NUM; q++ )
 			m_quadBatches[q].transform.parent = m_HierarchyQuadBatches;
@@ -452,7 +461,8 @@ public sealed class PrimitiveLibrary
 			Resources.Load( "FX_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS].m_TexturePage =
 			Resources.Load( "Numbers_Atlas" ) as Texture;
-		
+		m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
+			Resources.Load( FrontEnd.atlasFile ) as Texture;
 		
 		//	Set up the FX atlas
 		TextureAtlas fxAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX];		
@@ -484,9 +494,13 @@ public sealed class PrimitiveLibrary
 		numbersAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_COLON] = new Vector4( 0.0f, 0.0f, 0.25f, 0.25f );
 		numbersAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_PERCENT] = new Vector4( 0.75f, 0.25f, 1.0f, 0.5f );
 		numbersAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_TIMES] = new Vector4( 0.5f, 0.25f, 0.75f, 0.5f );		
+
+		// And the front-end
+		TextureAtlas frontendAtlas = m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND];		
+		frontendAtlas.m_NumElements = TextureAtlas.maxFrontendElements;		
+		frontendAtlas.m_UVSet = new Vector4[frontendAtlas.m_NumElements]; // Setup dynamically by FastGUIElement
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 // Class:	TextureAtlas
@@ -501,6 +515,7 @@ public class TextureAtlas
 	{
 		PARTICLE_FX = 0,
 		NUMBERS,
+		FRONTEND,
 		
 		NUM
 	}
@@ -533,4 +548,7 @@ public class TextureAtlas
 		
 		NUM
 	}	
+	
+	static public int maxFrontendElements = 256;
+
 }
