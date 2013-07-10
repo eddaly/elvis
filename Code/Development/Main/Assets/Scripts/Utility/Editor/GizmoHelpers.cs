@@ -4,7 +4,6 @@
 // Desc:	Gizmo renderers
 //
 // Copyright Echo Peak Ltd 2013
-// <Charles James>
 //-----------------------------------------------------------------------------
 using UnityEngine;
 using System.Collections;
