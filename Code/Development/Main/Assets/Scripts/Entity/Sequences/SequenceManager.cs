@@ -110,7 +110,7 @@ public class SequenceManager : MonoBehaviour
 	//			when a piece goes off screen to the left
 	void updatePlayMode()
 	{
-		m_MasterDistance += EntityDefs.gDtime*m_MetersPerSecond;
+		m_MasterDistance += Time.deltaTime*m_MetersPerSecond;
 		
 		if( !m_playModeSequenceInitialised )
 		{

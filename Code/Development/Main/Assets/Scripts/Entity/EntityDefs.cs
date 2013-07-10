@@ -21,8 +21,6 @@ public class EntityDefs
 	public const float gActiveAreaYOffset = gActiveAreaWidth*0.275f;
 	
 	
-	//	Temp dtime until we get the game state code in
-	public const float gDtime = 1/60.0f;
 	
 	//	Environment layers form distinct sections of the environment separated on the
 	//	z-axis. Each layer has it's own set of Environment pieces, defined in the 
