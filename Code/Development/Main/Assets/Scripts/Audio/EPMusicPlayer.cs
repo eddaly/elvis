@@ -26,11 +26,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	public enum Flags
 	{
 		None = 0,
-		IsMaster = 1,
-		Cue_Grid = 2,
-		Cue_Bar = 4,
-		Cue_Point = 8,
-		Cue_End = 16
+		IsMaster = 1
 	}
 	
 	//	Pseudo-singleton pattern
@@ -80,6 +76,9 @@ public class EPMusicPlayer : MonoBehaviour {
 			}
 			
 			SyncToMasterPitch();
+			
+			if ( !m_MasterSegment.IsPlaying() )
+				m_MasterSegment.Stop();
 		}
 		
 		
@@ -87,31 +86,35 @@ public class EPMusicPlayer : MonoBehaviour {
 	}
 	
 	// Play functions
-	public void PlaySegment ( string segName, Flags flags = Flags.None )
+	public void PlaySegment ( string segName, Flags flags = Flags.None, EPMusicSegment.CueType cueType = EPMusicSegment.CueType.NONE )
 	{
 		int i = GetSegmentIndex( segName );
 		if ( i >= 0 )
-			PlaySegment ( i, flags );
+			PlaySegment ( i, flags, cueType );
 	}
 	
-	public void PlaySegment ( int i, Flags flags = Flags.None )
+	public void PlaySegment ( int i, Flags flags = Flags.None, EPMusicSegment.CueType cueType = EPMusicSegment.CueType.NONE )
 	{
 		EPMusicSegment seg = m_Segments[i];
 		
 		if ( seg != null )
 		{
+			if ( cueType == EPMusicSegment.CueType.NONE )
+				cueType = seg.m_CueType;
+			
 			if ( m_MasterSegment == null )
 			{
 				SetMaster(seg);
 				seg.Play();
 			}
-			else if ( seg.m_CueType == EPMusicSegment.CueType.INSTANT )
+			else if ( cueType == EPMusicSegment.CueType.INSTANT )
 			{
 				seg.SetTimeSamples( m_MasterSegment.GetTimeSamples() );
 				
 				if ( ( flags & Flags.IsMaster ) == Flags.IsMaster )
 				{
 					SetMaster(seg);
+					Debug.Log("Master");
 				}
 				
 				seg.Play();
@@ -119,19 +122,19 @@ public class EPMusicPlayer : MonoBehaviour {
 			}
 			else
 			{
-				if ( seg.m_CueType == EPMusicSegment.CueType.POINT )
+				if ( cueType == EPMusicSegment.CueType.POINT )
 				{
 					m_QueueTime = seg.m_CuePoint;
 				}
-				else if ( seg.m_CueType == EPMusicSegment.CueType.GRID )
+				else if ( cueType == EPMusicSegment.CueType.GRID )
 				{
 					m_QueueTime = GetNextGrid();
 				}
-				else if ( seg.m_CueType == EPMusicSegment.CueType.BAR )
+				else if ( cueType == EPMusicSegment.CueType.BAR )
 				{
 					m_QueueTime = GetNextBar();
 				}
-				else if ( seg.m_CueType == EPMusicSegment.CueType.END )
+				else if ( cueType == EPMusicSegment.CueType.END )
 				{
 					m_QueueTime = m_MasterSegment.m_LoopPoint;
 					//Debug.Log ("m_QueueTime = " + m_QueueTime);
@@ -146,7 +149,10 @@ public class EPMusicPlayer : MonoBehaviour {
 				if ( ( flags & Flags.IsMaster ) == Flags.IsMaster )
 				{
 					m_QueuedMaster = true;
+					Debug.Log("Queued Master");
 				}
+				else
+					m_QueuedMaster = false;
 					
 				//Debug.Log("Queue segment " + i );
 			}
@@ -154,19 +160,19 @@ public class EPMusicPlayer : MonoBehaviour {
 	}
 	
 	// Toggle (play) functions
-	public void ToggleSegment ( string segName, Flags flags = Flags.None  )
+	public void ToggleSegment ( string segName, Flags flags = Flags.None, EPMusicSegment.CueType cueType = EPMusicSegment.CueType.NONE )
 	{
 		int i = GetSegmentIndex( segName );
 		if ( i >= 0 )
-			ToggleSegment ( i, flags );
+			ToggleSegment ( i, flags, cueType );
 	}
 	
-	public void ToggleSegment ( int i, Flags flags = Flags.None  )
+	public void ToggleSegment ( int i, Flags flags = Flags.None, EPMusicSegment.CueType cueType = EPMusicSegment.CueType.NONE )
 	{
 		if ( !m_Segments[i].IsPlaying() )
 			{
 				//Debug.Log("Starting");
-				PlaySegment(i, flags);
+				PlaySegment(i, flags, cueType);
 			}
 			else
 			{
@@ -249,15 +255,18 @@ public class EPMusicPlayer : MonoBehaviour {
 			
 			if ( triggerDelta < m_syncRes )
 			{
-				m_QueuedSegment.SetTime( m_QueueTime % m_QueuedSegment.m_LoopPoint );
+				if ( m_QueuedSegment.m_CuePointSync == true )
+					m_QueuedSegment.SetTime( m_QueueTime % m_QueuedSegment.m_LoopPoint );
+				
 				m_QueuedSegment.PlayDelayed( triggerDelta );
-				//Debug.Log ("Playing at " + now + " + " + triggerDelta + " delay");
 				
 				if ( m_QueuedMaster == true )
 				{
-					//Debug.Log ("Stop master now");
+					Debug.Log ("Stopping master: " + m_MasterSegment);
 					m_MasterSegment.Stop();
+					Debug.Log ("Master is: " + m_MasterSegment);
 					SetMaster(m_QueuedSegment);
+					Debug.Log ("Master is: " + m_MasterSegment);
 				}
 				m_QueuedSegment = null;
 			}
@@ -344,7 +353,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	{
 		foreach ( EPMusicSegment seg in m_Segments )
 		{
-			if ( seg.IsPlaying() )
+			if ( seg.IsPlaying() && seg.m_Looping )
 			{				
 				//Debug.Log ("Playing " + seg + " with delay: " + delay);
 
@@ -490,6 +499,13 @@ public class EPMusicPlayer : MonoBehaviour {
 				seg.SetFade ( endVol, endPitch, duration, isFadeOut );
 		}		
 		ClearQueue();
+	}
+	
+	public void Fade ( string segName, float endVol, float endPitch, float duration, bool isFadeOut )
+	{
+		int i = GetSegmentIndex( segName );
+		if ( m_Segments[i] != null )
+			m_Segments[i].SetFade ( endVol, endPitch, duration, isFadeOut );
 	}
 	
 	void DebugInputs()

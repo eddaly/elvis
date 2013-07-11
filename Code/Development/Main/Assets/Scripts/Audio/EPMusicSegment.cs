@@ -10,11 +10,13 @@ public class EPMusicSegment : EPSound {
 	public bool m_CuePointSync = true;
 	public CueType m_CueType;
 	public float m_CuePoint;
+	public bool m_Looping = true;
 	public float m_LoopPoint;
 	public float m_Duration;
 			
 	public enum CueType
 	{
+		NONE,
 		INSTANT,
 		GRID,
 		BAR,
@@ -35,6 +37,9 @@ public class EPMusicSegment : EPSound {
 		
 		m_Duration = m_Sources[0].clip.length;
 		m_MixGroup = EPSoundController.MixGroup.MUSIC;
+		
+		if ( m_LoopPoint == 0 )
+				m_LoopPoint = m_Duration;
 	}
 	
 	// Update is called once per frame
@@ -68,6 +73,7 @@ public class EPMusicSegment : EPSound {
 				{
 					EPMusicPlayer.Get ().m_MasterSegment = null;
 				}
+				source.time = 0;
 			}
 		}
 	}
