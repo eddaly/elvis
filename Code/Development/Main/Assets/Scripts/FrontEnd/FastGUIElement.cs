@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.IO;
 
 public class FastGUIElement
 {
@@ -32,6 +34,9 @@ public class FastGUIElement
 		originalAtlasPixelsWidth = width;
 		originalAtlasPixelsHeight = height;
 	}
+	
+	// Set if using UV data from XML file
+	static public string uvxmlFile = "";
 	
 	static public void DebugDrawSafeArea ()
 	{
@@ -222,6 +227,58 @@ public class FastGUIElement
 
 		screenRect = new Rect (sp0.x, sp0.y, sp1.x - sp0.x, sp1.y - sp0.y);
 	}
+	
+	// Return UVs from provided textureFile (the original file used to create the xml), must first have set uvxmlFile
+	public static Vector4 UVsFrom (string textureFile)
+	{
+		if (uvxmlFile.Length == 0)
+		{
+			Debug.LogError ("uvxmlFile not set, can't use UVsFrom");
+			return Vector4.zero;
+		}
+		
+		//*** Note could get/check/override atlas name and original width and size from this file
+		//*** Note could also read this into memory once then dump out rather than keep reading
+		
+		// Create an XmlReader
+		Vector4 v = Vector4.zero;
+		using (XmlReader reader = XmlReader.Create (uvxmlFile))
+		{
+			do {
+				
+			    if (!reader.ReadToFollowing ("sprite"))
+					break;
+			    if (!reader.MoveToAttribute (@"n"))
+					break;
+			    string aTextureFile = reader.Value;
+				Debug.Log (aTextureFile);
+				if (aTextureFile.Equals (textureFile, System.StringComparison.OrdinalIgnoreCase))
+				{
+					if (!reader.MoveToAttribute (@"x"))
+						break;
+					v.x = reader.ReadContentAsFloat();
+					if (!reader.MoveToAttribute (@"y"))
+						break;
+					v.y = reader.ReadContentAsFloat();
+					if (!reader.MoveToAttribute (@"w"))
+						break;
+					v.z = reader.ReadContentAsFloat();
+					if (!reader.MoveToAttribute (@"h"))
+						break;
+					v.w = reader.ReadContentAsFloat();
+					break;
+				}
+				Debug.Log (v);
+			} while (true);
+		}
+		return v;
+	}
 
 }
+
+/* Note in case want to disable warnings from just constructing and not 'using'
+ #pragma warning disable 414
+	FastGUIElement ge;
+#pragma warning restore 414
+*/
 

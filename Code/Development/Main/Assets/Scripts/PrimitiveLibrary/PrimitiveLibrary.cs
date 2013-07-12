@@ -462,7 +462,7 @@ public sealed class PrimitiveLibrary
 		m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS].m_TexturePage =
 			Resources.Load( "Numbers_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
-			Resources.Load( FrontEnd.atlasFile ) as Texture;
+			Resources.Load( FrontEnd.instance.m_AtlasFile ) as Texture;
 		
 		//	Set up the FX atlas
 		TextureAtlas fxAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX];		

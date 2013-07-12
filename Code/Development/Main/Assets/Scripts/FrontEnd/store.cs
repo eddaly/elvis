@@ -2,36 +2,39 @@ using UnityEngine;
 using System.Collections;
 
 public class store : MonoBehaviour {
-	
+#pragma warning disable 414
 	FastGUIElement backGround;
 	FastGUIButton backButton;
-	FastGUIElement UpgradesTab;
-	FastGUIElement DescriptionTab;
-	FastGUIElement UpgradesButton;
-	FastGUIElement DescriptionButton;
-
+	FastGUIElement upgradesTab;
+	FastGUIElement descriptionTab;
+	FastGUIElement upgradesButton;
+	FastGUIElement descriptionButton;
+#pragma warning restore 414
 
 	// Use this for initialization
 	void Start () {
-		
+
+		// The XML file containing the atlas UVs
+		FastGUIElement.uvxmlFile = @"assets//resources//test_atlus.xml";
+			
 		backGround = new FastGUIElement (
 			new Vector2 (0, 0),					// Screen position
-			new Vector4 (1798, 2, 2048, 1536));	// Atlas position
+			FastGUIElement.UVsFrom (@"Elvis_FE_Test.psd"));
 		
-		UpgradesTab = new FastGUIElement (
+		upgradesTab = new FastGUIElement (
 			new Vector2 (1024, 382),			// Screen position
-			new Vector4 (900, 2, 896, 768));	// Atlas position
+			FastGUIElement.UVsFrom (@"Elvis_FE_Store_UpgradesTab.png"));
 
-		DescriptionTab = new FastGUIElement (
+		descriptionTab = new FastGUIElement (
 			new Vector2 (1024, 382),			// Screen position
-			new Vector4 (2, 2, 896, 768));		// Atlas position
-		DescriptionTab.SetDisplayed (false);
+			FastGUIElement.UVsFrom (@"Elvis_FE_Store_DescriptionTab.png"));
+		descriptionTab.SetDisplayed (false);
 		
-		UpgradesButton = new FastGUIElement (
+		upgradesButton = new FastGUIElement (
 			new Vector2 (1472, 382),			// Screen position
 			new Vector4 (450, 2, 448, 96));		// Atlas position
 		
-		DescriptionButton = new FastGUIElement (
+		descriptionButton = new FastGUIElement (
 			new Vector2 (1024, 382),			// Screen position
 			new Vector4 (2, 2, 448, 96));		// Atlas position
 		
@@ -48,15 +51,15 @@ public class store : MonoBehaviour {
 		{
 			Debug.Log ("BACK");
 		}
-		else if (DescriptionButton.Tapped ())
+		else if (descriptionButton.Tapped ())
 		{
-			DescriptionTab.SetDisplayed (true);
-			UpgradesTab.SetDisplayed (false);			
+			descriptionTab.SetDisplayed (true);
+			upgradesTab.SetDisplayed (false);			
 		}
-		else if (UpgradesButton.Tapped ())
+		else if (upgradesButton.Tapped ())
 		{
-			DescriptionTab.SetDisplayed (false);
-			UpgradesTab.SetDisplayed (true);			
+			descriptionTab.SetDisplayed (false);
+			upgradesTab.SetDisplayed (true);			
 		}
 	}
 }
