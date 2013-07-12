@@ -33,26 +33,26 @@ public class ObstaclePiece
 		m_obstacleList.Add( new_obstacle );
 	}
 	
-	public bool CollideWithBox( Vector3 box_center, float box_width, float box_height )
+	public Obstacle CollideWithBox( Vector3 box_center, float box_width, float box_height )
 	{
 		foreach( Obstacle obstacle in m_obstacleList )
 		{
 			if( obstacle.CollideWithBox( box_center, box_width, box_height ) )
-				return true;
+				return obstacle;
 		}
 		
-		return false;
+		return null;
 	}
 	
-	public bool PlatformCollide( Vector3 box_center, float box_height, Vector3 movement_vector, ref Vector3 collision_point )
+	public Obstacle PlatformCollide( Vector3 box_center, float box_height, Vector3 movement_vector, ref Vector3 collision_point )
 	{
 		foreach( Obstacle obstacle in m_obstacleList )
 		{
 			if( obstacle.PlatformCollide( box_center, box_height, movement_vector, ref collision_point ) )
-				return true;
+				return obstacle;
 		}
 		
-		return false;
+		return null;
 	}
 	
 	public void DebugRender()

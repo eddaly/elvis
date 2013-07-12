@@ -16,7 +16,7 @@ using System.Collections;
 public class SequenceManager : MonoBehaviour 
 {
 	public float m_MasterDistance = 0.0f;
-	public float m_MetersPerSecond = 10.0f;
+	public float m_MetersPerSecond = 8.0f;
 	
 	public enum ActivePiece
 	{
@@ -87,6 +87,9 @@ public class SequenceManager : MonoBehaviour
 	// Desc:	Warms up the track makers and sets the initial piece slots
 	void initialisePlayMode()
 	{
+		System.DateTime systemTime = System.DateTime.Now;		
+		Random.seed = systemTime.Millisecond;
+		
 		ReferenceLibrary.m_ObstacleManager.HideAllPieces(); 
 
 		m_ObstacleTrackMaker.StartPlayMode();
@@ -96,7 +99,10 @@ public class SequenceManager : MonoBehaviour
 		ReferenceLibrary.m_ObstacleManager.SetPieceDistance( m_PrimaryObstacle, 0.0f );
 		ReferenceLibrary.m_ObstacleManager.ShowPiece( m_PrimaryObstacle );
 		
-		m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();			
+		m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();
+		while( m_PrimaryObstacle == m_SecondaryObstacle )
+			m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();
+		
 		ReferenceLibrary.m_ObstacleManager.ValidatePieceIdx( ref m_SecondaryObstacle );
 		ReferenceLibrary.m_ObstacleManager.SetPieceDistance( m_SecondaryObstacle,
 			ReferenceLibrary.m_ObstacleManager.GetPieceWidth( m_PrimaryObstacle ) );
@@ -129,6 +135,9 @@ public class SequenceManager : MonoBehaviour
 			m_PrimaryObstacle = m_SecondaryObstacle;
 			
 			m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();			
+			while( m_PrimaryObstacle == m_SecondaryObstacle )
+				m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();
+		
 			ReferenceLibrary.m_ObstacleManager.ValidatePieceIdx( ref m_SecondaryObstacle );
 			
 			ReferenceLibrary.m_ObstacleManager.SetPieceDistance( m_SecondaryObstacle,
@@ -137,5 +146,40 @@ public class SequenceManager : MonoBehaviour
 			
 			ReferenceLibrary.m_ObstacleManager.ShowPiece( m_SecondaryObstacle );			
 		}
+	}
+	
+	//-----------------------------------------------------------------------------
+	// Method:	CollideWithBox()
+	// Desc:	Collides all obstacles in the primary obstacle piece with the 
+	//			provided box. Returns the first obstacle that collides, or null if
+	//			none of them do.
+	public Obstacle CollideWithBox( Vector3 box_center, float box_width, float box_height )
+	{
+		Obstacle collider = ReferenceLibrary.m_ObstacleManager.CollideWithBox( m_PrimaryObstacle,
+			box_center, box_width, box_height );
+		
+		if( collider != null )
+			return collider;
+		
+		return ReferenceLibrary.m_ObstacleManager.CollideWithBox( m_SecondaryObstacle,
+			box_center, box_width, box_height );		
+	}
+	
+	//-----------------------------------------------------------------------------
+	// Method:	PlatformCollide()
+	// Desc:	Platform collides all obstacles in the primary obstacle piece with 
+	//			the	provided box. Returns the first obstacle that collides, or null 
+	//			if none of them do.
+	public Obstacle PlatformCollide( Vector3 box_center, float box_height, Vector3 move_vector,
+		ref Vector3 collision_point )
+	{
+		Obstacle collider = ReferenceLibrary.m_ObstacleManager.PlatformCollide( m_PrimaryObstacle, 
+			box_center, box_height, move_vector, ref collision_point );
+		
+		if( collider != null )
+			return collider;
+		
+		return ReferenceLibrary.m_ObstacleManager.PlatformCollide( m_SecondaryObstacle, 
+			box_center, box_height, move_vector, ref collision_point );
 	}
 }

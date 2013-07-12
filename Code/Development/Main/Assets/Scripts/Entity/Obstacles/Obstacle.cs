@@ -28,6 +28,8 @@ public class Obstacle
 		PLATFORM,
 	}
 	public Type m_Type = Type.KILL_SPHERE;
+	
+	public bool m_HighlightColour = false;
 
 	
 	public virtual void Initialise() {}
@@ -48,6 +50,11 @@ public class Obstacle
 	{
 		return m_Parent.m_Distance - ReferenceLibrary.m_SequenceManager.m_MasterDistance; 
 	}
+	
+	public void SetHighlight()
+	{
+		m_HighlightColour = true;
+	}
 }
 
 public class KillSphere : Obstacle
@@ -59,21 +66,29 @@ public class KillSphere : Obstacle
 	{
 		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
 		
-		DebugRenderHelpers.DrawFilledCircle( currentPos, m_Radius, new Color( 1.0f, 1.0f, 0.0f, 0.75f ) );
+		if( m_HighlightColour )
+		{
+			DebugRenderHelpers.DrawFilledCircle( currentPos, m_Radius, new Color( 1.0f, 0.0f, 0.0f, 0.75f ) );
+			m_HighlightColour = false;
+		}
+		else
+			DebugRenderHelpers.DrawFilledCircle( currentPos, m_Radius, new Color( 1.0f, 1.0f, 0.0f, 0.75f ) );
 	}
 	
 	public override bool CollideWithBox( Vector3 box_center, float box_width, float box_height )
 	{
+		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
+		
 		//	We're assuming the box is axis aligned here...
 		
 		//	Find the closest point within the rectangle to the center of the circle
-		float closestX = Mathf.Clamp( m_Position.x, box_center.x - box_width*0.5f, box_center.x + box_width*0.5f );
-		float closestY = Mathf.Clamp( m_Position.y, box_center.y - box_height*0.5f, box_center.y + box_height*0.5f );
+		float closestX = Mathf.Clamp( currentPos.x, box_center.x - box_width*0.5f, box_center.x + box_width*0.5f );
+		float closestY = Mathf.Clamp( currentPos.y, box_center.y - box_height*0.5f, box_center.y + box_height*0.5f );
 		
 		//	Now find the squared distance between this point and the circle center
-		float xDist = closestX - m_Position.x;
+		float xDist = closestX - currentPos.x;
 		xDist *= xDist;
-		float yDist = closestY - m_Position.y;
+		float yDist = closestY - currentPos.y;
 		yDist *= yDist;
 		float sqDist = xDist + yDist;
 		
@@ -95,11 +110,19 @@ public class KillBox : Obstacle
 	{
 		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
 		
-		DebugRenderHelpers.DrawFilled2DBoxC( currentPos, m_Width, m_Height, new Color( 1.0f, 1.0f, 0.0f, 0.75f ) );
+		if( m_HighlightColour )
+		{
+			DebugRenderHelpers.DrawFilled2DBoxC( currentPos, m_Width, m_Height, new Color( 1.0f, 0.0f, 0.0f, 0.75f ) );
+			m_HighlightColour = false;
+		}
+		else
+			DebugRenderHelpers.DrawFilled2DBoxC( currentPos, m_Width, m_Height, new Color( 1.0f, 1.0f, 0.0f, 0.75f ) );
 	}
 	
 	public override bool CollideWithBox( Vector3 box_center, float box_width, float box_height )
 	{
+		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
+		
 		//	Axis aligned boxes again...
 		float halfMyWidth = m_Width*0.5f;
 		float halfMyHeight = m_Height*0.5f;
@@ -107,16 +130,16 @@ public class KillBox : Obstacle
 		float halfBoxHeight = box_height*0.5f;
 		
 		//	Process of elimination - if box is too far to the right on x axis there's no collision
-		if( m_Position.x + halfMyWidth < box_center.x - halfBoxWidth )		return false;
+		if( currentPos.x + halfMyWidth < box_center.x - halfBoxWidth )		return false;
 		
 		//	Too far to the left
-		if( m_Position.x - halfMyWidth > box_center.x + halfBoxWidth )		return false;
+		if( currentPos.x - halfMyWidth > box_center.x + halfBoxWidth )		return false;
 
 		//	Too far up on the y axis
-		if( m_Position.y + halfMyHeight < box_center.y - halfBoxHeight )	return false;
+		if( currentPos.y + halfMyHeight < box_center.y - halfBoxHeight )	return false;
 		
 		//	Too far down
-		if( m_Position.y - halfMyHeight > box_center.y + halfBoxHeight )	return false;
+		if( currentPos.y - halfMyHeight > box_center.y + halfBoxHeight )	return false;
 		
 		//	If we got this far, then there's some overlap
 		return true;
@@ -131,25 +154,66 @@ public class Platform : Obstacle
 	{
 		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
 		
-		DebugRenderHelpers.DrawLine( currentPos - new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
-			currentPos + new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
-			new Color( 0.0f, 0.0f, 1.0f, 0.75f ) );
+		if( m_HighlightColour )
+		{
+			DebugRenderHelpers.DrawLine( currentPos - new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
+				currentPos + new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
+				new Color( 0.0f, 1.0f, 1.0f, 0.75f ) );
+		
+			m_HighlightColour = false;
+		}
+		else
+			DebugRenderHelpers.DrawLine( currentPos - new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
+				currentPos + new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
+				new Color( 0.0f, 0.75f, 1.0f, 0.75f ) );
 	}	
 
 	public override bool PlatformCollide( Vector3 box_center, float box_height, Vector3 movement_vector, ref Vector3 collision_point )
 	{
+		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
+
+		//	Going to massively simplify this using the assumption that the player only moves
+		//	up and down in y (not true of course).
+		
+		Vector3 boxBottom = box_center - new Vector3( 0.0f, box_height*0.5f, 0.0f );
+		
+		if( boxBottom.x < currentPos.x - m_Width*0.5f )
+			return false;
+		if( boxBottom.x > currentPos.x + m_Width*0.5f )
+			return false;
+
+		//	Also discard velocities in positive y so we can jump through under platforms
+		if( movement_vector.y > 0.0f )
+			return false;
+		
+		//	So we coincide on the x-axis - do we penetrate on the y?
+		if( boxBottom.y > currentPos.y && boxBottom.y - movement_vector.y > currentPos.y )
+			return false;
+		
+		float thickness = 0.01f;
+		if( boxBottom.y < currentPos.y - thickness && boxBottom.y - movement_vector.y < currentPos.y - thickness )
+			return false;
+
+		//	Collided, set the collision point to the top of the platform
+		collision_point.x = boxBottom.x;
+		collision_point.y = currentPos.y;
+		collision_point.z = 0.0f;
+		
+		return true;
+				 
+		/*
 		//	Do line intersection on the line of movement of the center-bottom point on the box (call it x1, y1 to x2, y2)
 		//	and the line of the platform (call it x3, y3 to x4, y3).
 		//	Simplifying assumptions are that the platform is flat on the x-axis and that x3 < x4
 		
 		//	Shift the box line down so it's in 'platform-space' on the y-axis
-		float x1 = box_center.x;
-		float y1 = box_center.y - box_height*0.5f - m_Position.y;
+		float x2 = box_center.x;
+		float y2 = box_center.y - box_height*0.5f - currentPos.y;
 		
-		float x2 = x1 + movement_vector.x;
-		float y2 = y1 + movement_vector.y;
+		float x1 = x2 - movement_vector.x;
+		float y1 = y2 - movement_vector.y;
 		
-		float x3 = m_Position.x - m_Width*0.5f;		
+		float x3 = currentPos.x - m_Width*0.5f;		
 		float x4 = x3 + m_Width;		
 		
 		//	This is like an axis-aligned bounding box check now with the platform box being infinitely thin on the y-axis
@@ -177,9 +241,10 @@ public class Platform : Obstacle
 		
 		//	We have an intersection, find the point and put it back in world-space
 		collision_point.x = intersectX;
-		collision_point.y = m_Position.y;
+		collision_point.y = currentPos.y;
 		collision_point.z = 0.0f;
 		
 		return true;
+		*/
 	}
 }

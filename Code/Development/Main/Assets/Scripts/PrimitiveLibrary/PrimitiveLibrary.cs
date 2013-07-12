@@ -55,12 +55,14 @@ public sealed class PrimitiveLibrary
 		FX_BATCH = 0,
 		NUMBERS_BATCH,
 		FRONTEND_BATCH,
+		PLAYER_BATCH,
 		
 		NUM
 	}
 	const int g_FXBatchSize = 1000;
 	const int g_NumbersBatchSize = 70;
 	const int g_FrontendBatchSize = 256;
+	const int g_PlayerBatchSize = 16;
 	
 	GameObject[] m_quadBatches = new GameObject[(int)QuadBatch.NUM];
 
@@ -147,6 +149,15 @@ public sealed class PrimitiveLibrary
 			false, false, false, 8 
 			);
 		m_quadBatches[(int)QuadBatch.FRONTEND_BATCH].transform.localPosition = Vector3.zero;
+
+		m_quadBatches[(int)QuadBatch.PLAYER_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_PlayerBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.PLAYER],
+			(int)TextureAtlas.AtlasID.PLAYER,
+			false, true, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.PLAYER_BATCH].transform.localPosition = Vector3.zero;
+
 		
 		for( int q = 0; q<(int)QuadBatch.NUM; q++ )
 			m_quadBatches[q].transform.parent = m_HierarchyQuadBatches;
@@ -463,6 +474,8 @@ public sealed class PrimitiveLibrary
 			Resources.Load( "Numbers_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
 			Resources.Load( FrontEnd.atlasFile ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.PLAYER].m_TexturePage =
+			Resources.Load( "Player_Atlas" ) as Texture;
 		
 		//	Set up the FX atlas
 		TextureAtlas fxAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX];		
@@ -499,6 +512,20 @@ public sealed class PrimitiveLibrary
 		TextureAtlas frontendAtlas = m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND];		
 		frontendAtlas.m_NumElements = TextureAtlas.maxFrontendElements;		
 		frontendAtlas.m_UVSet = new Vector4[frontendAtlas.m_NumElements]; // Setup dynamically by FastGUIElement
+		
+		
+		//	The player atlas - just break it up in pieces for now to leave it open for animation
+		TextureAtlas playerAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PLAYER];
+		playerAtlas.m_NumElements = 64;
+		playerAtlas.m_UVSet = new Vector4[playerAtlas.m_NumElements];
+		
+		for( int p = 0; p<64; p++ )
+		{
+			float uTex = ((float)(p%8))*0.125f;
+			float vTex = ((float)(p/8))*0.125f;
+			
+			playerAtlas.m_UVSet[p] = new Vector4( uTex, vTex, uTex + 0.125f, vTex + 0.125f );
+		}
 	}
 }
 
@@ -516,6 +543,7 @@ public class TextureAtlas
 		PARTICLE_FX = 0,
 		NUMBERS,
 		FRONTEND,
+		PLAYER,
 		
 		NUM
 	}
