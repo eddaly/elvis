@@ -9,7 +9,9 @@
 // Copyright Echo Peak Ltd 2013
 //-----------------------------------------------------------------------------
 using UnityEngine;
+#if !UNITY_IPHONE && !UNITY_ANDROID
 using UnityEditor;
+#endif
 using System.Collections;
 
 [ExecuteInEditMode]
@@ -39,8 +41,10 @@ public class ReferenceLibrary : MonoBehaviour
 	
 	void Start() 
 	{
+#if !UNITY_IPHONE && !UNITY_ANDROID
 		if( !Application.isPlaying )
 			EditorApplication.hierarchyWindowChanged += sceneHierarchyChanged;
+#endif
 	}
 	
 	void Update()
