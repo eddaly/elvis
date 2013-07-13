@@ -21,8 +21,8 @@ public class FastGUIScrollWindow : FastGUIElement
 		atlasRectMaxNormalised = new Vector4 (
 			atlasRectMax.x / originalAtlasPixelsWidth,
 			atlasRectMax.y / originalAtlasPixelsHeight, 
-			atlasRectMax.z / originalAtlasPixelsWidth, 
-			atlasRectMax.w / originalAtlasPixelsHeight);
+			(atlasRectMax.x + atlasRectMax.z) / originalAtlasPixelsWidth, 
+			(atlasRectMax.y + atlasRectMax.w) / originalAtlasPixelsHeight);
 	}
 	
 	// Update should be called once per frame to update
@@ -60,7 +60,7 @@ public class FastGUIScrollWindow : FastGUIElement
 			lastPos = touchPos;
 
 			// Move the UVs
-			Vector4 m4 = new Vector4 (movement.x, 0, movement.x, 0); // X-axis only
+			Vector4 m4 = new Vector4 (movement.x, movement.y, movement.x, movement.y);
 			m4 *= 3f;					// Scale to scroll with finger position (set with trial and error on iPhone5!)
 			if (m4.magnitude > 10)		// Unless barely moving (at least with touch)
 				scrollUVs (m4);
@@ -77,7 +77,7 @@ public class FastGUIScrollWindow : FastGUIElement
 		// Autoscroll
 		if (autoscroll)
 		{
-			Vector3 v4 = new Vector4 (velocity.x, 0, velocity.x, 0);	// X-axis only
+			Vector4 v4 = new Vector4 (velocity.x, velocity.y, velocity.x, velocity.y);	//*** test y scroll with touch
 			v4 *= Time.deltaTime;	// Scale scroll speed to framerate
 			scrollUVs (v4);
 			// Decelerate until stop
@@ -93,10 +93,11 @@ public class FastGUIScrollWindow : FastGUIElement
 	// Scroll the UVs, with clamping, and of child elements
 	private void scrollUVs (Vector4 v)
 	{
+		Debug.Log (v);
 		Vector4 vNormalised = new Vector4 (
 				v.x / originalAtlasPixelsWidth, v.y / originalAtlasPixelsHeight,
 				v.z / originalAtlasPixelsWidth, v.w / originalAtlasPixelsHeight);
-		
+		Debug.Log (vNormalised);
 		// Move the UVs
 		frontendAtlas.m_UVSet[textureIdx] -= vNormalised;
 		
@@ -112,6 +113,18 @@ public class FastGUIScrollWindow : FastGUIElement
 			v.x += (frontendAtlas.m_UVSet[textureIdx].z - atlasRectMaxNormalised.z) * originalAtlasPixelsWidth;
 			frontendAtlas.m_UVSet[textureIdx].x = atlasRectMaxNormalised.z - widthNormalised;
 			frontendAtlas.m_UVSet[textureIdx].z = atlasRectMaxNormalised.z;
+		}
+		if (frontendAtlas.m_UVSet[textureIdx].y < (1f - atlasRectMaxNormalised.w))
+		{
+			v.y -= ((1f - atlasRectMaxNormalised.w) - frontendAtlas.m_UVSet[textureIdx].y) * originalAtlasPixelsHeight;
+			frontendAtlas.m_UVSet[textureIdx].y = 1f - atlasRectMaxNormalised.w;
+			frontendAtlas.m_UVSet[textureIdx].w = frontendAtlas.m_UVSet[textureIdx].y + heightNormalised;
+		}
+		else if (frontendAtlas.m_UVSet[textureIdx].w > (1f - atlasRectMaxNormalised.y))
+		{
+			v.y += (frontendAtlas.m_UVSet[textureIdx].w - (1f - atlasRectMaxNormalised.y)) * originalAtlasPixelsHeight;
+			frontendAtlas.m_UVSet[textureIdx].w = 1f - atlasRectMaxNormalised.y;
+			frontendAtlas.m_UVSet[textureIdx].y = frontendAtlas.m_UVSet[textureIdx].w - heightNormalised;
 		}
 		
 		// Move the children inline with scrolled background
