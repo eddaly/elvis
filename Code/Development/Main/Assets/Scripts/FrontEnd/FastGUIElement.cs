@@ -9,7 +9,7 @@ public class FastGUIElement
 	// Screen and Frontend Atlas size
 	static public float safeScreenWidth = 2048f, safeScreenHeight = 1536f;
 	static protected TextureAtlas frontendAtlas;
-	static protected int originalAtlasPixelsWidth, originalAtlasPixelsHeight;
+	static protected float originalAtlasPixelsWidth, originalAtlasPixelsHeight;
 	private static int instanceCount = 0;			// Number of FastGUIElement instances
 	
 	// Size of element
@@ -244,6 +244,7 @@ public class FastGUIElement
 		Vector4 v = Vector4.zero;
 		using (XmlReader reader = XmlReader.Create (uvxmlFile))
 		{
+			bool fail = true;
 			do {
 				
 			    if (!reader.ReadToFollowing ("sprite"))
@@ -251,7 +252,6 @@ public class FastGUIElement
 			    if (!reader.MoveToAttribute (@"n"))
 					break;
 			    string aTextureFile = reader.Value;
-				Debug.Log (aTextureFile);
 				if (aTextureFile.Equals (textureFile, System.StringComparison.OrdinalIgnoreCase))
 				{
 					if (!reader.MoveToAttribute (@"x"))
@@ -266,10 +266,12 @@ public class FastGUIElement
 					if (!reader.MoveToAttribute (@"h"))
 						break;
 					v.w = reader.ReadContentAsFloat();
+					fail = false;
 					break;
 				}
-				Debug.Log (v);
 			} while (true);
+			if (fail)
+				Debug.LogError ("Error reading XML");
 		}
 		return v;
 	}
