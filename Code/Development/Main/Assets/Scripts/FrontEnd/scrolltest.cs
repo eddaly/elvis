@@ -9,6 +9,9 @@ public class scrolltest : MonoBehaviour {
 	FastGUIElement popup;
 	FastGUIButton popupButton;
 #pragma warning restore 414
+	
+	bool testAutoScroll = false;
+	
 	// Use this for initialization
 	void Start ()
 	{
@@ -53,7 +56,12 @@ public class scrolltest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update ()
-	{	
+	{			
+		if (testAutoScroll)	{
+			if (!vScrollWindow.ScrollUVs (new Vector2 (0, Time.deltaTime * 100)))
+				testAutoScroll = false;
+		}
+
 		// Needed to handle inputs
 		hScrollWindow.Update ();
 		vScrollWindow.Update ();
@@ -61,6 +69,7 @@ public class scrolltest : MonoBehaviour {
 		{
 			Debug.Log ("Tapped RED Button");
 			popup.SetDisplayed (false);
+			testAutoScroll = true;
 		}
 		
 		if (play.Tapped ())

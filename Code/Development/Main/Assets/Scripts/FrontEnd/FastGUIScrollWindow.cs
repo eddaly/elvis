@@ -60,10 +60,10 @@ public class FastGUIScrollWindow : FastGUIElement
 			lastPos = touchPos;
 
 			// Move the UVs
-			Vector4 m4 = new Vector4 (movement.x, movement.y, movement.x, movement.y);
-			m4 *= 3f;					// Scale to scroll with finger position (set with trial and error on iPhone5!)
-			if (m4.magnitude > 10)		// Unless barely moving (at least with touch)
-				scrollUVs (m4);
+			Vector2 m2 = new Vector2 (movement.x, movement.y);
+			m2 *= 3f;					// Scale to scroll with finger position (set with trial and error on iPhone5!)
+			if (m2.magnitude > 10)		// Unless barely moving (at least with touch)
+				ScrollUVs (m2);
 		}
 		
 		// If touch ended start autoscroll
@@ -77,9 +77,9 @@ public class FastGUIScrollWindow : FastGUIElement
 		// Autoscroll
 		if (autoscroll)
 		{
-			Vector4 v4 = new Vector4 (velocity.x, velocity.y, velocity.x, velocity.y);	//*** test y scroll with touch
-			v4 *= Time.deltaTime;	// Scale scroll speed to framerate
-			scrollUVs (v4);
+			Vector2 v2 = new Vector2 (velocity.x, velocity.y);
+			v2 *= Time.deltaTime;	// Scale scroll speed to framerate
+			ScrollUVs (v2);
 			// Decelerate until stop
 			velocity = velocity * .9f;
 			if (velocity.magnitude  < Mathf.Epsilon)
@@ -89,15 +89,15 @@ public class FastGUIScrollWindow : FastGUIElement
 		}
 #endif
 	}
-	
+		
 	// Scroll the UVs, with clamping, and of child elements
-	private void scrollUVs (Vector4 v)
+	// Return false if scroll is clamped
+	public bool ScrollUVs (Vector2 v)
 	{
-		Debug.Log (v);
-		Vector4 vNormalised = new Vector4 (
-				v.x / originalAtlasPixelsWidth, v.y / originalAtlasPixelsHeight,
-				v.z / originalAtlasPixelsWidth, v.w / originalAtlasPixelsHeight);
-		Debug.Log (vNormalised);
+		bool clamped = false;
+		Vector4 vNormalised = new Vector4 (v.x / originalAtlasPixelsWidth, v.y / originalAtlasPixelsHeight,
+				v.x / originalAtlasPixelsWidth, v.y / originalAtlasPixelsHeight);
+		
 		// Move the UVs
 		frontendAtlas.m_UVSet[textureIdx] -= vNormalised;
 		
@@ -107,24 +107,28 @@ public class FastGUIScrollWindow : FastGUIElement
 			v.x -= (atlasRectMaxNormalised.x - frontendAtlas.m_UVSet[textureIdx].x) * originalAtlasPixelsWidth;
 			frontendAtlas.m_UVSet[textureIdx].x = atlasRectMaxNormalised.x;
 			frontendAtlas.m_UVSet[textureIdx].z = atlasRectMaxNormalised.x + widthNormalised;
+			clamped = true;
 		}
 		else if (frontendAtlas.m_UVSet[textureIdx].z > atlasRectMaxNormalised.z)
 		{
 			v.x += (frontendAtlas.m_UVSet[textureIdx].z - atlasRectMaxNormalised.z) * originalAtlasPixelsWidth;
 			frontendAtlas.m_UVSet[textureIdx].x = atlasRectMaxNormalised.z - widthNormalised;
 			frontendAtlas.m_UVSet[textureIdx].z = atlasRectMaxNormalised.z;
+			clamped = true;
 		}
 		if (frontendAtlas.m_UVSet[textureIdx].y < (1f - atlasRectMaxNormalised.w))
 		{
 			v.y -= ((1f - atlasRectMaxNormalised.w) - frontendAtlas.m_UVSet[textureIdx].y) * originalAtlasPixelsHeight;
 			frontendAtlas.m_UVSet[textureIdx].y = 1f - atlasRectMaxNormalised.w;
 			frontendAtlas.m_UVSet[textureIdx].w = frontendAtlas.m_UVSet[textureIdx].y + heightNormalised;
+			clamped = true;
 		}
 		else if (frontendAtlas.m_UVSet[textureIdx].w > (1f - atlasRectMaxNormalised.y))
 		{
 			v.y += (frontendAtlas.m_UVSet[textureIdx].w - (1f - atlasRectMaxNormalised.y)) * originalAtlasPixelsHeight;
 			frontendAtlas.m_UVSet[textureIdx].w = 1f - atlasRectMaxNormalised.y;
 			frontendAtlas.m_UVSet[textureIdx].y = frontendAtlas.m_UVSet[textureIdx].w - heightNormalised;
+			clamped = true;
 		}
 		
 		// Move the children inline with scrolled background
@@ -134,6 +138,8 @@ public class FastGUIScrollWindow : FastGUIElement
 			child.quad.m_Position += p;
 			child.UpdatedQuad ();
 		}
+			
+		return !clamped;
 			
 		// TODO it going outside the window, i.e. clipping it.  However that only needed if is any visible space outside the window
 		// as long as even the unsafe area used by windows this isn't a problem.  And would probably put a 'mask' over it anyway
