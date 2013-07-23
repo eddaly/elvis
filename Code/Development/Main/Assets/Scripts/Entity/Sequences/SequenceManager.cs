@@ -17,36 +17,42 @@ public class SequenceManager : MonoBehaviour
 {
 	public float m_MasterDistance = 0.0f;
 	public float m_MetersPerSecond = 8.0f;
+
 	
-	public enum ActivePiece
-	{
-		ON_SCREEN = 0,
-		OFF_SCREEN,
-		
-		NUM
-	}
-	ObstaclePiece[] m_ActiveObstaclePieces = new ObstaclePiece[(int)ActivePiece.NUM];
-	EnvironmentPiece[,] m_ActiveEnvironmentPieces = 
-		new EnvironmentPiece[(int)(EntityDefs.EnvLayer.NUM), (int)ActivePiece.NUM];
+	//	The are 2 active pieces for all layers - piece 0 is the one on
+	//	screen at any time and piece 1 is the one to the right that is either
+	//	waiting to come on or overlaps into the viewable area. 
+	//	When piece 0 scrolls left enough so that it is no longer on screen then
+	//	piece 1 shuffles into the piece 0 slot and a new piece 1 is requested
+	//	from the track makers.
 	
 	
-	//	For showing obstacle pieces in edit mode:
+	//	For choosing the various layers and pieces to be viewed in edito mode:
 	public bool m_ShowObstacles = true;
+	public int[] m_ObstaclePieces = new int[2];
 	
-	public int m_PrimaryObstacle = 0;
-	public int m_SecondaryObstacle = 1;
+	
+	public bool[] m_ShowEnvLayers = new bool[(int)(EntityDefs.EnvLayer.NUM)];
+	public int[,] m_EnvPieces = new int[(int)(EntityDefs.EnvLayer.NUM), 2];
+	
+	public int[] m_SkyboxPieces = new int[2];
+	public int[] m_BackgroundPieces = new int[2];
+	public int[] m_MidgroundPieces = new int[2];
+	public int[] m_ForegroundPieces = new int[2];
+	public int[] m_OverlayPieces = new int[2];
 	
 	
 	//	For managing pieces in play mode
 	bool m_playModeSequenceInitialised = false;
 
 	ObstacleTrackMaker m_ObstacleTrackMaker = new ObstacleTrackMaker();
+	EnvironmentTrackMaker m_EnvironmentTrackMaker = new EnvironmentTrackMaker();
 	
 	void Start() 
 	{
-		if( ReferenceLibrary.m_ObstacleManager )
+		if( RL.m_Obstacles )
 		{
-			ReferenceLibrary.m_ObstacleManager.HideAllPieces(); 
+			RL.m_Obstacles.HideAllPieces(); 
 		}
 	}
 	
@@ -65,22 +71,77 @@ public class SequenceManager : MonoBehaviour
 	//			managers to allow the user to slide back and forth on master time
 	void updateEditMode()
 	{
-		if( ReferenceLibrary.m_ObstacleManager )
+		if( RL.m_Obstacles && m_ShowObstacles )
 		{
-			ReferenceLibrary.m_ObstacleManager.HideAllPieces(); 
+			RL.m_Obstacles.HideAllPieces(); 
 			
-			ReferenceLibrary.m_ObstacleManager.ValidatePieceIdx( ref m_PrimaryObstacle );
-			ReferenceLibrary.m_ObstacleManager.ValidatePieceIdx( ref m_SecondaryObstacle );
+			RL.m_Obstacles.ValidatePieceIdx( ref m_ObstaclePieces[0] );
+			RL.m_Obstacles.ValidatePieceIdx( ref m_ObstaclePieces[1] );
 			
-			ReferenceLibrary.m_ObstacleManager.ShowPiece( m_PrimaryObstacle );
-			ReferenceLibrary.m_ObstacleManager.SetPieceDistance( m_PrimaryObstacle, 0.0f );
+			RL.m_Obstacles.ShowPiece( m_ObstaclePieces[0] );
+			RL.m_Obstacles.SetPieceDistance( m_ObstaclePieces[0], 0.0f );
 			
-			ReferenceLibrary.m_ObstacleManager.ShowPiece( m_SecondaryObstacle );
-			ReferenceLibrary.m_ObstacleManager.SetPieceDistance( m_SecondaryObstacle, 
-				ReferenceLibrary.m_ObstacleManager.GetPieceWidth( m_PrimaryObstacle ) );
+			RL.m_Obstacles.ShowPiece( m_ObstaclePieces[1] );
+			RL.m_Obstacles.SetPieceDistance( m_ObstaclePieces[1], 
+				RL.m_Obstacles.GetPieceWidth( m_ObstaclePieces[0] ) );
+		}
+		
+		if( RL.m_Environment )
+		{
+			RL.m_Environment.HideAllPieces();
+			
+			//	Have to do this long hand until I make the inspector display 2d arrays			
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.SKYBOX,
+				ref m_SkyboxPieces[0] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.SKYBOX, 0] = m_SkyboxPieces[0];
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.SKYBOX,
+				ref m_SkyboxPieces[1] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.SKYBOX, 1] = m_SkyboxPieces[1];
+			
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.BACKGROUND,
+				ref m_BackgroundPieces[0] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.BACKGROUND, 0] = m_BackgroundPieces[0];
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.BACKGROUND,
+				ref m_BackgroundPieces[1] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.BACKGROUND, 1] = m_BackgroundPieces[1];
+
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.MIDGROUND,
+				ref m_MidgroundPieces[0] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.MIDGROUND, 0] = m_MidgroundPieces[0];
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.MIDGROUND,
+				ref m_MidgroundPieces[1] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.MIDGROUND, 1] = m_MidgroundPieces[1];
+			
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.FOREGROUND,
+				ref m_ForegroundPieces[0] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.FOREGROUND, 0] = m_ForegroundPieces[0];
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.FOREGROUND,
+				ref m_ForegroundPieces[1] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.FOREGROUND, 1] = m_ForegroundPieces[1];
+			
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.OVERLAY,
+				ref m_OverlayPieces[0] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.OVERLAY, 0] = m_OverlayPieces[0];
+			RL.m_Environment.ValidatePieceIdx( (int)EntityDefs.EnvLayer.OVERLAY,
+				ref m_OverlayPieces[1] );
+			m_EnvPieces[(int)EntityDefs.EnvLayer.OVERLAY, 1] = m_OverlayPieces[1];
+			
+			//	Now set all the layers according to master distance
+			for( int l = 0; l<(int)EntityDefs.EnvLayer.NUM; l++ )
+			{				
+				if( m_ShowEnvLayers[l] )
+				{
+					RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 0] );
+					RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 0], 0.0f );
+					
+					RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );
+					RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 1], 
+						RL.m_Environment.GetPieceWidth( l, m_EnvPieces[l, 0] ) );			
+				}
+			}
 		}
 	}
-
+	
 	
 	//-----------------------------------------------------------------------------
 	// Method:	initialisePlayMode()
@@ -90,23 +151,45 @@ public class SequenceManager : MonoBehaviour
 		System.DateTime systemTime = System.DateTime.Now;		
 		Random.seed = systemTime.Millisecond;
 		
-		ReferenceLibrary.m_ObstacleManager.HideAllPieces(); 
+		RL.m_Obstacles.HideAllPieces(); 
 
 		m_ObstacleTrackMaker.StartPlayMode();
 		
-		m_PrimaryObstacle = m_ObstacleTrackMaker.NextPiece();			
-		ReferenceLibrary.m_ObstacleManager.ValidatePieceIdx( ref m_PrimaryObstacle );
-		ReferenceLibrary.m_ObstacleManager.SetPieceDistance( m_PrimaryObstacle, 0.0f );
-		ReferenceLibrary.m_ObstacleManager.ShowPiece( m_PrimaryObstacle );
+		m_ObstaclePieces[0] = m_ObstacleTrackMaker.NextPiece();			
+		RL.m_Obstacles.ValidatePieceIdx( ref m_ObstaclePieces[0] );
+		RL.m_Obstacles.SetPieceDistance( m_ObstaclePieces[0], 0.0f );
+		RL.m_Obstacles.ShowPiece( m_ObstaclePieces[0] );
 		
-		m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();
-		while( m_PrimaryObstacle == m_SecondaryObstacle )
-			m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();
+		m_ObstaclePieces[1] = m_ObstacleTrackMaker.NextPiece();
+		while( m_ObstaclePieces[0] == m_ObstaclePieces[1] )
+			m_ObstaclePieces[1] = m_ObstacleTrackMaker.NextPiece();
 		
-		ReferenceLibrary.m_ObstacleManager.ValidatePieceIdx( ref m_SecondaryObstacle );
-		ReferenceLibrary.m_ObstacleManager.SetPieceDistance( m_SecondaryObstacle,
-			ReferenceLibrary.m_ObstacleManager.GetPieceWidth( m_PrimaryObstacle ) );
-		ReferenceLibrary.m_ObstacleManager.ShowPiece( m_SecondaryObstacle );
+		RL.m_Obstacles.ValidatePieceIdx( ref m_ObstaclePieces[1] );
+		RL.m_Obstacles.SetPieceDistance( m_ObstaclePieces[1],
+			RL.m_Obstacles.GetPieceWidth( m_ObstaclePieces[0] ) );
+		RL.m_Obstacles.ShowPiece( m_ObstaclePieces[1] );
+		
+		
+		RL.m_Environment.HideAllPieces();
+		
+		m_EnvironmentTrackMaker.StartPlayMode();
+		
+		for( int l = 0; l<(int)EntityDefs.EnvLayer.NUM; l++ )
+		{
+			m_EnvPieces[l, 0] = m_EnvironmentTrackMaker.NextPiece( l );			
+			RL.m_Environment.ValidatePieceIdx( l, ref m_EnvPieces[l, 0] );
+			RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 0], 0.0f );
+			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 0] );
+			
+			m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );
+			while( m_EnvPieces[l, 0] == m_EnvPieces[l, 1] )
+				m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );
+			
+			RL.m_Environment.ValidatePieceIdx( l, ref m_EnvPieces[l, 1] );
+			RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 1],
+				RL.m_Environment.GetPieceWidth( l, m_EnvPieces[l, 0] ) );
+			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );
+		}		
 	}
 	
 	
@@ -125,27 +208,69 @@ public class SequenceManager : MonoBehaviour
 			initialisePlayMode();
 		}
 		
-		float hiddenDistance = ReferenceLibrary.m_ObstacleManager.GetPieceDistance( m_PrimaryObstacle ) +
-			ReferenceLibrary.m_ObstacleManager.GetPieceWidth( m_PrimaryObstacle );
+		float hiddenDistance = RL.m_Obstacles.GetPieceDistance( m_ObstaclePieces[0] ) +
+			RL.m_Obstacles.GetPieceWidth( m_ObstaclePieces[0] );
 		
 		if( m_MasterDistance > hiddenDistance )
 		{
 			//	Time to shuffle the pieces along and put a new one on the front
-			ReferenceLibrary.m_ObstacleManager.HidePiece( m_PrimaryObstacle );
-			m_PrimaryObstacle = m_SecondaryObstacle;
+			RL.m_Obstacles.HidePiece( m_ObstaclePieces[0] );
+			m_ObstaclePieces[0] = m_ObstaclePieces[1];
 			
-			m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();			
-			while( m_PrimaryObstacle == m_SecondaryObstacle )
-				m_SecondaryObstacle = m_ObstacleTrackMaker.NextPiece();
+			m_ObstaclePieces[1] = m_ObstacleTrackMaker.NextPiece();			
+			while( m_ObstaclePieces[0] == m_ObstaclePieces[1] )
+				m_ObstaclePieces[1] = m_ObstacleTrackMaker.NextPiece();
 		
-			ReferenceLibrary.m_ObstacleManager.ValidatePieceIdx( ref m_SecondaryObstacle );
+			RL.m_Obstacles.ValidatePieceIdx( ref m_ObstaclePieces[1] );
 			
-			ReferenceLibrary.m_ObstacleManager.SetPieceDistance( m_SecondaryObstacle,
-				ReferenceLibrary.m_ObstacleManager.GetPieceDistance( m_PrimaryObstacle ) +
-				ReferenceLibrary.m_ObstacleManager.GetPieceWidth( m_PrimaryObstacle ) );
+			RL.m_Obstacles.SetPieceDistance( m_ObstaclePieces[1],
+				RL.m_Obstacles.GetPieceDistance( m_ObstaclePieces[0] ) +
+				RL.m_Obstacles.GetPieceWidth( m_ObstaclePieces[0] ) );
 			
-			ReferenceLibrary.m_ObstacleManager.ShowPiece( m_SecondaryObstacle );			
+			RL.m_Obstacles.ShowPiece( m_ObstaclePieces[1] );			
 		}
+		
+		
+		//	Now do all the environment layers
+		for( int l = 0; l<(int)EntityDefs.EnvLayer.NUM; l++ )
+		{
+			RL.m_Environment.UpdateMasterDistance( l, m_EnvPieces[l, 0] );
+			RL.m_Environment.UpdateMasterDistance( l, m_EnvPieces[l, 1] );
+			
+			hiddenDistance = RL.m_Environment.GetPieceDistance( l, m_EnvPieces[l, 0] ) +
+				RL.m_Environment.GetPieceWidth( l, m_EnvPieces[l, 0] );
+			
+			if( m_MasterDistance > hiddenDistance )
+			{
+				//	Time to shuffle the pieces along and put a new one on the front
+				RL.m_Environment.HidePiece( l, m_EnvPieces[l, 0] );
+				m_EnvPieces[l, 0] = m_EnvPieces[l, 1];
+				
+				m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );			
+				while( m_EnvPieces[l, 0] == m_EnvPieces[l, 1] )
+					m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );
+			
+				RL.m_Environment.ValidatePieceIdx( l, ref m_EnvPieces[l, 1] );
+				
+				RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 1],
+					RL.m_Environment.GetPieceDistance( l, m_EnvPieces[l, 0] ) +
+					RL.m_Environment.GetPieceWidth( l, m_EnvPieces[l, 0] ) );
+				
+				RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );			
+			}
+		}
+				
+		
+		//	Set camera according to prototype settings
+		float dist = RL.m_Prototype.m_viewDistance;
+		
+		GameObject cameraObject = RL.m_MainCamera.gameObject;
+
+		//	Different function when zooming in or zooming out to take account of y
+		if( dist < 1.0f )
+			cameraObject.transform.position = new Vector3( dist*10.0f, -0.7f + dist*6.2f, dist*-18.2f );
+		else
+			cameraObject.transform.position = new Vector3( dist*10.0f, 3.0f + dist*2.5f, dist*-18.2f );
 	}
 	
 	//-----------------------------------------------------------------------------
@@ -155,13 +280,13 @@ public class SequenceManager : MonoBehaviour
 	//			none of them do.
 	public Obstacle CollideWithBox( Vector3 box_center, float box_width, float box_height )
 	{
-		Obstacle collider = ReferenceLibrary.m_ObstacleManager.CollideWithBox( m_PrimaryObstacle,
+		Obstacle collider = RL.m_Obstacles.CollideWithBox( m_ObstaclePieces[0],
 			box_center, box_width, box_height );
 		
 		if( collider != null )
 			return collider;
 		
-		return ReferenceLibrary.m_ObstacleManager.CollideWithBox( m_SecondaryObstacle,
+		return RL.m_Obstacles.CollideWithBox( m_ObstaclePieces[1],
 			box_center, box_width, box_height );		
 	}
 	
@@ -173,13 +298,13 @@ public class SequenceManager : MonoBehaviour
 	public Obstacle PlatformCollide( Vector3 box_center, float box_height, Vector3 move_vector,
 		ref Vector3 collision_point )
 	{
-		Obstacle collider = ReferenceLibrary.m_ObstacleManager.PlatformCollide( m_PrimaryObstacle, 
+		Obstacle collider = RL.m_Obstacles.PlatformCollide( m_ObstaclePieces[0], 
 			box_center, box_height, move_vector, ref collision_point );
 		
 		if( collider != null )
 			return collider;
 		
-		return ReferenceLibrary.m_ObstacleManager.PlatformCollide( m_SecondaryObstacle, 
+		return RL.m_Obstacles.PlatformCollide( m_ObstaclePieces[1], 
 			box_center, box_height, move_vector, ref collision_point );
 	}
 }

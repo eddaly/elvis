@@ -22,6 +22,9 @@ public class ObstacleTrackMaker
 	public void StartPlayMode() 
 	{
 		m_flipflopTrack = 5;
+		
+		if( RL.m_Prototype.m_TrackType == PrototypeConfiguration.TrackTypes.MULTI_TRACK )
+			m_flipflopTrack = Random.Range( 10, 15 );
 	}
 	
 	public void UpdatePlayMode() 
@@ -32,13 +35,21 @@ public class ObstacleTrackMaker
 	
 	public int NextPiece()
 	{
-/*		if( m_flipflopTrack == 5 )
-			m_flipflopTrack = 9;
-		else
-			m_flipflopTrack = 5;
+		int nextPiece = 0;
 		
-		return m_flipflopTrack;*/
+		if( RL.m_Prototype.m_TrackType == PrototypeConfiguration.TrackTypes.ANALOGUE_JUMPS1 )
+			nextPiece = analogueJumps1Track();
+
+		if( RL.m_Prototype.m_TrackType == PrototypeConfiguration.TrackTypes.MULTI_TRACK )
+			nextPiece = multiTrack();
 		
+		Debug.Log( nextPiece.ToString() );
+		
+		return nextPiece;
+	}
+	
+	int analogueJumps1Track()
+	{
 		if( m_flipflopTrack == 1 )
 		{
 			m_flipflopTrack = 2;
@@ -61,7 +72,7 @@ public class ObstacleTrackMaker
 		
 		return m_flipflopTrack;
 		
-		m_flipflopTrack++;
+/*		m_flipflopTrack++;
 		
 		if( m_flipflopTrack > 5 )
 		{
@@ -77,6 +88,17 @@ public class ObstacleTrackMaker
 			}
 		}
 
+		return m_flipflopTrack;*/
+	}
+	
+	int multiTrack()
+	{
+		int nextPiece = Random.Range( 10, 15 );
+		
+		while( nextPiece == m_flipflopTrack )
+			nextPiece = Random.Range( 10, 15 );
+		
+		m_flipflopTrack = nextPiece;
 		return m_flipflopTrack;
 	}
 }

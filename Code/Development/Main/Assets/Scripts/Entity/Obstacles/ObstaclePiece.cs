@@ -57,9 +57,21 @@ public class ObstaclePiece
 	
 	public void DebugRender()
 	{
+		//	Render each obstacle's collision area
 		foreach( Obstacle obstacle in m_obstacleList )
 		{
 			obstacle.DebugRender();
 		}
+		
+		//	And render the piece bounds
+		float distanceOffset = m_Distance - RL.m_Sequencer.m_MasterDistance; 
+		
+		DebugRenderHelpers.DrawLine( new Vector3( distanceOffset, -20.0f, 0.0f ),
+			new Vector3( distanceOffset, 40.0f, 0.0f ), 
+			new Color( 1.0f, 0.0f, 1.0f, 0.7f ) );
+
+		DebugRenderHelpers.DrawLine( new Vector3( distanceOffset + m_Width, -20.0f, 0.0f ),
+			new Vector3( distanceOffset + m_Width, 40.0f, 0.0f ), 
+			new Color( 1.0f, 0.0f, 1.0f, 0.7f ) );
 	}
 }

@@ -26,11 +26,14 @@ public class ObstacleManager : MonoBehaviour
 	
 	void Update() 
 	{	
+		if( RL.m_Sequencer.m_ShowObstacles )
+		{		
 			for( int p = 0; p<kMaxPieces; p++ )
 			{
 				if( m_obstaclePieces[p] != null && m_obstaclePieces[p].m_Active )
 					m_obstaclePieces[p].DebugRender();
 			}
+		}
 	}
 		
 	//-----------------------------------------------------------------------------
@@ -126,8 +129,6 @@ public class ObstacleManager : MonoBehaviour
 	// Desc:	Forces the manager to flush and refresh the pieces
 	public void RefreshPieces()
 	{
-		Debug.Log( "Refreshing Pieces" );
-		
 		//	Lost references will be garbage collected
 		setupSomePieces();
 	}
@@ -137,8 +138,28 @@ public class ObstacleManager : MonoBehaviour
 	// Desc:	For now, create some obstacle pieces by hand
 	void setupSomePieces()
 	{
-		Debug.Log( "Setting up some pieces" );
-
+		//	Clear the references we have for now, let garbage collection deal with the
+		//	freed references
+		for( int p = 0; p<kMaxPieces; p++ )
+		{
+			m_obstaclePieces[p] = null;
+		}
+		
+		switch( RL.m_Prototype.m_TrackType )
+		{
+		case PrototypeConfiguration.TrackTypes.ANALOGUE_JUMPS1:
+		case PrototypeConfiguration.TrackTypes.MULTI_TRACK:
+			setupAnalogueJumpsTrack();
+			break;
+		case PrototypeConfiguration.TrackTypes.EASY_JUMPS1:
+			break;
+		case PrototypeConfiguration.TrackTypes.FULL_SCREEN_OBSTACLES:
+			break;
+		}
+	}
+	
+	void setupAnalogueJumpsTrack()
+	{
 		m_obstaclePieces[0] = new ObstaclePiece();
 		
 		KillSphere newSphere = new KillSphere();

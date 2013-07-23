@@ -48,7 +48,7 @@ public class Obstacle
 	
 	public float distanceOffset()
 	{
-		return m_Parent.m_Distance - ReferenceLibrary.m_SequenceManager.m_MasterDistance; 
+		return m_Parent.m_Distance - RL.m_Sequencer.m_MasterDistance; 
 	}
 	
 	public void SetHighlight()
@@ -68,11 +68,11 @@ public class KillSphere : Obstacle
 		
 		if( m_HighlightColour )
 		{
-			DebugRenderHelpers.DrawFilledCircle( currentPos, m_Radius, new Color( 1.0f, 0.0f, 0.0f, 0.75f ) );
+			DebugRenderHelpers.DrawFilledCircle( currentPos, m_Radius, new Color( 1.0f, 0.0f, 0.0f, 1.0f ) );
 			m_HighlightColour = false;
 		}
 		else
-			DebugRenderHelpers.DrawFilledCircle( currentPos, m_Radius, new Color( 1.0f, 1.0f, 0.0f, 0.75f ) );
+			DebugRenderHelpers.DrawFilledCircle( currentPos, m_Radius, new Color( 1.0f, 1.0f, 0.0f, 1.0f ) );
 	}
 	
 	public override bool CollideWithBox( Vector3 box_center, float box_width, float box_height )
@@ -112,11 +112,11 @@ public class KillBox : Obstacle
 		
 		if( m_HighlightColour )
 		{
-			DebugRenderHelpers.DrawFilled2DBoxC( currentPos, m_Width, m_Height, new Color( 1.0f, 0.0f, 0.0f, 0.75f ) );
+			DebugRenderHelpers.DrawFilled2DBoxC( currentPos, m_Width, m_Height, new Color( 1.0f, 0.0f, 0.0f, 1.0f ) );
 			m_HighlightColour = false;
 		}
 		else
-			DebugRenderHelpers.DrawFilled2DBoxC( currentPos, m_Width, m_Height, new Color( 1.0f, 1.0f, 0.0f, 0.75f ) );
+			DebugRenderHelpers.DrawFilled2DBoxC( currentPos, m_Width, m_Height, new Color( 1.0f, 1.0f, 0.0f, 1.0f ) );
 	}
 	
 	public override bool CollideWithBox( Vector3 box_center, float box_width, float box_height )
@@ -158,14 +158,14 @@ public class Platform : Obstacle
 		{
 			DebugRenderHelpers.DrawLine( currentPos - new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
 				currentPos + new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
-				new Color( 0.0f, 1.0f, 1.0f, 0.75f ) );
+				new Color( 0.0f, 1.0f, 1.0f, 1.0f ) );
 		
 			m_HighlightColour = false;
 		}
 		else
 			DebugRenderHelpers.DrawLine( currentPos - new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
 				currentPos + new Vector3( m_Width*0.5f, 0.0f, 0.0f ), 
-				new Color( 0.0f, 0.75f, 1.0f, 0.75f ) );
+				new Color( 0.0f, 0.75f, 1.0f, 1.0f ) );
 	}	
 
 	public override bool PlatformCollide( Vector3 box_center, float box_height, Vector3 movement_vector, ref Vector3 collision_point )

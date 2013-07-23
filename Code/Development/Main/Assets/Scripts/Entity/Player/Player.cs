@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 	
 	float m_fallTimer = 0.0f;
 	
+	float m_highAnalogueTimer = 0.0f;
+	
 	float m_gravity = -50.0f;
 	
 	Vector3 m_lastPosition;
@@ -63,6 +65,10 @@ public class Player : MonoBehaviour
 		m_fallTimer -= Time.deltaTime;
 		if( m_fallTimer < 0.0f )
 			m_fallTimer = 0.0f;
+
+		m_highAnalogueTimer -= Time.deltaTime;
+		if( m_highAnalogueTimer < 0.0f )
+			m_highAnalogueTimer = 0.0f;
 		
 		if( m_realAnimRunSpeed > m_animRunSpeed )
 		{
@@ -80,26 +86,96 @@ public class Player : MonoBehaviour
 		InputManager.Get.Update();
 		
 		animatePlayer();	
-		
-		if( InputManager.Get.m_FireDown[0] && m_animState == PlayerAnimState.RUNNING )
+
+		//	Maybe do a jump while running
+		if( InputManager.Get.m_FirePressed[0] && m_animState == PlayerAnimState.RUNNING )
 		{
 			changeState( PlayerAnimState.JUMP_TAKE_OFF );
-			m_jumpVelocity = 16.0f;
+			
+			if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
+				m_jumpVelocity = 45.0f;
+			else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.DIGITAL )
+				m_jumpVelocity = 16.0f;
+			else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.HIGH_ANALOGUE )
+			{
+				m_highAnalogueTimer = 0.5f;
+				m_jumpVelocity = 10.0f;
+			}
+			else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.ANALOGUE )
+			{
+				m_highAnalogueTimer = 0.25f;
+				m_jumpVelocity = 16.0f;
+			}
+		}
+
+		//	Maybe do a drop while in the air
+		if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.HIGH_ANALOGUE )
+		{
+			if( InputManager.Get.m_FireDown[0] && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f )
+			{
+				m_jumpVelocity += Time.deltaTime*50.0f;
+			}
+			
+			if( InputManager.Get.m_FireDown[1] && m_animState != PlayerAnimState.RUNNING && m_Renderer.m_Position.y > 1.0f &&
+				m_jumpVelocity > -12.0f )
+			{
+				m_jumpVelocity = -12.0f;
+			}
+		}
+		else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.ANALOGUE )
+		{
+			if( InputManager.Get.m_FireDown[0] && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.15f )
+			{
+				m_jumpVelocity += Time.deltaTime*60.0f;
+			}
+			
+			if( InputManager.Get.m_FireDown[1] && m_animState != PlayerAnimState.RUNNING && m_Renderer.m_Position.y > 1.0f &&
+				m_jumpVelocity > -12.0f )
+			{
+				m_jumpVelocity = -12.0f;
+			}
+		}
+		else
+		{
+			if( InputManager.Get.m_FireDown[1] && m_animState != PlayerAnimState.RUNNING && m_Renderer.m_Position.y > 1.0f &&
+				m_jumpVelocity > -12.0f )
+			{
+				m_jumpVelocity = -12.0f;
+			}
 		}
 		
-		if( InputManager.Get.m_FireDown[1] && m_animState == PlayerAnimState.RUNNING && 
+		//	Maybe try to fall down a level while running
+		if( InputManager.Get.m_FirePressed[1] && m_animState == PlayerAnimState.RUNNING && 
 			m_Renderer.m_Position.y > 1.0f )
 		{
 			changeState( PlayerAnimState.JUMP_SAILING );
 			m_fallTimer = 0.1f;
+
+			if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
+				m_jumpVelocity = -8.0f;
 		}
+		
 		
 		if( m_animState != PlayerAnimState.RUNNING && m_animState != PlayerAnimState.JUMP_LANDED )
 		{
 			Vector3 position = m_Renderer.m_Position;
 			position.y += m_jumpVelocity*Time.deltaTime;
 			
-			m_jumpVelocity += m_gravity*Time.deltaTime;
+			if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
+			{
+				Debug.Log( m_jumpVelocity.ToString() );
+				
+				if( m_jumpVelocity > 0.0f )
+				{
+					m_jumpVelocity += (m_gravity*10)*Time.deltaTime;
+					if( m_jumpVelocity < 0.0f )
+						m_jumpVelocity = 0.0f;
+				}
+				else
+					m_jumpVelocity += (m_gravity*0.5f)*Time.deltaTime;
+			}
+			else
+				m_jumpVelocity += m_gravity*Time.deltaTime;
 						
 			m_Renderer.m_Position = position;
 		}
@@ -111,7 +187,7 @@ public class Player : MonoBehaviour
 				new Color( 1.0f, 1.0f, 1.0f, 0.75f ) );			
 		}
 		
-		Obstacle collided = ReferenceLibrary.m_SequenceManager.CollideWithBox( m_Renderer.m_Position, 
+		Obstacle collided = RL.m_Sequencer.CollideWithBox( m_Renderer.m_Position, 
 			m_playerHeight*m_playerCollisionRatio, m_playerHeight*m_playerCollisionRatio );
 		
 		if( collided != null )
@@ -120,7 +196,7 @@ public class Player : MonoBehaviour
 		Vector3 velocity = m_Renderer.m_Position - m_lastPosition;
 		Vector3 platformCollisionPoint = new Vector3( 0.0f, 0.0f, 0.0f );
 		
-		Obstacle platform = ReferenceLibrary.m_SequenceManager.PlatformCollide( m_Renderer.m_Position,
+		Obstacle platform = RL.m_Sequencer.PlatformCollide( m_Renderer.m_Position,
 			m_playerHeight*m_playerCollisionRatio, velocity, ref platformCollisionPoint );
 		
 		if( m_fallTimer > 0.0f )
@@ -132,6 +208,9 @@ public class Player : MonoBehaviour
 			if( m_animState == PlayerAnimState.RUNNING )
 			{
 				changeState( PlayerAnimState.JUMP_SAILING );
+				
+				if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
+					m_jumpVelocity = -8.0f;
 			}
 		}
 		else
