@@ -8,8 +8,11 @@ ModelImporter:
     400000: //RootNode
     400002: Tree_006
     2300000: Tree_006
+    2300002: //RootNode
     3300000: Tree_006
+    3300002: //RootNode
     4300000: Tree_006
+    4300002: Tree_003
     9500000: //RootNode
   materials:
     importMaterials: 1

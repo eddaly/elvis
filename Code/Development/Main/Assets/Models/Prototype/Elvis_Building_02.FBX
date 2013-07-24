@@ -12,9 +12,9 @@ FBXHeaderExtension:  {
 		Month: 7
 		Day: 22
 		Hour: 15
-		Minute: 1
-		Second: 14
-		Millisecond: 98
+		Minute: 3
+		Second: 34
+		Millisecond: 682
 	}
 	Creator: "FBX SDK/FBX Plugins version 2013.1"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -30,19 +30,19 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "D:\Project\Google Drive\Elvis\Assets\Elvis_Building_01.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "D:\Project\Google Drive\Elvis\Assets\Elvis_Building_01.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "D:\Project\Google Drive\Elvis\Assets\Elvis_Building_02.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "D:\Project\Google Drive\Elvis\Assets\Elvis_Building_02.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2013"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "22/07/2013 14:01:14.091"
-			P: "Original|FileName", "KString", "", "", "D:\Project\Google Drive\Elvis\Assets\Elvis_Building_01.FBX"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "22/07/2013 14:03:34.675"
+			P: "Original|FileName", "KString", "", "", "D:\Project\Google Drive\Elvis\Assets\Elvis_Building_02.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2013"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "22/07/2013 14:01:14.091"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "22/07/2013 14:03:34.675"
 		}
 	}
 }
@@ -73,7 +73,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1590342272, "", "Scene" {
+	Document: 1575657776, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -300,14 +300,14 @@ Objects:  {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.258823529411765,0.0392156862745098,0.105882352941176
 		}
-		Vertices: *42 {
-			a: -4.29722595214844,-7.2140998840332,0,4.29722595214844,-7.2140998840332,0,-4.29722595214844,7.2140998840332,0,4.29722595214844,7.2140998840332,0,-4.29722595214844,-7.2140998840332,17.1211585998535,4.29722595214844,-7.2140998840332,17.1211585998535,-4.29722595214844,7.2140998840332,17.1211585998535,4.29722595214844,7.2140998840332,17.1211585998535,1.4774317741394,2.01620817184448,0,8.69153213500977,14.5113945007324,0,12.91721534729,12.0716972351074,0,1.47743225097656,2.01620864868164,8.23864936828613,8.69153213500977,14.5113945007324,8.23864936828613,12.91721534729,12.0716962814331,8.23864936828613
+		Vertices: *24 {
+			a: -6.00996065139771,-9.74295616149902,0,7.61050271987915,-8.55131912231445,0,-7.61050271987915,8.55131912231445,0,6.00996065139771,9.74295616149902,0,-6.00996065139771,-9.74295616149902,22.7706317901611,7.61050271987915,-8.55131912231445,22.7706317901611,-7.61050271987915,8.55131912231445,22.7706317901611,6.00996065139771,9.74295616149902,22.7706317901611
 		} 
-		PolygonVertexIndex: *30 {
-			a: 4,0,-6,5,0,-2,7,3,-7,6,3,-3,4,6,-3,4,2,-1,13,10,-13,12,10,-10,11,12,-10,11,9,-9
+		PolygonVertexIndex: *18 {
+			a: 5,4,-1,5,0,-2,6,7,-4,6,3,-3,4,6,-3,4,2,-1
 		} 
-		Edges: *22 {
-			a: 0,1,2,4,5,6,7,8,10,11,12,14,16,18,19,20,22,23,24,26,28,29
+		Edges: *13 {
+			a: 0,1,2,4,5,6,7,8,10,11,12,14,16
 		} 
 		GeometryVersion: 124
 		LayerElementNormal: 0 {
@@ -315,8 +315,8 @@ Objects:  {
 			Name: ""
 			MappingInformationType: "ByPolygonVertex"
 			ReferenceInformationType: "Direct"
-			Normals: *90 {
-				a: 0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0.499999761581421,0.866025507450104,4.74468997424538e-008,0.499999761581421,0.866025507450104,4.74468926370264e-008,0.499999761581421,0.866025507450104,4.74468926370264e-008,0.499999761581421,0.866025507450104,4.74468926370264e-008,0.499999761581421,0.866025507450104,4.74468926370264e-008,0.499999761581421,0.866025507450104,4.74468926370264e-008,-0.866025388240814,0.50000011920929,1.60458224485183e-008,-0.866025388240814,0.50000011920929,1.60458224485183e-008,-0.866025388240814,0.50000011920929,1.60458224485183e-008,-0.866025388240814,0.50000011920929,1.60458224485183e-008,-0.866025388240814,0.50000011920929,1.60458224485183e-008,-0.866025388240814,0.50000011920929,1.60458224485183e-008
+			Normals: *54 {
+				a: 0.0871558114886284,-0.996194660663605,0,0.0871558114886284,-0.996194660663605,0,0.0871558114886284,-0.996194660663605,0,0.0871558114886284,-0.996194660663605,0,0.0871558114886284,-0.996194660663605,0,0.0871558114886284,-0.996194660663605,0,-0.0871558114886284,0.996194660663605,0,-0.0871558114886284,0.996194660663605,0,-0.0871558114886284,0.996194660663605,0,-0.0871558114886284,0.996194660663605,0,-0.0871558114886284,0.996194660663605,0,-0.0871558114886284,0.996194660663605,0,-0.996194660663605,-0.0871557593345642,0,-0.996194660663605,-0.0871557593345642,0,-0.996194660663605,-0.0871557593345642,0,-0.996194660663605,-0.0871557593345642,0,-0.996194660663605,-0.0871557593345642,0,-0.996194660663605,-0.0871557593345642,0
 			} 
 		}
 		LayerElementUV: 0 {
@@ -324,11 +324,11 @@ Objects:  {
 			Name: "UVChannel_1"
 			MappingInformationType: "ByPolygonVertex"
 			ReferenceInformationType: "IndexToDirect"
-			UV: *40 {
-				a: 0,0,0.5,0,0,1,0.5,1,0,0,0.5,0,0,1,0.5,1,0,0,0.5,0,0,1,0.5,1,0,0,0.5,0,0,0.539784908294678,0.5,0.539784908294678,0,0,0.84623658657074,0,0,0.540860235691071,0.84623658657074,0.540860235691071
+			UV: *24 {
+				a: 0.5,0,1,0,0.5,1,1,1,0.5,0,1,0,0.5,1,1,1,0.5,0,1,0,0.5,1,1,1
 			} 
-			UVIndex: *30 {
-				a: 2,0,3,3,0,1,6,4,7,7,4,5,11,10,8,11,8,9,14,12,15,15,12,13,19,18,16,19,16,17
+			UVIndex: *18 {
+				a: 3,2,0,3,0,1,7,6,4,7,4,5,11,10,8,11,8,9
 			} 
 		}
 		LayerElementSmoothing: 0 {
@@ -336,8 +336,8 @@ Objects:  {
 			Name: ""
 			MappingInformationType: "ByPolygon"
 			ReferenceInformationType: "Direct"
-			Smoothing: *10 {
-				a: 8,8,32,32,64,64,32,32,64,64
+			Smoothing: *6 {
+				a: 8,8,32,32,64,64
 			} 
 		}
 		LayerElementMaterial: 0 {
@@ -369,7 +369,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1709269744, "Model::Box001", "Mesh" {
+	Model: 1075434944, "Model::Box007", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
@@ -377,14 +377,12 @@ Objects:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",0,-0,20.0000006593931
-			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.999999999588127,0.999999999588127,1
-			P: "MaxHandle", "int", "Integer", "UH",363
+			P: "MaxHandle", "int", "Integer", "UH",391
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1046252176, "Material::Buildings", "" {
+	Material: 83879504, "Material::Buildings", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -405,7 +403,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 1046249776, "Video::Map #3", "Clip" {
+	Video: 83876304, "Video::Map #3", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\jtaylor\Dropbox\Elvis\Environment\BuildingBasic.tga"
@@ -437,21 +435,21 @@ Objects:  {
 
 Connections:  {
 	
-	;Model::Box001, Model::RootNode
-	C: "OO",1709269744,0
+	;Model::Box007, Model::RootNode
+	C: "OO",1075434944,0
 	
-	;AnimLayer::BaseLayer, AnimStack::Building_01
-	C: "OO",1075995984,1062827904
+	;AnimLayer::BaseLayer, AnimStack::Building_02
+	C: "OO",1589912288,1589854432
 	
-	;Material::Buildings, Model::Box001
-	C: "OO",1046252176,1709269744
+	;Material::Buildings, Model::Box007
+	C: "OO",83879504,1075434944
 	
-	;Geometry::, Model::Box001
-	C: "OO",632508960,1709269744
+	;Geometry::, Model::Box007
+	C: "OO",632508960,1075434944
 	
 	;Texture::Map #3, Material::Buildings
-	C: "OP",912023088,1046252176, "DiffuseColor"
+	C: "OP",912023088,83879504, "DiffuseColor"
 	
 	;Video::Map #3, Texture::Map #3
-	C: "OO",1046249776,912023088
+	C: "OO",83876304,912023088
 }
