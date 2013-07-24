@@ -19,8 +19,8 @@ public class RL : MonoBehaviour
 	public static EnvironmentManager m_Environment;
 	public static ObstacleManager m_Obstacles;
 	public static SequenceManager m_Sequencer;
-	
 	public static PrototypeConfiguration m_Prototype;
+	public static Player m_Player;
 	
 	public bool m_ForcePopulate = false;
 	
@@ -88,6 +88,10 @@ public class RL : MonoBehaviour
 		foundObject = GameObject.Find( "Prototype" );
 		if( foundObject != null )
 			m_Prototype = foundObject.GetComponent<PrototypeConfiguration>();		
+		
+		foundObject = GameObject.Find( "Player" );
+		if( foundObject != null )
+			m_Player = foundObject.GetComponent<Player>();		
 	}
 	
 	

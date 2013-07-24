@@ -56,6 +56,8 @@ public sealed class PrimitiveLibrary
 		NUMBERS_BATCH,
 		FRONTEND_BATCH,
 		PLAYER_BATCH,
+		OBSTACLE_BATCH,
+		PLATFORM_BATCH,
 		
 		NUM
 	}
@@ -63,6 +65,8 @@ public sealed class PrimitiveLibrary
 	const int g_NumbersBatchSize = 70;
 	const int g_FrontendBatchSize = 256;
 	const int g_PlayerBatchSize = 16;
+	const int g_ObstacleBatchSize = 100;
+	const int g_PlatformBatchSize = 100;
 	
 	GameObject[] m_quadBatches = new GameObject[(int)QuadBatch.NUM];
 
@@ -158,6 +162,22 @@ public sealed class PrimitiveLibrary
 			);
 		m_quadBatches[(int)QuadBatch.PLAYER_BATCH].transform.localPosition = Vector3.zero;
 
+		m_quadBatches[(int)QuadBatch.OBSTACLE_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_ObstacleBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES],
+			(int)TextureAtlas.AtlasID.OBSTACLES,
+			false, false, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.OBSTACLE_BATCH].transform.localPosition = Vector3.zero;
+
+		m_quadBatches[(int)QuadBatch.PLATFORM_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_PlatformBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS],
+			(int)TextureAtlas.AtlasID.PLATFORMS,
+			false, false, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.PLATFORM_BATCH].transform.localPosition = Vector3.zero;
+		
 		
 		for( int q = 0; q<(int)QuadBatch.NUM; q++ )
 			m_quadBatches[q].transform.parent = m_HierarchyQuadBatches;
@@ -476,6 +496,10 @@ public sealed class PrimitiveLibrary
 			Resources.Load( FrontEnd.atlasFile ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.PLAYER].m_TexturePage =
 			Resources.Load( "Player_Atlas" ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES].m_TexturePage =
+			Resources.Load( "Obstacles_Atlas" ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS].m_TexturePage =
+			Resources.Load( "Platforms_Atlas" ) as Texture;
 		
 		//	Set up the FX atlas
 		TextureAtlas fxAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX];		
@@ -526,6 +550,24 @@ public sealed class PrimitiveLibrary
 			
 			playerAtlas.m_UVSet[p] = new Vector4( uTex, vTex, uTex + 0.125f, vTex + 0.125f );
 		}
+		
+		
+		//	Obstacle atlas
+		TextureAtlas obstacleAtlas = m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES];		
+		obstacleAtlas.m_NumElements = (int)TextureAtlas.Obstacles.NUM;		
+		obstacleAtlas.m_UVSet = new Vector4[obstacleAtlas.m_NumElements];
+		
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.KILLBOX] = new Vector4( 0.0f, 0.5f, 1.0f, 1.0f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.KILLCIRCLE] = new Vector4( 0.0f, 0.0f, 1.0f, 0.5f );
+		
+		
+		//	Platform atlas
+		TextureAtlas platformAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS];		
+		platformAtlas.m_NumElements = (int)TextureAtlas.Platforms.NUM;
+		platformAtlas.m_UVSet = new Vector4[platformAtlas.m_NumElements];
+		
+		platformAtlas.m_UVSet[(int)TextureAtlas.Platforms.SOLID] = new Vector4( 0.0f, 0.5f, 1.0f, 1.0f );
+		platformAtlas.m_UVSet[(int)TextureAtlas.Platforms.PASS_THROUGH] = new Vector4( 0.0f, 0.426f, 1.0f, 0.5f );
 	}
 }
 
@@ -544,6 +586,8 @@ public class TextureAtlas
 		NUMBERS,
 		FRONTEND,
 		PLAYER,
+		OBSTACLES,
+		PLATFORMS,
 		
 		NUM
 	}
@@ -578,5 +622,20 @@ public class TextureAtlas
 	}	
 	
 	static public int maxFrontendElements = 256;
-
+	
+	public enum Obstacles
+	{
+		KILLBOX,
+		KILLCIRCLE,
+		
+		NUM
+	}
+	
+	public enum Platforms
+	{
+		SOLID,
+		PASS_THROUGH,
+		
+		NUM
+	}
 }

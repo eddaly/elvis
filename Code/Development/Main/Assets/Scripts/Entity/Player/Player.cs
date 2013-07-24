@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
 	
 	public bool m_DebugRender = false;
 	
+	public bool m_Colliding = false;
+	
 	
 	void Start() 
 	{
@@ -191,7 +193,13 @@ public class Player : MonoBehaviour
 			m_playerHeight*m_playerCollisionRatio, m_playerHeight*m_playerCollisionRatio );
 		
 		if( collided != null )
+		{
+			m_Colliding = true;
+			
 			collided.SetHighlight();
+		}
+		else
+			m_Colliding = false;
 		
 		Vector3 velocity = m_Renderer.m_Position - m_lastPosition;
 		Vector3 platformCollisionPoint = new Vector3( 0.0f, 0.0f, 0.0f );

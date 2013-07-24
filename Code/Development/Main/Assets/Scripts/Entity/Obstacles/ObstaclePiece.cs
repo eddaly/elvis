@@ -30,6 +30,7 @@ public class ObstaclePiece
 	public void AddObstacle( Obstacle new_obstacle )
 	{
 		new_obstacle.m_Parent = this;
+
 		m_obstacleList.Add( new_obstacle );
 	}
 	
@@ -53,6 +54,30 @@ public class ObstaclePiece
 		}
 		
 		return null;
+	}
+	
+	public void ShowRenderers()
+	{
+		foreach( Obstacle obstacle in m_obstacleList )
+		{
+			obstacle.ShowRenderer();
+		}
+	}
+
+	public void HideRenderers()
+	{
+		foreach( Obstacle obstacle in m_obstacleList )
+		{
+			obstacle.HideRenderer();
+		}
+	}
+
+	public void UpdateRenderers()
+	{
+		foreach( Obstacle obstacle in m_obstacleList )
+		{
+			obstacle.UpdateRenderer();
+		}
 	}
 	
 	public void DebugRender()

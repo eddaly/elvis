@@ -30,11 +30,32 @@ public class Obstacle
 	public Type m_Type = Type.KILL_SPHERE;
 	
 	public bool m_HighlightColour = false;
+	
+	public BatchedQuadDef m_QuadRenderer = null;
 
 	
-	public virtual void Initialise() {}
+	public virtual void ShowRenderer() {}
+	
+	public void HideRenderer() 
+	{
+		if( m_QuadRenderer != null )
+		{
+			PrimitiveLibrary.Get.ReleaseQuadDefinition( m_QuadRenderer );
+			m_QuadRenderer = null;
+		}
+	}
+	
+	public void UpdateRenderer()
+	{
+		if( m_QuadRenderer != null )
+		{
+			Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
+			m_QuadRenderer.m_Position = currentPos;
+		}
+	}
 	
 	public virtual void DebugRender() {}
+
 	
 	public virtual bool CollideWithBox( Vector3 box_center, float box_width, float box_height )
 	{ 
@@ -61,6 +82,21 @@ public class KillSphere : Obstacle
 {
 	public float m_Radius = 1.0f;
 	
+	public override void ShowRenderer() 
+	{
+		if( m_QuadRenderer != null )
+			Debug.Log( "!** Showing an already visible KillSphere" );
+			
+		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
+		
+		m_QuadRenderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.OBSTACLE_BATCH );
+		
+		m_QuadRenderer.m_Colour = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+		m_QuadRenderer.m_Position = currentPos;
+		m_QuadRenderer.m_Rotation = 0.0f;
+		m_QuadRenderer.m_Scale = new Vector2( m_Radius*2.0f, m_Radius*2.0f );
+		m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Obstacles.KILLCIRCLE;
+	}
 	
 	public override void DebugRender()
 	{
@@ -93,7 +129,9 @@ public class KillSphere : Obstacle
 		float sqDist = xDist + yDist;
 		
 		//	If this is less than the squared radius, then the box penetrates the circle
-		if( sqDist < m_Radius*m_Radius )
+		//	Allow a little bit of wiggle room
+		float radius = m_Radius - 0.1f;
+		if( sqDist < radius*radius )
 			return true;
 		else
 			return false;
@@ -104,7 +142,22 @@ public class KillBox : Obstacle
 {
 	public float m_Width = 1.0f;
 	public float m_Height = 1.0f;
-	
+
+	public override void ShowRenderer() 
+	{
+		if( m_QuadRenderer != null )
+			Debug.Log( "!** Showing an already visible KillBox" );
+			
+		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
+		
+		m_QuadRenderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.OBSTACLE_BATCH );
+		
+		m_QuadRenderer.m_Colour = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+		m_QuadRenderer.m_Position = currentPos;
+		m_QuadRenderer.m_Rotation = 0.0f;
+		m_QuadRenderer.m_Scale = new Vector2( m_Width, m_Height );
+		m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Obstacles.KILLBOX;
+	}	
 	
 	public override void DebugRender()
 	{
@@ -129,6 +182,13 @@ public class KillBox : Obstacle
 		float halfBoxWidth = box_width*0.5f;
 		float halfBoxHeight = box_height*0.5f;
 		
+		if( RL.m_Prototype.m_CollisionType == PrototypeConfiguration.CollisionTypes.FRONT_COLLISION )
+		{
+			//	Only collide with front section of box
+			currentPos.x -= halfMyWidth;
+			halfMyWidth = 0.0f;
+		}
+		
 		//	Process of elimination - if box is too far to the right on x axis there's no collision
 		if( currentPos.x + halfMyWidth < box_center.x - halfBoxWidth )		return false;
 		
@@ -149,6 +209,22 @@ public class KillBox : Obstacle
 public class Platform : Obstacle
 {
 	public float m_Width = 1.0f;
+
+	public override void ShowRenderer() 
+	{
+		if( m_QuadRenderer != null )
+			Debug.Log( "!** Showing an already visible platform" );
+			
+		Vector3 currentPos = m_Position + new Vector3( distanceOffset(), m_Parent.m_yOffset, 0.0f );
+		
+		m_QuadRenderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.PLATFORM_BATCH );
+		
+		m_QuadRenderer.m_Colour = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+		m_QuadRenderer.m_Position = currentPos;
+		m_QuadRenderer.m_Rotation = 0.0f;
+		m_QuadRenderer.m_Scale = new Vector2( m_Width, 0.1f );
+		m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.PASS_THROUGH;
+	}	
 	
 	public override void DebugRender()
 	{

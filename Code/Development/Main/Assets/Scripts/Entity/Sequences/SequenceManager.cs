@@ -271,6 +271,11 @@ public class SequenceManager : MonoBehaviour
 			cameraObject.transform.position = new Vector3( dist*10.0f, -0.7f + dist*6.2f, dist*-18.2f );
 		else
 			cameraObject.transform.position = new Vector3( dist*10.0f, 3.0f + dist*2.5f, dist*-18.2f );
+		
+		
+		//	Speed player up depending on distance
+		m_MetersPerSecond = 10.0f + m_MasterDistance/500.0f;
+		RL.m_Player.m_animRunSpeed = m_MetersPerSecond*1.6f;
 	}
 	
 	//-----------------------------------------------------------------------------

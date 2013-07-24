@@ -31,7 +31,12 @@ public class ObstacleManager : MonoBehaviour
 			for( int p = 0; p<kMaxPieces; p++ )
 			{
 				if( m_obstaclePieces[p] != null && m_obstaclePieces[p].m_Active )
-					m_obstaclePieces[p].DebugRender();
+				{
+					if( Application.isPlaying )
+						m_obstaclePieces[p].UpdateRenderers();
+					else
+						m_obstaclePieces[p].DebugRender();
+				}
 			}
 		}
 	}
@@ -79,7 +84,12 @@ public class ObstacleManager : MonoBehaviour
 		for( int p = 0; p<kMaxPieces; p++ )
 		{
 			if( m_obstaclePieces[p] != null )
+			{
+				if( Application.isPlaying )
+					m_obstaclePieces[p].HideRenderers();
+				
 				m_obstaclePieces[p].m_Active = false;
+			}
 		}
 	}
 	
@@ -88,6 +98,9 @@ public class ObstacleManager : MonoBehaviour
 	// Method:	ShowPiece()
 	public void ShowPiece( int piece_idx )
 	{
+		if( Application.isPlaying )
+			m_obstaclePieces[piece_idx].ShowRenderers();
+		
 		m_obstaclePieces[piece_idx].m_Active = true;
 	}
 	
@@ -96,6 +109,9 @@ public class ObstacleManager : MonoBehaviour
 	// Method:	HidePiece()
 	public void HidePiece( int piece_idx )
 	{
+		if( Application.isPlaying )
+			m_obstaclePieces[piece_idx].HideRenderers();
+		
 		m_obstaclePieces[piece_idx].m_Active = false;
 	}
 
