@@ -493,6 +493,7 @@ public sealed class PrimitiveLibrary
 		m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS].m_TexturePage =
 			Resources.Load( "Numbers_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
+<<<<<<< HEAD
 			Resources.Load( FrontEnd.atlasFile ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.PLAYER].m_TexturePage =
 			Resources.Load( "Player_Atlas" ) as Texture;
@@ -500,6 +501,9 @@ public sealed class PrimitiveLibrary
 			Resources.Load( "Obstacles_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS].m_TexturePage =
 			Resources.Load( "Platforms_Atlas" ) as Texture;
+=======
+			Resources.Load( FrontEnd.instance.m_AtlasFile ) as Texture;
+>>>>>>> 7ae67b904b6d068993b9aa8ac7cdea4a9ee29ba8
 		
 		//	Set up the FX atlas
 		TextureAtlas fxAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX];		
