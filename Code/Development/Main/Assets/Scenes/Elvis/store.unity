@@ -228,7 +228,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
       propertyPath: m_AtlasFile
-      value: test_atlus
+      value: Elvis_StoreAtlas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
-  m_AtlasFile: test_atlus
+  m_AtlasFile: Elvis_StoreAtlas
   m_AtlasOriginalWidth: 4096
   m_AtlasOriginalHeight: 4096
 --- !u!1 &1922735874
