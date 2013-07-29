@@ -44,6 +44,16 @@ public class DebugRenderHelpers
 		Debug.DrawLine( topLeft + new Vector3( width*0.5f, 0.0f, 0.0f ), topLeft + new Vector3( width*0.5f, -height, 0.0f ), colour );
 		Debug.DrawLine( topLeft + new Vector3( 0.0f, -height*0.5f, 0.0f ), topLeft + new Vector3( width, -height*0.5f, 0.0f ), colour );
 	}	
+
+	public static void Draw2DBoxC( Vector3 center, float width, float height, Color colour )
+	{
+		Vector3 topLeft = new Vector3( center.x - width*0.5f, center.y + height*0.5f, center.z );
+		
+		Debug.DrawLine( topLeft, topLeft + new Vector3( width, 0.0f, 0.0f ), colour );
+		Debug.DrawLine( topLeft, topLeft + new Vector3( 0.0f, -height, 0.0f ), colour );
+		Debug.DrawLine( topLeft + new Vector3( width, 0.0f, 0.0f ), topLeft + new Vector3( width, -height, 0.0f ), colour );
+		Debug.DrawLine( topLeft + new Vector3( 0.0f, -height, 0.0f ), topLeft + new Vector3( width, -height, 0.0f ), colour );
+	}	
 	
 	public static void DrawFilledCircle( Vector3 center, float radius, Color colour )
 	{

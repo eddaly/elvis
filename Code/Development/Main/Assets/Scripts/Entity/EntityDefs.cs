@@ -31,6 +31,7 @@ public class EntityDefs
 		BACKGROUND,
 		MIDGROUND,
 		FOREGROUND,
+		OVERLAY,
 		
 		NUM
 	}

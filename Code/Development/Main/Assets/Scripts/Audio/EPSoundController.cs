@@ -189,11 +189,6 @@ public class EPSoundController : MonoBehaviour
 		m_StingQueue.Clear();
 	}
 	
-	public void SetFade ( string sndName, float endVol, float endPitch, float duration, bool isFadeOut )
-	{
-		m_EPSoundEventList[GetIndex( sndName )].SetFade( endVol, endPitch, duration, isFadeOut );
-	}
-	
 	// Do stuff on beat notifications from EPMusicPlayer
 	public void NotifyBeat ()
 	{

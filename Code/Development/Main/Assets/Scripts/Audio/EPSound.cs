@@ -128,7 +128,6 @@ public class EPSound : EPSoundEvent {
 			if ( source != null && source.isPlaying )
 			{
 				source.Pause();
-				Debug.Log("Pausing: " + source.name);
 			}
 		}
 	}
@@ -140,7 +139,6 @@ public class EPSound : EPSoundEvent {
 			if ( source != null && source.time != 0 )
 			{
 				source.Play();
-				Debug.Log("Resuming: " + source.name);
 			}
 		}
 	}
