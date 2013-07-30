@@ -41,7 +41,7 @@ public class AudioSandbox : MonoBehaviour {
 		
 		if(GUI.Button(new Rect(20,130,150,22), "Toggle Outro_01"))
 		{
-			EPMusicPlayer.Get().ToggleSegment("VLV_Outro_01", EPMusicPlayer.Flags.IsMaster );
+			EPMusicPlayer.Get().ToggleSegment("VLV_Outro_01", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.BAR );
 		}
 		
 		// Stings
@@ -92,11 +92,11 @@ public class AudioSandbox : MonoBehaviour {
 		
 		
 		// Layers
-		GUI.Box(new Rect(10,170,170,120), "Layers");
+		GUI.Box(new Rect(10,170,170,150), "Layers");
 		
-		if(GUI.Button(new Rect(20,200,150,22), "Bongo Loop"))
+		if(GUI.Button(new Rect(20,200,150,22), "Running Percussion"))
 		{
-			EPMusicPlayer.Get().ToggleSegment("VLV_BongoLoop", EPMusicPlayer.Flags.None);		
+			EPMusicPlayer.Get().ToggleSegment("VLV_BongoLoop");		
 		}
 		
 		// Other controls
@@ -133,6 +133,24 @@ public class AudioSandbox : MonoBehaviour {
 				EPSoundController.Get ().SetMixGroupVolume(EPSoundController.MixGroup.MUSIC, vol );
 				Debug.Log("Music MixGroup Volume: " + EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC]);
 			}
+		}
+		
+		// Game actions
+		GUI.Box (new Rect(390,170,170,150), "Game Events");
+		
+		if(GUI.Button(new Rect(400,200,150,22), "Jump"))
+		{
+			EPMusicPlayer.Get().FadeAll( 0.3f, 1.0f, 1.0f, false );
+			EPMusicPlayer.Get().Fade( "VLV_BongoLoop", 0.0f, 1.0f, 0.5f, false );
+			EPSoundController.Get ().Play("VLV_Flight");
+			EPSoundController.Get ().SetFade("VLV_Flight", 1.0f, 1.5f, 0.2f, false);
+		}
+		
+		if(GUI.Button(new Rect(400,230,150,22), "Land"))
+		{
+			EPMusicPlayer.Get().FadeAll( 1.0f, 1.0f, 1.0f, false );
+			EPMusicPlayer.Get().Fade( "VLV_BongoLoop", 1.0f, 1.0f, 0.5f, false );
+			EPSoundController.Get ().SetFade("VLV_Flight", 0.0f, 1.0f, 0.5f, false);
 		}
 	}// OnGUI
 }

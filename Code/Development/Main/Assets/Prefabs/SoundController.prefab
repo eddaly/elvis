@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Pickup_01
+  m_Name: VLV_Flight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,6 +179,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100022
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400022}
+  - 82: {fileID: 8200012}
+  m_Layer: 0
+  m_Name: VLV_Flight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100024
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400024}
+  - 114: {fileID: 11400016}
+  m_Layer: 0
+  m_Name: Pickup_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -234,6 +266,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
+  - {fileID: 400022}
   m_Father: {fileID: 400010}
 --- !u!4 &400010
 Transform:
@@ -281,6 +314,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 400024}
   - {fileID: 400000}
   m_Father: {fileID: 400010}
 --- !u!4 &400018
@@ -310,6 +344,28 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400018}
+--- !u!4 &400022
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400008}
+--- !u!4 &400024
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400016}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -490,7 +546,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -646,6 +702,62 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!82 &8200012
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100022}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 0ef6953cf756f4cd793c56f36361ad9e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -657,12 +769,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7b03c0f5d46884583df312f55d868b, type: 3}
   m_Name: 
   m_Sources:
-  - {fileID: 8200004}
+  - {fileID: 8200012}
   m_Volume: 1
   m_VolumeVariance: 0
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 0
   m_Fading: 0
 --- !u!114 &11400002
 MonoBehaviour:
@@ -681,15 +794,17 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 1
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
   m_TimeSignatureLower: 4
   m_GridSize: 4
   m_CuePointSync: 1
-  m_CueType: 2
+  m_CueType: 5
   m_CuePoint: 0
-  m_LoopPoint: 1.84599996
+  m_Looping: 1
+  m_LoopPoint: 0
   m_Duration: 0
 --- !u!114 &11400004
 MonoBehaviour:
@@ -708,15 +823,17 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 1
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
   m_TimeSignatureLower: 4
   m_GridSize: 4
   m_CuePointSync: 1
-  m_CueType: 2
+  m_CueType: 5
   m_CuePoint: 0
-  m_LoopPoint: 1.84599996
+  m_Looping: 1
+  m_LoopPoint: 0
   m_Duration: 0
 --- !u!114 &11400006
 MonoBehaviour:
@@ -734,6 +851,8 @@ MonoBehaviour:
   - {fileID: 11400004}
   - {fileID: 11400012}
   - {fileID: 11400014}
+  - {fileID: 11400016}
+  - {fileID: 11400010}
   - {fileID: 11400000}
   m_EPSoundNames:
   - VLV_Intro_01
@@ -741,10 +860,12 @@ MonoBehaviour:
   - VLV_Main_01
   - VLV_Outro_01
   - Pickup_01
+  - VLV_BongoLoop
+  - VLV_Flight
+  m_MixGroupVolumes: []
   m_GlobalSFXVolume: 1
   m_GlobalMusicVolume: .600000024
-  m_SFXVolMaster: 1
-  m_MusicVolMaster: .600000024
+  m_GlobalVOVolume: 1
   m_DuckingAmount: 1
   m_StingQueue: []
   m_StingGrid: 1
@@ -788,6 +909,7 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 1
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
@@ -796,7 +918,8 @@ MonoBehaviour:
   m_CuePointSync: 1
   m_CueType: 2
   m_CuePoint: 0
-  m_LoopPoint: 3.69199991
+  m_Looping: 1
+  m_LoopPoint: 0
   m_Duration: 0
 --- !u!114 &11400012
 MonoBehaviour:
@@ -815,15 +938,17 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 1
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
   m_TimeSignatureLower: 4
   m_GridSize: 4
   m_CuePointSync: 1
-  m_CueType: 2
+  m_CueType: 5
   m_CuePoint: 0
-  m_LoopPoint: 110.768997
+  m_Looping: 1
+  m_LoopPoint: 0
   m_Duration: 0
 --- !u!114 &11400014
 MonoBehaviour:
@@ -842,16 +967,37 @@ MonoBehaviour:
   m_Pitch: 1
   m_PitchVariance: 0
   m_PlayOrder: 0
+  m_MixGroup: 1
   m_Fading: 0
   m_BPM: 130
   m_TimeSignatureUpper: 4
   m_TimeSignatureLower: 4
   m_GridSize: 4
-  m_CuePointSync: 1
-  m_CueType: 4
+  m_CuePointSync: 0
+  m_CueType: 5
   m_CuePoint: 0
-  m_LoopPoint: 3.69199991
+  m_Looping: 0
+  m_LoopPoint: 0
   m_Duration: 0
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7b03c0f5d46884583df312f55d868b, type: 3}
+  m_Name: 
+  m_Sources:
+  - {fileID: 8200004}
+  m_Volume: 1
+  m_VolumeVariance: 0
+  m_Pitch: 1
+  m_PitchVariance: 0
+  m_PlayOrder: 0
+  m_MixGroup: 0
+  m_Fading: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
