@@ -71,12 +71,10 @@ public class SequenceManager : MonoBehaviour
 	//			managers to allow the user to slide back and forth on master time
 	void updateEditMode()
 	{
+		Debug.Log( "sequence change" );
 		if( RL.m_Obstacles && m_ShowObstacles )
 		{
-			RL.m_Obstacles.HideAllPieces(); 
-			
-			RL.m_Obstacles.ValidatePieceIdx( ref m_ObstaclePieces[0] );
-			RL.m_Obstacles.ValidatePieceIdx( ref m_ObstaclePieces[1] );
+			RL.m_Obstacles.HideAllPiecesBut( m_ObstaclePieces[0], m_ObstaclePieces[1] ); 
 			
 			RL.m_Obstacles.ShowPiece( m_ObstaclePieces[0] );
 			RL.m_Obstacles.SetPieceDistance( m_ObstaclePieces[0], 0.0f );
@@ -179,7 +177,7 @@ public class SequenceManager : MonoBehaviour
 			m_EnvPieces[l, 0] = m_EnvironmentTrackMaker.NextPiece( l );			
 			RL.m_Environment.ValidatePieceIdx( l, ref m_EnvPieces[l, 0] );
 			RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 0], 0.0f );
-			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 0] );
+//			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 0] );
 			
 			m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );
 			while( m_EnvPieces[l, 0] == m_EnvPieces[l, 1] )
@@ -188,7 +186,7 @@ public class SequenceManager : MonoBehaviour
 			RL.m_Environment.ValidatePieceIdx( l, ref m_EnvPieces[l, 1] );
 			RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 1],
 				RL.m_Environment.GetPieceWidth( l, m_EnvPieces[l, 0] ) );
-			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );
+//			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );
 		}		
 	}
 	
@@ -207,6 +205,9 @@ public class SequenceManager : MonoBehaviour
 			
 			initialisePlayMode();
 		}
+		
+		RL.m_Obstacles.UpdateMasterDistance( m_ObstaclePieces[0] );
+		RL.m_Obstacles.UpdateMasterDistance( m_ObstaclePieces[1] );
 		
 		float hiddenDistance = RL.m_Obstacles.GetPieceDistance( m_ObstaclePieces[0] ) +
 			RL.m_Obstacles.GetPieceWidth( m_ObstaclePieces[0] );
@@ -256,7 +257,7 @@ public class SequenceManager : MonoBehaviour
 					RL.m_Environment.GetPieceDistance( l, m_EnvPieces[l, 0] ) +
 					RL.m_Environment.GetPieceWidth( l, m_EnvPieces[l, 0] ) );
 				
-				RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );			
+//				RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );			
 			}
 		}
 				
@@ -264,9 +265,35 @@ public class SequenceManager : MonoBehaviour
 		//	Set camera according to prototype settings
 		float dist = RL.m_Prototype.m_viewDistance;
 		
+		if( m_MasterDistance < 25.0f )
+		{
+			dist = 0.35f;
+		}
+		else if( m_MasterDistance < 30.0f )
+		{
+			float interp = (m_MasterDistance - 25.0f)/5.0f;
+			float oldDist = dist;
+			oldDist = 1.0f;	//	Sod it, just force the camera distance here
+			
+			dist = (1.0f - interp)*0.35f + interp*oldDist;
+		}
+		else
+		{
+			dist = 1.0f;
+		}
+		
+		if( m_MetersPerSecond > 11.0f )
+		{
+			float interp = (m_MetersPerSecond - 11.0f)/19.0f;
+			if( interp > 1.0f )	interp = 1.0f;
+			
+			dist = (1.0f - interp)*1.0f + interp*1.75f;			
+		}
+		
 		GameObject cameraObject = RL.m_MainCamera.gameObject;
 
 		//	Different function when zooming in or zooming out to take account of y
+		RL.m_Prototype.m_viewDistance = dist;
 		if( dist < 1.0f )
 			cameraObject.transform.position = new Vector3( dist*10.0f, -0.7f + dist*6.2f, dist*-18.2f );
 		else
@@ -274,42 +301,11 @@ public class SequenceManager : MonoBehaviour
 		
 		
 		//	Speed player up depending on distance
-		m_MetersPerSecond = 10.0f + m_MasterDistance/500.0f;
-		RL.m_Player.m_animRunSpeed = m_MetersPerSecond*1.6f;
-	}
-	
-	//-----------------------------------------------------------------------------
-	// Method:	CollideWithBox()
-	// Desc:	Collides all obstacles in the primary obstacle piece with the 
-	//			provided box. Returns the first obstacle that collides, or null if
-	//			none of them do.
-	public Obstacle CollideWithBox( Vector3 box_center, float box_width, float box_height )
-	{
-		Obstacle collider = RL.m_Obstacles.CollideWithBox( m_ObstaclePieces[0],
-			box_center, box_width, box_height );
+		m_MetersPerSecond = 10.0f + m_MasterDistance/250.0f;
 		
-		if( collider != null )
-			return collider;
-		
-		return RL.m_Obstacles.CollideWithBox( m_ObstaclePieces[1],
-			box_center, box_width, box_height );		
-	}
-	
-	//-----------------------------------------------------------------------------
-	// Method:	PlatformCollide()
-	// Desc:	Platform collides all obstacles in the primary obstacle piece with 
-	//			the	provided box. Returns the first obstacle that collides, or null 
-	//			if none of them do.
-	public Obstacle PlatformCollide( Vector3 box_center, float box_height, Vector3 move_vector,
-		ref Vector3 collision_point )
-	{
-		Obstacle collider = RL.m_Obstacles.PlatformCollide( m_ObstaclePieces[0], 
-			box_center, box_height, move_vector, ref collision_point );
-		
-		if( collider != null )
-			return collider;
-		
-		return RL.m_Obstacles.PlatformCollide( m_ObstaclePieces[1], 
-			box_center, box_height, move_vector, ref collision_point );
-	}
+		if( RL.m_Prototype.m_PlayerType == PrototypeConfiguration.PlayerTypes.BALDY )
+			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.0f;		
+		else
+			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*1.6f;		
+	}	
 }

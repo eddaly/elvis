@@ -56,6 +56,7 @@ public sealed class PrimitiveLibrary
 		NUMBERS_BATCH,
 		FRONTEND_BATCH,
 		PLAYER_BATCH,
+		ELVIS_BATCH,
 		OBSTACLE_BATCH,
 		PLATFORM_BATCH,
 		
@@ -65,6 +66,7 @@ public sealed class PrimitiveLibrary
 	const int g_NumbersBatchSize = 70;
 	const int g_FrontendBatchSize = 256;
 	const int g_PlayerBatchSize = 16;
+	const int g_ElvisBatchSize = 16;
 	const int g_ObstacleBatchSize = 100;
 	const int g_PlatformBatchSize = 100;
 	
@@ -158,6 +160,14 @@ public sealed class PrimitiveLibrary
 			g_PlayerBatchSize, 
 			m_Atlases[(int)TextureAtlas.AtlasID.PLAYER],
 			(int)TextureAtlas.AtlasID.PLAYER,
+			false, true, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.PLAYER_BATCH].transform.localPosition = Vector3.zero;
+
+		m_quadBatches[(int)QuadBatch.ELVIS_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_ElvisBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.ELVIS],
+			(int)TextureAtlas.AtlasID.ELVIS,
 			false, true, false, 0 
 			);
 		m_quadBatches[(int)QuadBatch.PLAYER_BATCH].transform.localPosition = Vector3.zero;
@@ -496,6 +506,8 @@ public sealed class PrimitiveLibrary
 			Resources.Load( FrontEnd.atlasFile ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.PLAYER].m_TexturePage =
 			Resources.Load( "Player_Atlas" ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.ELVIS].m_TexturePage =
+			Resources.Load( "Elvis_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES].m_TexturePage =
 			Resources.Load( "Obstacles_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS].m_TexturePage =
@@ -551,6 +563,19 @@ public sealed class PrimitiveLibrary
 			playerAtlas.m_UVSet[p] = new Vector4( uTex, vTex, uTex + 0.125f, vTex + 0.125f );
 		}
 		
+		//	Same for Elvis
+		TextureAtlas elvisAtlas = m_Atlases[(int)TextureAtlas.AtlasID.ELVIS];
+		elvisAtlas.m_NumElements = 64;
+		elvisAtlas.m_UVSet = new Vector4[elvisAtlas.m_NumElements];
+		
+		for( int e = 0; e<64; e++ )
+		{
+			float uTex = ((float)(e%8))*0.125f;
+			float vTex = ((float)(e/8))*0.125f;
+			
+			elvisAtlas.m_UVSet[e] = new Vector4( uTex, vTex, uTex + 0.125f, vTex + 0.125f );
+		}
+		
 		
 		//	Obstacle atlas
 		TextureAtlas obstacleAtlas = m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES];		
@@ -586,6 +611,7 @@ public class TextureAtlas
 		NUMBERS,
 		FRONTEND,
 		PLAYER,
+		ELVIS,
 		OBSTACLES,
 		PLATFORMS,
 		

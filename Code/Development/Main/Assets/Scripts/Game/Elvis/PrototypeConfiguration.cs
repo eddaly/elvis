@@ -51,6 +51,14 @@ public class PrototypeConfiguration : MonoBehaviour
 	public JumpTypes m_JumpType = JumpTypes.DIGITAL;
 	
 	
+	public enum PlayerTypes
+	{
+		BALDY,
+		ELVIS
+	}
+	public PlayerTypes m_PlayerType = PlayerTypes.ELVIS;
+	
+	
 	public float m_viewDistance = 1.0f;
 	
 	void Start () 
@@ -80,6 +88,10 @@ public class PrototypeConfiguration : MonoBehaviour
 			m_viewDistance = 2.0f;
 			break;
 		case GameTypes.JOYRIDE_STYLE:
+			m_TrackType = TrackTypes.ANALOGUE_JUMPS1;
+			m_CollisionType = CollisionTypes.FULL_COLLISION;
+			m_JumpType = JumpTypes.HIGH_ANALOGUE;
+			m_viewDistance = 1.0f;
 			break;
 		case GameTypes.USER_CUSTOM:
 			break;
