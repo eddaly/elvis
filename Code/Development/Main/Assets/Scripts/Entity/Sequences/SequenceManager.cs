@@ -71,7 +71,6 @@ public class SequenceManager : MonoBehaviour
 	//			managers to allow the user to slide back and forth on master time
 	void updateEditMode()
 	{
-		Debug.Log( "sequence change" );
 		if( RL.m_Obstacles && m_ShowObstacles )
 		{
 			RL.m_Obstacles.HideAllPiecesBut( m_ObstaclePieces[0], m_ObstaclePieces[1] ); 
@@ -177,7 +176,7 @@ public class SequenceManager : MonoBehaviour
 			m_EnvPieces[l, 0] = m_EnvironmentTrackMaker.NextPiece( l );			
 			RL.m_Environment.ValidatePieceIdx( l, ref m_EnvPieces[l, 0] );
 			RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 0], 0.0f );
-//			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 0] );
+			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 0] );
 			
 			m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );
 			while( m_EnvPieces[l, 0] == m_EnvPieces[l, 1] )
@@ -186,7 +185,7 @@ public class SequenceManager : MonoBehaviour
 			RL.m_Environment.ValidatePieceIdx( l, ref m_EnvPieces[l, 1] );
 			RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 1],
 				RL.m_Environment.GetPieceWidth( l, m_EnvPieces[l, 0] ) );
-//			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );
+			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );
 		}		
 	}
 	
