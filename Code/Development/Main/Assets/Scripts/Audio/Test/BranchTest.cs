@@ -7,6 +7,9 @@ public class BranchTest : MonoBehaviour {
 	// Different modification in Test
 	// More changes...
 	// Blah blah blah
+	// Modification in Master
+	// More changes in Master...
+	// klahjsdlkjasdljalsdjaskld
 	
 	
 	// Use this for initialization
