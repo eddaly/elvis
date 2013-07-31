@@ -256,7 +256,7 @@ public class SequenceManager : MonoBehaviour
 					RL.m_Environment.GetPieceDistance( l, m_EnvPieces[l, 0] ) +
 					RL.m_Environment.GetPieceWidth( l, m_EnvPieces[l, 0] ) );
 				
-//				RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );			
+				RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 1] );			
 			}
 		}
 				
