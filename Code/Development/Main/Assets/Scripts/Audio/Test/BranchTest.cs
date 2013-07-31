@@ -5,6 +5,7 @@ public class BranchTest : MonoBehaviour {
 	
 	// This is a new script file to commit to my test branch
 	// Modification in Master
+	// More changes in Master...
 	
 	
 	// Use this for initialization
