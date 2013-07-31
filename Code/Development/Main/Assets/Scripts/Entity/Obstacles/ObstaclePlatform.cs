@@ -74,14 +74,14 @@ public class ObstaclePlatform : Obstacle
 		//	So we coincide on the x-axis - do we penetrate on the y?
 		if( boxBottom.y > currentPos.y && boxBottom.y + boxVelocity.y > currentPos.y )
 		{
-			Debug.Log( "out 1 " + boxVelocity.ToString() );
+//			Debug.Log( "out 1 " + boxVelocity.ToString() );
 			return;
 		}
 		
 		float thickness = 0.01f;
 		if( boxBottom.y < currentPos.y - thickness && boxBottom.y - boxVelocity.y < currentPos.y - thickness )
 		{
-			Debug.Log( "out 2 " + boxVelocity.ToString() );
+//			Debug.Log( "out 2 " + boxVelocity.ToString() );
 			return;
 		}
 		
@@ -89,8 +89,8 @@ public class ObstaclePlatform : Obstacle
 		playerBox.m_PlatformCollisionPoint = new Vector3( boxBottom.x, currentPos.y, 0.0f );
 		playerBox.m_PlatformCollision = this;
 		
-		Debug.Log( "platform collide" + playerBox.m_PlatformCollisionPoint.ToString() + 
-			"box: " + boxBottom.ToString() + ", box vel: " + boxVelocity.ToString() );
+//		Debug.Log( "platform collide" + playerBox.m_PlatformCollisionPoint.ToString() + 
+//			"box: " + boxBottom.ToString() + ", box vel: " + boxVelocity.ToString() );
 				 
 		/*
 		//	Do line intersection on the line of movement of the center-bottom point on the box (call it x1, y1 to x2, y2)

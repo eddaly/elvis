@@ -171,12 +171,12 @@ public class Player : MonoBehaviour
 		
 		if( m_animState != PlayerAnimState.RUNNING && m_animState != PlayerAnimState.JUMP_LANDED )
 		{
-			Debug.Log( "Jumpng " + m_jumpVelocity.ToString() );
+//			Debug.Log( "Jumpng " + m_jumpVelocity.ToString() );
 			
 			Vector3 position = m_Position;
 			position.y += m_jumpVelocity*Time.deltaTime;
 			
-			Debug.Log( "makes: " + m_Position.ToString() + " to; " + position.ToString() );
+//			Debug.Log( "makes: " + m_Position.ToString() + " to; " + position.ToString() );
 			
 			if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
 			{

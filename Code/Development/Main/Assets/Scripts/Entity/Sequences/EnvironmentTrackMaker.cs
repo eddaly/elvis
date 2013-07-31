@@ -42,6 +42,8 @@ public class EnvironmentTrackMaker
 		{
 			nextPiece = m_flipflopTrack[layer];
 			m_flipflopTrack[layer] = 1 - m_flipflopTrack[layer];
+			
+			Debug.Log( "layer " + layer.ToString() + " returning " + nextPiece );
 		}
 		
 		return nextPiece;
