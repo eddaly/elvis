@@ -19,6 +19,10 @@ public class FrontEnd : MonoBehaviour {
 			if (instance == null)
 				instance = this;
 		}
+		
+				
+		// Need to specify if want to set UVs with original pixels because Unity rescales texture on load
+		FastGUIElement.SetOriginalAtlasPixels (m_AtlasOriginalWidth, m_AtlasOriginalHeight);
 	}
 	
 	// Use this for initialization
@@ -42,9 +46,6 @@ public class FrontEnd : MonoBehaviour {
 		Camera.mainCamera.orthographicSize = 768;
 		Camera.mainCamera.nearClipPlane = .3f;
 		Camera.mainCamera.farClipPlane = 11;
-		
-		// Need to specify if want to set UVs with original pixels because Unity rescales texture on load
-		FastGUIElement.SetOriginalAtlasPixels (m_AtlasOriginalWidth, m_AtlasOriginalHeight);
 	}
 	
 	// Update is called once per frame

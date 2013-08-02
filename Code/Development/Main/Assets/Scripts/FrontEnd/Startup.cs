@@ -9,9 +9,6 @@ public class Startup : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
-		// Need to specify if want to set UVs with original pixels because Unity rescales texture on load
-		FastGUIElement.SetOriginalAtlasPixels (2048, 1536);
 	
 		playFGE = new FastGUIElement (
 			new Vector2 (0, 0),					// Screen position
@@ -28,6 +25,7 @@ public class Startup : MonoBehaviour {
 		if (playFGE.Tapped ())
 		{
 			Debug.Log ("PLAY");
+			Application.LoadLevel ("ScrollTest");
 		}
 		else if (persistentDataFGE.Tapped ())
 		{
