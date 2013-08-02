@@ -14,26 +14,20 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class ObstacleManager : MonoBehaviour 
 {
-	
 	const int kMaxPieces = 50;
 	ObstaclePiece[] m_obstaclePieces = new ObstaclePiece[50];
 	
 	
 	void Start() 
 	{
-		setupSomePieces();	
+		scanForPieces();	
 	}
 	
 	void Update() 
 	{	
-			for( int p = 0; p<kMaxPieces; p++ )
-			{
-				if( m_obstaclePieces[p] != null && m_obstaclePieces[p].m_Active )
-					m_obstaclePieces[p].DebugRender();
-			}
 	}
-	
-	
+		
+
 	//-----------------------------------------------------------------------------
 	// Method:	ValidatePieceIdx()
 	// Desc:	Bounds check for piece indices.
@@ -54,7 +48,24 @@ public class ObstacleManager : MonoBehaviour
 		for( int p = 0; p<kMaxPieces; p++ )
 		{
 			if( m_obstaclePieces[p] != null )
-				m_obstaclePieces[p].m_Active = false;
+				m_obstaclePieces[p].gameObject.SetActive( false );
+		}
+	}
+
+	
+	//-----------------------------------------------------------------------------
+	// Method:	HideAllPiecesBut()
+	// Desc:	Slightly odd workaround because of objects being removed from 
+	//			execute list in edit mode
+	public void HideAllPiecesBut( int piece1, int piece2 )
+	{
+		for( int p = 0; p<kMaxPieces; p++ )
+		{
+			if( m_obstaclePieces[p] != null )
+			{
+				if( p != piece1 && p != piece2 )
+					m_obstaclePieces[p].gameObject.SetActive( false );
+			}
 		}
 	}
 	
@@ -63,7 +74,7 @@ public class ObstacleManager : MonoBehaviour
 	// Method:	ShowPiece()
 	public void ShowPiece( int piece_idx )
 	{
-		m_obstaclePieces[piece_idx].m_Active = true;
+		m_obstaclePieces[piece_idx].gameObject.SetActive( true );
 	}
 	
 	
@@ -71,7 +82,16 @@ public class ObstacleManager : MonoBehaviour
 	// Method:	HidePiece()
 	public void HidePiece( int piece_idx )
 	{
-		m_obstaclePieces[piece_idx].m_Active = false;
+		m_obstaclePieces[piece_idx].gameObject.SetActive( false );
+	}
+
+	
+	//-----------------------------------------------------------------------------
+	// Method:	UpdateMasterDistance()
+	public void UpdateMasterDistance( int piece_idx )
+	{
+		float distanceOffset = m_obstaclePieces[piece_idx].m_Distance - RL.m_Sequencer.m_MasterDistance; 
+		m_obstaclePieces[piece_idx].transform.localPosition = new Vector3( distanceOffset, 0.0f, 0.0f );
 	}
 
 	
@@ -80,6 +100,9 @@ public class ObstacleManager : MonoBehaviour
 	public void SetPieceDistance( int piece_idx, float distance )
 	{
 		m_obstaclePieces[piece_idx].m_Distance = distance;
+		
+		float distanceOffset = distance - RL.m_Sequencer.m_MasterDistance; 
+		m_obstaclePieces[piece_idx].transform.localPosition = new Vector3( distanceOffset, 0.0f, 0.0f );
 	}
 
 	
@@ -104,51 +127,62 @@ public class ObstacleManager : MonoBehaviour
 	// Desc:	Forces the manager to flush and refresh the pieces
 	public void RefreshPieces()
 	{
-		Debug.Log( "Refreshing Pieces" );
-		
-		//	Lost references will be garbage collected
-		setupSomePieces();
+		scanForPieces();
 	}
 	
 	//-----------------------------------------------------------------------------
-	// Method:	setupSomePieces()
-	// Desc:	For now, create some obstacle pieces by hand
-	void setupSomePieces()
+	// Method:	scanForPieces()
+	// Desc:	Scan through all children objects looking for ObstaclePiece script
+	//			objects. Add these into our list of ObstaclePieces
+	void scanForPieces()
 	{
-		Debug.Log( "Setting up some pieces" );
+		//	Clear our references
+		for( int p = 0; p<kMaxPieces; p++ )
+			m_obstaclePieces[p] = null;
 		
-		KillSphere newSphere = new KillSphere();
-		newSphere.m_Position = new Vector3( 4.0f, 0.0f, 0.0f );
-		newSphere.m_Radius = 2.0f;
+		//	For now we're going to force the naming convention "Piece0", "Piece2", etc.	
+		Transform layerParent = transform.FindChild( "ObstaclePieces" );
+		int childIndex = 0;
 		
-		m_obstaclePieces[0] = new ObstaclePiece();
-		m_obstaclePieces[0].AddObstacle( newSphere );
-
-
+		if( layerParent != null )
+		{
+			Transform childTransform = layerParent.FindChild( "Piece" + childIndex.ToString() );
+			while( childTransform != null )
+			{
+				ObstaclePiece pieceComponent = childTransform.GetComponent<ObstaclePiece>();
+				
+				if( pieceComponent != null )
+					m_obstaclePieces[childIndex] = pieceComponent;
+				else
+					Debug.Log( "!** No ObstaclePiece on object - " + childTransform.name );
+					
+				childIndex++;
+				childTransform = layerParent.FindChild( "Piece" + childIndex.ToString() );
+			}
+		}
 		
-		KillBox newBox = new KillBox();
-		newBox.m_Position = new Vector3( 5.0f, 0.0f, 0.0f );
-		newBox.m_Width = 2.0f;
-		newBox.m_Height = 2.0f;
+		logObstaclePieces();
+	}
+	
+	void logObstaclePieces()
+	{
+		string piecesLog = "Obstacle Pieces:\n\n";
+		piecesLog += "*********************\n";
 		
-		m_obstaclePieces[1] = new ObstaclePiece();
-		m_obstaclePieces[1].AddObstacle( newBox );
-
+		if( m_obstaclePieces[0] == null )
+			piecesLog += "        empty\n";
+		else
+		{
+			for( int p = 0; p<kMaxPieces; p++ )
+			{
+				if( m_obstaclePieces[p] != null )
+					piecesLog += "        " + m_obstaclePieces[p].gameObject.name + "\n";
+			}
+		}
 		
-		
-		newBox = new KillBox();
-		newBox.m_Position = new Vector3( 15.0f, 3.0f, 0.0f );
-		newBox.m_Width = 2.0f;
-		newBox.m_Height = 6.0f;
-		
-		m_obstaclePieces[2] = new ObstaclePiece();
-		m_obstaclePieces[2].AddObstacle( newBox );
-
-		
-		newSphere = new KillSphere();
-		newSphere.m_Position = new Vector3( 6.0f, 1.0f, 0.0f );
-		newSphere.m_Radius = 3.0f;
-		
-		m_obstaclePieces[2].AddObstacle( newSphere );
+		piecesLog += "\n";
+				
+		piecesLog += "*********************\n";
+		Debug.Log( piecesLog );
 	}
 }

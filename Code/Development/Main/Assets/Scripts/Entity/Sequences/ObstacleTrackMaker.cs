@@ -21,19 +21,20 @@ public class ObstacleTrackMaker
 	
 	public void StartPlayMode() 
 	{
-		m_flipflopTrack = 1;
+		m_flipflopTrack = 0;
 	}
 	
 	public void UpdatePlayMode() 
 	{
 	}
 	
+	
+	
 	public int NextPiece()
 	{
-		m_flipflopTrack++;
-		if( m_flipflopTrack == 3 )
-			m_flipflopTrack = 0;
-
-		return m_flipflopTrack;
+		int nextPiece = m_flipflopTrack;
+		m_flipflopTrack = 2 - m_flipflopTrack;
+		
+		return nextPiece;
 	}
 }

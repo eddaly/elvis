@@ -9,7 +9,7 @@ public class FastGUIElement
 	// Screen and Frontend Atlas size
 	static public float safeScreenWidth = 2048f, safeScreenHeight = 1536f;
 	static protected TextureAtlas frontendAtlas;
-	static protected float originalAtlasPixelsWidth, originalAtlasPixelsHeight;
+	static protected int originalAtlasPixelsWidth, originalAtlasPixelsHeight;
 	private static int instanceCount = 0;			// Number of FastGUIElement instances
 	
 	// Size of element
@@ -37,7 +37,7 @@ public class FastGUIElement
 	
 	// Set if using UV data from XML file
 	static public string uvxmlFile = "";
-	
+
 	static public void DebugDrawSafeArea ()
 	{
 		// Safe area guides
@@ -227,7 +227,7 @@ public class FastGUIElement
 
 		screenRect = new Rect (sp0.x, sp0.y, sp1.x - sp0.x, sp1.y - sp0.y);
 	}
-	
+
 	// Return UVs from provided textureFile (the original file used to create the xml), must first have set uvxmlFile
 	public static Vector4 UVsFrom (string textureFile)
 	{
@@ -236,22 +236,22 @@ public class FastGUIElement
 			Debug.LogError ("uvxmlFile not set, can't use UVsFrom");
 			return Vector4.zero;
 		}
-		
+
 		//*** Note could get/check/override atlas name and original width and size from this file
 		//*** Note could also read this into memory once then dump out rather than keep reading
-		
+
 		// Create an XmlReader
 		Vector4 v = Vector4.zero;
 		using (XmlReader reader = XmlReader.Create (uvxmlFile))
 		{
-			bool fail = true;
 			do {
-				
+
 			    if (!reader.ReadToFollowing ("sprite"))
 					break;
 			    if (!reader.MoveToAttribute (@"n"))
 					break;
 			    string aTextureFile = reader.Value;
+				Debug.Log (aTextureFile);
 				if (aTextureFile.Equals (textureFile, System.StringComparison.OrdinalIgnoreCase))
 				{
 					if (!reader.MoveToAttribute (@"x"))
@@ -266,12 +266,10 @@ public class FastGUIElement
 					if (!reader.MoveToAttribute (@"h"))
 						break;
 					v.w = reader.ReadContentAsFloat();
-					fail = false;
 					break;
 				}
+				Debug.Log (v);
 			} while (true);
-			if (fail)
-				Debug.LogError ("Error reading XML");
 		}
 		return v;
 	}
@@ -283,4 +281,3 @@ public class FastGUIElement
 	FastGUIElement ge;
 #pragma warning restore 414
 */
-

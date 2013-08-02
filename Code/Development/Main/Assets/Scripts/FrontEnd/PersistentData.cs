@@ -55,55 +55,29 @@ public class PersistentData : MonoBehaviour {
 		return n;
 	}
 
-	/*//*************************************************************** Items
-	static public Metagame.PermanentItems permanentItems
+	//*************************************************************** Items
+	static public Metagame.ItemsSave itemsSave
 	{
-		get {return (Metagame.PermanentItems)SecuredPlayerPrefs.GetInt ("permanentItems", 0);}
+		get {return (Metagame.ItemsSave)SecuredPlayerPrefs.GetInt ("items", 0);}
 		set {
-			SecuredPlayerPrefs.SetInt ("permanentItems", (int)value);
+			SecuredPlayerPrefs.SetInt ("items", (int)value);
 			Save ();	// Save here to ensure not lost if crash
 		}
 	}
-	static public bool HasItem (Metagame.PermanentItems item) {
-		return ((int)permanentItems & (int)item) != 0;
-	}*/
+	static public bool HasItem (Metagame.ItemsSave item) {
+		return ((int)itemsSave & (int)item) != 0;
+	}
 	
 	//*************************************************************** Upgrades
-	static public Metagame.UpgradeItems upgradeItems
+	static public Metagame.UpgradesSave upgradesSave
 	{
-		get {return (Metagame.UpgradeItems)SecuredPlayerPrefs.GetInt ("upgradeItems", 0);}
+		get {return (Metagame.UpgradesSave)SecuredPlayerPrefs.GetInt ("upgrades", 0);}
 		set {
-			SecuredPlayerPrefs.SetInt ("upgradeItems", (int)value);
+			SecuredPlayerPrefs.SetInt ("upgrades", (int)value);
 			Save ();	// Save here to ensure not lost if crash
 		}
-	}
-	static public bool HasItem (Metagame.UpgradeItems item) {
-		return ((int)upgradeItems & (int)item) != 0;
 	}
 	
-	//*************************************************************** Consumables Unlocked
-	static public Metagame.ConsumableUnlocked consumableUnlocked
-	{
-		get {return (Metagame.ConsumableUnlocked)SecuredPlayerPrefs.GetInt ("consumableUnlocked", 0);}
-		set {
-			SecuredPlayerPrefs.SetInt ("consumableUnlocked", (int)value);
-			Save ();	// Save here to ensure not lost if crash
-		}
-	}
-	static public bool HasItem (Metagame.ConsumableUnlocked item) {
-		return ((int)consumableUnlocked & (int)item) != 0;
-	}
-	
-	//*************************************************************** Consumable Items
-	static public int [] consumableItems // indexed by Metagame.ConsumableItem
-	{
-		get {return SecuredPlayerPrefs.GetIntArray ("consumableItems", zeroArray);}
-		set {
-			SecuredPlayerPrefs.SetIntArray ("consumableItems", zeroArray);
-			Save ();	// Save here to ensure not lost if crash
-		}
-	}
-
 	//*************************************************************** Missions
 	static int [] zeroArray = {};
 	static public int [] missionsComplete // 0 or 1, done or not done
@@ -121,7 +95,7 @@ public class PersistentData : MonoBehaviour {
 			SecuredPlayerPrefs.SetIntArray ("missionsActive", value);
 			Save ();	// Save here to ensure not lost if crash
 		}
-	}
+	}	
 	
 	//*************************************************************** Public API
 	

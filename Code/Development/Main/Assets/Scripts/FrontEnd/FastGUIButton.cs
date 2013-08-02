@@ -58,21 +58,23 @@ public class FastGUIButton : FastGUIElement
 #if UNITY_IPHONE || UNITY_ANDROID
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
 #else
-		if (Input.GetMouseButton(0))
+		if (Input.GetMouseButtonDown(0))
 #endif
 		{
-			// If touched the button, display it, else remove it
-			pressedButton.SetDisplayed (screenRect.Contains (pos));
+			// If touched the button, diplay it
+			if (screenRect.Contains (pos))
+				pressedButton.SetDisplayed (true);
 		}
 #if UNITY_IPHONE || UNITY_ANDROID			
 		else if (Input.GetTouch(0).phase == TouchPhase.Moved)
+#else
+		else if (Input.GetMouseButton(0))
+#endif							
 		{
 			// If moved away from button, don't display pressed button texture
 			if (!screenRect.Contains (pos))
 				pressedButton.SetDisplayed (false);
 		}			
-#endif							
-
 #if UNITY_IPHONE || UNITY_ANDROID			
 		else if (Input.GetTouch(0).phase == TouchPhase.Ended)
 #else

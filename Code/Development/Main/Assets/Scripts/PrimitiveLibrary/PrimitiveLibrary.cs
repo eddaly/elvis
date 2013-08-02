@@ -55,12 +55,20 @@ public sealed class PrimitiveLibrary
 		FX_BATCH = 0,
 		NUMBERS_BATCH,
 		FRONTEND_BATCH,
+		PLAYER_BATCH,
+		ELVIS_BATCH,
+		OBSTACLE_BATCH,
+		PLATFORM_BATCH,
 		
 		NUM
 	}
 	const int g_FXBatchSize = 1000;
 	const int g_NumbersBatchSize = 70;
 	const int g_FrontendBatchSize = 256;
+	const int g_PlayerBatchSize = 16;
+	const int g_ElvisBatchSize = 16;
+	const int g_ObstacleBatchSize = 100;
+	const int g_PlatformBatchSize = 100;
 	
 	GameObject[] m_quadBatches = new GameObject[(int)QuadBatch.NUM];
 
@@ -147,6 +155,39 @@ public sealed class PrimitiveLibrary
 			false, false, false, 8 
 			);
 		m_quadBatches[(int)QuadBatch.FRONTEND_BATCH].transform.localPosition = Vector3.zero;
+
+		m_quadBatches[(int)QuadBatch.PLAYER_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_PlayerBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.PLAYER],
+			(int)TextureAtlas.AtlasID.PLAYER,
+			false, true, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.PLAYER_BATCH].transform.localPosition = Vector3.zero;
+
+		m_quadBatches[(int)QuadBatch.ELVIS_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_ElvisBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.ELVIS],
+			(int)TextureAtlas.AtlasID.ELVIS,
+			false, true, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.PLAYER_BATCH].transform.localPosition = Vector3.zero;
+
+		m_quadBatches[(int)QuadBatch.OBSTACLE_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_ObstacleBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES],
+			(int)TextureAtlas.AtlasID.OBSTACLES,
+			false, false, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.OBSTACLE_BATCH].transform.localPosition = Vector3.zero;
+
+		m_quadBatches[(int)QuadBatch.PLATFORM_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_PlatformBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS],
+			(int)TextureAtlas.AtlasID.PLATFORMS,
+			false, false, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.PLATFORM_BATCH].transform.localPosition = Vector3.zero;
+		
 		
 		for( int q = 0; q<(int)QuadBatch.NUM; q++ )
 			m_quadBatches[q].transform.parent = m_HierarchyQuadBatches;
@@ -462,7 +503,15 @@ public sealed class PrimitiveLibrary
 		m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS].m_TexturePage =
 			Resources.Load( "Numbers_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
-			Resources.Load( FrontEnd.instance.m_AtlasFile ) as Texture;
+			Resources.Load( FrontEnd.atlasFile ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.PLAYER].m_TexturePage =
+			Resources.Load( "Player_Atlas" ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.ELVIS].m_TexturePage =
+			Resources.Load( "Elvis_Atlas" ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES].m_TexturePage =
+			Resources.Load( "Obstacles_Atlas" ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS].m_TexturePage =
+			Resources.Load( "Platforms_Atlas" ) as Texture;
 		
 		//	Set up the FX atlas
 		TextureAtlas fxAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX];		
@@ -499,6 +548,51 @@ public sealed class PrimitiveLibrary
 		TextureAtlas frontendAtlas = m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND];		
 		frontendAtlas.m_NumElements = TextureAtlas.maxFrontendElements;		
 		frontendAtlas.m_UVSet = new Vector4[frontendAtlas.m_NumElements]; // Setup dynamically by FastGUIElement
+		
+		
+		//	The player atlas - just break it up in pieces for now to leave it open for animation
+		TextureAtlas playerAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PLAYER];
+		playerAtlas.m_NumElements = 64;
+		playerAtlas.m_UVSet = new Vector4[playerAtlas.m_NumElements];
+		
+		for( int p = 0; p<64; p++ )
+		{
+			float uTex = ((float)(p%8))*0.125f;
+			float vTex = ((float)(p/8))*0.125f;
+			
+			playerAtlas.m_UVSet[p] = new Vector4( uTex, vTex, uTex + 0.125f, vTex + 0.125f );
+		}
+		
+		//	Same for Elvis
+		TextureAtlas elvisAtlas = m_Atlases[(int)TextureAtlas.AtlasID.ELVIS];
+		elvisAtlas.m_NumElements = 64;
+		elvisAtlas.m_UVSet = new Vector4[elvisAtlas.m_NumElements];
+		
+		for( int e = 0; e<64; e++ )
+		{
+			float uTex = ((float)(e%8))*0.125f;
+			float vTex = ((float)(e/8))*0.125f;
+			
+			elvisAtlas.m_UVSet[e] = new Vector4( uTex, vTex, uTex + 0.125f, vTex + 0.125f );
+		}
+		
+		
+		//	Obstacle atlas
+		TextureAtlas obstacleAtlas = m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES];		
+		obstacleAtlas.m_NumElements = (int)TextureAtlas.Obstacles.NUM;		
+		obstacleAtlas.m_UVSet = new Vector4[obstacleAtlas.m_NumElements];
+		
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.KILLBOX] = new Vector4( 0.0f, 0.5f, 1.0f, 1.0f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.KILLCIRCLE] = new Vector4( 0.0f, 0.0f, 1.0f, 0.5f );
+		
+		
+		//	Platform atlas
+		TextureAtlas platformAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS];		
+		platformAtlas.m_NumElements = (int)TextureAtlas.Platforms.NUM;
+		platformAtlas.m_UVSet = new Vector4[platformAtlas.m_NumElements];
+		
+		platformAtlas.m_UVSet[(int)TextureAtlas.Platforms.SOLID] = new Vector4( 0.0f, 0.5f, 1.0f, 1.0f );
+		platformAtlas.m_UVSet[(int)TextureAtlas.Platforms.PASS_THROUGH] = new Vector4( 0.0f, 0.426f, 1.0f, 0.5f );
 	}
 }
 
@@ -516,6 +610,10 @@ public class TextureAtlas
 		PARTICLE_FX = 0,
 		NUMBERS,
 		FRONTEND,
+		PLAYER,
+		ELVIS,
+		OBSTACLES,
+		PLATFORMS,
 		
 		NUM
 	}
@@ -550,5 +648,20 @@ public class TextureAtlas
 	}	
 	
 	static public int maxFrontendElements = 256;
-
+	
+	public enum Obstacles
+	{
+		KILLBOX,
+		KILLCIRCLE,
+		
+		NUM
+	}
+	
+	public enum Platforms
+	{
+		SOLID,
+		PASS_THROUGH,
+		
+		NUM
+	}
 }

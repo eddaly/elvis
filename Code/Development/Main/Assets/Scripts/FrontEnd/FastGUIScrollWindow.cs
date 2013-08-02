@@ -21,8 +21,8 @@ public class FastGUIScrollWindow : FastGUIElement
 		atlasRectMaxNormalised = new Vector4 (
 			atlasRectMax.x / originalAtlasPixelsWidth,
 			atlasRectMax.y / originalAtlasPixelsHeight, 
-			(atlasRectMax.x + atlasRectMax.z) / originalAtlasPixelsWidth, 
-			(atlasRectMax.y + atlasRectMax.w) / originalAtlasPixelsHeight);
+			atlasRectMax.z / originalAtlasPixelsWidth, 
+			atlasRectMax.w / originalAtlasPixelsHeight);
 	}
 	
 	// Update should be called once per frame to update
@@ -60,10 +60,10 @@ public class FastGUIScrollWindow : FastGUIElement
 			lastPos = touchPos;
 
 			// Move the UVs
-			Vector2 m2 = new Vector2 (movement.x, movement.y);
-			m2 *= 3f;					// Scale to scroll with finger position (set with trial and error on iPhone5!)
-			if (m2.magnitude > 10)		// Unless barely moving (at least with touch)
-				ScrollUVs (m2);
+			Vector4 m4 = new Vector4 (movement.x, 0, movement.x, 0); // X-axis only
+			m4 *= 3f;					// Scale to scroll with finger position (set with trial and error on iPhone5!)
+			if (m4.magnitude > 10)		// Unless barely moving (at least with touch)
+				scrollUVs (m4);
 		}
 		
 		// If touch ended start autoscroll
@@ -77,9 +77,9 @@ public class FastGUIScrollWindow : FastGUIElement
 		// Autoscroll
 		if (autoscroll)
 		{
-			Vector2 v2 = new Vector2 (velocity.x, velocity.y);
-			v2 *= Time.deltaTime;	// Scale scroll speed to framerate
-			ScrollUVs (v2);
+			Vector3 v4 = new Vector4 (velocity.x, 0, velocity.x, 0);	// X-axis only
+			v4 *= Time.deltaTime;	// Scale scroll speed to framerate
+			scrollUVs (v4);
 			// Decelerate until stop
 			velocity = velocity * .9f;
 			if (velocity.magnitude  < Mathf.Epsilon)
@@ -89,14 +89,13 @@ public class FastGUIScrollWindow : FastGUIElement
 		}
 #endif
 	}
-		
+	
 	// Scroll the UVs, with clamping, and of child elements
-	// Return false if scroll is clamped
-	public bool ScrollUVs (Vector2 v)
+	private void scrollUVs (Vector4 v)
 	{
-		bool clamped = false;
-		Vector4 vNormalised = new Vector4 (v.x / originalAtlasPixelsWidth, v.y / originalAtlasPixelsHeight,
-				v.x / originalAtlasPixelsWidth, v.y / originalAtlasPixelsHeight);
+		Vector4 vNormalised = new Vector4 (
+				v.x / originalAtlasPixelsWidth, v.y / originalAtlasPixelsHeight,
+				v.z / originalAtlasPixelsWidth, v.w / originalAtlasPixelsHeight);
 		
 		// Move the UVs
 		frontendAtlas.m_UVSet[textureIdx] -= vNormalised;
@@ -107,28 +106,12 @@ public class FastGUIScrollWindow : FastGUIElement
 			v.x -= (atlasRectMaxNormalised.x - frontendAtlas.m_UVSet[textureIdx].x) * originalAtlasPixelsWidth;
 			frontendAtlas.m_UVSet[textureIdx].x = atlasRectMaxNormalised.x;
 			frontendAtlas.m_UVSet[textureIdx].z = atlasRectMaxNormalised.x + widthNormalised;
-			clamped = true;
 		}
 		else if (frontendAtlas.m_UVSet[textureIdx].z > atlasRectMaxNormalised.z)
 		{
 			v.x += (frontendAtlas.m_UVSet[textureIdx].z - atlasRectMaxNormalised.z) * originalAtlasPixelsWidth;
 			frontendAtlas.m_UVSet[textureIdx].x = atlasRectMaxNormalised.z - widthNormalised;
 			frontendAtlas.m_UVSet[textureIdx].z = atlasRectMaxNormalised.z;
-			clamped = true;
-		}
-		if (frontendAtlas.m_UVSet[textureIdx].y < (1f - atlasRectMaxNormalised.w))
-		{
-			v.y -= ((1f - atlasRectMaxNormalised.w) - frontendAtlas.m_UVSet[textureIdx].y) * originalAtlasPixelsHeight;
-			frontendAtlas.m_UVSet[textureIdx].y = 1f - atlasRectMaxNormalised.w;
-			frontendAtlas.m_UVSet[textureIdx].w = frontendAtlas.m_UVSet[textureIdx].y + heightNormalised;
-			clamped = true;
-		}
-		else if (frontendAtlas.m_UVSet[textureIdx].w > (1f - atlasRectMaxNormalised.y))
-		{
-			v.y += (frontendAtlas.m_UVSet[textureIdx].w - (1f - atlasRectMaxNormalised.y)) * originalAtlasPixelsHeight;
-			frontendAtlas.m_UVSet[textureIdx].w = 1f - atlasRectMaxNormalised.y;
-			frontendAtlas.m_UVSet[textureIdx].y = frontendAtlas.m_UVSet[textureIdx].w - heightNormalised;
-			clamped = true;
 		}
 		
 		// Move the children inline with scrolled background
@@ -138,8 +121,6 @@ public class FastGUIScrollWindow : FastGUIElement
 			child.quad.m_Position += p;
 			child.UpdatedQuad ();
 		}
-			
-		return !clamped;
 			
 		// TODO it going outside the window, i.e. clipping it.  However that only needed if is any visible space outside the window
 		// as long as even the unsafe area used by windows this isn't a problem.  And would probably put a 'mask' over it anyway
