@@ -3664,7 +3664,7 @@ MonoBehaviour:
   m_TrackType: 0
   m_CollisionType: 1
   m_JumpType: 2
-  m_PlayerType: 1
+  m_PlayerType: 0
   m_viewDistance: 1
 --- !u!1 &1039822778
 GameObject:
