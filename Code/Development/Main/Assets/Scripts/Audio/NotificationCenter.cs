@@ -35,6 +35,14 @@ public class NotificationCenter : MonoBehaviour
     // Our hashtable containing all the notifications.  Each notification in the hash table is an ArrayList that contains all the observers for that notification.
 	Hashtable notifications = new Hashtable();
  
+	
+	// On awake
+	void Awake()
+	{
+		DontDestroyOnLoad(transform.gameObject);
+	}
+	
+	
 	// AddObserver includes a version where the observer can request to only receive notifications from a specific object.  We haven't implemented that yet, so the sender value is ignored for now.
 	public void AddObserver (Component observer, string name) { AddObserver(observer, name, null); }
 	public void AddObserver (Component observer, string name, Component sender) {

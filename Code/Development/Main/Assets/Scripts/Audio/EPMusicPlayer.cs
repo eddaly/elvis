@@ -37,7 +37,7 @@ public class EPMusicPlayer : MonoBehaviour {
 		if( ms_musicPlayer != null )
 			return ms_musicPlayer;
 
-		GameObject musicPlayerObject = GameObject.Find( "SoundController" );
+		GameObject musicPlayerObject = GameObject.FindWithTag( "SoundController" );
         if( musicPlayerObject == null )
         {
             Debug.Log( "!** No Music Player object found (SoundController)" );
