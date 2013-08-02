@@ -294,9 +294,9 @@ public class SequenceManager : MonoBehaviour
 		//	Different function when zooming in or zooming out to take account of y
 		RL.m_Prototype.m_viewDistance = dist;
 		if( dist < 1.0f )
-			cameraObject.transform.position = new Vector3( dist*10.0f, -0.7f + dist*6.2f, dist*-18.2f );
+			cameraObject.transform.position = new Vector3( dist*10.0f, -0.7f + dist*6.2f - 2.5f, dist*-18.2f );
 		else
-			cameraObject.transform.position = new Vector3( dist*10.0f, 3.0f + dist*2.5f, dist*-18.2f );
+			cameraObject.transform.position = new Vector3( dist*10.0f, 3.0f + dist*2.5f - 2.5f, dist*-18.2f );
 		
 		
 		//	Speed player up depending on distance

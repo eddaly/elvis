@@ -80,7 +80,7 @@ public class PlayerCollisionDef
 	public Obstacle m_KillCollision;
 	public Vector3 m_KillCollisionPoint;
 	
-	public Obstacle m_PlatformCollision;
+	public ObstaclePlatform m_PlatformCollision;
 	public Vector3 m_PlatformCollisionPoint;		
 }
 	

@@ -33,12 +33,7 @@ public class ObstacleKillBox : Obstacle
 		}
 	}	
 		 
-	void Update()
-	{
-		DebugRender();
-	}
-	
-	public void DebugRender()
+	public override void DebugRender()
 	{
 		if( m_HighlightColour )
 		{
@@ -53,7 +48,7 @@ public class ObstacleKillBox : Obstacle
 		}
 	}
 	
-	public void CollideWithPlayer()
+	public override void CollideWithPlayer()
 	{
 		Vector3 currentPos = transform.position;
 		

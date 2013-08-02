@@ -33,8 +33,10 @@ public class ObstacleTrackMaker
 	public int NextPiece()
 	{
 		int nextPiece = m_flipflopTrack;
-		m_flipflopTrack = 2 - m_flipflopTrack;
+		m_flipflopTrack = 3 - m_flipflopTrack;
 		
-		return nextPiece;
+		return Random.Range( 0, 10 );
+		
+//		return nextPiece;
 	}
 }

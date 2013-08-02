@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 {
 	BatchedQuadDef m_Renderer;
 	
-	enum PlayerAnimState
+	public enum PlayerAnimState
 	{
 		RUNNING = 0,
 		JUMP_TAKE_OFF,
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 		
 		NUM
 	}
-	PlayerAnimState m_animState = PlayerAnimState.RUNNING;
+	public PlayerAnimState m_animState = PlayerAnimState.RUNNING;
 	
 	int m_animFrame = 0;
 	float m_animFrameTime = 0.0f;
@@ -53,8 +53,6 @@ public class Player : MonoBehaviour
 	float m_yRendererOffset = 0.25f;
 
 	public PlayerCollisionDef m_CollisionBox = new PlayerCollisionDef();
-	public Obstacle m_KillCollision = null;
-	public Obstacle m_PlatformCollision = null;
 	
 	void Start() 
 	{
@@ -99,7 +97,10 @@ public class Player : MonoBehaviour
 		InputManager.Get.Update();
 		
 		animatePlayer();	
-
+		
+		const float baseJumpVel = 16.0f;
+		const float baseDropVel = 10.0f;
+		
 		//	Maybe do a jump while running
 		if( InputManager.Get.m_FirePressed[0] && m_animState == PlayerAnimState.RUNNING )
 		{
@@ -108,16 +109,16 @@ public class Player : MonoBehaviour
 			if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
 				m_jumpVelocity = 45.0f;
 			else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.DIGITAL )
-				m_jumpVelocity = 16.0f;
+				m_jumpVelocity = baseJumpVel;
 			else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.HIGH_ANALOGUE )
 			{
 				m_highAnalogueTimer = 0.45f;
-				m_jumpVelocity = 16.0f;
+				m_jumpVelocity = baseJumpVel;
 			}
 			else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.ANALOGUE )
 			{
-				m_highAnalogueTimer = 0.25f;
-				m_jumpVelocity = 16.0f;
+				m_highAnalogueTimer = 0.27f;
+				m_jumpVelocity = baseJumpVel;
 			}
 		}
 
@@ -129,31 +130,31 @@ public class Player : MonoBehaviour
 				m_jumpVelocity += Time.deltaTime*60.0f;
 			}
 			
-			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f && m_jumpVelocity > -12.0f &&
+			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f && m_jumpVelocity > -baseDropVel &&
 				(m_animState == PlayerAnimState.JUMP_SAILING || m_animState == PlayerAnimState.JUMP_LANDING) )
 			{
-				m_jumpVelocity = -12.0f;
+				m_jumpVelocity = -baseDropVel;
 			}
 		}
 		else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.ANALOGUE )
 		{
-			if( InputManager.Get.m_FireDown[0] && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.15f )
+			if( InputManager.Get.m_FireDown[0] && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.17f )
 			{
 				m_jumpVelocity += Time.deltaTime*60.0f;
 			}
 			
-			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f &&	m_jumpVelocity > -12.0f &&
+			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f &&	m_jumpVelocity > -baseDropVel &&
 				(m_animState == PlayerAnimState.JUMP_SAILING || m_animState == PlayerAnimState.JUMP_LANDING) )
 			{
-				m_jumpVelocity = -12.0f;
+				m_jumpVelocity = -baseDropVel;
 			}
 		}
 		else
 		{
-			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f && m_jumpVelocity > -12.0f &&
+			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f && m_jumpVelocity > -baseDropVel &&
 				(m_animState == PlayerAnimState.JUMP_SAILING || m_animState == PlayerAnimState.JUMP_LANDING) )
 			{
-				m_jumpVelocity = -12.0f;
+				m_jumpVelocity = -baseDropVel;
 			}
 		}
 		
@@ -161,22 +162,29 @@ public class Player : MonoBehaviour
 		if( InputManager.Get.m_FirePressed[1] && m_animState == PlayerAnimState.RUNNING && 
 			m_Position.y > 1.0f )
 		{
-			changeState( PlayerAnimState.JUMP_SAILING );
-			m_fallTimer = 0.1f;
-
-			if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
-				m_jumpVelocity = -8.0f;
+			bool canPassThrough = true;
+			
+			if( m_CollisionBox.m_PlatformCollision )
+			{
+				if( !m_CollisionBox.m_PlatformCollision.m_PassThrough )
+					canPassThrough = false;
+			}
+				
+			if( canPassThrough )
+			{
+				changeState( PlayerAnimState.JUMP_SAILING );
+				m_fallTimer = 0.1f;
+	
+				if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
+					m_jumpVelocity = -8.0f;
+			}
 		}
 		
 		
 		if( m_animState != PlayerAnimState.RUNNING && m_animState != PlayerAnimState.JUMP_LANDED )
 		{
-//			Debug.Log( "Jumpng " + m_jumpVelocity.ToString() );
-			
 			Vector3 position = m_Position;
 			position.y += m_jumpVelocity*Time.deltaTime;
-			
-//			Debug.Log( "makes: " + m_Position.ToString() + " to; " + position.ToString() );
 			
 			if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
 			{
@@ -210,20 +218,21 @@ public class Player : MonoBehaviour
 		m_CollisionBox.m_CollisionBoxBase.y -= m_collisionHeight*0.5f;
 		
 		m_CollisionBox.m_CollisionBoxVelocity = m_Position - m_lastPosition;
+		Debug.Log( "vel " + m_CollisionBox.m_CollisionBoxVelocity.ToString() );
 		
 		m_CollisionBox.m_CollisionBoxDimensions.x = m_collisionWidth;
 		m_CollisionBox.m_CollisionBoxDimensions.y = m_collisionHeight;
 		
-		m_KillCollision = null;
-		m_PlatformCollision = null;		
+		m_CollisionBox.m_KillCollision = null;
+		m_CollisionBox.m_PlatformCollision = null;		
 	}
 	
 	void LateUpdate()
 	{
 		//	Respond to collisions that happened this frame
-		if( m_KillCollision != null )
+		if( m_CollisionBox.m_KillCollision != null )
 		{
-			m_KillCollision.SetHighlight();
+			m_CollisionBox.m_KillCollision.SetHighlight();
 			m_Colliding = true;			
 		}
 		else

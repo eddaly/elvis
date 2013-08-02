@@ -558,7 +558,7 @@ public sealed class PrimitiveLibrary
 		for( int p = 0; p<64; p++ )
 		{
 			float uTex = ((float)(p%8))*0.125f;
-			float vTex = ((float)(p/8))*0.125f;
+			float vTex = (1.0f - 0.125f) - ((float)(p/8))*0.125f;
 			
 			playerAtlas.m_UVSet[p] = new Vector4( uTex, vTex, uTex + 0.125f, vTex + 0.125f );
 		}
