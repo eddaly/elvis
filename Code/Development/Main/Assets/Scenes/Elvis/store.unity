@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b12dbba63ffa4cd2a49f5e614ae4e9f, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &691978812
 Transform:
   m_ObjectHideFlags: 0
@@ -270,6 +271,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
+  m_AtlasOriginalWidth: 4096
+  m_AtlasOriginalHeight: 4096
 --- !u!1 &1922735874
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +300,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8e586b098418854ca9f8bf872cea904, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1922735876
 Transform:
   m_ObjectHideFlags: 0
