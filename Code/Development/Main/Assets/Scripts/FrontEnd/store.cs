@@ -2,9 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class store : MonoBehaviour {
-	
 #pragma warning disable 414
-	FastGUIElement Store_Background;
+//	FastGUIElement Store_Background;
 	/* FastGUIElement General_BackButton;
 	FastGUIButton BackButton;
 	FastGUIElement Store_Upgrade1Tab;
@@ -41,7 +40,6 @@ public class store : MonoBehaviour {
 	FastGUIElement Store_Upgrade1Tab;
 	FastGUIElement Store_Upgrade2Tab;
 	FastGUIElement Store_Upgrade3Tab;
-	FastGUIElement Store_GearEPIcon;
 #pragma warning restore 414
 
 	// Use this for initialization
@@ -50,10 +48,6 @@ public class store : MonoBehaviour {
 		
 		// The XML file containing the atlas UVs
 		FastGUIElement.uvxmlFile = @"assets//resources//Elvis_StoreAtlas.xml";
-		
-		Store_Background = new FastGUIElement (
-			new Vector2 (0, 0),
-			FastGUIElement.UVsFrom (@"Store_Background.png"));
 		
 		Store_WardrobeScreen = new FastGUIElement (
 			new Vector2 (192, 0),
@@ -101,13 +95,6 @@ public class store : MonoBehaviour {
 		
 		Store_Upgrade3Tab = new FastGUIElement (
 			new Vector2 (64, 896),
-			FastGUIElement.UVsFrom (@"Store_Upgrade3Tab.png"));
-		Store_Upgrade3Tab.SetDisplayed (false);
-		
-		//Gear Screen...
-		
-		Store_GearEPIcon = new FastGUIElement (
-			new Vector2 (64, 256),
 			FastGUIElement.UVsFrom (@"Store_Upgrade3Tab.png"));
 		Store_Upgrade3Tab.SetDisplayed (false);
 
