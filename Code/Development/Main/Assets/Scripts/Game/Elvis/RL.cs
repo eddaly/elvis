@@ -61,12 +61,6 @@ public class RL : MonoBehaviour
 			refreshReferenceObjects();
 			m_ForceRefresh = false;
 		}
-		
-		if ( Input.GetKeyDown(KeyCode.Space) )
-			m_MusicPlayer.ToggleSegment("VLV_Intro_01");
-		
-		if ( Input.GetKeyDown(KeyCode.L) )
-			Application.LoadLevel("FrontEnd");
 	}
 	
 	void sceneHierarchyChanged()
