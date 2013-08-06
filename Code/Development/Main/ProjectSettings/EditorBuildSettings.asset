@@ -11,3 +11,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Elvis/startup.unity
   - enabled: 1
     path: Assets/Scenes/Elvis/ScrollTest.unity
+  - enabled: 1
+    path: Assets/Scenes/Elvis/store.unity
+  - enabled: 1
+    path: Assets/Scenes/Elvis/FrontEnd.unity

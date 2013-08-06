@@ -23,6 +23,8 @@ public class RL : MonoBehaviour
 	public static SequenceManager m_Sequencer;
 	public static PrototypeConfiguration m_Prototype;
 	public static Player m_Player;
+	public static EPSoundController m_SoundController;
+	public static EPMusicPlayer m_MusicPlayer;
 	
 	public bool m_ForcePopulate = false;
 	
@@ -59,6 +61,12 @@ public class RL : MonoBehaviour
 			refreshReferenceObjects();
 			m_ForceRefresh = false;
 		}
+		
+		if ( Input.GetKeyDown(KeyCode.Space) )
+			m_MusicPlayer.ToggleSegment("VLV_Intro_01");
+		
+		if ( Input.GetKeyDown(KeyCode.L) )
+			Application.LoadLevel("FrontEnd");
 	}
 	
 	void sceneHierarchyChanged()
@@ -95,7 +103,14 @@ public class RL : MonoBehaviour
 		
 		foundObject = GameObject.Find( "Player" );
 		if( foundObject != null )
-			m_Player = foundObject.GetComponent<Player>();		
+			m_Player = foundObject.GetComponent<Player>();			
+		
+		foundObject = GameObject.FindWithTag( "SoundController" );
+		if( foundObject != null )
+		{
+			m_SoundController = foundObject.GetComponent<EPSoundController>();
+			m_MusicPlayer = foundObject.GetComponent<EPMusicPlayer>();
+		}
 	}
 	
 	
