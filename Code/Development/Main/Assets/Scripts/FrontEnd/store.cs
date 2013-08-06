@@ -43,7 +43,10 @@ public class store : MonoBehaviour {
 	FastGUIElement Store_Upgrade1Tab;
 	FastGUIElement Store_Upgrade2Tab;
 	FastGUIElement Store_Upgrade3Tab;
-	
+	FastGUIElement Store_Upgrade1Desc;
+	FastGUIElement Store_Upgrade2Desc;
+	FastGUIElement Store_Upgrade3Desc;
+		
 	//gear
 	FastGUIElement Store_EPIcon;
 	FastGUIElement Store_BuckleIcon;
@@ -85,7 +88,7 @@ public class store : MonoBehaviour {
 		
 		
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"assets//resources//Elvis_StoreAtlas.xml";
+		FastGUIElement.uvxmlFile = @"assets//resources//Frontend_Atlas.xml";
 
 		
 		//		backGround = new FastGUIElement (
@@ -139,15 +142,27 @@ public class store : MonoBehaviour {
 			new Vector2 (64, 896),
 			FastGUIElement.UVsFrom (@"Store_Upgrade1Tab.png"));
 		
+		Store_Upgrade1Desc = new FastGUIElement (
+			new Vector2 (832, 896), 
+			FastGUIElement.UVsFrom (@"Store_Upgrade1Desc.png"));
+		
 		Store_Upgrade2Tab = new FastGUIElement (
-			new Vector2 (64, 896),
+			new Vector2 (64, 1088),
 			FastGUIElement.UVsFrom (@"Store_Upgrade2Tab.png"));
-		Store_Upgrade2Tab.SetDisplayed (false);
+		
+		Store_Upgrade2Desc = new FastGUIElement (
+			new Vector2 (832, 896), 
+			FastGUIElement.UVsFrom (@"Store_Upgrade2Desc.png"));	
+		Store_Upgrade2Desc.SetDisplayed (false);
 		
 		Store_Upgrade3Tab = new FastGUIElement (
-			new Vector2 (64, 896),
+			new Vector2 (64, 1280),
 			FastGUIElement.UVsFrom (@"Store_Upgrade3Tab.png"));
-		Store_Upgrade3Tab.SetDisplayed (false);
+		
+		Store_Upgrade3Desc = new FastGUIElement (
+			new Vector2 (832, 896), 
+			FastGUIElement.UVsFrom (@"Store_Upgrade3Desc.png"));
+		Store_Upgrade3Desc.SetDisplayed (false);
 		
 		//Gear Screen...
 		
@@ -204,7 +219,7 @@ public class store : MonoBehaviour {
 		Store_GearBuy2 = new FastGUIElement (
 			new Vector2 (1600, 1024),
 			FastGUIElement.UVsFrom (@"Store_GearBuy2.png"));
-		Store_GearBuy2.SetDisplayed (true);
+		Store_GearBuy2.SetDisplayed (false);
 		
 		Store_GearIcon3 = new FastGUIElement (
 			new Vector2 (64,1344),
@@ -304,12 +319,12 @@ public class store : MonoBehaviour {
 		Store_BuyItem4.SetDisplayed (false);
 		
 		/* FAST GUI BUTTON
-		 Store_WardrobeButton = new FastGUIButton (
+		Store_WardrobeButton = new FastGUIButton (
  			new Vector2 (192, 0),
  			FastGUIElement.UVsFrom (@"Store_WardrobeButtonUp.png"),
  			FastGUIElement.UVsFrom (@"Store_WardrobeButtonDown.png"));
  
-  Store_WardrobeButton.SetDisplayed (false);
+  		Store_WardrobeButton.SetDisplayed (false);
   		*/
 
 	}
@@ -345,6 +360,19 @@ public class store : MonoBehaviour {
 			Store_CostumePane.SetDisplayed (true);
 			Store_CostumeDescPane.SetDisplayed (true);
 			Store_Upgrade1Tab.SetDisplayed (true);
+			Store_Upgrade1Desc.SetDisplayed (true);
+			Store_Upgrade2Tab.SetDisplayed (true);
+			Store_Upgrade2Desc.SetDisplayed (false);
+			Store_Upgrade3Tab.SetDisplayed (true);
+			Store_Upgrade3Desc.SetDisplayed (false);
+			
+			/*Store_Upgrade1Tab.SetDisplayed (true);
+			Store_Upgrade1Desc.SetDisplayed (true);
+			Store_Upgrade2Tab.SetDisplayed (true);
+			Store_Upgrade2Desc.SetDisplayed (true);
+			Store_Upgrade3Tab.SetDisplayed (true);
+			Store_Upgrade3Desc.SetDisplayed (true);
+			*/
 			
 			//gear
 			Store_EPIcon.SetDisplayed (false);
@@ -382,6 +410,39 @@ public class store : MonoBehaviour {
 			Store_BuyItem4.SetDisplayed (false);
 		}
 		
+		if (Store_Upgrade1Tab.Tapped ())
+		{
+			Debug.Log ("Upgrade1 Tapped");
+			Store_Upgrade1Tab.SetDisplayed (true);
+			Store_Upgrade1Desc.SetDisplayed (true);
+			Store_Upgrade2Tab.SetDisplayed (true);
+			Store_Upgrade2Desc.SetDisplayed (false);
+			Store_Upgrade3Tab.SetDisplayed (true);
+			Store_Upgrade3Desc.SetDisplayed (false);
+		}
+			
+		if (Store_Upgrade2Tab.Tapped ())
+		{
+			Debug.Log ("Upgrade2 Tapped");
+			Store_Upgrade1Tab.SetDisplayed (true);
+			Store_Upgrade1Desc.SetDisplayed (false);
+			Store_Upgrade2Tab.SetDisplayed (true);
+			Store_Upgrade2Desc.SetDisplayed (true);
+			Store_Upgrade3Tab.SetDisplayed (true);
+			Store_Upgrade3Desc.SetDisplayed (false);
+		}
+			
+		if (Store_Upgrade3Tab.Tapped ())
+		{
+			Debug.Log ("Upgrade3 Tapped");
+			Store_Upgrade1Tab.SetDisplayed (true);
+			Store_Upgrade1Desc.SetDisplayed (false);
+			Store_Upgrade2Tab.SetDisplayed (true);
+			Store_Upgrade2Desc.SetDisplayed (false);
+			Store_Upgrade3Tab.SetDisplayed (true);
+			Store_Upgrade3Desc.SetDisplayed (true);
+		}
+		
 		if (Store_BankScreen.Tapped ())
 		{
 			//wardrobe
@@ -394,8 +455,11 @@ public class store : MonoBehaviour {
 			Store_CostumePane.SetDisplayed (false);
 			Store_CostumeDescPane.SetDisplayed (false);
 			Store_Upgrade1Tab.SetDisplayed (false);
+			Store_Upgrade1Desc.SetDisplayed (false);
 			Store_Upgrade2Tab.SetDisplayed (false);
+			Store_Upgrade2Desc.SetDisplayed (false);
 			Store_Upgrade3Tab.SetDisplayed (false);
+			Store_Upgrade3Desc.SetDisplayed (false);
 			
 			//gear
 			Store_EPIcon.SetDisplayed (false);
@@ -444,8 +508,11 @@ public class store : MonoBehaviour {
 			Store_CostumePane.SetDisplayed (false);
 			Store_CostumeDescPane.SetDisplayed (false);
 			Store_Upgrade1Tab.SetDisplayed (false);
+			Store_Upgrade1Desc.SetDisplayed (false);
 			Store_Upgrade2Tab.SetDisplayed (false);
+			Store_Upgrade2Desc.SetDisplayed (false);
 			Store_Upgrade3Tab.SetDisplayed (false);
+			Store_Upgrade3Desc.SetDisplayed (false);
 			
 			//gear
 			Store_EPIcon.SetDisplayed (true);
@@ -480,11 +547,6 @@ public class store : MonoBehaviour {
 			Store_CoinsDesc4.SetDisplayed (false);
 			Store_CoinsPrice4.SetDisplayed (false);
 			Store_BuyItem4.SetDisplayed (false);
-		}
-		
-		if (Store_Upgrade1Tab.Tapped ())
-		{
-			Debug.Log ("Upgrade1 Tapped");
 		}
 		
 		if (Store_GearBuy1.Tapped ())

@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>xml</string>
         <key>textureFileName</key>
-        <filename>../../Code/Development/Main/Assets/Resources/Elvis_StoreAtlas.png</filename>
+        <filename>../../Code/Development/Main/Assets/Resources/Frontend_Atlas.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../Code/Development/Main/Assets/Resources/Elvis_StoreAtlas.xml</filename>
+        <filename>../../Code/Development/Main/Assets/Resources/Frontend_Atlas.xml</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -196,6 +196,9 @@
             <filename>../FrontEnd/PNGs/Store/Store_UpgradeInUseButton.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_WardrobeScreen_InUse.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_WardrobeScreen.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_Upgrade1Desc.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_Upgrade2Desc.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_Upgrade3Desc.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
