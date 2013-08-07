@@ -340,12 +340,18 @@ public class store : MonoBehaviour {
 		}*/
 		if (General_BackButton.Tapped ())
 		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Back");
+			
 			Debug.Log ("EXIT");
 		}
 		
 		
 		if (Store_WardrobeScreen.Tapped ())
 		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Navigation_01");
+			
 			//wardrobe
 			Store_WardrobeScreen.SetDisplayed (false);
 			Store_WardrobeScreen_InUse.SetDisplayed (true);
@@ -408,6 +414,9 @@ public class store : MonoBehaviour {
 		
 		if (Store_Upgrade1Tab.Tapped ())
 		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Confirm_01");
+			
 			Debug.Log ("Upgrade1 Tapped");
 			Store_Upgrade1Tab.SetDisplayed (true);
 			Store_Upgrade1Desc.SetDisplayed (true);
@@ -419,6 +428,9 @@ public class store : MonoBehaviour {
 			
 		if (Store_Upgrade2Tab.Tapped ())
 		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Confirm_02");
+			
 			Debug.Log ("Upgrade2 Tapped");
 			Store_Upgrade1Tab.SetDisplayed (true);
 			Store_Upgrade1Desc.SetDisplayed (false);
@@ -430,6 +442,9 @@ public class store : MonoBehaviour {
 			
 		if (Store_Upgrade3Tab.Tapped ())
 		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Confirm_03");
+			
 			Debug.Log ("Upgrade3 Tapped");
 			Store_Upgrade1Tab.SetDisplayed (true);
 			Store_Upgrade1Desc.SetDisplayed (false);
@@ -441,6 +456,9 @@ public class store : MonoBehaviour {
 		
 		if (Store_BankScreen.Tapped ())
 		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Navigation_01");
+			
 			//wardrobe
 			Store_WardrobeScreen.SetDisplayed (true);
 			Store_WardrobeScreen_InUse.SetDisplayed (false);
@@ -494,6 +512,9 @@ public class store : MonoBehaviour {
 		
 		if (Store_GearScreen.Tapped ())
 		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Navigation_01");
+			
 			//wardrobe
 			Store_WardrobeScreen.SetDisplayed (true);
 			Store_WardrobeScreen_InUse.SetDisplayed (false);
@@ -547,6 +568,25 @@ public class store : MonoBehaviour {
 		
 		if (Store_GearBuy1.Tapped ())
 		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Confirm_01");
+			
+			Debug.Log ("GEAR TAPPED!");
+		}
+		
+		if (Store_GearBuy2.Tapped ())
+		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Confirm_02");
+			
+			Debug.Log ("GEAR TAPPED!");
+		}
+		
+		if (Store_GearBuy3.Tapped ())
+		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Confirm_03");
+			
 			Debug.Log ("GEAR TAPPED!");
 		}
 	}
