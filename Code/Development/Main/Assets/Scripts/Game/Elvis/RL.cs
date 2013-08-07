@@ -18,6 +18,7 @@ using System.Collections;
 public class RL : MonoBehaviour 
 {
 	public static Camera m_MainCamera;
+	public static MainLoop m_MainLoop;
 	public static EnvironmentManager m_Environment;
 	public static ObstacleManager m_Obstacles;
 	public static SequenceManager m_Sequencer;
@@ -76,6 +77,10 @@ public class RL : MonoBehaviour
 		foundObject = GameObject.Find( "MainCamera" );
 		if( foundObject != null )
 			m_MainCamera = foundObject.GetComponent<Camera>();
+		
+		foundObject = GameObject.Find( "MainLoop" );
+		if( foundObject != null )
+			m_MainLoop = foundObject.GetComponent<MainLoop>();
 		
 		foundObject = GameObject.Find( "Environment" );
 		if( foundObject != null )

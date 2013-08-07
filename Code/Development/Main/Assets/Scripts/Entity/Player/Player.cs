@@ -15,10 +15,13 @@ public class Player : MonoBehaviour
 	public enum PlayerAnimState
 	{
 		RUNNING = 0,
+		
 		JUMP_TAKE_OFF,
 		JUMP_SAILING,
 		JUMP_LANDING,
 		JUMP_LANDED,
+		
+		COLLIDE_WALL,
 		
 		NUM
 	}
@@ -31,8 +34,8 @@ public class Player : MonoBehaviour
 	float m_realAnimRunSpeed = 16.0f;
 	
 	float m_quadSize = 2.1f;
-	float m_collisionWidth = 1.5f;
-	float m_collisionHeight = 1.5f;
+	float m_collisionWidth = 1.0f;
+	float m_collisionHeight = 1.25f;
 	
 	float m_jumpVelocity = 0.0f;
 	float m_jumpFloatVelocity = 5.0f;
@@ -50,18 +53,22 @@ public class Player : MonoBehaviour
 	public bool m_Colliding = false;
 	
 	public Vector3 m_Position;
-	float m_yRendererOffset = 0.25f;
-
+	float m_yRendererOffset = 0.4f;
+	
+	public int m_Coins = 0;
+	
 	public PlayerCollisionDef m_CollisionBox = new PlayerCollisionDef();
 	
 	void Start() 
 	{
+		m_Coins = 0;
+		
 		if( RL.m_Prototype.m_PlayerType == PrototypeConfiguration.PlayerTypes.BALDY )
 			m_Renderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.PLAYER_BATCH );
 		else
 			m_Renderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.ELVIS_BATCH );
 		
-		m_Position = new Vector3( 2.0f, 4.0f, 0.0f );
+		m_Position = new Vector3( 3.0f, 4.0f, 0.0f );
 		m_Renderer.m_Position = m_Position + new Vector3( 0.0f, m_yRendererOffset, 0.0f );
 		m_Renderer.m_Scale = new Vector3( m_quadSize, m_quadSize, m_quadSize );
 		m_Renderer.m_TextureIdx = 0;
@@ -73,6 +80,50 @@ public class Player : MonoBehaviour
 	
 	void Update() 
 	{	
+		InputManager.Get.Update();
+
+		switch( RL.m_MainLoop.m_CurrentState )
+		{
+		case MainLoop.GameState.START:
+		case MainLoop.GameState.INTRO:
+		case MainLoop.GameState.RUNNING:
+			updateRunningState();
+			break;
+		case MainLoop.GameState.COLLIDED:
+			updateCollidedState();
+			break;
+		case MainLoop.GameState.SUMMARY:
+			break;
+		}
+		
+		animatePlayer();	
+		
+		
+		if( m_DebugRender )
+		{
+			DebugRenderHelpers.Draw2DBoxC( m_Position, 
+				m_collisionWidth, m_collisionHeight,
+				new Color( 1.0f, 1.0f, 1.0f, 0.75f ) );			
+		}
+		
+		
+		
+		//	Set collision box ready for obstacles to check for collision.
+		//	Note that player.cs is set to execute before all Obstacle scripts
+		m_CollisionBox.m_CollisionBoxBase = m_Position;
+		m_CollisionBox.m_CollisionBoxBase.y -= m_collisionHeight*0.5f;
+		
+		m_CollisionBox.m_CollisionBoxVelocity = m_Position - m_lastPosition;
+		
+		m_CollisionBox.m_CollisionBoxDimensions.x = m_collisionWidth;
+		m_CollisionBox.m_CollisionBoxDimensions.y = m_collisionHeight;
+		
+		m_CollisionBox.m_KillCollision = null;
+		m_CollisionBox.m_PlatformCollision = null;		
+	}
+
+	void updateRunningState()
+	{
 		m_fallTimer -= Time.deltaTime;
 		if( m_fallTimer < 0.0f )
 			m_fallTimer = 0.0f;
@@ -94,15 +145,14 @@ public class Player : MonoBehaviour
 				m_realAnimRunSpeed = m_animRunSpeed;
 		}
 		
-		InputManager.Get.Update();
 		
-		animatePlayer();	
+		const float baseJumpVel = 18.0f;
+		const float baseDropVel = 12.0f;
 		
-		const float baseJumpVel = 16.0f;
-		const float baseDropVel = 10.0f;
 		
 		//	Maybe do a jump while running
-		if( InputManager.Get.m_FirePressed[0] && m_animState == PlayerAnimState.RUNNING )
+		if( InputManager.Get.m_FirePressed[0] && m_animState == PlayerAnimState.RUNNING &&
+			!RL.m_Sequencer.m_ChargeZoom )
 		{
 			changeState( PlayerAnimState.JUMP_TAKE_OFF );
 			
@@ -117,7 +167,7 @@ public class Player : MonoBehaviour
 			}
 			else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.ANALOGUE )
 			{
-				m_highAnalogueTimer = 0.27f;
+				m_highAnalogueTimer = 0.25f;
 				m_jumpVelocity = baseJumpVel;
 			}
 		}
@@ -138,7 +188,7 @@ public class Player : MonoBehaviour
 		}
 		else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.ANALOGUE )
 		{
-			if( InputManager.Get.m_FireDown[0] && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.17f )
+			if( InputManager.Get.m_FireDown[0] && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.15f )
 			{
 				m_jumpVelocity += Time.deltaTime*60.0f;
 			}
@@ -203,35 +253,34 @@ public class Player : MonoBehaviour
 			m_Position = position;
 		}
 		
-		if( m_DebugRender )
+		if( m_Position.y > 9.0f )
 		{
-			DebugRenderHelpers.Draw2DBoxC( m_Position, 
-				m_collisionWidth, m_collisionHeight,
-				new Color( 1.0f, 1.0f, 1.0f, 0.75f ) );			
+			if( RL.m_Sequencer.CurrentObstacleWidth() > 99.0f )
+				m_Position.y = 9.0f;
 		}
+	}
+	
+	void updateCollidedState()
+	{
+		Vector3 position = m_Position;
+		position.y += m_jumpVelocity*Time.deltaTime;
 		
-		
-		
-		//	Set collision box ready for obstacles to check for collision.
-		//	Note that player.cs is set to execute before all Obstacle scripts
-		m_CollisionBox.m_CollisionBoxBase = m_Position;
-		m_CollisionBox.m_CollisionBoxBase.y -= m_collisionHeight*0.5f;
-		
-		m_CollisionBox.m_CollisionBoxVelocity = m_Position - m_lastPosition;
-		Debug.Log( "vel " + m_CollisionBox.m_CollisionBoxVelocity.ToString() );
-		
-		m_CollisionBox.m_CollisionBoxDimensions.x = m_collisionWidth;
-		m_CollisionBox.m_CollisionBoxDimensions.y = m_collisionHeight;
-		
-		m_CollisionBox.m_KillCollision = null;
-		m_CollisionBox.m_PlatformCollision = null;		
+		m_jumpVelocity += m_gravity*Time.deltaTime;
+					
+		m_Position = position;
 	}
 	
 	void LateUpdate()
 	{
+		if( RL.m_MainLoop.m_CurrentState != MainLoop.GameState.RUNNING )
+			m_CollisionBox.m_KillCollision = null;
+		
 		//	Respond to collisions that happened this frame
 		if( m_CollisionBox.m_KillCollision != null )
 		{
+			RL.m_MainLoop.PlayerCollideToStop();
+			changeState( PlayerAnimState.COLLIDE_WALL );
+			
 			m_CollisionBox.m_KillCollision.SetHighlight();
 			m_Colliding = true;			
 		}
@@ -257,12 +306,14 @@ public class Player : MonoBehaviour
 			m_Position.y = m_CollisionBox.m_PlatformCollisionPoint.y + m_collisionHeight*0.5f;
 			m_CollisionBox.m_PlatformCollision.SetHighlight();
 
-			if( m_animState != PlayerAnimState.RUNNING && m_animState != PlayerAnimState.JUMP_LANDED )
+			if( m_animState != PlayerAnimState.RUNNING && m_animState != PlayerAnimState.JUMP_LANDED &&
+				m_animState != PlayerAnimState.COLLIDE_WALL )
 			{
 				m_jumpVelocity = 0.0f;
 				changeState( PlayerAnimState.JUMP_LANDED );
 			}
 		}
+		
 		
 		//	Set up for next frame
 		m_lastPosition = m_Position;
@@ -336,17 +387,25 @@ public class Player : MonoBehaviour
 			if( m_animFrameTime < 0.0f )
 				changeState( PlayerAnimState.RUNNING );
 			break;
+			
+		case PlayerAnimState.COLLIDE_WALL:
+			if( RL.m_Prototype.m_PlayerType == PrototypeConfiguration.PlayerTypes.ELVIS )
+			{
+				if( m_animFrameTime < 0.0f && m_animFrame < 19 )
+				{
+					m_animFrame++;
+					m_animFrameTime = 0.25f;
+				}
+			}
+			break;
 		}
 		
 		m_Renderer.m_TextureIdx = m_animFrame;
 	}
 	
 	void changeState( PlayerAnimState new_state )
-	{
-		m_animState = new_state;
-		
-		
-		switch( m_animState )
+	{		
+		switch( new_state )
 		{
 		case PlayerAnimState.RUNNING:
 			m_animFrame = 0;
@@ -392,6 +451,19 @@ public class Player : MonoBehaviour
 			
 			m_realAnimRunSpeed = m_animRunSpeed + 15.0f;
 			break;
+			
+		case PlayerAnimState.COLLIDE_WALL:
+			if( m_animState != PlayerAnimState.COLLIDE_WALL )
+			{
+				if( RL.m_Prototype.m_PlayerType == PrototypeConfiguration.PlayerTypes.ELVIS )
+				{
+					m_animFrame = 17;
+					m_animFrameTime = 0.25f;
+				}
+			}
+			break;
 		}
+		
+		m_animState = new_state;
 	}
 }

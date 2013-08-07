@@ -41,6 +41,13 @@ public class SequenceManager : MonoBehaviour
 	public int[] m_ForegroundPieces = new int[2];
 	public int[] m_OverlayPieces = new int[2];
 	
+	CriticallyDampedVector3Spring m_cameraPos = new CriticallyDampedVector3Spring();
+	CriticallyDampedVector3Spring m_cameraAngle = new CriticallyDampedVector3Spring();
+	bool m_snapCamera = true;
+	
+	int m_speedLevel = 0;
+	public float m_SpeedNormal = 0.0f;
+	public bool m_ChargeZoom = false;
 	
 	//	For managing pieces in play mode
 	bool m_playModeSequenceInitialised = false;
@@ -54,6 +61,8 @@ public class SequenceManager : MonoBehaviour
 		{
 			RL.m_Obstacles.HideAllPieces(); 
 		}
+		
+		ResetForLevel();
 	}
 	
 	void Update() 
@@ -64,6 +73,22 @@ public class SequenceManager : MonoBehaviour
 			updateEditMode();
 	}
 
+	
+	//-----------------------------------------------------------------------------
+	// Method:	ResetForLevel()
+	// Desc:	Sets the sequence up to begin the level
+	public void ResetForLevel()
+	{
+		m_MasterDistance = 0.0f;
+		m_MetersPerSecond = 8.0f;
+
+		m_playModeSequenceInitialised = false;
+		
+		m_cameraPos.SetApproachTime( new Vector3( 20.0f, 500.0f, 20.0f ) );
+		m_cameraAngle.SetApproachTime( new Vector3( 20.0f, 20.0f, 20.0f ) );
+		m_snapCamera = true;
+	}
+	
 	
 	//-----------------------------------------------------------------------------
 	// Method:	updateEditMode()
@@ -158,8 +183,8 @@ public class SequenceManager : MonoBehaviour
 		RL.m_Obstacles.ShowPiece( m_ObstaclePieces[0] );
 		
 		m_ObstaclePieces[1] = m_ObstacleTrackMaker.NextPiece();
-		while( m_ObstaclePieces[0] == m_ObstaclePieces[1] )
-			m_ObstaclePieces[1] = m_ObstacleTrackMaker.NextPiece();
+//		while( m_ObstaclePieces[0] == m_ObstaclePieces[1] )
+//			m_ObstaclePieces[1] = m_ObstacleTrackMaker.NextPiece();
 		
 		RL.m_Obstacles.ValidatePieceIdx( ref m_ObstaclePieces[1] );
 		RL.m_Obstacles.SetPieceDistance( m_ObstaclePieces[1],
@@ -179,8 +204,8 @@ public class SequenceManager : MonoBehaviour
 			RL.m_Environment.ShowPiece( l, m_EnvPieces[l, 0] );
 			
 			m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );
-			while( m_EnvPieces[l, 0] == m_EnvPieces[l, 1] )
-				m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );
+//			while( m_EnvPieces[l, 0] == m_EnvPieces[l, 1] )
+//				m_EnvPieces[l, 1] = m_EnvironmentTrackMaker.NextPiece( l );
 			
 			RL.m_Environment.ValidatePieceIdx( l, ref m_EnvPieces[l, 1] );
 			RL.m_Environment.SetPieceDistance( l, m_EnvPieces[l, 1],
@@ -189,6 +214,11 @@ public class SequenceManager : MonoBehaviour
 		}		
 	}
 	
+	
+	public float CurrentObstacleWidth()
+	{
+		return RL.m_Obstacles.GetPieceWidth( m_ObstaclePieces[0] );
+	}
 	
 	//-----------------------------------------------------------------------------
 	// Method:	updatePlayMode()
@@ -260,51 +290,173 @@ public class SequenceManager : MonoBehaviour
 			}
 		}
 				
+		calculateSpeedLevel();
+		setCamera();
+		setRunSpeed();
+	}
+	
+	void calculateSpeedLevel()
+	{
+		//	The -15.0f is because3 the actual moment it happens is on 15m
+		m_speedLevel = (int)((m_MasterDistance - 10.0f)/500.0f);
 		
+		//	When you get to 4000m, this is maximum speed. The final 1000m is the boss battle
+		if( m_speedLevel > 8 )	m_speedLevel = 8;
+		m_SpeedNormal = ((float)m_speedLevel)/8.0f;
+		
+//		m_SpeedNormal = 1.0f;
+	}
+	
+	void setCamera()
+	{
 		//	Set camera according to prototype settings
 		float dist = RL.m_Prototype.m_viewDistance;
 		
-		if( m_MasterDistance < 25.0f )
+		if( Application.isPlaying )
 		{
-			dist = 0.35f;
-		}
-		else if( m_MasterDistance < 30.0f )
+			switch( RL.m_MainLoop.m_CurrentState )
+			{
+			case MainLoop.GameState.START:
+				dist = 0.0f;
+				break;
+			case MainLoop.GameState.INTRO:
+				dist = 0.0f;
+				break;
+			case MainLoop.GameState.RUNNING:
+				float wideAngle = 1.0f - m_SpeedNormal;
+				wideAngle *= wideAngle;
+				wideAngle = 1.0f - wideAngle;
+				dist = 1.0f + wideAngle;
+				break;
+			case MainLoop.GameState.COLLIDED:
+				dist = 0.25f;
+				break;
+			case MainLoop.GameState.SUMMARY:
+				dist = 0.75f;
+				break;
+			}
+		}					
+		
+		//	Add in a camera event for speed-up moments
+		float runDist = m_MasterDistance;
+		bool judder = false;
+		if( runDist < 4300.0f && runDist > 100.0f )
 		{
-			float interp = (m_MasterDistance - 25.0f)/5.0f;
-			float oldDist = dist;
-			oldDist = 1.0f;	//	Sod it, just force the camera distance here
+			while( runDist > 500.0f )
+				runDist -= 500.0f;
 			
-			dist = (1.0f - interp)*0.35f + interp*oldDist;
+			runDist += 10.0f;		// offset so it starts just before you hit 500
+
+			m_ChargeZoom = false;
+			m_cameraPos.SetApproachTime( new Vector3( 20.0f, 500.0f, 20.0f ) );
+			
+			if( runDist < 20.0f )
+			{
+				//	Coming up to the speed up moment, so zoom in
+				float interp = (500.0f - runDist)/25.0f;
+				dist = interp*dist + (1.0f - interp)*0.5f;
+
+				float zoomInSpeed = runDist/50.0f + 10.0f;
+				m_cameraPos.SetApproachTime( new Vector3( 20.0f, 500.0f, zoomInSpeed ) );
+				
+				dist = 0.5f;
+				m_ChargeZoom = true;
+			}
+			else if( runDist < 25.0f )
+			{
+				//	Judder the camera (which is now zoomed to 0.5)
+				float judderZoom = Mathf.Sin( (runDist - 15.0f)*4.0f );
+				judderZoom *= judderZoom*judderZoom;
+				
+				dist = 0.5f + judderZoom*0.025f;
+				judder = true;
+				m_ChargeZoom = true;
+			}
+		}
+		
+//		dist = 0.0f;
+		
+		Vector3 zeroPos = new Vector3( 3.0f, 2.1f, -5.0f );
+		Vector3 zeroAng = new Vector3( 7.5f, 0.0f, 0.0f );
+		
+		Vector3 onePos = new Vector3( 10.0f, 3.0f, -16.0f );
+		Vector3 oneAng = new Vector3( -9.0f, 0.0f, 0.0f );
+		
+		Vector3 twoPos = new Vector3( 9.0f, 3.3f, -25.0f );
+		Vector3 twoAng = new Vector3( -7.0f, 10.0f, 0.0f );
+				
+		
+		//	When fully zoomed in you need an offset on y of 
+		//	9.7 (7.6) when player is at 7.5
+		//	7.3 (5.2) when player is at 5
+		//	4.7 (2.6) when player is at 2.5
+		//	so 7.6 above the zoom = 0 vector.
+		
+		//	SO! (playerY/7.5)*7.8
+		if( dist < 1.0f )
+		{
+			float playerY = RL.m_Player.m_CollisionBox.m_CollisionBoxBase.y;
+			
+			if( playerY > 0.0f )
+				zeroPos.y += (playerY/7.5f)*7.8f;
+		}
+		
+		RL.m_Prototype.m_viewDistance = dist;
+		Vector3 newPos;
+		Vector3 newAng;
+		if( dist < 1.0f )
+		{			
+			newPos = (1.0f - dist)*zeroPos + dist*onePos;
+			newAng = (1.0f - dist)*zeroAng + dist*oneAng;
 		}
 		else
 		{
-			dist = 1.0f;
+			float interp = dist - 1.0f;
+			
+			newPos = (1.0f - interp)*onePos + interp*twoPos;
+			newAng = (1.0f - interp)*oneAng + interp*twoAng;
 		}
 		
-		if( m_MetersPerSecond > 11.0f )
+		m_cameraPos.SetTarget( newPos );
+		m_cameraPos.Update( Time.deltaTime );
+		m_cameraAngle.SetTarget( newAng );
+		m_cameraAngle.Update( Time.deltaTime );
+		
+		if( m_snapCamera || judder )
 		{
-			float interp = (m_MetersPerSecond - 11.0f)/19.0f;
-			if( interp > 1.0f )	interp = 1.0f;
+			m_snapCamera = false;
 			
-			dist = (1.0f - interp)*1.0f + interp*1.75f;			
+			m_cameraPos.SetPos( newPos );
+			m_cameraAngle.SetPos( newAng );
 		}
 		
 		GameObject cameraObject = RL.m_MainCamera.gameObject;
 
-		//	Different function when zooming in or zooming out to take account of y
-		RL.m_Prototype.m_viewDistance = dist;
-		if( dist < 1.0f )
-			cameraObject.transform.position = new Vector3( dist*10.0f, -0.7f + dist*6.2f - 2.5f, dist*-18.2f );
-		else
-			cameraObject.transform.position = new Vector3( dist*10.0f, 3.0f + dist*2.5f - 2.5f, dist*-18.2f );
-		
-		
-		//	Speed player up depending on distance
-		m_MetersPerSecond = 10.0f + m_MasterDistance/250.0f;
+		cameraObject.transform.position = m_cameraPos.m_Pos;
+		cameraObject.transform.localEulerAngles = m_cameraAngle.m_Pos;
+	}
+	
+	void setRunSpeed()
+	{
+		switch( RL.m_MainLoop.m_CurrentState )
+		{
+		case MainLoop.GameState.START:
+			break;
+		case MainLoop.GameState.INTRO:
+			break;
+		case MainLoop.GameState.RUNNING:
+			m_MetersPerSecond = 8.0f + 15.0f*m_SpeedNormal;
+			break;
+		case MainLoop.GameState.COLLIDED:
+			m_MetersPerSecond = 0.0f;
+			break;
+		case MainLoop.GameState.SUMMARY:
+			break;
+		}
 		
 		if( RL.m_Prototype.m_PlayerType == PrototypeConfiguration.PlayerTypes.BALDY )
 			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.0f;		
 		else
-			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*1.6f;		
-	}	
+			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.4f;		
+	}
 }

@@ -49,12 +49,15 @@ public class Obstacle : MonoBehaviour
 			
 			if( RL.m_Sequencer.m_ShowObstacles )
 				UpdateRenderer();
+			
+			ObstacleUpdate();
 		}
 	}
 
 	public virtual void CollideWithPlayer() {}
 	
 	public virtual void DebugRender() {}
+	public virtual void ObstacleUpdate() {}
 	
 	public void UpdateRenderer()
 	{

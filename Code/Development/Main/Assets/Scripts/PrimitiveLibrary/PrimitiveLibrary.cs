@@ -58,6 +58,7 @@ public sealed class PrimitiveLibrary
 		PLAYER_BATCH,
 		ELVIS_BATCH,
 		OBSTACLE_BATCH,
+		COINS_BATCH,
 		PLATFORM_BATCH,
 		
 		NUM
@@ -68,6 +69,7 @@ public sealed class PrimitiveLibrary
 	const int g_PlayerBatchSize = 16;
 	const int g_ElvisBatchSize = 16;
 	const int g_ObstacleBatchSize = 100;
+	const int g_CoinsBatchSize = 256;
 	const int g_PlatformBatchSize = 100;
 	
 	GameObject[] m_quadBatches = new GameObject[(int)QuadBatch.NUM];
@@ -179,6 +181,14 @@ public sealed class PrimitiveLibrary
 			false, false, false, 0 
 			);
 		m_quadBatches[(int)QuadBatch.OBSTACLE_BATCH].transform.localPosition = Vector3.zero;
+
+		m_quadBatches[(int)QuadBatch.COINS_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_CoinsBatchSize,
+			m_Atlases[(int)TextureAtlas.AtlasID.COINS],
+			(int)TextureAtlas.AtlasID.COINS,
+			false, true, false, 0 
+			);
+		m_quadBatches[(int)QuadBatch.COINS_BATCH].transform.localPosition = Vector3.zero;
 
 		m_quadBatches[(int)QuadBatch.PLATFORM_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
 			g_PlatformBatchSize, 
@@ -510,6 +520,8 @@ public sealed class PrimitiveLibrary
 			Resources.Load( "Elvis_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES].m_TexturePage =
 			Resources.Load( "Obstacles_Atlas" ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.COINS].m_TexturePage =
+			Resources.Load( "Coins_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS].m_TexturePage =
 			Resources.Load( "Platforms_Atlas" ) as Texture;
 		
@@ -584,7 +596,21 @@ public sealed class PrimitiveLibrary
 		
 		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.KILLBOX] = new Vector4( 0.0f, 0.5f, 1.0f, 1.0f );
 		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.KILLCIRCLE] = new Vector4( 0.0f, 0.0f, 1.0f, 0.5f );
+
 		
+		//	Coins atlas
+		TextureAtlas coinsAtlas = m_Atlases[(int)TextureAtlas.AtlasID.COINS];
+		coinsAtlas.m_NumElements = 64;
+		coinsAtlas.m_UVSet = new Vector4[coinsAtlas.m_NumElements];
+		
+		for( int e = 0; e<32; e++ )
+		{
+			float uTex = ((float)(e%4))*0.25f;
+			float vTex = ((float)(e/4))*0.125f;
+			
+			coinsAtlas.m_UVSet[e] = new Vector4( uTex, vTex, uTex + 0.25f, vTex + 0.125f );
+		}
+
 		
 		//	Platform atlas
 		TextureAtlas platformAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS];		
@@ -613,6 +639,7 @@ public class TextureAtlas
 		PLAYER,
 		ELVIS,
 		OBSTACLES,
+		COINS,
 		PLATFORMS,
 		
 		NUM

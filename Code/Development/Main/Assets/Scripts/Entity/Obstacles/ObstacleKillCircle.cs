@@ -10,7 +10,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class KillCircle : Obstacle
+[ExecuteInEditMode]
+public class ObstacleKillCircle : Obstacle
 {
 	public float m_Radius = 1.0f;
 	
