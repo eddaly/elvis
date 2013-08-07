@@ -170,6 +170,16 @@ public class FastGUIElement
 	{
 		tapPos = Vector2.zero;
 #if UNITY_IPHONE || UNITY_ANDROID
+				
+	if (Application.isEditor)
+	{
+		if (!Input.GetMouseButtonUp (0))
+			return false;
+		else
+			tapPos = Input.mousePosition;
+	}
+	else
+	{
 		int n, touchIdx = -1;
 		for (n = 0; n < Input.touchCount; n++)
 		{
@@ -181,12 +191,15 @@ public class FastGUIElement
 		if (touchIdx == -1)
 			return false;
 		tapPos = Input.GetTouch(n).position;
+	}
+		
 #else
 	if (!Input.GetMouseButtonUp (0))
 		return false;
 	else
 		tapPos = Input.mousePosition;
 #endif
+
 		return true;
 	}
 	
@@ -194,6 +207,16 @@ public class FastGUIElement
 	{
 		touchPos = Vector2.zero;
 #if UNITY_IPHONE || UNITY_ANDROID
+		
+	if (Application.isEditor)
+	{
+		if (!Input.GetMouseButton (0))
+			return false;
+		else
+			touchPos = Input.mousePosition;
+	}
+	else
+	{
 		int n, touchIdx = -1;
 		for (n = 0; n < Input.touchCount; n++)
 		{
@@ -207,12 +230,24 @@ public class FastGUIElement
 		if (touchIdx == -1)
 			return false;
 		touchPos = Input.GetTouch(n).position;
+	}
 #else
 	if (!Input.GetMouseButton (0))
 		return false;
 	else
 		touchPos = Input.mousePosition;
 #endif
+
+#if ELVIS_IOS_DEBUG
+		if (Application.isEditor)
+		{
+			if (!Input.GetMouseButton (0))
+				return false;
+			else
+				touchPos = Input.mousePosition;
+		}
+#endif
+		
 		return true;
 	}
 	
