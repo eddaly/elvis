@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EPMusicPlayer : MonoBehaviour {
 
-	public EPMusicSegment[] m_Segments = new EPMusicSegment[1];
+	public List<EPMusicSegment> m_Segments = new List<EPMusicSegment>();
 	public float m_BPM;
 	public float m_ClockSeconds;
 	public float m_ClockBeats;
@@ -37,7 +38,7 @@ public class EPMusicPlayer : MonoBehaviour {
 		if( ms_musicPlayer != null )
 			return ms_musicPlayer;
 
-		GameObject musicPlayerObject = GameObject.Find( "SoundController" );
+		GameObject musicPlayerObject = GameObject.FindWithTag( "SoundController" );
         if( musicPlayerObject == null )
         {
             Debug.Log( "!** No Music Player object found (SoundController)" );
@@ -55,7 +56,9 @@ public class EPMusicPlayer : MonoBehaviour {
     }
 	
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+		UpdateSegmentList();
 	}
 	
 	// Update is called once per frame
@@ -277,7 +280,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	// Get segment index from name, used for play/toggle/pause functions
 	public int GetSegmentIndex ( string segName )
 	{
-		for ( int i = 0; i < m_Segments.Length; i++ )
+		for ( int i = 0; i < m_Segments.Count; i++ )
 		{
 			if ( m_Segments[i].name == segName )
 			{
@@ -387,7 +390,7 @@ public class EPMusicPlayer : MonoBehaviour {
 		{
 			foreach ( EPMusicSegment seg in m_Segments )
 			{
-				if ( seg.IsPlaying() )
+				if ( seg != null && seg.IsPlaying() )
 					return seg;
 			}
 			return null;
@@ -506,6 +509,24 @@ public class EPMusicPlayer : MonoBehaviour {
 		int i = GetSegmentIndex( segName );
 		if ( m_Segments[i] != null )
 			m_Segments[i].SetFade ( endVol, endPitch, duration, isFadeOut );
+	}
+	
+	public void UpdateSegmentList()
+	{
+		ClearLists();
+		
+		EPMusicSegment[] segments = GetComponentsInChildren<EPMusicSegment>();
+		foreach( EPMusicSegment child in segments )
+		{
+			m_Segments.Add( child.GetComponent<EPMusicSegment>() );
+		}
+		
+		Debug.Log("Sound lists updated.");
+	}
+	
+	void ClearLists()
+	{
+		m_Segments.Clear();
 	}
 	
 	void DebugInputs()

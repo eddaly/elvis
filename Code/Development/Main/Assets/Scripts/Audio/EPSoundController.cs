@@ -57,7 +57,7 @@ public class EPSoundController : MonoBehaviour
 		if( ms_soundController != null )
 			return ms_soundController;
 
-		GameObject soundControllerObject = GameObject.Find( "SoundController" );
+		GameObject soundControllerObject = GameObject.FindWithTag( "SoundController" );
         if( soundControllerObject == null )
         {
             Debug.Log( "!** No sound controller object found (SoundController)" );
@@ -74,9 +74,17 @@ public class EPSoundController : MonoBehaviour
 		return null;
     }
 	
+	// On awake
+	void Awake()
+	{
+		DontDestroyOnLoad(transform.gameObject);
+	}
+	
 	// Use this for initialization
 	void Start()
 	{
+		gameObject.tag = "SoundController";
+		
 		populateLists();
 		
 		m_MixGroupVolumes = new float[(int)MixGroup.COUNT];
