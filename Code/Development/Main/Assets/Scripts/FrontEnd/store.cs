@@ -4,33 +4,16 @@ using System.Collections;
 public class store : MonoBehaviour {
 	
 #pragma warning disable 414
-	//FastGUIElement Store_Background;
-	/* FastGUIElement General_BackButton;
-	FastGUIButton BackButton;
-	FastGUIElement Store_Upgrade1Tab;
-	FastGUIElement Store_Upgrade2Tab;
-	FastGUIElement Store_Upgrade3Tab;
+
+
+    //<Store_UpgradeEquipButton
+    //<sprite n="Store_UpgradeInUseButton */
 	
-	FastGUIElement descriptionTab;
-	FastGUIElement upgradesButton;
-	FastGUIElement descriptionButton;
-	
-	General_BackButton
-    General_CoinDisplay
-    Store_Background
-    Store_BankScreen
-    Store_BankScreen_InUse
-    Store_CostumeDescPane
-    Store_CostumePane
-    Store_GearScreen
-    Store_GearScreen_InUse
-    Store_Upgrade1Tab
-    Store_Upgrade2Tab
-    Store_Upgrade3Tab
-   Store_UpgradeBuyButton
-    <Store_UpgradeEquipButton
-    <sprite n="Store_UpgradeInUseButton */
-	
+	//persistent
+	FastGUIElement Store_Background;
+	FastGUIElement General_BackButton;
+	FastGUIElement General_CoinDisplay;
+			
 	//wardrobe
 	FastGUIElement Store_WardrobeScreen;
     FastGUIElement Store_WardrobeScreen_InUse;
@@ -69,6 +52,7 @@ public class store : MonoBehaviour {
 	FastGUIElement Store_BankIcon3;
 	FastGUIElement Store_BankIcon4;
 	FastGUIElement Store_BuyItem1;
+	//FastGUIElement Store_BuyItem1_Tap;
 	FastGUIElement Store_BuyItem2;
 	FastGUIElement Store_BuyItem3;
 	FastGUIElement Store_BuyItem4;
@@ -91,15 +75,31 @@ public class store : MonoBehaviour {
 		FastGUIElement.uvxmlFile = @"assets//resources//Frontend_Atlas.xml";
 
 		
-		//		backGround = new FastGUIElement (
-		//	new Vector2 (0, 0),					// Screen position
-		//	FastGUIElement.UVsFrom (@"Elvis_FE_Test.psd"));
 		
-		/*
-		 	Store_Background = new FastGUIElement (
+
+
+		/*		
+		FAST GUI BUTTON example
+		Store_WardrobeButton = new FastGUIButton (
+ 			new Vector2 (192, 0),
+ 			FastGUIElement.UVsFrom (@"Store_WardrobeButtonUp.png"),
+ 			FastGUIElement.UVsFrom (@"Store_WardrobeButtonDown.png"));
+ 
+  		Store_WardrobeButton.SetDisplayed (false);
+  		*/
+		
+		//persistent
+		Store_Background = new FastGUIElement (
 			new Vector2 (0, 0),
 			FastGUIElement.UVsFrom (@"Store_Background.png"));
-		*/	
+		
+		General_BackButton = new FastGUIElement (
+			new Vector2 (0,0),
+			FastGUIElement.UVsFrom (@"General_BackButton.png"));
+		
+		General_CoinDisplay = new FastGUIElement (
+			new Vector2 (1536,0),
+			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
 		
 		//wardrobe...
 		
@@ -257,7 +257,7 @@ public class store : MonoBehaviour {
 			new Vector2 (1600,256),
 			FastGUIElement.UVsFrom (@"Store_BuyItem1.png"));
 		Store_BuyItem1.SetDisplayed (false);
-
+		
 		Store_BankIcon2 = new FastGUIElement (
 			new Vector2 (64, 576), //update
 			FastGUIElement.UVsFrom (@"Store_Bank_Icon2.png"));
@@ -318,14 +318,6 @@ public class store : MonoBehaviour {
 			FastGUIElement.UVsFrom (@"Store_BuyItem4.png"));
 		Store_BuyItem4.SetDisplayed (false);
 		
-		/* FAST GUI BUTTON
-		Store_WardrobeButton = new FastGUIButton (
- 			new Vector2 (192, 0),
- 			FastGUIElement.UVsFrom (@"Store_WardrobeButtonUp.png"),
- 			FastGUIElement.UVsFrom (@"Store_WardrobeButtonDown.png"));
- 
-  		Store_WardrobeButton.SetDisplayed (false);
-  		*/
 
 	}
 	
@@ -346,6 +338,10 @@ public class store : MonoBehaviour {
 			descriptionTab.SetDisplayed (false);
 			upgradesTab.SetDisplayed (true);			
 		}*/
+		if (General_BackButton.Tapped ())
+		{
+			Debug.Log ("EXIT");
+		}
 		
 		
 		if (Store_WardrobeScreen.Tapped ())

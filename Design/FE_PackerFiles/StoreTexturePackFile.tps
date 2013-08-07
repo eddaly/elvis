@@ -158,8 +158,11 @@
             <filename>../FrontEnd/PNGs/Store/Store_BankScreen_InUse.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_BankScreen.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_BuckleIcon.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_BuyItem1_Tap.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_BuyItem1.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_BuyItem2_Tap.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_BuyItem2.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_BuyItem3_Tap.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_BuyItem3.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_BuyItem4.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_CoinsDesc1.png</filename>
@@ -173,8 +176,11 @@
             <filename>../FrontEnd/PNGs/Store/Store_CostumeDescPane.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_CostumePane.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_EPIcon.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_GearBuy1_Tap.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_GearBuy1.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_GearBuy2_Tap.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_GearBuy2.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_GearBuy3_Tap.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_GearBuy3.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_GearDesc1.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_GearDesc2.png</filename>
@@ -188,17 +194,17 @@
             <filename>../FrontEnd/PNGs/Store/Store_RPMIcon.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_ShadesIcon.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_ShoesIcon.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_Upgrade1Desc.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_Upgrade1Tab.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_Upgrade2Desc.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_Upgrade2Tab.png</filename>
+            <filename>../FrontEnd/PNGs/Store/Store_Upgrade3Desc.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_Upgrade3Tab.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_UpgradeBuyButton.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_UpgradeEquipButton.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_UpgradeInUseButton.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_WardrobeScreen_InUse.png</filename>
             <filename>../FrontEnd/PNGs/Store/Store_WardrobeScreen.png</filename>
-            <filename>../FrontEnd/PNGs/Store/Store_Upgrade1Desc.png</filename>
-            <filename>../FrontEnd/PNGs/Store/Store_Upgrade2Desc.png</filename>
-            <filename>../FrontEnd/PNGs/Store/Store_Upgrade3Desc.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
