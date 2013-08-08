@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:c388018bc15331fb25f6b2c3a18f0f80:1/1$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="PostGame.png" width="4096" height="2048">
+    <sprite n="General_BackButton.png" x="1457" y="1734" w="194" h="192"/>
+    <sprite n="General_Background.png" x="2" y="2" w="2048" h="1536"/>
+    <sprite n="General_CoinDisplay.png" x="1159" y="1540" w="513" h="192"/>
+    <sprite n="PostGame_CoinsCollected.png" x="1848" y="1734" w="512" h="128"/>
+    <sprite n="PostGame_Continue.png" x="879" y="1797" w="576" h="192"/>
+    <sprite n="PostGame_CurrentLevel.png" x="2" y="1540" w="257" h="256"/>
+    <sprite n="PostGame_Distance.png" x="2362" y="2" w="1152" h="576"/>
+    <sprite n="PostGame_Enemies.png" x="1848" y="1864" w="511" h="128"/>
+    <sprite n="PostGame_FB.png" x="1674" y="1540" w="192" h="192"/>
+    <sprite n="PostGame_Twitter.png" x="1653" y="1734" w="193" h="192"/>
+    <sprite n="PostGame_XPBar.png" x="261" y="1540" w="896" h="255"/>
+    <sprite n="PostGame_XPFill.png" x="2" y="1798" w="875" h="233"/>
+</TextureAtlas>
