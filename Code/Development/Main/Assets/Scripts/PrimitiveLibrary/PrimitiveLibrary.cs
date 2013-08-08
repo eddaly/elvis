@@ -512,8 +512,18 @@ public sealed class PrimitiveLibrary
 			Resources.Load( "FX_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS].m_TexturePage =
 			Resources.Load( "Numbers_Atlas" ) as Texture;
-		m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
-			Resources.Load( FrontEnd.instance.m_AtlasFile ) as Texture;
+		
+		if( FrontEnd.instance != null )
+		{
+			m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
+				Resources.Load( FrontEnd.instance.m_AtlasFile ) as Texture;
+		}
+		else
+		{
+			m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
+				Resources.Load( "Numbers_Atlas" ) as Texture;
+		}
+		
 		m_Atlases[(int)TextureAtlas.AtlasID.PLAYER].m_TexturePage =
 			Resources.Load( "Player_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.ELVIS].m_TexturePage =
