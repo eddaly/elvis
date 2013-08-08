@@ -45,13 +45,17 @@ public class AudioLauncher : MonoBehaviour {
 		foreach ( GameObject sb in m_soundBanks )
 		{
 			// Only load soundbanks which aren't already loaded - check name in instantiated form "name(Clone)"
-			if ( GameObject.Find( sb.name + "(Clone)") == null )
+			if ( GameObject.Find( sb.name + "(Clone)") == null && GameObject.Find( sb.name ) == null )
 			{
 				Debug.Log("Sound bank not already loaded. Loading.");
 				((GameObject)Instantiate(sb)).transform.parent = RL.m_SoundController.transform;
 			}
 			else
 				Debug.Log ("Sound bank is already loaded.");
+			
+			// Move any local soundbanks into the SoundController hierarchy
+			if ( GameObject.Find( sb.name ) != null )
+				sb.transform.parent = RL.m_SoundController.transform;
 		}
 	}
 }
