@@ -536,6 +536,7 @@ public sealed class PrimitiveLibrary
 				Resources.Load( "Numbers_Atlas" ) as Texture;
 		}
 		
+		
 		m_Atlases[(int)TextureAtlas.AtlasID.PLAYER].m_TexturePage =
 			Resources.Load( "Player_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.ELVIS].m_TexturePage =
