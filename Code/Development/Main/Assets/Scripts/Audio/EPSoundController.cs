@@ -49,6 +49,7 @@ public class EPSoundController : MonoBehaviour
 		COUNT
 	}
 	
+	/*
 	//	Pseudo-singleton pattern
 	private static EPSoundController ms_soundController = null;
     public static EPSoundController Get()
@@ -73,6 +74,7 @@ public class EPSoundController : MonoBehaviour
 		Debug.Log( "!** Couldn't get EPSoundController component" );
 		return null;
     }
+    */
 	
 	// On awake
 	void Awake()
@@ -174,7 +176,7 @@ public class EPSoundController : MonoBehaviour
 	{
 		int soundIdx = GetIndex ( sound_name );
 		
-		if ( EPMusicPlayer.Get ().m_MasterSegment == null || !EPMusicPlayer.Get().m_MasterSegment.IsPlaying() )
+		if ( RL.m_MusicPlayer.m_MasterSegment == null || !RL.m_MusicPlayer.m_MasterSegment.IsPlaying() )
 			Play ( soundIdx );
 		else
 			AddToStingQueue ( soundIdx );
