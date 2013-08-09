@@ -61,6 +61,7 @@ public class MainLoop : MonoBehaviour
 			
 			// Start the music & queue next segment
 			RL.m_MusicPlayer.PlaySegment ("VLV_Intro_01", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.INSTANT );
+			RL.m_MusicPlayer.PlaySegment ("VLV_BongoLoop", EPMusicPlayer.Flags.None, EPMusicSegment.CueType.INSTANT );
 			RL.m_MusicPlayer.PlaySegment ("VLV_Intro_02", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.END );
 			
 			break;
@@ -72,8 +73,12 @@ public class MainLoop : MonoBehaviour
 			break;
 		case GameState.COLLIDED:
 			
+			// Play collision sound effect
+			RL.m_SoundController.Play("Collide_01");
+			
 			// End the music
-			RL.m_MusicPlayer.PlaySegment ("VLV_Outro_01", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.BAR );
+			RL.m_MusicPlayer.PlaySegment ("VLV_Outro_01", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.GRID );
+			RL.m_MusicPlayer.StopSegment ("VLV_BongoLoop");
 			
 			break;
 		case GameState.SUMMARY:

@@ -257,7 +257,7 @@ public class EPSoundController : MonoBehaviour
 	}
 	
 	// Functions for handling lists and sound name string checking
-	int populateLists()
+	public int populateLists()
 	{
 		ClearLists();
 		

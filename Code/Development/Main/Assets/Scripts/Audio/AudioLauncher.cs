@@ -22,6 +22,8 @@ public class AudioLauncher : MonoBehaviour {
 		SetReferences();
 		LoadSoundBanks();
 		
+		//RL.m_SoundController.populateLists();
+		
 		Destroy(this.gameObject);
 	}
 	
@@ -35,6 +37,7 @@ public class AudioLauncher : MonoBehaviour {
 		if ( RL.m_SoundController == null )
 		{
 			RL.m_SoundController = ((GameObject)Instantiate(Resources.Load("SoundController"))).GetComponent<EPSoundController>();
+			RL.m_SoundController.m_StingGrid = EPSoundController.StingGrid.QUARTERBEAT;	
 			RL.m_MusicPlayer = RL.m_SoundController.gameObject.GetComponent<EPMusicPlayer>();
 			//DontDestroyOnLoad(RL.m_SoundController);
 		}
