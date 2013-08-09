@@ -252,7 +252,7 @@ public class PrimitiveQuadBatch
 				//	Needed to avoid overflowing texels
 				const float tempHackFudge = 0;//.002f;
 				
-				Debug.Log( quadDef.m_TextureIdx.ToString() + " is the number" );
+				//Debug.Log( quadDef.m_TextureIdx.ToString() + " is the number" );
 				
 				info.m_UVs[vert] = new Vector2
 					( atlas.m_UVSet[quadDef.m_TextureIdx].x + tempHackFudge, atlas.m_UVSet[quadDef.m_TextureIdx].y + tempHackFudge );
