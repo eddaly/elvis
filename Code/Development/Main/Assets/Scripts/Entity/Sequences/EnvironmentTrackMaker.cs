@@ -29,6 +29,10 @@ public class EnvironmentTrackMaker
 	{
 	}
 	
+	public void ResetForLevel()
+	{
+		StartPlayMode();
+	}
 		
 	public int NextPiece( int layer )
 	{

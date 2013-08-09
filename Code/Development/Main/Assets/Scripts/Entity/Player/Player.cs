@@ -61,27 +61,46 @@ public class Player : MonoBehaviour
 	
 	void Start() 
 	{
-		m_Coins = 0;
-		
 		if( RL.m_Prototype.m_PlayerType == PrototypeConfiguration.PlayerTypes.BALDY )
 			m_Renderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.PLAYER_BATCH );
 		else
 			m_Renderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.ELVIS_BATCH );
 		
-		m_Position = new Vector3( 3.0f, 4.0f, 0.0f );
 		m_Renderer.m_Position = m_Position + new Vector3( 0.0f, m_yRendererOffset, 0.0f );
 		m_Renderer.m_Scale = new Vector3( m_quadSize, m_quadSize, m_quadSize );
-		m_Renderer.m_TextureIdx = 0;
+		
+		ResetForLevel();
+	}
+	
+	public void ResetForLevel()
+	{
+		m_Coins = 0;
+		m_Position = new Vector3( 3.0f, 4.0f, 0.0f );		
 		
 		m_lastPosition = new Vector3( 0.0f, 0.0f, 0.0f );
 		
 		m_realAnimRunSpeed = m_animRunSpeed;
+		m_Renderer.m_TextureIdx = 0;
+
+		m_animState = PlayerAnimState.RUNNING;
+		
+		m_Colliding = false;
+		
+		m_animFrame = 0;
+		m_animFrameTime = 0.0f;
+		m_animRunSpeed = 16.0f;
+		m_realAnimRunSpeed = 16.0f;
+		
+		m_jumpVelocity = 0.0f;
+		m_jumpFloatVelocity = 5.0f;
+		
+		m_fallTimer = 0.0f;
+		
+		m_highAnalogueTimer = 0.0f;
 	}
 	
 	void Update() 
 	{	
-		InputManager.Get.Update();
-
 		switch( RL.m_MainLoop.m_CurrentState )
 		{
 		case MainLoop.GameState.START:
@@ -151,7 +170,7 @@ public class Player : MonoBehaviour
 		
 		
 		//	Maybe do a jump while running
-		if( InputManager.Get.m_FirePressed[0] && m_animState == PlayerAnimState.RUNNING &&
+		if( InputManager.Get.GetDown( 0 ) && m_animState == PlayerAnimState.RUNNING &&
 			!RL.m_Sequencer.m_ChargeZoom )
 		{
 			changeState( PlayerAnimState.JUMP_TAKE_OFF );
@@ -175,12 +194,12 @@ public class Player : MonoBehaviour
 		//	Maybe do a drop while in the air
 		if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.HIGH_ANALOGUE )
 		{
-			if( InputManager.Get.m_FireDown[0] && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.4f  )
+			if( InputManager.Get.GetDown( 0 ) && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.4f  )
 			{
 				m_jumpVelocity += Time.deltaTime*60.0f;
 			}
 			
-			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f && m_jumpVelocity > -baseDropVel &&
+			if( InputManager.Get.GetDown( 1 ) && m_Position.y > 1.0f && m_jumpVelocity > -baseDropVel &&
 				(m_animState == PlayerAnimState.JUMP_SAILING || m_animState == PlayerAnimState.JUMP_LANDING) )
 			{
 				m_jumpVelocity = -baseDropVel;
@@ -188,12 +207,12 @@ public class Player : MonoBehaviour
 		}
 		else if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.ANALOGUE )
 		{
-			if( InputManager.Get.m_FireDown[0] && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.15f )
+			if( InputManager.Get.GetDown( 0 ) && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.15f )
 			{
 				m_jumpVelocity += Time.deltaTime*60.0f;
 			}
 			
-			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f &&	m_jumpVelocity > -baseDropVel &&
+			if( InputManager.Get.GetDown( 1 ) && m_Position.y > 1.0f &&	m_jumpVelocity > -baseDropVel &&
 				(m_animState == PlayerAnimState.JUMP_SAILING || m_animState == PlayerAnimState.JUMP_LANDING) )
 			{
 				m_jumpVelocity = -baseDropVel;
@@ -201,7 +220,7 @@ public class Player : MonoBehaviour
 		}
 		else
 		{
-			if( InputManager.Get.m_FireDown[1] && m_Position.y > 1.0f && m_jumpVelocity > -baseDropVel &&
+			if( InputManager.Get.GetDown( 1 ) && m_Position.y > 1.0f && m_jumpVelocity > -baseDropVel &&
 				(m_animState == PlayerAnimState.JUMP_SAILING || m_animState == PlayerAnimState.JUMP_LANDING) )
 			{
 				m_jumpVelocity = -baseDropVel;
@@ -209,7 +228,7 @@ public class Player : MonoBehaviour
 		}
 		
 		//	Maybe try to fall down a level while running
-		if( InputManager.Get.m_FirePressed[1] && m_animState == PlayerAnimState.RUNNING && 
+		if( InputManager.Get.GetPressed( 1 ) && m_animState == PlayerAnimState.RUNNING && 
 			m_Position.y > 1.0f )
 		{
 			bool canPassThrough = true;

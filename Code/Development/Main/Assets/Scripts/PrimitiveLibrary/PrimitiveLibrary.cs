@@ -53,6 +53,7 @@ public sealed class PrimitiveLibrary
 	public enum QuadBatch
 	{
 		FX_BATCH = 0,
+		FX_ALPHA_BATCH,
 		NUMBERS_BATCH,
 		FRONTEND_BATCH,
 		PLAYER_BATCH,
@@ -63,7 +64,8 @@ public sealed class PrimitiveLibrary
 		
 		NUM
 	}
-	const int g_FXBatchSize = 1000;
+	const int g_FXBatchSize = 512;
+	const int g_FXAlphaBatchSize = 512;
 	const int g_NumbersBatchSize = 70;
 	const int g_FrontendBatchSize = 256;
 	const int g_PlayerBatchSize = 16;
@@ -138,7 +140,15 @@ public sealed class PrimitiveLibrary
 			g_FXBatchSize, 
 			m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX], 
 			(int)TextureAtlas.AtlasID.PARTICLE_FX, 
-			true, true, true, 14 
+			true, true, true, 0
+			);
+		m_quadBatches[(int)QuadBatch.FX_BATCH].transform.localPosition = Vector3.zero;
+		
+		m_quadBatches[(int)QuadBatch.FX_ALPHA_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
+			g_FXAlphaBatchSize, 
+			m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX_ALPHA], 
+			(int)TextureAtlas.AtlasID.PARTICLE_FX_ALPHA, 
+			true, true, false, 0 
 			);
 		m_quadBatches[(int)QuadBatch.FX_BATCH].transform.localPosition = Vector3.zero;
 		
@@ -146,7 +156,7 @@ public sealed class PrimitiveLibrary
 			g_NumbersBatchSize, 
 			m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS], 
 			(int)TextureAtlas.AtlasID.NUMBERS, 
-			false, true, false, 8 
+			false, true, false, 0 
 			);
 		m_quadBatches[(int)QuadBatch.NUMBERS_BATCH].transform.localPosition = Vector3.zero;
 		
@@ -154,7 +164,7 @@ public sealed class PrimitiveLibrary
 			g_FrontendBatchSize, 
 			m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND], 
 			(int)TextureAtlas.AtlasID.FRONTEND, 
-			false, false, false, 8 
+			false, false, false, 0 
 			);
 		m_quadBatches[(int)QuadBatch.FRONTEND_BATCH].transform.localPosition = Vector3.zero;
 
@@ -510,6 +520,8 @@ public sealed class PrimitiveLibrary
 		//	Load the textures
 		m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX].m_TexturePage =
 			Resources.Load( "FX_Atlas" ) as Texture;
+		m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX_ALPHA].m_TexturePage =
+			Resources.Load( "FX_Alpha_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS].m_TexturePage =
 			Resources.Load( "Numbers_Atlas" ) as Texture;
 		
@@ -535,7 +547,7 @@ public sealed class PrimitiveLibrary
 		m_Atlases[(int)TextureAtlas.AtlasID.PLATFORMS].m_TexturePage =
 			Resources.Load( "Platforms_Atlas" ) as Texture;
 		
-		//	Set up the FX atlas
+		//	Set up the FX atlases
 		TextureAtlas fxAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX];		
 		fxAtlas.m_NumElements = (int)TextureAtlas.ParticleFX.NUM;		
 		fxAtlas.m_UVSet = new Vector4[fxAtlas.m_NumElements];
@@ -544,6 +556,13 @@ public sealed class PrimitiveLibrary
 		fxAtlas.m_UVSet[(int)TextureAtlas.ParticleFX.BANG_PIECES] = new Vector4( 0.5f, 0.5f, 1.0f, 1.0f );
 		fxAtlas.m_UVSet[(int)TextureAtlas.ParticleFX.GLOW_RING] = new Vector4( 0.0f, 0.0f, 0.5f, 0.5f );
 		fxAtlas.m_UVSet[(int)TextureAtlas.ParticleFX.GLOW] = new Vector4( 0.5f, 0.0f, 1.0f, 0.5f );
+
+		
+		TextureAtlas fxAlphaAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX_ALPHA];		
+		fxAlphaAtlas.m_NumElements = (int)TextureAtlas.ParticleFXAlpha.NUM;		
+		fxAlphaAtlas.m_UVSet = new Vector4[fxAtlas.m_NumElements];
+		
+		fxAlphaAtlas.m_UVSet[(int)TextureAtlas.ParticleFXAlpha.DUST] = new Vector4( 0.0f, 0.0f, 1.0f, 1.0f );
 		
 		
 		//	And the numbers
@@ -644,6 +663,7 @@ public class TextureAtlas
 	public enum AtlasID
 	{
 		PARTICLE_FX = 0,
+		PARTICLE_FX_ALPHA,
 		NUMBERS,
 		FRONTEND,
 		PLAYER,
@@ -661,6 +681,13 @@ public class TextureAtlas
 		BANG_PIECES,
 		GLOW_RING,
 		GLOW,
+		
+		NUM
+	}
+	
+	public enum ParticleFXAlpha
+	{
+		DUST = 0,
 		
 		NUM
 	}

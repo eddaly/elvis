@@ -56,12 +56,7 @@ public class SequenceManager : MonoBehaviour
 	EnvironmentTrackMaker m_EnvironmentTrackMaker = new EnvironmentTrackMaker();
 	
 	void Start() 
-	{
-		if( RL.m_Obstacles )
-		{
-			RL.m_Obstacles.HideAllPieces(); 
-		}
-		
+	{		
 		ResetForLevel();
 	}
 	
@@ -79,6 +74,11 @@ public class SequenceManager : MonoBehaviour
 	// Desc:	Sets the sequence up to begin the level
 	public void ResetForLevel()
 	{
+		if( RL.m_Obstacles )
+		{
+			RL.m_Obstacles.HideAllPieces(); 
+		}
+		
 		m_MasterDistance = 0.0f;
 		m_MetersPerSecond = 8.0f;
 

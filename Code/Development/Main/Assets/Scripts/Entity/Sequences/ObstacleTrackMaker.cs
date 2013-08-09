@@ -35,6 +35,7 @@ public class ObstacleTrackMaker
 	public void StartPlayMode() 
 	{
 		m_flipflopTrack = 0;
+		m_pieceListCursor = 0;
 		
 		randomisePieceList();
 	}
@@ -42,6 +43,11 @@ public class ObstacleTrackMaker
 	
 	public void UpdatePlayMode() 
 	{
+	}
+	
+	public void ResetForLevel()
+	{
+		StartPlayMode();
 	}
 	
 	bool coino = false;
@@ -132,6 +138,8 @@ public class ObstacleTrackMaker
 			
 			break;
 		}
+		
+		Debug.Log( "returning " + newPiece.ToString() );
 		
 		return newPiece;
 	}

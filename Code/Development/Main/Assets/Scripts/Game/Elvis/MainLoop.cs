@@ -22,14 +22,23 @@ public class MainLoop : MonoBehaviour
 	
 	void Start() 
 	{
+		GlobalData.Get.m_GlobalTime = 0.0f;
 	}
 	
 	void Update() 
 	{	
+		GlobalData.Get.m_GlobalDTime = Time.deltaTime;
+		GlobalData.Get.m_GlobalTime += GlobalData.Get.m_GlobalDTime;
+		
+		InputManager.Get.Update();		
+		if( !Application.isEditor )
+			InputManager.Get.UpdateTouch();
+		
 		switch( m_CurrentState )
 		{
 		case GameState.START:
 			RL.m_Sequencer.ResetForLevel();
+			RL.m_Player.ResetForLevel();
 			changeState( GameState.INTRO );
 			break;
 		case GameState.INTRO:
@@ -39,6 +48,8 @@ public class MainLoop : MonoBehaviour
 		case GameState.RUNNING:
 			break;
 		case GameState.COLLIDED:
+			if( InputManager.Get.GetPressed( 0 ) )
+				changeState( GameState.START );
 			break;
 		case GameState.SUMMARY:
 			break;
