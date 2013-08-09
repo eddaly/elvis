@@ -74,10 +74,11 @@ public class PostGame : MonoBehaviour {
 			FastGUIElement.UVsFrom (@"PostGame_Continue.png"));
 		
 		//
-		
+		/*
 		PostGame_XPFill = new FastGUIElement (
 			new Vector2 (970, 906),
 			FastGUIElement.UVsFrom (@"PostGame_XPFill.png"));		
+		*/
 	}
 	
 	// Update is called once per frame
