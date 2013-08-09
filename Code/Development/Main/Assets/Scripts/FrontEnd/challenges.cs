@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class store : MonoBehaviour {
+public class Challenges : MonoBehaviour {
 	
 #pragma warning disable 414
 
@@ -10,73 +10,49 @@ public class store : MonoBehaviour {
     //<sprite n="Store_UpgradeInUseButton */
 	
 	//persistent
-	FastGUIElement Store_Background;
+	FastGUIElement General_Background;
 	FastGUIElement General_BackButton;
 	FastGUIElement General_CoinDisplay;
 			
-	//wardrobe
-	FastGUIElement Store_WardrobeScreen;
-    FastGUIElement Store_WardrobeScreen_InUse;
-	FastGUIElement Store_BankScreen;
-    FastGUIElement Store_BankScreen_InUse;
-	FastGUIElement Store_GearScreen;
-    FastGUIElement Store_GearScreen_InUse;
-	FastGUIElement Store_CostumePane;
-	FastGUIElement Store_CostumeDescPane;
-	FastGUIElement Store_Upgrade1Tab;
-	FastGUIElement Store_Upgrade2Tab;
-	FastGUIElement Store_Upgrade3Tab;
-	FastGUIElement Store_Upgrade1Desc;
-	FastGUIElement Store_Upgrade2Desc;
-	FastGUIElement Store_Upgrade3Desc;
-		
-	//gear
-	FastGUIElement Store_EPIcon;
-	FastGUIElement Store_BuckleIcon;
-	FastGUIElement Store_RPMIcon;
-	FastGUIElement Store_ShoesIcon;
-	FastGUIElement Store_ShadesIcon;
-	FastGUIElement Store_GearIcon1;
-	FastGUIElement Store_GearIcon2;
-	FastGUIElement Store_GearIcon3;
-	FastGUIElement Store_GearDesc1;
-	FastGUIElement Store_GearDesc2;
-	FastGUIElement Store_GearDesc3;
-	FastGUIElement Store_GearBuy1;
-	FastGUIElement Store_GearBuy2;
-	FastGUIElement Store_GearBuy3;	
-
-	//bank
-	FastGUIElement Store_BankIcon1;
-	FastGUIElement Store_BankIcon2;
-	FastGUIElement Store_BankIcon3;
-	FastGUIElement Store_BankIcon4;
-	FastGUIElement Store_BuyItem1;
-	//FastGUIElement Store_BuyItem1_Tap;
-	FastGUIElement Store_BuyItem2;
-	FastGUIElement Store_BuyItem3;
-	FastGUIElement Store_BuyItem4;
-	FastGUIElement Store_CoinsDesc1;
-	FastGUIElement Store_CoinsDesc2;
-	FastGUIElement Store_CoinsDesc3;
-	FastGUIElement Store_CoinsDesc4;
-	FastGUIElement Store_CoinsPrice1;
-	FastGUIElement Store_CoinsPrice2;
-	FastGUIElement Store_CoinsPrice3;
-	FastGUIElement Store_CoinsPrice4;
+	//body
+	FastGUIElement Challenges_Avatar1;
+	FastGUIElement Challenges_Avatar2;
+	FastGUIElement Challenges_Avatar3;
+	FastGUIElement Challenges_Avatar4;
+	FastGUIElement Challenges_CreateGame;
+	FastGUIElement Challenges_Name1;
+	FastGUIElement Challenges_Name2;
+	FastGUIElement Challenges_Name3;
+	FastGUIElement Challenges_Name4;
+	FastGUIElement Challenges_Nudge1;
+	FastGUIElement Challenges_Nudge2;
+	FastGUIElement Challenges_Nudge3;
+	FastGUIElement Challenges_Nudge4;
+	FastGUIElement Challenges_Play1;
+	FastGUIElement Challenges_Play2;
+	FastGUIElement Challenges_Play3;
+	FastGUIElement Challenges_Play4;
+	FastGUIElement Challenges_Rematch1;
+	FastGUIElement Challenges_Rematch2;
+	FastGUIElement Challenges_Rematch3;
+	FastGUIElement Challenges_Rematch4;
+	FastGUIElement Challenges_Stats1;
+	FastGUIElement Challenges_Stats2;
+	FastGUIElement Challenges_Stats3;
+	FastGUIElement Challenges_Stats4;
+	FastGUIElement Challenges_Waiting1;
+	FastGUIElement Challenges_Waiting2;
+	FastGUIElement Challenges_Waiting3;
+	FastGUIElement Challenges_Waiting4;
 	
 #pragma warning restore 414
 
 	// Use this for initialization
-	void Start () {
-		
-		
+	void Start () 
+	{
+			
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"assets//resources//Frontend_Atlas.xml";
-
-		
-		
-
+		FastGUIElement.uvxmlFile = @"assets//resources//Challenges_Atlas.xml";
 
 		/*		
 		FAST GUI BUTTON example
@@ -101,228 +77,161 @@ public class store : MonoBehaviour {
 			new Vector2 (1536,0),
 			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
 		
-		//wardrobe...
+		//body
 		
-		Store_WardrobeScreen = new FastGUIElement (
-			new Vector2 (192, 0),
-			FastGUIElement.UVsFrom (@"Store_WardrobeScreen.png"));
-		Store_WardrobeScreen.SetDisplayed (false);
+		Challenges_CreateGame = new FastGUIElement (
+			new Vector2 (320, 0),
+			FastGUIElement.UVsFrom (@"Challenges_CreateGame.png"));
+		Challenges_CreateGame.SetDisplayed (true);
 		
-		Store_WardrobeScreen_InUse = new FastGUIElement (
-			new Vector2 (192, 0),
-			FastGUIElement.UVsFrom (@"Store_WardrobeScreen_InUse.png"));
-		
-		Store_GearScreen = new FastGUIElement (
-			new Vector2 (640, 0),
-			FastGUIElement.UVsFrom (@"Store_GearScreen.png"));
-		
-		Store_GearScreen_InUse = new FastGUIElement (
-			new Vector2 (640, 0),
-			FastGUIElement.UVsFrom (@"Store_GearScreen_InUse.png"));
-		Store_GearScreen_InUse.SetDisplayed (false);
-		
-		Store_BankScreen = new FastGUIElement (
-			new Vector2 (1088, 0),
-			FastGUIElement.UVsFrom (@"Store_BankScreen.png"));
-		
-		Store_BankScreen_InUse = new FastGUIElement (
-			new Vector2 (1088, 0),
-			FastGUIElement.UVsFrom (@"Store_BankScreen_InUse.png"));
-		Store_BankScreen_InUse.SetDisplayed (false);
-		
-		Store_CostumePane = new FastGUIElement (
+		Challenges_Avatar1 = new FastGUIElement (
 			new Vector2 (64, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));
+			FastGUIElement.UVsFrom (@"Challenges_Avatar1.png"));
+		Challenges_Avatar1.SetDisplayed (true);
 		
-		Store_CostumeDescPane = new FastGUIElement (
-			new Vector2 (832, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png"));
+		Challenges_Avatar2 = new FastGUIElement (
+			new Vector2 (64, 576),
+			FastGUIElement.UVsFrom (@"Challenges_Avatar2.png"));
+		Challenges_Avatar2.SetDisplayed (true);
 		
-		Store_Upgrade1Tab = new FastGUIElement (
+		Challenges_Avatar3 = new FastGUIElement (
 			new Vector2 (64, 896),
-			FastGUIElement.UVsFrom (@"Store_Upgrade1Tab.png"));
+			FastGUIElement.UVsFrom (@"Challenges_Avatar3.png"));
+		Challenges_Avatar3.SetDisplayed (true);
 		
-		Store_Upgrade1Desc = new FastGUIElement (
-			new Vector2 (832, 896), 
-			FastGUIElement.UVsFrom (@"Store_Upgrade1Desc.png"));
+		Challenges_Avatar4 = new FastGUIElement (
+			new Vector2 (64, 1216),
+			FastGUIElement.UVsFrom (@"Challenges_Avatar4.png"));
+		Challenges_Avatar4.SetDisplayed (true);
 		
-		Store_Upgrade2Tab = new FastGUIElement (
-			new Vector2 (64, 1088),
-			FastGUIElement.UVsFrom (@"Store_Upgrade2Tab.png"));
+		Challenges_Name1 = new FastGUIElement (
+			new Vector2 (320, 256),
+			FastGUIElement.UVsFrom (@"Challenges_Name1.png"));
+		Challenges_Name1.SetDisplayed (true);
 		
-		Store_Upgrade2Desc = new FastGUIElement (
-			new Vector2 (832, 896), 
-			FastGUIElement.UVsFrom (@"Store_Upgrade2Desc.png"));	
-		Store_Upgrade2Desc.SetDisplayed (false);
+		Challenges_Name2 = new FastGUIElement (
+			new Vector2 (320, 576),
+			FastGUIElement.UVsFrom (@"Challenges_Name2.png"));
+		Challenges_Name2.SetDisplayed (true);
 		
-		Store_Upgrade3Tab = new FastGUIElement (
-			new Vector2 (64, 1280),
-			FastGUIElement.UVsFrom (@"Store_Upgrade3Tab.png"));
+		Challenges_Name3 = new FastGUIElement (
+			new Vector2 (320, 896),
+			FastGUIElement.UVsFrom (@"Challenges_Name3.png"));
+		Challenges_Name3.SetDisplayed (true);
 		
-		Store_Upgrade3Desc = new FastGUIElement (
-			new Vector2 (832, 896), 
-			FastGUIElement.UVsFrom (@"Store_Upgrade3Desc.png"));
-		Store_Upgrade3Desc.SetDisplayed (false);
+		Challenges_Name4 = new FastGUIElement (
+			new Vector2 (320, 1216),
+			FastGUIElement.UVsFrom (@"Challenges_Name4.png"));
+		Challenges_Name4.SetDisplayed (true);
 		
-		//Gear Screen...
+		Challenges_Stats1 = new FastGUIElement (
+			new Vector2 (320, 384),
+			FastGUIElement.UVsFrom (@"Challenges_Stats1.png"));
+		Challenges_Stats1.SetDisplayed (true);
 		
-		Store_EPIcon = new FastGUIElement (
-			new Vector2 (64, 256),
-			FastGUIElement.UVsFrom (@"Store_EPIcon.png"));
-		Store_EPIcon.SetDisplayed (false);
+		Challenges_Stats2 = new FastGUIElement (
+			new Vector2 (320, 704),
+			FastGUIElement.UVsFrom (@"Challenges_Stats2.png"));
+		Challenges_Stats2.SetDisplayed (true);
 		
-		Store_BuckleIcon = new FastGUIElement (
-			new Vector2 (448, 256),
-			FastGUIElement.UVsFrom (@"Store_BuckleIcon.png"));
-		Store_BuckleIcon.SetDisplayed (false);
+		Challenges_Stats3 = new FastGUIElement (
+			new Vector2 (320, 1024),
+			FastGUIElement.UVsFrom (@"Challenges_Stats3.png"));
+		Challenges_Stats3.SetDisplayed (true);
 		
-		Store_RPMIcon = new FastGUIElement (
-			new Vector2 (832, 256),
-			FastGUIElement.UVsFrom (@"Store_RPMIcon.png"));
-		Store_RPMIcon.SetDisplayed (false);
+		Challenges_Stats4 = new FastGUIElement (
+			new Vector2 (320, 1344),
+			FastGUIElement.UVsFrom (@"Challenges_Stats4.png"));
+		Challenges_Stats4.SetDisplayed (true);
 		
-		Store_ShoesIcon = new FastGUIElement (
-			new Vector2 (1216, 256),
-			FastGUIElement.UVsFrom (@"Store_ShoesIcon.png"));
-		Store_ShoesIcon.SetDisplayed (false);
+		//buttons/nudge  (nudge always shows just now. no reason other than waiting for the metagame to plug in before this can get conditional)
+		Challenges_Nudge1 = new FastGUIElement (
+			new Vector2 (1664, 256),
+			FastGUIElement.UVsFrom (@"Challenges_Nudge1.png"));
+		Challenges_Nudge1.SetDisplayed (true);
 		
-		Store_ShadesIcon = new FastGUIElement (
-			new Vector2 (1600, 256),
-			FastGUIElement.UVsFrom (@"Store_ShadesIcon.png"));
-		Store_ShadesIcon.SetDisplayed (false);
+		Challenges_Nudge2 = new FastGUIElement (
+			new Vector2 (1664, 576),
+			FastGUIElement.UVsFrom (@"Challenges_Nudge2.png"));
+		Challenges_Nudge2.SetDisplayed (true);
 		
-		Store_GearIcon1 = new FastGUIElement (
-			new Vector2 (64,704),
-			FastGUIElement.UVsFrom (@"Store_GearIcon1.png"));
-		Store_GearIcon1.SetDisplayed (false);
+		Challenges_Nudge3 = new FastGUIElement (
+			new Vector2 (1664, 896),
+			FastGUIElement.UVsFrom (@"Challenges_Nudge3.png"));
+		Challenges_Nudge3.SetDisplayed (true);
 		
-		Store_GearDesc1 = new FastGUIElement (
-			new Vector2 (320,704),
-			FastGUIElement.UVsFrom (@"Store_GearDesc1.png"));
-		Store_GearDesc1.SetDisplayed (false);
+		Challenges_Nudge4 = new FastGUIElement (
+			new Vector2 (1664, 1216),
+			FastGUIElement.UVsFrom (@"Challenges_Nudge4.png"));
+		Challenges_Nudge4.SetDisplayed (true);
 		
-		Store_GearBuy1 = new FastGUIElement (
-			new Vector2 (1600, 704),
-			FastGUIElement.UVsFrom (@"Store_GearBuy1.png"));
-		Store_GearBuy1.SetDisplayed (false);
+		//buttons/play
+		Challenges_Play1 = new FastGUIElement (
+			new Vector2 (1664, 256),
+			FastGUIElement.UVsFrom (@"Challenges_Play1.png"));
+		Challenges_Play1.SetDisplayed (false);
 		
-		Store_GearIcon2 = new FastGUIElement (
-			new Vector2 (64,1024),
-			FastGUIElement.UVsFrom (@"Store_GearIcon2.png"));
-		Store_GearIcon2.SetDisplayed (false); //roll back
+		Challenges_Play2 = new FastGUIElement (
+			new Vector2 (1664, 576),
+			FastGUIElement.UVsFrom (@"Challenges_Play2.png"));
+		Challenges_Play2.SetDisplayed (false);
 		
-		Store_GearDesc2 = new FastGUIElement (
-			new Vector2 (320,1024),
-			FastGUIElement.UVsFrom (@"Store_GearDesc2.png"));
-		Store_GearDesc2.SetDisplayed (false);
+		Challenges_Play3 = new FastGUIElement (
+			new Vector2 (1664, 896),
+			FastGUIElement.UVsFrom (@"Challenges_Play3.png"));
+		Challenges_Play3.SetDisplayed (false);
 		
-		Store_GearBuy2 = new FastGUIElement (
-			new Vector2 (1600, 1024),
-			FastGUIElement.UVsFrom (@"Store_GearBuy2.png"));
-		Store_GearBuy2.SetDisplayed (false);
+		Challenges_Play4 = new FastGUIElement (
+			new Vector2 (1664, 1216),
+			FastGUIElement.UVsFrom (@"Challenges_Play4.png"));
+		Challenges_Play4.SetDisplayed (false);
 		
-		Store_GearIcon3 = new FastGUIElement (
-			new Vector2 (64,1344),
-			FastGUIElement.UVsFrom (@"Store_GearIcon3.png"));
-		Store_GearIcon3.SetDisplayed (false);
+		//buttons/waiting
+		Challenges_Waiting1 = new FastGUIElement (
+			new Vector2 (1664, 256),
+			FastGUIElement.UVsFrom (@"Challenges_Waiting1.png"));
+		Challenges_Waiting1.SetDisplayed (false);
 		
-		Store_GearDesc3 = new FastGUIElement (
-			new Vector2 (320,1344),
-			FastGUIElement.UVsFrom (@"Store_GearDesc3.png"));
-		Store_GearDesc3.SetDisplayed (false);
+		Challenges_Waiting2 = new FastGUIElement (
+			new Vector2 (1664, 576),
+			FastGUIElement.UVsFrom (@"Challenges_Waiting2.png"));
+		Challenges_Waiting2.SetDisplayed (false);
 		
-		Store_GearBuy3 = new FastGUIElement (
-			new Vector2 (1600, 1344),
-			FastGUIElement.UVsFrom (@"Store_GearBuy3.png"));
-		Store_GearBuy3.SetDisplayed (false);
+		Challenges_Waiting3 = new FastGUIElement (
+			new Vector2 (1664, 896),
+			FastGUIElement.UVsFrom (@"Challenges_Waiting3.png"));
+		Challenges_Waiting3.SetDisplayed (false);
 		
-		//Bank Screen...
+		Challenges_Waiting4 = new FastGUIElement (
+			new Vector2 (1664, 1216),
+			FastGUIElement.UVsFrom (@"Challenges_Waiting4.png"));
+		Challenges_Waiting4.SetDisplayed (false);
 		
-		Store_BankIcon1 = new FastGUIElement (
-			new Vector2 (64, 256), //update
-			FastGUIElement.UVsFrom (@"Store_Bank_Icon1.png"));
-		Store_BankIcon1.SetDisplayed (false);
+		//buttons/rematch
+		Challenges_Rematch1 = new FastGUIElement (
+			new Vector2 (1664, 256),
+			FastGUIElement.UVsFrom (@"Challenges_Rematch1.png"));
+		Challenges_Rematch1.SetDisplayed (false);
 		
-		Store_CoinsDesc1 = new FastGUIElement (
-			new Vector2 (320, 256), //update
-			FastGUIElement.UVsFrom (@"Store_CoinsDesc1.png"));
-		Store_CoinsDesc1.SetDisplayed (false);
+		Challenges_Rematch2 = new FastGUIElement (
+			new Vector2 (1664, 576),
+			FastGUIElement.UVsFrom (@"Challenges_Rematch2.png"));
+		Challenges_Rematch2.SetDisplayed (false);
 		
-		Store_CoinsPrice1 = new FastGUIElement (
-			new Vector2 (1152,256),
-			FastGUIElement.UVsFrom (@"Store_CoinsPrice1.png"));
-		Store_CoinsPrice1.SetDisplayed (false);
+		Challenges_Rematch3 = new FastGUIElement (
+			new Vector2 (1664, 896),
+			FastGUIElement.UVsFrom (@"Challenges_Rematch3.png"));
+		Challenges_Rematch3.SetDisplayed (false);
 		
-		Store_BuyItem1 = new FastGUIElement (
-			new Vector2 (1600,256),
-			FastGUIElement.UVsFrom (@"Store_BuyItem1.png"));
-		Store_BuyItem1.SetDisplayed (false);
-		
-		Store_BankIcon2 = new FastGUIElement (
-			new Vector2 (64, 576), //update
-			FastGUIElement.UVsFrom (@"Store_Bank_Icon2.png"));
-		Store_BankIcon2.SetDisplayed (false);
-		
-		Store_CoinsDesc2 = new FastGUIElement (
-			new Vector2 (320, 576), //update
-			FastGUIElement.UVsFrom (@"Store_CoinsDesc2.png"));
-		Store_CoinsDesc2.SetDisplayed (false);
-		
-		Store_CoinsPrice2 = new FastGUIElement (
-			new Vector2 (1152,576),
-			FastGUIElement.UVsFrom (@"Store_CoinsPrice2.png"));
-		Store_CoinsPrice2.SetDisplayed (false);
-		
-		Store_BuyItem2 = new FastGUIElement (
-			new Vector2 (1600,576),
-			FastGUIElement.UVsFrom (@"Store_BuyItem2.png"));
-		Store_BuyItem2.SetDisplayed (false);
-		
-		Store_BankIcon3 = new FastGUIElement (
-			new Vector2 (64, 896), //update
-			FastGUIElement.UVsFrom (@"Store_Bank_Icon3.png"));
-		Store_BankIcon3.SetDisplayed (false);
-		
-		Store_CoinsDesc3 = new FastGUIElement (
-			new Vector2 (320, 896), //update
-			FastGUIElement.UVsFrom (@"Store_CoinsDesc3.png"));
-		Store_CoinsDesc3.SetDisplayed (false);
-		
-		Store_CoinsPrice3 = new FastGUIElement (
-			new Vector2 (1152,896),
-			FastGUIElement.UVsFrom (@"Store_CoinsPrice3.png"));
-		Store_CoinsPrice3.SetDisplayed (false);
-		
-		Store_BuyItem3 = new FastGUIElement (
-			new Vector2 (1600,896),
-			FastGUIElement.UVsFrom (@"Store_BuyItem3.png"));
-		Store_BuyItem3.SetDisplayed (false);
-
-		Store_BankIcon4 = new FastGUIElement (
-			new Vector2 (64, 1216), //update
-			FastGUIElement.UVsFrom (@"Store_Bank_Icon4.png"));
-		Store_BankIcon4.SetDisplayed (false);
-		
-		Store_CoinsDesc4 = new FastGUIElement (
-			new Vector2 (320, 1216), //update
-			FastGUIElement.UVsFrom (@"Store_CoinsDesc4.png"));
-		Store_CoinsDesc4.SetDisplayed (false);
-		
-		Store_CoinsPrice4 = new FastGUIElement (
-			new Vector2 (1152,1216),
-			FastGUIElement.UVsFrom (@"Store_CoinsPrice4.png"));
-		Store_CoinsPrice4.SetDisplayed (false);
-		
-		Store_BuyItem4 = new FastGUIElement (
-			new Vector2 (1600,1216),
-			FastGUIElement.UVsFrom (@"Store_BuyItem4.png"));
-		Store_BuyItem4.SetDisplayed (false);
-		
-
+		Challenges_Rematch4 = new FastGUIElement (
+			new Vector2 (1664, 1216),
+			FastGUIElement.UVsFrom (@"Challenges_Rematch4.png"));
+		Challenges_Rematch4.SetDisplayed (false);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		
 		/*if (backButton.UpdateTestPressed ())
 		{
@@ -338,256 +247,14 @@ public class store : MonoBehaviour {
 			descriptionTab.SetDisplayed (false);
 			upgradesTab.SetDisplayed (true);			
 		}*/
+		
 		if (General_BackButton.Tapped ())
 		{
 			// Play sound
 			RL.m_SoundController.Play("FE_Back");
 			
 			Debug.Log ("EXIT");
-		}
-		
-		
-		if (Store_WardrobeScreen.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Navigation_01");
-			
-			//wardrobe
-			Store_WardrobeScreen.SetDisplayed (false);
-			Store_WardrobeScreen_InUse.SetDisplayed (true);
-			Store_BankScreen.SetDisplayed (true);
-			Store_BankScreen_InUse.SetDisplayed (false);
-			Store_GearScreen.SetDisplayed (true);
-			Store_GearScreen_InUse.SetDisplayed (false);
-			Store_CostumePane.SetDisplayed (true);
-			Store_CostumeDescPane.SetDisplayed (true);
-			Store_Upgrade1Tab.SetDisplayed (true);
-			Store_Upgrade1Desc.SetDisplayed (true);
-			Store_Upgrade2Tab.SetDisplayed (true);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Tab.SetDisplayed (true);
-			Store_Upgrade3Desc.SetDisplayed (false);
-			
-			/*Store_Upgrade1Tab.SetDisplayed (true);
-			Store_Upgrade1Desc.SetDisplayed (true);
-			Store_Upgrade2Tab.SetDisplayed (true);
-			Store_Upgrade2Desc.SetDisplayed (true);
-			Store_Upgrade3Tab.SetDisplayed (true);
-			Store_Upgrade3Desc.SetDisplayed (true);
-			*/
-			
-			//gear
-			Store_EPIcon.SetDisplayed (false);
-			Store_BuckleIcon.SetDisplayed (false);
-			Store_RPMIcon.SetDisplayed (false);
-			Store_ShoesIcon.SetDisplayed (false);
-			Store_ShadesIcon.SetDisplayed (false);
-			
-			Store_GearIcon1.SetDisplayed (false);
-			Store_GearIcon2.SetDisplayed (false);
-			Store_GearIcon3.SetDisplayed (false);
-			Store_GearDesc1.SetDisplayed (false);
-			Store_GearDesc2.SetDisplayed (false);
-			Store_GearDesc3.SetDisplayed (false);
-			Store_GearBuy1.SetDisplayed (false);
-			Store_GearBuy2.SetDisplayed (false);
-			Store_GearBuy3.SetDisplayed (false);
-			
-			//bank
-			Store_BankIcon1.SetDisplayed (false);
-			Store_CoinsDesc1.SetDisplayed (false);
-			Store_CoinsPrice1.SetDisplayed (false);
-			Store_BuyItem1.SetDisplayed (false);
-			Store_BankIcon2.SetDisplayed (false);
-			Store_CoinsDesc2.SetDisplayed (false);
-			Store_CoinsPrice2.SetDisplayed (false);
-			Store_BuyItem2.SetDisplayed (false);
-			Store_BankIcon3.SetDisplayed (false);
-			Store_CoinsDesc3.SetDisplayed (false);
-			Store_CoinsPrice3.SetDisplayed (false);
-			Store_BuyItem3.SetDisplayed (false);
-			Store_BankIcon4.SetDisplayed (false);
-			Store_CoinsDesc4.SetDisplayed (false);
-			Store_CoinsPrice4.SetDisplayed (false);
-			Store_BuyItem4.SetDisplayed (false);
-		}
-		
-		if (Store_Upgrade1Tab.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Confirm_01");
-			
-			Debug.Log ("Upgrade1 Tapped");
-			Store_Upgrade1Tab.SetDisplayed (true);
-			Store_Upgrade1Desc.SetDisplayed (true);
-			Store_Upgrade2Tab.SetDisplayed (true);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Tab.SetDisplayed (true);
-			Store_Upgrade3Desc.SetDisplayed (false);
-		}
-			
-		if (Store_Upgrade2Tab.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Confirm_02");
-			
-			Debug.Log ("Upgrade2 Tapped");
-			Store_Upgrade1Tab.SetDisplayed (true);
-			Store_Upgrade1Desc.SetDisplayed (false);
-			Store_Upgrade2Tab.SetDisplayed (true);
-			Store_Upgrade2Desc.SetDisplayed (true);
-			Store_Upgrade3Tab.SetDisplayed (true);
-			Store_Upgrade3Desc.SetDisplayed (false);
-		}
-			
-		if (Store_Upgrade3Tab.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Confirm_03");
-			
-			Debug.Log ("Upgrade3 Tapped");
-			Store_Upgrade1Tab.SetDisplayed (true);
-			Store_Upgrade1Desc.SetDisplayed (false);
-			Store_Upgrade2Tab.SetDisplayed (true);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Tab.SetDisplayed (true);
-			Store_Upgrade3Desc.SetDisplayed (true);
-		}
-		
-		if (Store_BankScreen.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Navigation_01");
-			
-			//wardrobe
-			Store_WardrobeScreen.SetDisplayed (true);
-			Store_WardrobeScreen_InUse.SetDisplayed (false);
-			Store_BankScreen.SetDisplayed (false);
-			Store_BankScreen_InUse.SetDisplayed (true);
-			Store_GearScreen.SetDisplayed (true);
-			Store_GearScreen_InUse.SetDisplayed (false);
-			Store_CostumePane.SetDisplayed (false);
-			Store_CostumeDescPane.SetDisplayed (false);
-			Store_Upgrade1Tab.SetDisplayed (false);
-			Store_Upgrade1Desc.SetDisplayed (false);
-			Store_Upgrade2Tab.SetDisplayed (false);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Tab.SetDisplayed (false);
-			Store_Upgrade3Desc.SetDisplayed (false);
-			
-			//gear
-			Store_EPIcon.SetDisplayed (false);
-			Store_BuckleIcon.SetDisplayed (false);
-			Store_RPMIcon.SetDisplayed (false);
-			Store_ShoesIcon.SetDisplayed (false);
-			Store_ShadesIcon.SetDisplayed (false);
-			Store_GearIcon1.SetDisplayed (false);
-			Store_GearIcon2.SetDisplayed (false);
-			Store_GearIcon3.SetDisplayed (false);
-			Store_GearDesc1.SetDisplayed (false);
-			Store_GearDesc2.SetDisplayed (false);
-			Store_GearDesc3.SetDisplayed (false);
-			Store_GearBuy1.SetDisplayed (false);
-			Store_GearBuy2.SetDisplayed (false);
-			Store_GearBuy3.SetDisplayed (false);
-			
-			//bank
-			Store_BankIcon1.SetDisplayed (true);
-			Store_CoinsDesc1.SetDisplayed (true);
-			Store_CoinsPrice1.SetDisplayed (true);
-			Store_BuyItem1.SetDisplayed (true);
-			Store_BankIcon2.SetDisplayed (true);
-			Store_CoinsDesc2.SetDisplayed (true);
-			Store_CoinsPrice2.SetDisplayed (true);
-			Store_BuyItem2.SetDisplayed (true);
-			Store_BankIcon3.SetDisplayed (true);
-			Store_CoinsDesc3.SetDisplayed (true);
-			Store_CoinsPrice3.SetDisplayed (true);
-			Store_BuyItem3.SetDisplayed (true);
-			Store_BankIcon4.SetDisplayed (true);
-			Store_CoinsDesc4.SetDisplayed (true);
-			Store_CoinsPrice4.SetDisplayed (true);
-			Store_BuyItem4.SetDisplayed (true);
-		}
-		
-		if (Store_GearScreen.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Navigation_01");
-			
-			//wardrobe
-			Store_WardrobeScreen.SetDisplayed (true);
-			Store_WardrobeScreen_InUse.SetDisplayed (false);
-			Store_BankScreen.SetDisplayed (true);
-			Store_BankScreen_InUse.SetDisplayed (false);
-			Store_GearScreen.SetDisplayed (false);
-			Store_GearScreen_InUse.SetDisplayed (true);
-			Store_CostumePane.SetDisplayed (false);
-			Store_CostumeDescPane.SetDisplayed (false);
-			Store_Upgrade1Tab.SetDisplayed (false);
-			Store_Upgrade1Desc.SetDisplayed (false);
-			Store_Upgrade2Tab.SetDisplayed (false);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Tab.SetDisplayed (false);
-			Store_Upgrade3Desc.SetDisplayed (false);
-			
-			//gear
-			Store_EPIcon.SetDisplayed (true);
-			Store_BuckleIcon.SetDisplayed (true);
-			Store_RPMIcon.SetDisplayed (true);
-			Store_ShoesIcon.SetDisplayed (true);
-			Store_ShadesIcon.SetDisplayed (true);
-			Store_GearIcon1.SetDisplayed (true);
-			Store_GearIcon2.SetDisplayed (true);
-			Store_GearIcon3.SetDisplayed (true);
-			Store_GearDesc1.SetDisplayed (true);
-			Store_GearDesc2.SetDisplayed (true);
-			Store_GearDesc3.SetDisplayed (true);
-			Store_GearBuy1.SetDisplayed (true);
-			Store_GearBuy2.SetDisplayed (true);
-			Store_GearBuy3.SetDisplayed (true);
-			
-			//bank
-			Store_BankIcon1.SetDisplayed (false);
-			Store_CoinsDesc1.SetDisplayed (false);
-			Store_CoinsPrice1.SetDisplayed (false);
-			Store_BuyItem1.SetDisplayed (false);
-			Store_BankIcon2.SetDisplayed (false);
-			Store_CoinsDesc2.SetDisplayed (false);
-			Store_CoinsPrice2.SetDisplayed (false);
-			Store_BuyItem2.SetDisplayed (false);
-			Store_BankIcon3.SetDisplayed (false);
-			Store_CoinsDesc3.SetDisplayed (false);
-			Store_CoinsPrice3.SetDisplayed (false);
-			Store_BuyItem3.SetDisplayed (false);
-			Store_BankIcon4.SetDisplayed (false);
-			Store_CoinsDesc4.SetDisplayed (false);
-			Store_CoinsPrice4.SetDisplayed (false);
-			Store_BuyItem4.SetDisplayed (false);
-		}
-		
-		if (Store_GearBuy1.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Confirm_01");
-			
-			Debug.Log ("GEAR TAPPED!");
-		}
-		
-		if (Store_GearBuy2.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Confirm_02");
-			
-			Debug.Log ("GEAR TAPPED!");
-		}
-		
-		if (Store_GearBuy3.Tapped ())
-		{
-			// Play sound
-			RL.m_SoundController.Play("FE_Confirm_03");
-			
-			Debug.Log ("GEAR TAPPED!");
-		}
+		}	
+
 	}
 }
