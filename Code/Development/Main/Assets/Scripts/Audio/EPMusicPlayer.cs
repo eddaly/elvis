@@ -30,6 +30,7 @@ public class EPMusicPlayer : MonoBehaviour {
 		IsMaster = 1
 	}
 	
+	/*
 	//	Pseudo-singleton pattern
 	private static EPMusicPlayer ms_musicPlayer = null;
     public static EPMusicPlayer Get()
@@ -53,7 +54,7 @@ public class EPMusicPlayer : MonoBehaviour {
 		
 		Debug.Log( "!** Couldn't get EPMusicPlayer component" );
 		return null;
-    }
+    }*/
 	
 	// Use this for initialization
 	void Start ()
@@ -302,7 +303,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	public void PlayOneShot(string name, float pitchOffset)
 	{
 		PitchTranslateRelative(pitchOffset);
-		EPSoundController.Get().Play(name, 1.0f, 1.0f);
+		RL.m_SoundController.Play(name, 1.0f, 1.0f);
 	}
 	
 	float PitchTranslateRelative(float semitones)

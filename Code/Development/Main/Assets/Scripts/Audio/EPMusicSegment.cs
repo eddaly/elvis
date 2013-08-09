@@ -69,9 +69,9 @@ public class EPMusicSegment : EPSound {
 			if ( source != null )
 			{
 				source.Stop();
-				if ( this == EPMusicPlayer.Get ().m_MasterSegment )
+				if ( this == RL.m_MusicPlayer.m_MasterSegment )
 				{
-					EPMusicPlayer.Get ().m_MasterSegment = null;
+					RL.m_MusicPlayer.m_MasterSegment = null;
 				}
 				source.time = 0;
 			}

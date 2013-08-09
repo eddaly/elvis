@@ -26,22 +26,22 @@ public class AudioSandbox : MonoBehaviour {
 		
 		if(GUI.Button(new Rect(20,40,150,22), "Toggle Intro_01"))
 		{
-			EPMusicPlayer.Get().ToggleSegment("VLV_Intro_01", EPMusicPlayer.Flags.IsMaster );		
+			RL.m_MusicPlayer.ToggleSegment("VLV_Intro_01", EPMusicPlayer.Flags.IsMaster );		
 		}
 		
 		if(GUI.Button(new Rect(20,70,150,22), "Toggle Intro_02"))
 		{
-			EPMusicPlayer.Get().ToggleSegment("VLV_Intro_02", EPMusicPlayer.Flags.IsMaster );
+			RL.m_MusicPlayer.ToggleSegment("VLV_Intro_02", EPMusicPlayer.Flags.IsMaster );
 		}	
 		
 		if(GUI.Button(new Rect(20,100,150,22), "Toggle Main_01"))
 		{
-			EPMusicPlayer.Get().ToggleSegment("VLV_Main_01", EPMusicPlayer.Flags.IsMaster );
+			RL.m_MusicPlayer.ToggleSegment("VLV_Main_01", EPMusicPlayer.Flags.IsMaster );
 		}	
 		
 		if(GUI.Button(new Rect(20,130,150,22), "Toggle Outro_01"))
 		{
-			EPMusicPlayer.Get().ToggleSegment("VLV_Outro_01", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.BAR );
+			RL.m_MusicPlayer.ToggleSegment("VLV_Outro_01", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.BAR );
 		}
 		
 		// Stings
@@ -49,22 +49,22 @@ public class AudioSandbox : MonoBehaviour {
 		
 		if(GUI.Button(new Rect(210,40,150,22), "Trigger Pickup_01"))
 		{
-			EPSoundController.Get ().PlaySting("Pickup_01");		
+			RL.m_SoundController.PlaySting("Pickup_01");		
 		}
 		
 		if(GUI.Button(new Rect(210,70,150,22), "Grid: 1/1"))
 		{
-			EPSoundController.Get ().m_StingGrid = EPSoundController.StingGrid.BEAT;
+			RL.m_SoundController.m_StingGrid = EPSoundController.StingGrid.BEAT;
 		}
 		
 		if(GUI.Button(new Rect(210,100,150,22), "Grid: 1/2"))
 		{
-			EPSoundController.Get ().m_StingGrid = EPSoundController.StingGrid.HALFBEAT;	
+			RL.m_SoundController.m_StingGrid = EPSoundController.StingGrid.HALFBEAT;	
 		}
 		
 		if(GUI.Button(new Rect(210,130,150,22), "Grid: 1/4"))
 		{
-			EPSoundController.Get ().m_StingGrid = EPSoundController.StingGrid.QUARTERBEAT;	
+			RL.m_SoundController.m_StingGrid = EPSoundController.StingGrid.QUARTERBEAT;	
 		}
 		
 		// Fades
@@ -72,22 +72,22 @@ public class AudioSandbox : MonoBehaviour {
 		
 		if(GUI.Button(new Rect(210,200,150,22), "Vol To 0"))
 		{
-			EPMusicPlayer.Get().m_MasterSegment.SetFade(0.1f, 1.0f, 3.0f, true);		
+			RL.m_MusicPlayer.m_MasterSegment.SetFade(0.1f, 1.0f, 3.0f, true);		
 		}
 		
 		if(GUI.Button(new Rect(210,230,150,22), "Pitch To 0.1"))
 		{
-			EPMusicPlayer.Get().m_MasterSegment.SetFade(1.0f, 0.1f, 3.0f, true);		
+			RL.m_MusicPlayer.m_MasterSegment.SetFade(1.0f, 0.1f, 3.0f, true);		
 		}
 		
 		if(GUI.Button(new Rect(210,260,150,22), "Vol/Pitch Combined"))
 		{
-			EPMusicPlayer.Get().m_MasterSegment.SetFade(0.0f, 0.1f, 5.0f, true);		
+			RL.m_MusicPlayer.m_MasterSegment.SetFade(0.0f, 0.1f, 5.0f, true);		
 		}
 		
 		if(GUI.Button(new Rect(210,290,150,22), "Vol/Pitch Fade All"))
 		{
-			EPMusicPlayer.Get().FadeAll(0.0f, 0.1f, 5.0f, true);		
+			RL.m_MusicPlayer.FadeAll(0.0f, 0.1f, 5.0f, true);		
 		}
 		
 		
@@ -96,7 +96,7 @@ public class AudioSandbox : MonoBehaviour {
 		
 		if(GUI.Button(new Rect(20,200,150,22), "Running Percussion"))
 		{
-			EPMusicPlayer.Get().ToggleSegment("VLV_BongoLoop");		
+			RL.m_MusicPlayer.ToggleSegment("VLV_BongoLoop");		
 		}
 		
 		// Other controls
@@ -104,34 +104,34 @@ public class AudioSandbox : MonoBehaviour {
 		
 		if(GUI.Button(new Rect(400,40,150,22), "Pause"))
 		{
-			EPSoundController.Get ().Pause();		
+			RL.m_SoundController.Pause();		
 		}
 		
 		if(GUI.Button(new Rect(400,70,150,22), "Resume"))
 		{
-			EPSoundController.Get ().Resume();		
+			RL.m_SoundController.Resume();		
 		}
 		
 		if(GUI.Button(new Rect(400,100,150,22), "GlobalMusicVolume +"))
 		{
-			float vol = EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC];
+			float vol = RL.m_SoundController.m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC];
 			
 			if ( vol < 1.0f)
 			{
 				vol += 0.1f;
-				EPSoundController.Get ().SetMixGroupVolume(EPSoundController.MixGroup.MUSIC, vol );
-				Debug.Log("Music MixGroup Volume: " + EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC]);
+				RL.m_SoundController.SetMixGroupVolume(EPSoundController.MixGroup.MUSIC, vol );
+				Debug.Log("Music MixGroup Volume: " + RL.m_SoundController.m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC]);
 			}
 		}
 		
 		if(GUI.Button(new Rect(400,130,150,22), "GlobalMusicVolume -"))
 		{
-			float vol = EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC];
+			float vol = RL.m_SoundController.m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC];
 			if ( vol > 0 )
 			{
 				vol -= 0.1f;
-				EPSoundController.Get ().SetMixGroupVolume(EPSoundController.MixGroup.MUSIC, vol );
-				Debug.Log("Music MixGroup Volume: " + EPSoundController.Get ().m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC]);
+				RL.m_SoundController.SetMixGroupVolume(EPSoundController.MixGroup.MUSIC, vol );
+				Debug.Log("Music MixGroup Volume: " + RL.m_SoundController.m_MixGroupVolumes[(int)EPSoundController.MixGroup.MUSIC]);
 			}
 		}
 		
@@ -140,17 +140,17 @@ public class AudioSandbox : MonoBehaviour {
 		
 		if(GUI.Button(new Rect(400,200,150,22), "Jump"))
 		{
-			EPMusicPlayer.Get().FadeAll( 0.3f, 1.0f, 1.0f, false );
-			EPMusicPlayer.Get().Fade( "VLV_BongoLoop", 0.0f, 1.0f, 0.5f, false );
-			EPSoundController.Get ().Play("VLV_Flight");
-			EPSoundController.Get ().SetFade("VLV_Flight", 1.0f, 1.5f, 0.2f, false);
+			RL.m_MusicPlayer.FadeAll( 0.3f, 1.0f, 1.0f, false );
+			RL.m_MusicPlayer.Fade( "VLV_BongoLoop", 0.0f, 1.0f, 0.5f, false );
+			RL.m_SoundController.Play("VLV_Flight");
+			RL.m_SoundController.SetFade("VLV_Flight", 1.0f, 1.5f, 0.2f, false);
 		}
 		
 		if(GUI.Button(new Rect(400,230,150,22), "Land"))
 		{
-			EPMusicPlayer.Get().FadeAll( 1.0f, 1.0f, 1.0f, false );
-			EPMusicPlayer.Get().Fade( "VLV_BongoLoop", 1.0f, 1.0f, 0.5f, false );
-			EPSoundController.Get ().SetFade("VLV_Flight", 0.0f, 1.0f, 0.5f, false);
+			RL.m_MusicPlayer.FadeAll( 1.0f, 1.0f, 1.0f, false );
+			RL.m_MusicPlayer.Fade( "VLV_BongoLoop", 1.0f, 1.0f, 0.5f, false );
+			RL.m_SoundController.SetFade("VLV_Flight", 0.0f, 1.0f, 0.5f, false);
 		}
 	}// OnGUI
 }

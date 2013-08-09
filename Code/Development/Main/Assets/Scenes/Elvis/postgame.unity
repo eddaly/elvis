@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_soundBanks:
-  - {fileID: 100000, guid: 83743678f68124131bda63ab5fadda3e, type: 2}
+  - {fileID: 0}
 --- !u!4 &522221722
 Transform:
   m_ObjectHideFlags: 0
@@ -352,6 +352,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_AtlasFile
+      value: PostGame_Atlas
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
   m_RootGameObject: {fileID: 1154770717}
@@ -397,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AtlasFile: Frontend_Atlas
+  m_AtlasFile: PostGame_Atlas
   m_AtlasOriginalWidth: 4096
   m_AtlasOriginalHeight: 4096
 --- !u!1 &1922735874
@@ -410,7 +414,7 @@ GameObject:
   - 4: {fileID: 1922735876}
   - 114: {fileID: 1922735875}
   m_Layer: 0
-  m_Name: scrolltest
+  m_Name: Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,8 +430,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e26822f5edfc466bbbc84aa2deec4f0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
 --- !u!4 &1922735876
 Transform:

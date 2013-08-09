@@ -5,7 +5,7 @@ public class FrontEnd : MonoBehaviour {
 	
 	private PersistentData persistentData;
 	public Metagame metagame;
-	public string m_AtlasFile = "Frontend_Atlas";
+	public string m_AtlasFile = "PostGame_Atlas";
 	public int m_AtlasOriginalWidth = 4096;
 	public int m_AtlasOriginalHeight = 4096;
 	

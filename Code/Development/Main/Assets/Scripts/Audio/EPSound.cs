@@ -102,7 +102,7 @@ public class EPSound : EPSoundEvent {
 		m_Sources[m_PlayIndex].volume = volume * ( m_Volume + ( (m_VolumeVariance * Random.value) - (m_VolumeVariance / 2) ) );
 		m_Sources[m_PlayIndex].pitch = pitch * ( m_Pitch + ( (m_PitchVariance * Random.value) - (m_PitchVariance / 2) ) );
 		
-		m_Sources[m_PlayIndex].volume *= EPSoundController.Get().m_MixGroupVolumes[(int)m_MixGroup];
+		m_Sources[m_PlayIndex].volume *= RL.m_SoundController.m_MixGroupVolumes[(int)m_MixGroup];
 		
 		// Play Sound
 		m_Sources[m_PlayIndex].Play();
@@ -151,7 +151,7 @@ public class EPSound : EPSoundEvent {
 		
 		foreach ( AudioSource source in m_Sources )
 		{
-			source.volume = m_Volume * EPSoundController.Get ().m_MixGroupVolumes[(int)m_MixGroup];
+			source.volume = m_Volume * RL.m_SoundController.m_MixGroupVolumes[(int)m_MixGroup];
 		}
 	}
 	
