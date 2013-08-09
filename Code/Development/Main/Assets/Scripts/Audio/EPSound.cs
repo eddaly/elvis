@@ -20,6 +20,7 @@ public class EPSound : EPSoundEvent {
 	public float m_PitchVariance;
 	public PlayOrder m_PlayOrder;
 	public EPSoundController.MixGroup m_MixGroup;
+	public float m_MinRepeatDelay = 0;
 	//public EPMusicGlobals.MIDIpitch m_RootNote = EPMusicGlobals.MIDIpitch.C_4;
 	
 	public enum PlayOrder {
@@ -41,6 +42,8 @@ public class EPSound : EPSoundEvent {
 	float m_FadeEndPitch;
 	float m_FadeStartTime;
 	float m_FadeDuration;
+	
+	float m_LastTriggerTime = 0;
 	
 	// Use this for initialization
 	void Start ()
@@ -91,23 +94,30 @@ public class EPSound : EPSoundEvent {
 	// Overrides for EPSoundEvent functions
 	public override void Play()
 	{
-		Play (1.0f, 1.0f);
+			Play (1.0f, 1.0f);
 	}
 
 	public override void Play ( float volume, float pitch )
 	{
-		m_UpdatePlayIndex();
-		
-		// Set Volume & Pitch
-		m_Sources[m_PlayIndex].volume = volume * ( m_Volume + ( (m_VolumeVariance * Random.value) - (m_VolumeVariance / 2) ) );
-		m_Sources[m_PlayIndex].pitch = pitch * ( m_Pitch + ( (m_PitchVariance * Random.value) - (m_PitchVariance / 2) ) );
-		
-		m_Sources[m_PlayIndex].volume *= RL.m_SoundController.m_MixGroupVolumes[(int)m_MixGroup];
-		
-		// Play Sound
-		m_Sources[m_PlayIndex].Play();
-		
-		//Console.WriteLine("Playing sound " + (m_PlayIndex+1) + " of " + m_Size);
+		if ( m_MinRepeatDelay == 0 || Time.time - m_LastTriggerTime > m_MinRepeatDelay )
+		{
+			m_UpdatePlayIndex();
+			
+			// Set Volume & Pitch
+			m_Sources[m_PlayIndex].volume = volume * ( m_Volume + ( (m_VolumeVariance * Random.value) - (m_VolumeVariance / 2) ) );
+			m_Sources[m_PlayIndex].pitch = pitch * ( m_Pitch + ( (m_PitchVariance * Random.value) - (m_PitchVariance / 2) ) );
+			
+			m_Sources[m_PlayIndex].volume *= RL.m_SoundController.m_MixGroupVolumes[(int)m_MixGroup];
+			
+			// Play Sound
+			m_Sources[m_PlayIndex].Play();
+			
+			m_LastTriggerTime = Time.time;
+			
+			//Console.WriteLine("Playing sound " + (m_PlayIndex+1) + " of " + m_Size);
+		}
+		else
+			Debug.Log("Too soon " + this.name);
 	}
 	
 	public override void Stop()

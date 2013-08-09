@@ -438,6 +438,10 @@ public class Player : MonoBehaviour
 				m_animFrame = 11;
 			
 			m_animFrameTime = 1.0f/m_animFrameSpeed;
+			
+			RL.m_SoundController.Play("Elvis_Jump");
+			RL.m_MusicPlayer.Fade("VLV_BongoLoop", 0.0f, 1.0f, 0.5f, false);
+			
 			break;
 			
 		case PlayerAnimState.JUMP_SAILING:
@@ -469,6 +473,9 @@ public class Player : MonoBehaviour
 			m_animFrameTime = 0.2f/m_animFrameSpeed;
 			
 			m_realAnimRunSpeed = m_animRunSpeed + 15.0f;
+			
+			RL.m_MusicPlayer.Fade("VLV_BongoLoop", 1.0f, 1.0f, 0.5f, false);
+			
 			break;
 			
 		case PlayerAnimState.COLLIDE_WALL:

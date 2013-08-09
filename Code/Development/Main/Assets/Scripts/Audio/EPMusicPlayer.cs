@@ -92,6 +92,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	// Play functions
 	public void PlaySegment ( string segName, Flags flags = Flags.None, EPMusicSegment.CueType cueType = EPMusicSegment.CueType.NONE )
 	{
+		Debug.Log("Play Segment: " + segName);
 		int i = GetSegmentIndex( segName );
 		if ( i >= 0 )
 			PlaySegment ( i, flags, cueType );
@@ -118,7 +119,7 @@ public class EPMusicPlayer : MonoBehaviour {
 				if ( ( flags & Flags.IsMaster ) == Flags.IsMaster )
 				{
 					SetMaster(seg);
-					Debug.Log("Master");
+					Debug.Log("Master Segment");
 				}
 				
 				seg.Play();
@@ -201,10 +202,12 @@ public class EPMusicPlayer : MonoBehaviour {
 			seg.Stop();
 			//Debug.Log("Stop segment " + i );
 			if ( seg == m_MasterSegment )
+			{
 				m_MasterSegment = null;
+				ClearQueue();
+			}
 		}
 		
-		ClearQueue();
 	}	
 	
 	// TogglePause functions
