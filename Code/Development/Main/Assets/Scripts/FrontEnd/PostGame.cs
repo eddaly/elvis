@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class PostGame : MonoBehaviour {
 	
 #pragma warning disable 414
 	
 	//persistent
-	FastGUIElement General_Background;
+	//FastGUIElement General_Background;
 	FastGUIElement General_BackButton;
 	FastGUIElement General_CoinDisplay;
 	
@@ -27,9 +27,10 @@ public class NewBehaviourScript : MonoBehaviour {
 		FastGUIElement.uvxmlFile = @"assets//resources//PostGame_Atlas.xml";
 		
 		//persistent
-		General_Background = new FastGUIElement (
+		/*General_Background = new FastGUIElement (
 			new Vector2 (0, 0),
 			FastGUIElement.UVsFrom (@"General_Background.png"));
+		*/
 		
 		General_BackButton = new FastGUIElement (
 			new Vector2 (0,0),
