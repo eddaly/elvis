@@ -65,7 +65,7 @@ public class Challenges : MonoBehaviour {
   		*/
 		
 		//persistent
-		Store_Background = new FastGUIElement (
+		General_Background = new FastGUIElement (
 			new Vector2 (0, 0),
 			FastGUIElement.UVsFrom (@"Store_Background.png"));
 		
