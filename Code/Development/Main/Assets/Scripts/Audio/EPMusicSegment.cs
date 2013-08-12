@@ -52,16 +52,6 @@ public class EPMusicSegment : EPSound {
 	}// Update	
 	
 	// Overrides
-	public override void Play()
-	{
-		base.Play();
-	}
-	
-	public void PlayDelayed(float delay)
-	{
-		m_Sources[0].PlayDelayed(delay);
-	}
-	
 	public override void Stop()
 	{
 		foreach ( AudioSource source in m_Sources )

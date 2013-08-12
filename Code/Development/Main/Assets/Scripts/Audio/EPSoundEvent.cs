@@ -18,6 +18,10 @@ public class EPSoundEvent : MonoBehaviour {
 	
 	public virtual void Play ( float volume, float pitch ) {}
 	
+	public virtual void PlayDelayed ( float delay ) {}
+	
+	public virtual void PlayDelayed ( float volume, float pitch, float delay ) {}
+	
 	public virtual void Stop() {}
 	
 	public virtual void Pause() {}

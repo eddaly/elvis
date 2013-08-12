@@ -21,13 +21,11 @@ public class EPSoundController : MonoBehaviour
 	[HideInInspector]
 	public float[] m_MixGroupVolumes;
 	[HideInInspector]
-	public float m_GlobalSFXVolume = 1.0f;
+	public float m_GlobalSFXVolume;
 	[HideInInspector]
-	public float m_GlobalMusicVolume = 1.0f;
+	public float m_GlobalMusicVolume;
 	[HideInInspector]
-	public float m_GlobalVOVolume = 1.0f;
-	[HideInInspector]
-	public float m_DuckingAmount = 1.0f;
+	public float m_DuckingAmount;
 	[HideInInspector]
 	public List<EPSoundEvent> m_StingQueue = new List<EPSoundEvent>();
 	
@@ -94,6 +92,11 @@ public class EPSoundController : MonoBehaviour
 		m_MixGroupVolumes[(int)MixGroup.SFX] = 1.0f;
 		m_MixGroupVolumes[(int)MixGroup.MUSIC] = 1.0f;
 		m_MixGroupVolumes[(int)MixGroup.VO] = 1.0f;
+		
+		// Initialise global volumes
+		m_GlobalSFXVolume = 1.0f;		// TODO: Take from savegame
+		m_GlobalMusicVolume = 1.0f;		// TODO: Take from savegame
+		m_DuckingAmount = 1.0f;
 		
 		/// Listen for EPMusicPlayer beat notifications
 		NotificationCenter.DefaultCenter.AddObserver(this, "NotifyBeat");
