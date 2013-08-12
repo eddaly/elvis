@@ -100,6 +100,9 @@ public sealed class InputManager
 	{
 		bool forcePress = false;
 		
+		for( int t = 0; t<2; t++ )
+			m_touchPressed[t] = false;
+		
         if (Input.touchCount > 0) 
         {
             Touch touch = Input.touches[0];
@@ -115,7 +118,7 @@ public sealed class InputManager
 				m_touchInput[1] = false;
 				
 				m_detectDelay = m_downDetectDelay;
-				m_downDetectDelay = 1;
+				m_downDetectDelay = 2;
                 break;
             
             case TouchPhase.Moved:

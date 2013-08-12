@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 	public void ResetForLevel()
 	{
 		m_Coins = 0;
-		m_Position = new Vector3( 3.0f, 4.0f, 0.0f );		
+		m_Position = new Vector3( 3.0f, 1.0f, 0.0f );		
 		
 		m_lastPosition = new Vector3( 0.0f, 0.0f, 0.0f );
 		
@@ -170,8 +170,8 @@ public class Player : MonoBehaviour
 		
 		
 		//	Maybe do a jump while running
-		if( InputManager.Get.GetDown( 0 ) && m_animState == PlayerAnimState.RUNNING &&
-			!RL.m_Sequencer.m_ChargeZoom )
+		if( ( InputManager.Get.GetDown( 0 ) || InputManager.Get.GetPressed( 0 ) )
+			&& m_animState == PlayerAnimState.RUNNING && !RL.m_Sequencer.m_ChargeZoom )
 		{
 			changeState( PlayerAnimState.JUMP_TAKE_OFF );
 			
@@ -325,10 +325,11 @@ public class Player : MonoBehaviour
 			m_Position.y = m_CollisionBox.m_PlatformCollisionPoint.y + m_collisionHeight*0.5f;
 			m_CollisionBox.m_PlatformCollision.SetHighlight();
 
+			m_jumpVelocity = 0.0f;
+			
 			if( m_animState != PlayerAnimState.RUNNING && m_animState != PlayerAnimState.JUMP_LANDED &&
 				m_animState != PlayerAnimState.COLLIDE_WALL )
 			{
-				m_jumpVelocity = 0.0f;
 				changeState( PlayerAnimState.JUMP_LANDED );
 			}
 		}

@@ -348,7 +348,12 @@ public class SequenceManager : MonoBehaviour
 			runDist += 10.0f;		// offset so it starts just before you hit 500
 
 			m_ChargeZoom = false;
-			m_cameraPos.SetApproachTime( new Vector3( 20.0f, 500.0f, 20.0f ) );
+			
+			float approachMod = dist + 0.1f;
+			if( approachMod > 1.0f )
+				approachMod = 1.0f;
+			
+			m_cameraPos.SetApproachTime( new Vector3( 20.0f*approachMod, 500.0f*approachMod, 20.0f*approachMod ) );
 			
 			if( runDist < 20.0f )
 			{
@@ -393,7 +398,9 @@ public class SequenceManager : MonoBehaviour
 		//	so 7.6 above the zoom = 0 vector.
 		
 		//	SO! (playerY/7.5)*7.8
-		if( dist < 1.0f )
+		if( RL.m_MainLoop.m_CurrentState == MainLoop.GameState.INTRO )
+			m_snapCamera = true;
+		else if( dist < 1.0f )
 		{
 			float playerY = RL.m_Player.m_CollisionBox.m_CollisionBoxBase.y;
 			
