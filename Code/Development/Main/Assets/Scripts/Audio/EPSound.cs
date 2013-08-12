@@ -94,10 +94,20 @@ public class EPSound : EPSoundEvent {
 	// Overrides for EPSoundEvent functions
 	public override void Play()
 	{
-			Play (1.0f, 1.0f);
+		PlayDelayed (1.0f, 1.0f, 0.0f);
+	}
+	
+	public override void Play( float volume, float pitch )
+	{
+		PlayDelayed ( volume, pitch, 0.0f );
+	}
+	
+	public override void PlayDelayed ( float delay )
+	{
+		PlayDelayed ( 1.0f, 1.0f, delay );
 	}
 
-	public override void Play ( float volume, float pitch )
+	public override void PlayDelayed ( float volume, float pitch, float delay )
 	{
 		if ( m_MinRepeatDelay == 0 || Time.time - m_LastTriggerTime > m_MinRepeatDelay )
 		{
@@ -107,12 +117,18 @@ public class EPSound : EPSoundEvent {
 			m_Sources[m_PlayIndex].volume = volume * ( m_Volume + ( (m_VolumeVariance * Random.value) - (m_VolumeVariance / 2) ) );
 			m_Sources[m_PlayIndex].pitch = pitch * ( m_Pitch + ( (m_PitchVariance * Random.value) - (m_PitchVariance / 2) ) );
 			
-			m_Sources[m_PlayIndex].volume *= RL.m_SoundController.m_MixGroupVolumes[(int)m_MixGroup];
+			float globalVol = RL.m_SoundController.m_GlobalSFXVolume;
+			
+			// Adjust for Global / MixGroup volumes
+			if ( m_MixGroup == EPSoundController.MixGroup.MUSIC )
+				globalVol = RL.m_SoundController.m_GlobalMusicVolume;
+					
+			m_Sources[m_PlayIndex].volume *= ( RL.m_SoundController.m_MixGroupVolumes[(int)m_MixGroup] * globalVol );
 			
 			// Play Sound
-			m_Sources[m_PlayIndex].Play();
+			m_Sources[m_PlayIndex].PlayDelayed( delay );
 			
-			m_LastTriggerTime = Time.time;
+			m_LastTriggerTime = ( Time.time + delay );
 			
 			//Console.WriteLine("Playing sound " + (m_PlayIndex+1) + " of " + m_Size);
 		}
