@@ -96,7 +96,7 @@ public class EPSoundController : MonoBehaviour
 		// Initialise global volumes
 		m_GlobalSFXVolume = 1.0f;		// TODO: Take from savegame
 		m_GlobalMusicVolume = 1.0f;		// TODO: Take from savegame
-		m_DuckingAmount = 1.0f;			// TODO: Take from savegame
+		m_DuckingAmount = 1.0f;
 		
 		/// Listen for EPMusicPlayer beat notifications
 		NotificationCenter.DefaultCenter.AddObserver(this, "NotifyBeat");
