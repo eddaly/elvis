@@ -156,7 +156,7 @@ public sealed class PrimitiveLibrary
 			g_NumbersBatchSize, 
 			m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS], 
 			(int)TextureAtlas.AtlasID.NUMBERS, 
-			false, true, false, 0 
+			false, true, false, 8 
 			);
 		m_quadBatches[(int)QuadBatch.NUMBERS_BATCH].transform.localPosition = Vector3.zero;
 		
