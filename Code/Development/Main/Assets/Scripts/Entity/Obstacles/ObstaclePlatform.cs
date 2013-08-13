@@ -22,17 +22,20 @@ public class ObstaclePlatform : Obstacle
 			if( m_QuadRenderer != null )
 				Debug.Log( "!** Showing an already visible platform" );
 				
-			m_QuadRenderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.PLATFORM_BATCH );
-			
-			m_QuadRenderer.m_Colour = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
-			m_QuadRenderer.m_Position = transform.position;
-			m_QuadRenderer.m_Rotation = 0.0f;
-			m_QuadRenderer.m_Scale = new Vector2( m_Width, 0.2f );
-			
-			if( m_PassThrough )
-				m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.PASS_THROUGH;
-			else
-				m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.SOLID;
+			if( Mathf.Abs( transform.position.y ) > 0.1f )
+			{
+				m_QuadRenderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.PLATFORM_BATCH );
+				
+				m_QuadRenderer.m_Colour = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+				m_QuadRenderer.m_Position = transform.position;
+				m_QuadRenderer.m_Rotation = 0.0f;
+				m_QuadRenderer.m_Scale = new Vector2( m_Width, 0.2f );
+				
+				if( m_PassThrough )
+					m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.PASS_THROUGH;
+				else
+					m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.SOLID;
+			}
 		}
 	}	
 	

@@ -84,5 +84,7 @@ public class ObstacleKillBox : Obstacle
 		
 		//	If we got this far, then there's some overlap, so set the collision
 		playerBox.m_KillCollision = this;
+		playerBox.m_KillCollisionPoint = currentPos;
+		playerBox.m_KillCollisionPoint.x -= halfMyWidth;
 	}
 }
