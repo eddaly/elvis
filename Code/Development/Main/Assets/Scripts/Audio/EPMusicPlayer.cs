@@ -102,7 +102,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	{
 		EPMusicSegment seg = m_Segments[i];
 		
-		if ( seg != null )
+		if ( seg != null && !seg.IsPlaying() )
 		{
 			if ( cueType == EPMusicSegment.CueType.NONE )
 				cueType = seg.m_CueType;
