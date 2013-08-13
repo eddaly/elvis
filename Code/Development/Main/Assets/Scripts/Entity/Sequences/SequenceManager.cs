@@ -455,15 +455,16 @@ public class SequenceManager : MonoBehaviour
 			m_MetersPerSecond = 8.0f + 15.0f*m_SpeedNormal;
 			break;
 		case MainLoop.GameState.COLLIDED:
-			m_MetersPerSecond = 0.0f;
+			
+			m_MetersPerSecond = -1.5f*((float)(RL.m_Player.m_CollidedBounces));
 			break;
 		case MainLoop.GameState.SUMMARY:
 			break;
 		}
 		
 		if( RL.m_Prototype.m_PlayerType == PrototypeConfiguration.PlayerTypes.BALDY )
-			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.0f;		
+			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.5f;		
 		else
-			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.4f;		
+			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*3.2f;		
 	}
 }

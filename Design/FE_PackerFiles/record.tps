@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>xml</string>
         <key>textureFileName</key>
-        <filename>record.png</filename>
+        <filename>../../Code/Development/Main/Assets/Resources/record_Atlas.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>record.xml</filename>
+        <filename>../../Code/Development/Main/Assets/Resources/record_Atlas.xml</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>

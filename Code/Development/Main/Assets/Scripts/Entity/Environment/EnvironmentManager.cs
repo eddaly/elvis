@@ -182,7 +182,7 @@ public class EnvironmentManager : MonoBehaviour
 			}
 		}
 		
-		logEnvironmentPieces();
+//		logEnvironmentPieces();
 	}
 	
 	void logEnvironmentPieces()

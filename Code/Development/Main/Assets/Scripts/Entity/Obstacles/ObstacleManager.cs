@@ -161,7 +161,7 @@ public class ObstacleManager : MonoBehaviour
 			}
 		}
 		
-		logObstaclePieces();
+//		logObstaclePieces();
 	}
 	
 	void logObstaclePieces()
