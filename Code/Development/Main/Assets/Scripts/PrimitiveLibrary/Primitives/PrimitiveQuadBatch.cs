@@ -165,6 +165,8 @@ public class PrimitiveQuadBatch
 		meshRenderer.sharedMaterial.mainTexture = atlas.m_TexturePage;
 		meshRenderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
 		
+		meshRenderer.sharedMaterial.renderQueue = 3500;
+		
 		return gameObject;
 	}	
 	

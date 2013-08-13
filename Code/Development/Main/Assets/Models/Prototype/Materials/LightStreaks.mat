@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: LightStreaks
-  m_Shader: {fileID: 4800000, guid: d64ea073eea040f45b514fe8bb8f1b1b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 486a79492fb7d084681f8389ea654a9c, type: 3}
   m_ShaderKeywords: []
   m_SavedProperties:
     serializedVersion: 2

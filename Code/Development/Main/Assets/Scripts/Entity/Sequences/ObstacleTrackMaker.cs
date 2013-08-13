@@ -71,10 +71,20 @@ public class ObstacleTrackMaker
 			
 			m_pieceList[index++] = getPieceIndex( PieceType.BLANK, speedNormal );
 			
-			m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
-			m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
-			m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
-			m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+			if( section < 4 )
+			{
+				m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+			}
+			else
+			{
+				m_pieceList[index++] = getPieceIndex( PieceType.BLANK, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
+			}
 			
 			m_pieceList[index++] = getPieceIndex( PieceType.LAYERS, speedNormal );
 			
@@ -138,8 +148,6 @@ public class ObstacleTrackMaker
 			
 			break;
 		}
-		
-		Debug.Log( "returning " + newPiece.ToString() );
 		
 		return newPiece;
 	}
