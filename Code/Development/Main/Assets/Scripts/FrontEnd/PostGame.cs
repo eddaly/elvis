@@ -40,6 +40,10 @@ public class PostGame : MonoBehaviour {
 			new Vector2 (1536,0),
 			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
 		
+		General_CoinDisplay = new FastGUIElement (
+			new Vector2 (1536,0),
+			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
+		
 		//stuff
 		PostGame_Distance = new FastGUIElement (
 			new Vector2 (448, 256),
