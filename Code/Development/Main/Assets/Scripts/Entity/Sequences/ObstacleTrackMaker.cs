@@ -169,7 +169,7 @@ public class ObstacleTrackMaker
 		nextPiece = m_flipflopTrack;
 		m_flipflopTrack = RL.m_Sequencer.m_ObstacleFlipFlop - m_flipflopTrack;
 		
-		return nextPiece;
+//		return nextPiece;
 		////////////////////////////////
 		//	FLIP FLOP TEST
 		////////////////////////////////
