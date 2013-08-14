@@ -30,6 +30,7 @@ public class SequenceManager : MonoBehaviour
 	//	For choosing the various layers and pieces to be viewed in edito mode:
 	public bool m_ShowObstacles = true;
 	public int[] m_ObstaclePieces = new int[2];
+	public int m_ObstacleFlipFlop = 1;
 	
 	
 	public bool[] m_ShowEnvLayers = new bool[(int)(EntityDefs.EnvLayer.NUM)];
@@ -304,7 +305,8 @@ public class SequenceManager : MonoBehaviour
 		if( m_speedLevel > 8 )	m_speedLevel = 8;
 		m_SpeedNormal = ((float)m_speedLevel)/8.0f;
 		
-//		m_SpeedNormal = 1.0f;
+//
+//		m_SpeedNormal = 0.5f;
 	}
 	
 	void setCamera()

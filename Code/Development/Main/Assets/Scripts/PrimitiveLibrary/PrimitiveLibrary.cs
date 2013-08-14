@@ -70,7 +70,7 @@ public sealed class PrimitiveLibrary
 	const int g_FrontendBatchSize = 256;
 	const int g_PlayerBatchSize = 16;
 	const int g_ElvisBatchSize = 16;
-	const int g_ObstacleBatchSize = 100;
+	const int g_ObstacleBatchSize = 256;
 	const int g_CoinsBatchSize = 256;
 	const int g_PlatformBatchSize = 100;
 	
@@ -623,10 +623,32 @@ public sealed class PrimitiveLibrary
 		TextureAtlas obstacleAtlas = m_Atlases[(int)TextureAtlas.AtlasID.OBSTACLES];		
 		obstacleAtlas.m_NumElements = (int)TextureAtlas.Obstacles.NUM;		
 		obstacleAtlas.m_UVSet = new Vector4[obstacleAtlas.m_NumElements];
+				
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLOCK] = new Vector4( 0.25f, 0.0f, 0.5f, 0.125f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLOCK_LEFT] = new Vector4( 0.5f, 0.0f, 0.75f, 0.125f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLOCK_RIGHT] = new Vector4( 0.75f, 0.0f, 1.0f, 0.125f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.COLUMN_BOTTOM] = new Vector4( 0.25f, 0.125f, 0.5f, 0.25f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.COLUMN_MIDDLE] = new Vector4( 0.5f, 0.125f, 0.75f, 0.25f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.COLUMN_TOP] = new Vector4( 0.75f, 0.125f, 1.0f, 0.25f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLACK_LIMO_FRONT] = new Vector4( 0.0f, 0.25f, 0.5f, 0.375f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLACK_LIMO_MIDDLE] = new Vector4( 0.5f, 0.25f, 0.75f, 0.375f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLACK_LIMO_END] = new Vector4( 0.75f, 0.25f, 1.0f, 0.375f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.WHITE_LIMO_FRONT] = new Vector4( 0.0f, 0.375f, 0.5f, 0.5f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.WHITE_LIMO_MIDDLE] = new Vector4( 0.5f, 0.375f, 0.75f, 0.5f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.WHITE_LIMO_END] = new Vector4( 0.75f, 0.375f, 1.0f, 0.5f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.PINK_LIMO_FRONT] = new Vector4( 0.0f, 0.75f, 0.5f, 0.875f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.PINK_LIMO_MIDDLE] = new Vector4( 0.5f, 0.75f, 0.75f, 0.875f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.PINK_LIMO_END] = new Vector4( 0.75f, 0.75f, 1.0f, 0.875f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLUE_LIMO_FRONT] = new Vector4( 0.0f, 0.875f, 0.5f, 1.0f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLUE_LIMO_MIDDLE] = new Vector4( 0.5f, 0.875f, 0.75f, 1.0f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.BLUE_LIMO_END] = new Vector4( 0.75f, 0.875f, 1.0f, 1.0f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.NEON_SIGN] = new Vector4( 0.0f, 0.0f, 0.25f, 0.25f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.NEON_HOTEL] = new Vector4( 0.0f, 0.5f, 0.25f, 0.75f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.NEON_SHOE] = new Vector4( 0.25f, 0.625f, 0.5f, 0.75f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.NEON_COWBOY] = new Vector4( 0.25f, 0.5f, 0.5f, 0.625f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.NEON_CHAPEL] = new Vector4( 0.5f, 0.5f, 0.75f, 0.625f );
+		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.NEON_WIDE] = new Vector4( 0.5f, 0.625f, 1.0f, 0.75f );
 		
-		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.KILLBOX] = new Vector4( 0.0f, 0.5f, 1.0f, 1.0f );
-		obstacleAtlas.m_UVSet[(int)TextureAtlas.Obstacles.KILLCIRCLE] = new Vector4( 0.0f, 0.0f, 1.0f, 0.5f );
-
 		
 		//	Coins atlas
 		TextureAtlas coinsAtlas = m_Atlases[(int)TextureAtlas.AtlasID.COINS];
@@ -716,8 +738,30 @@ public class TextureAtlas
 	
 	public enum Obstacles
 	{
-		KILLBOX,
-		KILLCIRCLE,
+		BLOCK,
+		BLOCK_LEFT,
+		BLOCK_RIGHT,
+		COLUMN_BOTTOM,
+		COLUMN_MIDDLE,
+		COLUMN_TOP,
+		BLACK_LIMO_FRONT,
+		BLACK_LIMO_MIDDLE,
+		BLACK_LIMO_END,
+		WHITE_LIMO_FRONT,
+		WHITE_LIMO_MIDDLE,
+		WHITE_LIMO_END,
+		PINK_LIMO_FRONT,
+		PINK_LIMO_MIDDLE,
+		PINK_LIMO_END,
+		BLUE_LIMO_FRONT,
+		BLUE_LIMO_MIDDLE,
+		BLUE_LIMO_END,
+		NEON_SIGN,
+		NEON_HOTEL,
+		NEON_SHOE,
+		NEON_COWBOY,
+		NEON_CHAPEL,
+		NEON_WIDE,
 		
 		NUM
 	}

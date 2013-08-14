@@ -252,7 +252,11 @@ public class PrimitiveQuadBatch
 			if( quadDef.m_Active )
 			{
 				//	Needed to avoid overflowing texels
-				const float tempHackFudge = 0;//.002f;
+				float tempHackFudge = 0;//.002f;
+				
+				//	Force this back in for in-game
+				if( RL.m_Sequencer != null )
+					tempHackFudge = 0.005f;
 				
 //				Debug.Log( quadDef.m_TextureIdx.ToString() + " is the number" );
 				

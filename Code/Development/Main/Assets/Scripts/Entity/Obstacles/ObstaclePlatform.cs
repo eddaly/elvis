@@ -22,7 +22,9 @@ public class ObstaclePlatform : Obstacle
 			if( m_QuadRenderer != null )
 				Debug.Log( "!** Showing an already visible platform" );
 				
-			if( Mathf.Abs( transform.position.y ) > 0.1f )
+			//	Only render platforms that you can pass through - based on the assumption that no 
+			//	solid platforms float in mid air without an object beneath them
+			if( m_PassThrough )
 			{
 				m_QuadRenderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.PLATFORM_BATCH );
 				
@@ -31,10 +33,10 @@ public class ObstaclePlatform : Obstacle
 				m_QuadRenderer.m_Rotation = 0.0f;
 				m_QuadRenderer.m_Scale = new Vector2( m_Width, 0.2f );
 				
-				if( m_PassThrough )
+//				if( m_PassThrough )
 					m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.PASS_THROUGH;
-				else
-					m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.SOLID;
+//				else
+//					m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.SOLID;
 			}
 		}
 	}	
