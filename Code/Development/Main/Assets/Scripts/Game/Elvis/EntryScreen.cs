@@ -19,9 +19,13 @@ public class EntryScreen : MonoBehaviour
 	public float m_TransitionTarget = 1.0f;
 	public float m_TransitionSpeed = 4.0f;
 	
-	void Start() 
+	void Start()
 	{
-		m_backPlane = transform.FindChild( "Plane" ).gameObject;	
+		Transform foundTransform;		
+		
+		foundTransform = transform.FindChild( "Plane" );
+		if( foundTransform != null )
+			m_backPlane = foundTransform.gameObject;
 	}
 	
 	void Update() 

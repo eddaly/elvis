@@ -159,11 +159,14 @@ public sealed class InputManager
 					m_touchPressed[t] = false;
 								
 				m_oldTouchInput[t] = m_touchInput[t];
-			}
-			
-			if( forcePress )
-				m_touchPressed[0] = true;
+			}			
         }
+		
+		if( forcePress )
+			m_touchPressed[0] = true;
+		
+		if( RL.m_Player.m_highAnalogueTimer > 0.0f )
+			m_touchPressed[1] = false;
 	}
 	
 	public bool GetPressed( int idx )

@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 	
 	float m_fallTimer = 0.0f;
 	
-	float m_highAnalogueTimer = 0.0f;
+	public float m_highAnalogueTimer = 0.0f;
 	
 	float m_gravity = -50.0f;
 	
