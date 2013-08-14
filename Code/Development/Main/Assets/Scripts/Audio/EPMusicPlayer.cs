@@ -92,7 +92,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	// Play functions
 	public void PlaySegment ( string segName, Flags flags = Flags.None, EPMusicSegment.CueType cueType = EPMusicSegment.CueType.NONE )
 	{
-		Debug.Log("Play Segment: " + segName);
+		Debug.Log("Play Segment: " + segName + " @ " + Time.time);
 		int i = GetSegmentIndex( segName );
 		if ( i >= 0 )
 			PlaySegment ( i, flags, cueType );
@@ -102,7 +102,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	{
 		EPMusicSegment seg = m_Segments[i];
 		
-		if ( seg != null )
+		if ( seg != null && !seg.IsPlaying() )
 		{
 			if ( cueType == EPMusicSegment.CueType.NONE )
 				cueType = seg.m_CueType;
@@ -111,6 +111,7 @@ public class EPMusicPlayer : MonoBehaviour {
 			{
 				SetMaster(seg);
 				seg.Play();
+				Debug.Log("Play Segment: " + i + " @ " + Time.time);
 			}
 			else if ( cueType == EPMusicSegment.CueType.INSTANT )
 			{
@@ -123,7 +124,7 @@ public class EPMusicPlayer : MonoBehaviour {
 				}
 				
 				seg.Play();
-				//Debug.Log("Play segment " + i );
+				Debug.Log("Play Segment: " + i + " @ " + Time.time);
 			}
 			else
 			{
@@ -154,7 +155,7 @@ public class EPMusicPlayer : MonoBehaviour {
 				if ( ( flags & Flags.IsMaster ) == Flags.IsMaster )
 				{
 					m_QueuedMaster = true;
-					Debug.Log("Queued Master");
+					Debug.Log("Queued Master to " + m_QueueTime);
 				}
 				else
 					m_QueuedMaster = false;
@@ -269,11 +270,10 @@ public class EPMusicPlayer : MonoBehaviour {
 				
 				if ( m_QueuedMaster == true )
 				{
-					Debug.Log ("Stopping master: " + m_MasterSegment);
+					Debug.Log ("Stopping master: " + m_MasterSegment + " @ " + Time.time);
 					m_MasterSegment.Stop();
-					Debug.Log ("Master is: " + m_MasterSegment);
 					SetMaster(m_QueuedSegment);
-					Debug.Log ("Master is: " + m_MasterSegment);
+					Debug.Log ("Master is: " + m_MasterSegment + " @ " + Time.time);
 				}
 				m_QueuedSegment = null;
 			}
