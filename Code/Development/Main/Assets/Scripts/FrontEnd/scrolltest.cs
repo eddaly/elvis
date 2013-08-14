@@ -58,7 +58,7 @@ public class scrolltest : MonoBehaviour {
 	void Update ()
 	{			
 		if (testAutoScroll)	{
-			if (!vScrollWindow.ScrollUVs (new Vector2 (0, Time.deltaTime * 100)))
+			if (!vScrollWindow.ScrollUVs (new Vector2 (0, GlobalData.Get.m_GlobalDTime * 100)))
 				testAutoScroll = false;
 		}
 

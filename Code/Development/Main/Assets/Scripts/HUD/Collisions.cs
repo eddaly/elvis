@@ -55,7 +55,7 @@ public class Collisions : MonoBehaviour
 		
 		//	Using it for coins now
 		m_coins.m_Target = RL.m_Player.m_Coins;
-		m_coins.Update( Time.deltaTime );
+		m_coins.Update( GlobalData.Get.m_GlobalDTime );
 		m_coins.Snap( 5.0f );
 		
 		m_fontNumber.m_Number = (int)(m_coins.m_Pos);

@@ -33,7 +33,7 @@ public class EntryScreen : MonoBehaviour
 		{
 			m_transitioningIn = true;
 			
-			m_transitionValue += Time.deltaTime*m_TransitionSpeed;
+			m_transitionValue += GlobalData.Get.m_GlobalDTime*m_TransitionSpeed;
 			if( m_transitionValue > m_TransitionTarget )
 				m_transitionValue = m_TransitionTarget;
 		}
@@ -42,7 +42,7 @@ public class EntryScreen : MonoBehaviour
 		{
 			m_transitioningIn = false;
 			
-			m_transitionValue -= Time.deltaTime*m_TransitionSpeed;
+			m_transitionValue -= GlobalData.Get.m_GlobalDTime*m_TransitionSpeed;
 			if( m_transitionValue < m_TransitionTarget )
 				m_transitionValue = m_TransitionTarget;
 		}

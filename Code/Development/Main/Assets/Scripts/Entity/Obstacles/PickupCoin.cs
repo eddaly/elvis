@@ -122,7 +122,7 @@ public class PickupCoin : Obstacle
 		if( m_collected )
 			return;
 		
-		m_animFrame -= Time.deltaTime;
+		m_animFrame -= GlobalData.Get.m_GlobalDTime;
 		
 		if( m_animFrame < 0.0f )
 		{			

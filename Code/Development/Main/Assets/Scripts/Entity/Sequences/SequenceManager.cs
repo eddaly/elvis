@@ -227,7 +227,7 @@ public class SequenceManager : MonoBehaviour
 	//			when a piece goes off screen to the left
 	void updatePlayMode()
 	{
-		m_MasterDistance += Time.deltaTime*m_MetersPerSecond;
+		m_MasterDistance += GlobalData.Get.m_GlobalDTime*m_MetersPerSecond;
 		
 		if( !m_playModeSequenceInitialised )
 		{
@@ -427,9 +427,9 @@ public class SequenceManager : MonoBehaviour
 		}
 		
 		m_cameraPos.SetTarget( newPos );
-		m_cameraPos.Update( Time.deltaTime );
+		m_cameraPos.Update( GlobalData.Get.m_GlobalDTime );
 		m_cameraAngle.SetTarget( newAng );
-		m_cameraAngle.Update( Time.deltaTime );
+		m_cameraAngle.Update( GlobalData.Get.m_GlobalDTime );
 		
 		if( m_snapCamera || judder )
 		{

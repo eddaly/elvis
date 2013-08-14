@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 	public int m_CollidedBounces = 2;
 	
 	public Vector3 m_Position;
-	float m_yRendererOffset = 0.4f;
+	float m_yRendererOffset = 0.45f;
 	
 	public int m_Coins = 0;
 	
@@ -150,23 +150,23 @@ public class Player : MonoBehaviour
 
 	void updateRunningState()
 	{
-		m_fallTimer -= Time.deltaTime;
+		m_fallTimer -= GlobalData.Get.m_GlobalDTime;
 		if( m_fallTimer < 0.0f )
 			m_fallTimer = 0.0f;
 
-		m_highAnalogueTimer -= Time.deltaTime;
+		m_highAnalogueTimer -= GlobalData.Get.m_GlobalDTime;
 		if( m_highAnalogueTimer < 0.0f )
 			m_highAnalogueTimer = 0.0f;
 		
 		if( m_realAnimRunSpeed > m_animRunSpeed )
 		{
-			m_realAnimRunSpeed -= Time.deltaTime*40.0f;
+			m_realAnimRunSpeed -= GlobalData.Get.m_GlobalDTime*40.0f;
 			if( m_realAnimRunSpeed < m_animRunSpeed )
 				m_realAnimRunSpeed = m_animRunSpeed;
 		}
 		if( m_realAnimRunSpeed < m_animRunSpeed )
 		{
-			m_realAnimRunSpeed += Time.deltaTime*40.0f;
+			m_realAnimRunSpeed += GlobalData.Get.m_GlobalDTime*40.0f;
 			if( m_realAnimRunSpeed > m_animRunSpeed )
 				m_realAnimRunSpeed = m_animRunSpeed;
 		}
@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
 		{
 			if( InputManager.Get.GetDown( 0 ) && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.4f  )
 			{
-				m_jumpVelocity += Time.deltaTime*60.0f;
+				m_jumpVelocity += GlobalData.Get.m_GlobalDTime*60.0f;
 			}
 			
 			if( InputManager.Get.GetDown( 1 ) && m_Position.y > 1.0f && m_jumpVelocity > -baseDropVel &&
@@ -216,7 +216,7 @@ public class Player : MonoBehaviour
 		{
 			if( InputManager.Get.GetDown( 0 ) && m_animState != PlayerAnimState.RUNNING && m_highAnalogueTimer > 0.0f && m_highAnalogueTimer < 0.15f )
 			{
-				m_jumpVelocity += Time.deltaTime*60.0f;
+				m_jumpVelocity += GlobalData.Get.m_GlobalDTime*60.0f;
 			}
 			
 			if( InputManager.Get.GetDown( 1 ) && m_Position.y > 1.0f &&	m_jumpVelocity > -baseDropVel &&
@@ -260,21 +260,21 @@ public class Player : MonoBehaviour
 		if( m_animState != PlayerAnimState.RUNNING && m_animState != PlayerAnimState.JUMP_LANDED )
 		{
 			Vector3 position = m_Position;
-			position.y += m_jumpVelocity*Time.deltaTime;
+			position.y += m_jumpVelocity*GlobalData.Get.m_GlobalDTime;
 			
 			if( RL.m_Prototype.m_JumpType == PrototypeConfiguration.JumpTypes.FAST_DIGITAL )
 			{
 				if( m_jumpVelocity > 0.0f )
 				{
-					m_jumpVelocity += (m_gravity*10)*Time.deltaTime;
+					m_jumpVelocity += (m_gravity*10)*GlobalData.Get.m_GlobalDTime;
 					if( m_jumpVelocity < 0.0f )
 						m_jumpVelocity = 0.0f;
 				}
 				else
-					m_jumpVelocity += (m_gravity*0.5f)*Time.deltaTime;
+					m_jumpVelocity += (m_gravity*0.5f)*GlobalData.Get.m_GlobalDTime;
 			}
 			else
-				m_jumpVelocity += m_gravity*Time.deltaTime;
+				m_jumpVelocity += m_gravity*GlobalData.Get.m_GlobalDTime;
 						
 			m_Position = position;
 		}
@@ -289,14 +289,14 @@ public class Player : MonoBehaviour
 	void updateCollidedState()
 	{
 		Vector3 position = m_Position;
-		position.y += m_jumpVelocity*Time.deltaTime;
+		position.y += m_jumpVelocity*GlobalData.Get.m_GlobalDTime;
 
 		//	Be a bit more floaty when bum bouncing
 		float gravityMod = 1.0f;
 		if( m_CollidedBounces < 2 )
 			gravityMod = 0.75f;
 		
-		m_jumpVelocity += m_gravity*Time.deltaTime*gravityMod;
+		m_jumpVelocity += m_gravity*GlobalData.Get.m_GlobalDTime*gravityMod;
 					
 		m_Position = position;
 	}
@@ -386,7 +386,7 @@ public class Player : MonoBehaviour
 	
 	void animatePlayer()
 	{
-		m_animFrameTime -= Time.deltaTime;
+		m_animFrameTime -= GlobalData.Get.m_GlobalDTime;
 		
 		switch( m_animState )
 		{
@@ -542,5 +542,7 @@ public class Player : MonoBehaviour
 		if( m_renderer != null )
 			PrimitiveLibrary.Get.ReleaseQuadDefinition( m_renderer );
 		m_renderer = null;
+		
+		m_shadowMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
 	}
 }

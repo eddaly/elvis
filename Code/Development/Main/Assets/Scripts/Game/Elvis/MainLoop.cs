@@ -23,6 +23,11 @@ public class MainLoop : MonoBehaviour
 	
 	float m_stateTime = 0.0f;
 	
+	void Awake()
+	{
+		Application.targetFrameRate = 60;
+	}
+	
 	void Start() 
 	{
 		GlobalData.Get.m_GlobalTime = 0.0f;
@@ -33,7 +38,7 @@ public class MainLoop : MonoBehaviour
 	
 	void Update() 
 	{	
-		GlobalData.Get.m_GlobalDTime = Time.deltaTime;
+		GlobalData.Get.m_GlobalDTime = 1/60.0f;//Time.deltaTime;
 		GlobalData.Get.m_GlobalTime += GlobalData.Get.m_GlobalDTime;
 		
 		m_stateTime += GlobalData.Get.m_GlobalDTime;
