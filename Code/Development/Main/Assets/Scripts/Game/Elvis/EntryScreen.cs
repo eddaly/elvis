@@ -11,6 +11,8 @@ using System.Collections;
 
 public class EntryScreen : MonoBehaviour 
 {
+	GameObject m_curtains;
+	
 	GameObject m_backPlane;
 	GameObject m_elvis;
 	GameObject m_ribbons;
@@ -23,8 +25,8 @@ public class EntryScreen : MonoBehaviour
 	
 	bool m_transitioningIn = false;
 	
-	float m_transitionValue = 0.0f;
-	float m_oldTransitionValue = 0.0f;
+	float m_transitionValue = 1.0f;
+	float m_oldTransitionValue = 1.0f;
 	public float m_TransitionTarget = 1.0f;
 	public float m_TransitionSpeed = 0.5f;
 	
@@ -35,6 +37,11 @@ public class EntryScreen : MonoBehaviour
 	void Start()
 	{
 		Transform foundTransform;		
+		
+		foundTransform = transform.FindChild( "Curtains" );
+		if( foundTransform != null )
+			m_curtains = foundTransform.gameObject;
+
 		
 		foundTransform = transform.FindChild( "Background" );
 		if( foundTransform != null )
@@ -124,6 +131,9 @@ public class EntryScreen : MonoBehaviour
 		if( m_transitionValue > m_TransitionTarget )
 		{
 			m_transitioningIn = false;
+			
+			if( m_curtains.activeSelf )
+				m_curtains.SetActive( false );
 			
 			m_transitionValue -= GlobalData.Get.m_GlobalDTime*m_TransitionSpeed;
 			if( m_transitionValue < m_TransitionTarget )

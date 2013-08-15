@@ -26925,6 +26925,59 @@ MonoBehaviour:
   m_Name: 
   m_HighlightColour: 0
   m_Standard: 1
+--- !u!1 &718660998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 718660999}
+  - 33: {fileID: 718661001}
+  - 23: {fileID: 718661000}
+  m_Layer: 9
+  m_Name: Curtains
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718660999
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718660998}
+  m_LocalRotation: {x: 0, y: .707106829, z: -.707106829, w: 0}
+  m_LocalPosition: {x: 1024, y: 768, z: 150}
+  m_LocalScale: {x: 400, y: 400, z: 400}
+  m_Children: []
+  m_Father: {fileID: 1535144219}
+--- !u!23 &718661000
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718660998}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: e526e945ca9e845419e166bdaa82d03e, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+--- !u!33 &718661001
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718660998}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &719865776
 GameObject:
   m_ObjectHideFlags: 0
@@ -49705,7 +49758,7 @@ Prefab:
     - target: {fileID: 11400000, guid: fedf7ee8b0acb40a0aa3cd4928e54284, type: 2}
       propertyPath: m_soundBanks.Array.data[0]
       value: 
-      objectReference: {fileID: 100000, guid: d2c0fd4fd0b6b450cbfd4c65d18cd098, type: 2}
+      objectReference: {fileID: 100014, guid: d2c0fd4fd0b6b450cbfd4c65d18cd098, type: 2}
     - target: {fileID: 11400000, guid: fedf7ee8b0acb40a0aa3cd4928e54284, type: 2}
       propertyPath: m_soundBanks.Array.data[1]
       value: 
@@ -52966,7 +53019,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
-  m_MinRepeatDelay: .100000001
+  m_MinRepeatDelay: .10000000149011612
   m_Fading: 0
 --- !u!1 &1318301570
 GameObject:
@@ -60763,9 +60816,9 @@ MonoBehaviour:
   m_Name: 
   m_Sources:
   - {fileID: 400523987}
-  m_Volume: 1.5
+  m_Volume: .400000006
   m_VolumeVariance: 0
-  m_Pitch: 4
+  m_Pitch: 5
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
@@ -62011,6 +62064,7 @@ Transform:
   m_Children:
   - {fileID: 1987543990}
   - {fileID: 1090303486}
+  - {fileID: 718660999}
   - {fileID: 535583010}
   - {fileID: 1800450203}
   - {fileID: 935035011}
@@ -80568,7 +80622,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
-  m_MinRepeatDelay: .100000001
+  m_MinRepeatDelay: .10000000149011612
   m_Fading: 0
 --- !u!1 &2030537323
 GameObject:
@@ -83915,7 +83969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fca502f5ee846efb515a08f79c3399, type: 3}
   m_Name: 
   m_soundBanks:
-  - {fileID: 100000, guid: d2c0fd4fd0b6b450cbfd4c65d18cd098, type: 2}
+  - {fileID: 100014, guid: d2c0fd4fd0b6b450cbfd4c65d18cd098, type: 2}
   - {fileID: 1831018796}
 --- !u!4 &2101030798
 Transform:
