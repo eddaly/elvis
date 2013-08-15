@@ -9,10 +9,10 @@ public class EPMusicSegment : EPSound {
 	public int m_GridSize = 4;
 	public bool m_CuePointSync = true;
 	public CueType m_CueType;
-	public float m_CuePoint;
+	public double m_CuePoint;
 	public bool m_Looping = true;
-	public float m_LoopPoint;
-	public float m_Duration;
+	public double m_LoopPoint;
+	public double m_Duration;
 			
 	public enum CueType
 	{
@@ -70,7 +70,7 @@ public class EPMusicSegment : EPSound {
 	
 	
 	// Member functions
-	public float GetTime()
+	public double GetTime()
 	{
 		if ( m_Sources[0] != null )
 				return m_Sources[0].time;
@@ -84,9 +84,9 @@ public class EPMusicSegment : EPSound {
 		return -1;
 	}
 	
-	public void SetTime( float t )
+	public void SetTime( double t )
 	{
-		m_Sources[0].time = t;
+		m_Sources[0].time = (float)t;
 	}
 	
 	public void SetTimeSamples( int t )

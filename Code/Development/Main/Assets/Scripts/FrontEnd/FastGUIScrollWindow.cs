@@ -78,7 +78,7 @@ public class FastGUIScrollWindow : FastGUIElement
 		if (autoscroll)
 		{
 			Vector2 v2 = new Vector2 (velocity.x, velocity.y);
-			v2 *= Time.deltaTime;	// Scale scroll speed to framerate
+			v2 *= GlobalData.Get.m_GlobalDTime;	// Scale scroll speed to framerate
 			ScrollUVs (v2);
 			// Decelerate until stop
 			velocity = velocity * .9f;

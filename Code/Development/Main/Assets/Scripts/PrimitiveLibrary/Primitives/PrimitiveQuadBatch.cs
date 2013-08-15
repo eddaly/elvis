@@ -256,7 +256,7 @@ public class PrimitiveQuadBatch
 				
 				//	Force this back in for in-game
 				if( RL.m_Sequencer != null )
-					tempHackFudge = 0.005f;
+					tempHackFudge = 0.000f;
 				
 //				Debug.Log( quadDef.m_TextureIdx.ToString() + " is the number" );
 				

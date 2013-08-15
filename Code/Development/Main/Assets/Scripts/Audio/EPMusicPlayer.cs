@@ -5,24 +5,25 @@ using System.Collections.Generic;
 public class EPMusicPlayer : MonoBehaviour {
 
 	public List<EPMusicSegment> m_Segments = new List<EPMusicSegment>();
-	public float m_BPM;
-	public float m_ClockSeconds;
-	public float m_ClockBeats;
-	public float m_LoopBeats;
+	public double m_BPM;
+	public double m_ClockSeconds;
+	public double m_ClockBeats;
+	public double m_LoopBeats;
 	
 	public EPMusicSegment m_MasterSegment = null;
 	
 	EPMusicSegment m_QueuedSegment = null;
 	bool m_QueuedMaster;
-	float m_QueueTime = -1;
+	double m_QueueTime = -1;
 	
-	public float m_loopCountdown;
-	public float m_syncRes = 0.0333f;
-	float m_syncResBeats;
+	public double m_loopCountdown;
+	public double m_syncRes = 0.0333f;
+	double m_syncResBeats;
 	
 	int m_LastNotifiedBeat = 0;
 	int m_LastNotifiedHalfBeat = 0;
 	int m_LastNotifiedQuarterBeat = 0;
+	float m_NotificationOffset = 0.015f;
 	
 	public enum Flags
 	{
@@ -42,7 +43,7 @@ public class EPMusicPlayer : MonoBehaviour {
 		GameObject musicPlayerObject = GameObject.FindWithTag( "SoundController" );
         if( musicPlayerObject == null )
         {
-            Debug.Log( "!** No Music Player object found (SoundController)" );
+            //Debug.Log( "!** No Music Player object found (SoundController)" );
         }
         else
         {
@@ -52,7 +53,7 @@ public class EPMusicPlayer : MonoBehaviour {
 		if( ms_musicPlayer != null )
 	        return ms_musicPlayer;
 		
-		Debug.Log( "!** Couldn't get EPMusicPlayer component" );
+		//Debug.Log( "!** Couldn't get EPMusicPlayer component" );
 		return null;
     }*/
 	
@@ -92,7 +93,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	// Play functions
 	public void PlaySegment ( string segName, Flags flags = Flags.None, EPMusicSegment.CueType cueType = EPMusicSegment.CueType.NONE )
 	{
-		Debug.Log("Play Segment: " + segName + " @ " + Time.time);
+		//Debug.Log("Play Segment: " + segName + " @ " + AudioSettings.dspTime);
 		int i = GetSegmentIndex( segName );
 		if ( i >= 0 )
 			PlaySegment ( i, flags, cueType );
@@ -111,7 +112,7 @@ public class EPMusicPlayer : MonoBehaviour {
 			{
 				SetMaster(seg);
 				seg.Play();
-				Debug.Log("Play Segment: " + i + " @ " + Time.time);
+				//Debug.Log("Play Segment: " + i + " @ " + AudioSettings.dspTime);
 			}
 			else if ( cueType == EPMusicSegment.CueType.INSTANT )
 			{
@@ -120,11 +121,11 @@ public class EPMusicPlayer : MonoBehaviour {
 				if ( ( flags & Flags.IsMaster ) == Flags.IsMaster )
 				{
 					SetMaster(seg);
-					Debug.Log("Master Segment");
+					//Debug.Log("Master Segment");
 				}
 				
 				seg.Play();
-				Debug.Log("Play Segment: " + i + " @ " + Time.time);
+				//Debug.Log("Play Segment: " + i + " @ " + AudioSettings.dspTime);
 			}
 			else
 			{
@@ -147,7 +148,7 @@ public class EPMusicPlayer : MonoBehaviour {
 				}
 				else
 				{
-					Debug.Log("Can't queue segment, no Cue Type defined");
+					//Debug.Log("Can't queue segment, no Cue Type defined");
 				}
 				
 				m_QueuedSegment = seg;
@@ -155,7 +156,7 @@ public class EPMusicPlayer : MonoBehaviour {
 				if ( ( flags & Flags.IsMaster ) == Flags.IsMaster )
 				{
 					m_QueuedMaster = true;
-					Debug.Log("Queued Master to " + m_QueueTime);
+					//Debug.Log("Queued Master to " + m_QueueTime);
 				}
 				else
 					m_QueuedMaster = false;
@@ -256,24 +257,24 @@ public class EPMusicPlayer : MonoBehaviour {
 		if ( m_QueueTime >= 0 )
 		{
 			//Debug.Log ("m_QueueTime = " + m_QueueTime);
-			float now = m_MasterSegment.GetTime();
+			double now = m_MasterSegment.GetTime();
 			
 			// Hi-resolution sync
-			float triggerDelta = m_QueueTime - now;
+			double triggerDelta = m_QueueTime - now;
 			
 			if ( triggerDelta < m_syncRes )
 			{
 				if ( m_QueuedSegment.m_CuePointSync == true )
 					m_QueuedSegment.SetTime( m_QueueTime % m_QueuedSegment.m_LoopPoint );
 				
-				m_QueuedSegment.PlayDelayed( triggerDelta );
+				m_QueuedSegment.PlayScheduled( triggerDelta );
 				
 				if ( m_QueuedMaster == true )
 				{
-					Debug.Log ("Stopping master: " + m_MasterSegment + " @ " + Time.time);
+					//Debug.Log ("Stopping master: " + m_MasterSegment + " @ " + AudioSettings.dspTime);
 					m_MasterSegment.Stop();
 					SetMaster(m_QueuedSegment);
-					Debug.Log ("Master is: " + m_MasterSegment + " @ " + Time.time);
+					//Debug.Log ("Master is: " + m_MasterSegment + " @ " + AudioSettings.dspTime);
 				}
 				m_QueuedSegment = null;
 			}
@@ -356,7 +357,7 @@ public class EPMusicPlayer : MonoBehaviour {
 	}
 	
 	// Retrigger all currently playing segments, with delay argument for tight sync
-	void RetriggerSegments( float delay)
+	void RetriggerSegments( double delay )
 	{
 		foreach ( EPMusicSegment seg in m_Segments )
 		{
@@ -364,7 +365,7 @@ public class EPMusicPlayer : MonoBehaviour {
 			{				
 				//Debug.Log ("Playing " + seg + " with delay: " + delay);
 
-				seg.PlayDelayed(delay);
+				seg.PlayScheduled(delay);
 				seg.SetTime(0);
 			}
 		}
@@ -375,7 +376,7 @@ public class EPMusicPlayer : MonoBehaviour {
 				m_MasterSegment.Stop();
 				SetMaster ( m_QueuedSegment );
 			}
-			m_QueuedSegment.PlayDelayed(delay);
+			m_QueuedSegment.PlayScheduled(delay);
 			m_QueuedSegment.SetTime(0);
 			ClearQueue();
 		}
@@ -417,50 +418,51 @@ public class EPMusicPlayer : MonoBehaviour {
 		//int i = (int)m_ClockBeats;
 		
 		// Send notification early if close to beat boundary
-		int i = (int)( ( m_ClockBeats ) + ( m_syncResBeats / 2 ) );
+		int i = (int)( ( m_ClockBeats ) + ( m_syncResBeats / 2 ) + m_NotificationOffset );
 		
 		if ( i != m_LastNotifiedBeat )
 		{
 			NotificationCenter.DefaultCenter.PostNotification(this, "NotifyBeat");
+		
+			m_LastNotifiedBeat = i;
 		}
 		
-		m_LastNotifiedBeat = i;
 	}
 	
 	// Broadcast every half beat
 	void DoNotifyHalfBeat()
 	{
 		// Send notification early if close to beat boundary
-		int i = (int)( ( m_ClockBeats * 2 ) + ( m_syncResBeats / 2 ) );
+		int i = (int)( ( m_ClockBeats * 2 ) + ( m_syncResBeats / 2 )  + m_NotificationOffset );
 		
 		if ( i != m_LastNotifiedHalfBeat )
 		{
 			NotificationCenter.DefaultCenter.PostNotification(this, "NotifyHalfBeat");
-		}
 		
-		m_LastNotifiedHalfBeat = i;
+			m_LastNotifiedHalfBeat = i;
+		}
 	}
 	
 	// Broadcast every half beat
 	void DoNotifyQuarterBeat()
 	{
 		// Send notification early if close to beat boundary
-		int i = (int)( ( m_ClockBeats * 4 ) + ( m_syncResBeats / 2 ) );
+		int i = (int)( ( m_ClockBeats * 4 ) + ( m_syncResBeats / 2 )  + m_NotificationOffset );
 		
 		if ( i != m_LastNotifiedQuarterBeat )
 		{
 			NotificationCenter.DefaultCenter.PostNotification(this, "NotifyQuarterBeat");
-		}
 		
-		m_LastNotifiedQuarterBeat = i;
+			m_LastNotifiedQuarterBeat = i;
+		}
 	}
 		// Move all of these to the player
-	float GetNextGrid()
+	double GetNextGrid()
 	{
-		float next;
-		float now = m_MasterSegment.GetTime();
-		float beat = 60.0f / m_BPM;
-		float grid = beat * ( 4 / m_MasterSegment.m_GridSize );
+		double next;
+		double now = m_MasterSegment.GetTime();
+		double beat = (double)(60.0f / m_BPM);
+		double grid = beat * ( 4 / m_MasterSegment.m_GridSize );
 		//Debug.Log("Grid size: " + grid);
 		
 		next = ( (int)( now / grid ) + 1 ) * grid;
@@ -469,12 +471,12 @@ public class EPMusicPlayer : MonoBehaviour {
 		return next;
 	}
 	
-	float GetNextBar()
+	double GetNextBar()
 	{
-		float next;
-		float now = m_MasterSegment.GetTime();
-		float beat = 60.0f / m_BPM;
-		float bar = beat * m_MasterSegment.m_TimeSignatureUpper;
+		double next;
+		double now = m_MasterSegment.GetTime();
+		double beat = (double)(60.0f / m_BPM);
+		double bar = beat * m_MasterSegment.m_TimeSignatureUpper;
 		//Debug.Log("Grid size: " + grid);
 		
 		next = ( (int)( now / bar ) + 1 ) * bar;
@@ -525,7 +527,7 @@ public class EPMusicPlayer : MonoBehaviour {
 			m_Segments.Add( child.GetComponent<EPMusicSegment>() );
 		}
 		
-		Debug.Log("Sound lists updated.");
+		Debug.Log("EPMusicPlayer SegmentList updated.");
 	}
 	
 	void ClearLists()

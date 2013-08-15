@@ -19,9 +19,13 @@ public class EntryScreen : MonoBehaviour
 	public float m_TransitionTarget = 1.0f;
 	public float m_TransitionSpeed = 4.0f;
 	
-	void Start() 
+	void Start()
 	{
-		m_backPlane = transform.FindChild( "Plane" ).gameObject;	
+		Transform foundTransform;		
+		
+		foundTransform = transform.FindChild( "Plane" );
+		if( foundTransform != null )
+			m_backPlane = foundTransform.gameObject;
 	}
 	
 	void Update() 
@@ -33,7 +37,7 @@ public class EntryScreen : MonoBehaviour
 		{
 			m_transitioningIn = true;
 			
-			m_transitionValue += Time.deltaTime*m_TransitionSpeed;
+			m_transitionValue += GlobalData.Get.m_GlobalDTime*m_TransitionSpeed;
 			if( m_transitionValue > m_TransitionTarget )
 				m_transitionValue = m_TransitionTarget;
 		}
@@ -42,7 +46,7 @@ public class EntryScreen : MonoBehaviour
 		{
 			m_transitioningIn = false;
 			
-			m_transitionValue -= Time.deltaTime*m_TransitionSpeed;
+			m_transitionValue -= GlobalData.Get.m_GlobalDTime*m_TransitionSpeed;
 			if( m_transitionValue < m_TransitionTarget )
 				m_transitionValue = m_TransitionTarget;
 		}
