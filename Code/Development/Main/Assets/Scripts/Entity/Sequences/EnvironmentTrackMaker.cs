@@ -40,7 +40,7 @@ public class EnvironmentTrackMaker
 		
 		if( layer == (int)EntityDefs.EnvLayer.OVERLAY )
 		{
-			nextPiece = Random.Range( 0, 6 );
+			nextPiece = Random.Range( 0, 5 );
 		}
 		else
 		{

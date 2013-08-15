@@ -227,7 +227,8 @@ public class SequenceManager : MonoBehaviour
 	//			when a piece goes off screen to the left
 	void updatePlayMode()
 	{
-		m_MasterDistance += GlobalData.Get.m_GlobalDTime*m_MetersPerSecond;
+		if( RL.m_MainLoop.m_CurrentState != MainLoop.GameState.TITLE )
+			m_MasterDistance += GlobalData.Get.m_GlobalDTime*m_MetersPerSecond;
 		
 		if( !m_playModeSequenceInitialised )
 		{

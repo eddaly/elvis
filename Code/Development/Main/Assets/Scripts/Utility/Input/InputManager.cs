@@ -118,7 +118,7 @@ public sealed class InputManager
 				m_touchInput[1] = false;
 				
 				m_detectDelay = m_downDetectDelay;
-				m_downDetectDelay = 2;
+				m_downDetectDelay = 3;
                 break;
             
             case TouchPhase.Moved:
