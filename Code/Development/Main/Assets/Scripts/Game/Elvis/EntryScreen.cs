@@ -381,4 +381,26 @@ public class EntryScreen : MonoBehaviour
 			m_letterGlows[l].SetActive( true );
 		}	
 	}
+	
+	void onDestroy()
+	{
+		if( m_backPlane == null )
+			return;
+		
+		//	Set all materials back to default to avoid them continually changing on disk
+		m_curtains.renderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+	
+		m_backPlane.renderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+		m_elvis.renderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+		m_ribbons.renderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+	
+		m_tap.renderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+		m_tapGlow.renderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+	
+		for( int l = 0; l<5; l++ )
+		{
+			m_letters[l].renderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+			m_letterGlows[l].renderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+		}
+	}
 }
