@@ -724,7 +724,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
-  m_MinRepeatDelay: .100000001
+  m_MinRepeatDelay: .10000000149011612
   m_Fading: 0
 --- !u!114 &11400002
 MonoBehaviour:
@@ -739,9 +739,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Sources:
   - {fileID: 8200002}
-  m_Volume: 1.5
+  m_Volume: .400000006
   m_VolumeVariance: 0
-  m_Pitch: 4
+  m_Pitch: 5
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
@@ -787,7 +787,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
-  m_MinRepeatDelay: .100000001
+  m_MinRepeatDelay: .10000000149011612
   m_Fading: 0
 --- !u!114 &11400008
 MonoBehaviour:

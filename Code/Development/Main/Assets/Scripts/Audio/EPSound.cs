@@ -20,7 +20,7 @@ public class EPSound : EPSoundEvent {
 	public float m_PitchVariance;
 	public PlayOrder m_PlayOrder;
 	public EPSoundController.MixGroup m_MixGroup;
-	public float m_MinRepeatDelay = 0;
+	public double m_MinRepeatDelay = 0;
 	//public EPMusicGlobals.MIDIpitch m_RootNote = EPMusicGlobals.MIDIpitch.C_4;
 	
 	public enum PlayOrder {
@@ -40,10 +40,10 @@ public class EPSound : EPSoundEvent {
 	float m_FadeEndVol;
 	float m_FadeStartPitch;
 	float m_FadeEndPitch;
-	float m_FadeStartTime;
-	float m_FadeDuration;
+	double m_FadeStartTime;
+	double m_FadeDuration;
 	
-	float m_LastTriggerTime = 0;
+	double m_LastTriggerTime = 0;
 	
 	// Use this for initialization
 	void Start ()
@@ -94,22 +94,27 @@ public class EPSound : EPSoundEvent {
 	// Overrides for EPSoundEvent functions
 	public override void Play()
 	{
-		PlayDelayed (1.0f, 1.0f, 0.0f);
+		Play (1.0f, 1.0f, 0.0f);
 	}
 	
 	public override void Play( float volume, float pitch )
 	{
-		PlayDelayed ( volume, pitch, 0.0f );
+		Play ( volume, pitch, 0.0f );
 	}
 	
-	public override void PlayDelayed ( float delay )
+	public override void PlayScheduled ( double delay )
 	{
-		PlayDelayed ( 1.0f, 1.0f, delay );
+		Play ( 1.0f, 1.0f, delay );
+	}
+	
+	public override void PlayScheduled ( float volume, float pitch, double delay )
+	{
+		Play ( volume, pitch, delay );
 	}
 
-	public override void PlayDelayed ( float volume, float pitch, float delay )
+	public override void Play ( float volume, float pitch, double delay )
 	{
-		if ( m_MinRepeatDelay == 0 || Time.time - m_LastTriggerTime > m_MinRepeatDelay )
+		if ( m_MinRepeatDelay == 0 || AudioSettings.dspTime - m_LastTriggerTime > m_MinRepeatDelay )
 		{
 			m_UpdatePlayIndex();
 			
@@ -126,14 +131,19 @@ public class EPSound : EPSoundEvent {
 			m_Sources[m_PlayIndex].volume *= ( RL.m_SoundController.m_MixGroupVolumes[(int)m_MixGroup] * globalVol );
 			
 			// Play Sound
-			m_Sources[m_PlayIndex].PlayDelayed( delay );
+			if ( delay > 0 )
+				m_Sources[m_PlayIndex].PlayScheduled( delay );
+			else
+				m_Sources[m_PlayIndex].Play();
 			
-			m_LastTriggerTime = ( Time.time + delay );
+			m_LastTriggerTime = ( AudioSettings.dspTime + delay );
 			
 			//Console.WriteLine("Playing sound " + (m_PlayIndex+1) + " of " + m_Size);
 		}
 		else
-			Debug.Log("Too soon " + this.name);
+		{
+			//Debug.Log("Too soon " + this.name);
+		}
 	}
 	
 	public override void Stop()
@@ -154,7 +164,7 @@ public class EPSound : EPSoundEvent {
 			if ( source != null && source.isPlaying )
 			{
 				source.Pause();
-				Debug.Log("Pausing: " + source.name);
+				//Debug.Log("Pausing: " + source.name);
 			}
 		}
 	}
@@ -166,7 +176,7 @@ public class EPSound : EPSoundEvent {
 			if ( source != null && source.time != 0 )
 			{
 				source.Play();
-				Debug.Log("Resuming: " + source.name);
+				//Debug.Log("Resuming: " + source.name);
 			}
 		}
 	}
@@ -220,9 +230,9 @@ public class EPSound : EPSoundEvent {
 		return 0.0f;
 	}
 	
-	public override void SetFade( float endVol, float endPitch, float duration, bool isFadeOut )
+	public override void SetFade( float endVol, float endPitch, double duration, bool isFadeOut )
 	{
-		m_FadeStartTime = Time.time;
+		m_FadeStartTime = AudioSettings.dspTime;
 		m_FadeDuration = duration;
 		m_FadeStartVol = GetEventVolume();
 		m_FadeStartPitch = GetPitch();
@@ -234,17 +244,17 @@ public class EPSound : EPSoundEvent {
 	
 	public override void ApplyFade()
 	{
-			float fadeClock = Time.time - m_FadeStartTime;
+			double fadeClock = AudioSettings.dspTime - m_FadeStartTime;
 			if ( fadeClock < m_FadeDuration )
 			{
 				if ( m_FadeStartVol != m_FadeEndVol )
 				{
-					float vol = m_FadeStartVol + (( fadeClock / m_FadeDuration ) * ( m_FadeEndVol - m_FadeStartVol ));
+					float vol = m_FadeStartVol + ((float)( fadeClock / m_FadeDuration ) * ( m_FadeEndVol - m_FadeStartVol ));
 					SetVolume ( vol );
 				}
 				if ( m_FadeStartPitch != m_FadeEndPitch )
 				{
-					float pitch = m_FadeStartPitch + (( fadeClock / m_FadeDuration ) * ( m_FadeEndPitch - m_FadeStartPitch ));
+					float pitch = m_FadeStartPitch + ((float)( fadeClock / m_FadeDuration ) * ( m_FadeEndPitch - m_FadeStartPitch ));
 					SetPitch ( pitch );
 				}
 			}
@@ -275,7 +285,7 @@ public class EPSound : EPSoundEvent {
 		return false;
 	}
 	
-	public override float time()
+	public override double time()
 	{
 		foreach ( AudioSource source in m_Sources )
 		{
@@ -285,12 +295,12 @@ public class EPSound : EPSoundEvent {
 		return 0.0f;
 	}
 	
-	public override void time( float time )
+	public override void time( double time )
 	{
 		foreach ( AudioSource source in m_Sources )
 		{
 			if ( source != null && source.isPlaying )
-				source.time = time;
+				source.time = (float)time;
 		}
 	}
 }

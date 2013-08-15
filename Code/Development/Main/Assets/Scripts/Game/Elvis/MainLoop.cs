@@ -99,8 +99,7 @@ public class MainLoop : MonoBehaviour
 		case GameState.INTRO:			
 			// Start the music & queue next segment
 			RL.m_MusicPlayer.PlaySegment ("VLV_Intro_01", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.INSTANT );
-			RL.m_MusicPlayer.PlaySegment ("VLV_BongoLoop", EPMusicPlayer.Flags.None, EPMusicSegment.CueType.INSTANT );
-			RL.m_MusicPlayer.PlaySegment ("VLV_Intro_02", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.END );			
+			RL.m_MusicPlayer.PlaySegment ("VLV_BongoLoop", EPMusicPlayer.Flags.None, EPMusicSegment.CueType.INSTANT );		
 			break;
 			
 		case GameState.RUNNING:
