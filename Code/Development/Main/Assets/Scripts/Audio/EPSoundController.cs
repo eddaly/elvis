@@ -279,7 +279,7 @@ public class EPSoundController : MonoBehaviour
 			}
 		}
 		
-		Debug.Log("Sound lists updated.");
+		Debug.Log("EPSoundController Lists updated.");
 		return 0;
 	}
 	
