@@ -70,7 +70,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   iPhoneBundleIdentifier: com.echopeak.elvis
-  productGUID: 7c67a59b0964f474c9378ebdb1bf0cc2
+  productGUID: 7c7ada7f975c145f9a4f9ff1830c1161
   iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 14
