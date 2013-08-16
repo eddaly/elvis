@@ -379,7 +379,7 @@ public class EntryScreen : MonoBehaviour
 		m_tap.SetActive( true );
 		m_tapGlow.SetActive( true );
 		
-		for( int l = 0; l<5; l++ )
+		for( int l = 5; l<6; l++ )
 		{
 			m_letters[l].SetActive( true );
 			m_letterGlows[l].SetActive( true );
