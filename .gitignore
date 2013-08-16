@@ -22,3 +22,7 @@ Temp
 *.unityproj
 *.sln
 *.userprefs
+
+# Folders
+
+Audio/
