@@ -74,7 +74,7 @@ public class PickupCoin : Obstacle
 		box_center.y += playerBox.m_CollisionBoxDimensions.y*0.5f;
 		
 		float box_width = playerBox.m_CollisionBoxDimensions.x;
-		float box_height = playerBox.m_CollisionBoxDimensions.y*1.75f;
+		float box_height = playerBox.m_CollisionBoxDimensions.y*2.0f;
 		
 		//	Find the closest point within the rectangle to the center of the circle
 		float closestX = Mathf.Clamp( currentPos.x, box_center.x - box_width*0.5f, box_center.x + box_width*0.5f );
