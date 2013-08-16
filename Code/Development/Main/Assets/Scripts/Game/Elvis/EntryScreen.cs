@@ -20,8 +20,8 @@ public class EntryScreen : MonoBehaviour
 	GameObject m_tap;
 	GameObject m_tapGlow;
 	
-	GameObject[] m_letters = new GameObject[5];
-	GameObject[] m_letterGlows = new GameObject[5];
+	GameObject[] m_letters = new GameObject[6];
+	GameObject[] m_letterGlows = new GameObject[6];
 	
 	bool m_transitioningIn = false;
 	
@@ -104,6 +104,10 @@ public class EntryScreen : MonoBehaviour
 		foundTransform = transform.FindChild( "LetterSGlow" );
 		if( foundTransform != null )
 			m_letterGlows[4] = foundTransform.gameObject;
+		
+		foundTransform = transform.FindChild( "ElvisText" );
+		if( foundTransform != null )
+			m_letters[5] = foundTransform.gameObject;
 		
 		
 		m_backPlaneY = -8000.0f;
@@ -339,7 +343,7 @@ public class EntryScreen : MonoBehaviour
 		pulser = Mathf.Abs( pulser*pulser*pulser );
 		
 		Vector3 scale = m_tap.transform.localScale;
-		scale.x = 100.0f*( 1.0f + pulser*0.15f );
+		scale.x = 100.0f*( 1.0f + pulser*0.1f );
 		scale.z = 15.0f*( 1.0f + pulser*0.075f );
 		m_tap.transform.localScale = scale;
 		m_tapGlow.transform.localScale = scale;
