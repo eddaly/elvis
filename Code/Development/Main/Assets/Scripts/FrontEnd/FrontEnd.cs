@@ -3,7 +3,8 @@ using System.Collections;
 
 public class FrontEnd : MonoBehaviour {
 	
-	private PersistentData persistentData;
+	[HideInInspector]
+	public PersistentData persistentData;
 	public Metagame metagame;
 	public string m_AtlasFile = "Frontend_Atlas";
 	public int m_AtlasOriginalWidth = 4096;
@@ -19,7 +20,6 @@ public class FrontEnd : MonoBehaviour {
 			if (instance == null)
 				instance = this;
 		}
-		
 				
 		// Need to specify if want to set UVs with original pixels because Unity rescales texture on load
 		FastGUIElement.SetOriginalAtlasPixels (m_AtlasOriginalWidth, m_AtlasOriginalHeight);

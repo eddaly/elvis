@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b12dbba63ffa4cd2a49f5e614ae4e9f, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &691978812
 Transform:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
       propertyPath: m_AtlasOriginalWidth
-      value: 2046
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
       propertyPath: m_AtlasOriginalHeight
@@ -282,8 +283,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   m_AtlasFile: Frontend_Atlas
-  m_AtlasOriginalWidth: 2046
+  m_AtlasOriginalWidth: 2048
   m_AtlasOriginalHeight: 1536
 --- !u!1 &1922735874
 GameObject:
@@ -311,6 +313,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2cedbe53c23144d2a65428b0245c1e7, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1922735876
 Transform:
   m_ObjectHideFlags: 0

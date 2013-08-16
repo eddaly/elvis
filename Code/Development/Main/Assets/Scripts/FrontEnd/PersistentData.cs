@@ -80,6 +80,9 @@ public class PersistentData : MonoBehaviour {
 	static public bool HasItem (Metagame.UpgradeItems item) {
 		return ((int)upgradeItems & (int)item) != 0;
 	}
+	static public bool IsUpgradeUnlocked (Metagame.Item item) {
+		return item.unlockLevel <= CurrentLevel();
+	}
 	
 	//*************************************************************** Consumables Unlocked
 	static public Metagame.ConsumableUnlocked consumableUnlocked

@@ -12,11 +12,11 @@ public class Startup : MonoBehaviour {
 	
 		playFGE = new FastGUIElement (
 			new Vector2 (0, 0),					// Screen position
-			new Vector4 (0, 0, 2048, 768));		// Atlas position
+			new Rect (0, 0, 2048, 768));		// Atlas position
 		
 		persistentDataFGE = new FastGUIElement (
 			new Vector2 (0, playFGE.height),	// Screen position
-			new Vector4 (0, 768, 2048, 768));	// Atlas position
+			new Rect (0, 768, 2048, 768));	// Atlas position
 	}
 	
 	// Update is called once per frame
