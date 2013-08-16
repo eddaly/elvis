@@ -369,6 +369,10 @@ public class SequenceManager : MonoBehaviour
 				
 				dist = 0.5f;
 				m_ChargeZoom = true;
+				
+				// SpeedBoost sound effect
+				RL.m_SoundController.Play ("SpeedBoost_01");
+				
 			}
 			else if( runDist < 25.0f )
 			{
