@@ -22,6 +22,8 @@ public class AudioLauncher : MonoBehaviour {
 		SetReferences();
 		LoadSoundBanks();
 		
+		//RL.m_SoundController.populateLists();
+		
 		Destroy(this.gameObject);
 	}
 	
@@ -35,6 +37,7 @@ public class AudioLauncher : MonoBehaviour {
 		if ( RL.m_SoundController == null )
 		{
 			RL.m_SoundController = ((GameObject)Instantiate(Resources.Load("SoundController"))).GetComponent<EPSoundController>();
+			RL.m_SoundController.m_StingGrid = EPSoundController.StingGrid.QUARTERBEAT;	
 			RL.m_MusicPlayer = RL.m_SoundController.gameObject.GetComponent<EPMusicPlayer>();
 			//DontDestroyOnLoad(RL.m_SoundController);
 		}
@@ -47,11 +50,11 @@ public class AudioLauncher : MonoBehaviour {
 			// Only load soundbanks which aren't already loaded - check name in instantiated form "name(Clone)"
 			if ( GameObject.Find( sb.name + "(Clone)") == null && GameObject.Find( sb.name ) == null )
 			{
-				Debug.Log("Sound bank not already loaded. Loading.");
+				Debug.Log("Sound bank " + sb.name + " not already loaded. Loading.");
 				((GameObject)Instantiate(sb)).transform.parent = RL.m_SoundController.transform;
 			}
 			else
-				Debug.Log ("Sound bank is already loaded.");
+				Debug.Log ("Sound bank " + sb.name + " is already loaded.");
 			
 			// Move any local soundbanks into the SoundController hierarchy
 			if ( GameObject.Find( sb.name ) != null )

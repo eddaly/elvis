@@ -35,6 +35,7 @@ public class ObstacleTrackMaker
 	public void StartPlayMode() 
 	{
 		m_flipflopTrack = 0;
+		m_pieceListCursor = 0;
 		
 		randomisePieceList();
 	}
@@ -42,6 +43,11 @@ public class ObstacleTrackMaker
 	
 	public void UpdatePlayMode() 
 	{
+	}
+	
+	public void ResetForLevel()
+	{
+		StartPlayMode();
 	}
 	
 	bool coino = false;
@@ -65,10 +71,20 @@ public class ObstacleTrackMaker
 			
 			m_pieceList[index++] = getPieceIndex( PieceType.BLANK, speedNormal );
 			
-			m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
-			m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
-			m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
-			m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+			if( section < 4 )
+			{
+				m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+			}
+			else
+			{
+				m_pieceList[index++] = getPieceIndex( PieceType.BLANK, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.SMALL_JUMPS, speedNormal );
+				m_pieceList[index++] = getPieceIndex( PieceType.COIN_SECTION, speedNormal );
+			}
 			
 			m_pieceList[index++] = getPieceIndex( PieceType.LAYERS, speedNormal );
 			
@@ -123,12 +139,18 @@ public class ObstacleTrackMaker
 			
 			break;
 		case PieceType.SET_PIECE:
-			if( speed_normal < 0.34f )
+			
+			if( Random.Range( 0.0f, 1.0f ) < 0.5f )
+				newPiece = 29;
+			else
+				newPiece = 31;
+			
+/*			if( speed_normal < 0.34f )
 				newPiece = Random.Range( 29, 33 );
 			else if( speed_normal > 0.67f )
 				newPiece = Random.Range( 33, 36 );
 			else
-				newPiece = Random.Range( 36, 40 );
+				newPiece = Random.Range( 36, 40 );*/
 			
 			break;
 		}
@@ -145,7 +167,7 @@ public class ObstacleTrackMaker
 		//	FLIP FLOP TEST
 		////////////////////////////////
 		nextPiece = m_flipflopTrack;
-		m_flipflopTrack = 2 - m_flipflopTrack;
+		m_flipflopTrack = RL.m_Sequencer.m_ObstacleFlipFlop - m_flipflopTrack;
 		
 //		return nextPiece;
 		////////////////////////////////

@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class PostGame : MonoBehaviour {
 	
 #pragma warning disable 414
 	
 	//persistent
-	FastGUIElement General_Background;
+	//FastGUIElement General_Background;
 	FastGUIElement General_BackButton;
 	FastGUIElement General_CoinDisplay;
 	
@@ -27,13 +27,18 @@ public class NewBehaviourScript : MonoBehaviour {
 		FastGUIElement.uvxmlFile = @"assets//resources//PostGame_Atlas.xml";
 		
 		//persistent
-		General_Background = new FastGUIElement (
+		/*General_Background = new FastGUIElement (
 			new Vector2 (0, 0),
 			FastGUIElement.UVsFrom (@"General_Background.png"));
+		*/
 		
 		General_BackButton = new FastGUIElement (
 			new Vector2 (0,0),
 			FastGUIElement.UVsFrom (@"General_BackButton.png"));
+		
+		General_CoinDisplay = new FastGUIElement (
+			new Vector2 (1536,0),
+			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
 		
 		General_CoinDisplay = new FastGUIElement (
 			new Vector2 (1536,0),
@@ -73,10 +78,11 @@ public class NewBehaviourScript : MonoBehaviour {
 			FastGUIElement.UVsFrom (@"PostGame_Continue.png"));
 		
 		//
-		
+		/*
 		PostGame_XPFill = new FastGUIElement (
 			new Vector2 (970, 906),
 			FastGUIElement.UVsFrom (@"PostGame_XPFill.png"));		
+		*/
 	}
 	
 	// Update is called once per frame

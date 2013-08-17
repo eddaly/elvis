@@ -30,6 +30,7 @@ public class SequenceManager : MonoBehaviour
 	//	For choosing the various layers and pieces to be viewed in edito mode:
 	public bool m_ShowObstacles = true;
 	public int[] m_ObstaclePieces = new int[2];
+	public int m_ObstacleFlipFlop = 1;
 	
 	
 	public bool[] m_ShowEnvLayers = new bool[(int)(EntityDefs.EnvLayer.NUM)];
@@ -56,12 +57,7 @@ public class SequenceManager : MonoBehaviour
 	EnvironmentTrackMaker m_EnvironmentTrackMaker = new EnvironmentTrackMaker();
 	
 	void Start() 
-	{
-		if( RL.m_Obstacles )
-		{
-			RL.m_Obstacles.HideAllPieces(); 
-		}
-		
+	{		
 		ResetForLevel();
 	}
 	
@@ -79,6 +75,11 @@ public class SequenceManager : MonoBehaviour
 	// Desc:	Sets the sequence up to begin the level
 	public void ResetForLevel()
 	{
+		if( RL.m_Obstacles )
+		{
+			RL.m_Obstacles.HideAllPieces(); 
+		}
+		
 		m_MasterDistance = 0.0f;
 		m_MetersPerSecond = 8.0f;
 
@@ -226,7 +227,8 @@ public class SequenceManager : MonoBehaviour
 	//			when a piece goes off screen to the left
 	void updatePlayMode()
 	{
-		m_MasterDistance += Time.deltaTime*m_MetersPerSecond;
+		if( RL.m_MainLoop.m_CurrentState != MainLoop.GameState.TITLE )
+			m_MasterDistance += GlobalData.Get.m_GlobalDTime*m_MetersPerSecond;
 		
 		if( !m_playModeSequenceInitialised )
 		{
@@ -304,7 +306,8 @@ public class SequenceManager : MonoBehaviour
 		if( m_speedLevel > 8 )	m_speedLevel = 8;
 		m_SpeedNormal = ((float)m_speedLevel)/8.0f;
 		
-//		m_SpeedNormal = 1.0f;
+//
+//		m_SpeedNormal = 0.5f;
 	}
 	
 	void setCamera()
@@ -348,7 +351,12 @@ public class SequenceManager : MonoBehaviour
 			runDist += 10.0f;		// offset so it starts just before you hit 500
 
 			m_ChargeZoom = false;
-			m_cameraPos.SetApproachTime( new Vector3( 20.0f, 500.0f, 20.0f ) );
+			
+			float approachMod = dist + 0.1f;
+			if( approachMod > 1.0f )
+				approachMod = 1.0f;
+			
+			m_cameraPos.SetApproachTime( new Vector3( 20.0f*approachMod, 500.0f*approachMod, 20.0f*approachMod ) );
 			
 			if( runDist < 20.0f )
 			{
@@ -393,7 +401,9 @@ public class SequenceManager : MonoBehaviour
 		//	so 7.6 above the zoom = 0 vector.
 		
 		//	SO! (playerY/7.5)*7.8
-		if( dist < 1.0f )
+		if( RL.m_MainLoop.m_CurrentState == MainLoop.GameState.INTRO )
+			m_snapCamera = true;
+		else if( dist < 1.0f )
 		{
 			float playerY = RL.m_Player.m_CollisionBox.m_CollisionBoxBase.y;
 			
@@ -418,9 +428,9 @@ public class SequenceManager : MonoBehaviour
 		}
 		
 		m_cameraPos.SetTarget( newPos );
-		m_cameraPos.Update( Time.deltaTime );
+		m_cameraPos.Update( GlobalData.Get.m_GlobalDTime );
 		m_cameraAngle.SetTarget( newAng );
-		m_cameraAngle.Update( Time.deltaTime );
+		m_cameraAngle.Update( GlobalData.Get.m_GlobalDTime );
 		
 		if( m_snapCamera || judder )
 		{
@@ -448,15 +458,16 @@ public class SequenceManager : MonoBehaviour
 			m_MetersPerSecond = 8.0f + 15.0f*m_SpeedNormal;
 			break;
 		case MainLoop.GameState.COLLIDED:
-			m_MetersPerSecond = 0.0f;
+			
+			m_MetersPerSecond = -1.5f*((float)(RL.m_Player.m_CollidedBounces));
 			break;
 		case MainLoop.GameState.SUMMARY:
 			break;
 		}
 		
 		if( RL.m_Prototype.m_PlayerType == PrototypeConfiguration.PlayerTypes.BALDY )
-			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.0f;		
+			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.5f;		
 		else
-			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*2.4f;		
+			RL.m_Player.m_animRunSpeed = m_MetersPerSecond*3.2f;		
 	}
 }

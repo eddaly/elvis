@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Fountain
-  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 1e6fc5df5975e544c8d47351285c1644, type: 3}
   m_ShaderKeywords: []
   m_SavedProperties:
     serializedVersion: 2
@@ -19,9 +19,21 @@ Material:
           m_Texture: {fileID: 2800000, guid: 30b9402ca413aae4ab79e7598f4436a5, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-    m_Floats: {}
+    m_Floats:
+      data:
+        first:
+          name: _Shininess
+        second: .0769606456
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: 1, g: .845841825, b: .441176474, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .576353312, g: .590383232, b: .977611959, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: .0862107351, g: .261001676, b: .268656731, a: 0}

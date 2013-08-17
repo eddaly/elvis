@@ -28,7 +28,7 @@ public class ObstacleKillCircle : Obstacle
 			m_QuadRenderer.m_Position = transform.position;
 			m_QuadRenderer.m_Rotation = 0.0f;
 			m_QuadRenderer.m_Scale = new Vector2( m_Radius*2.0f, m_Radius*2.0f );
-			m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Obstacles.KILLCIRCLE;
+			m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Obstacles.BLOCK;
 		}
 	}
 	

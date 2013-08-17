@@ -99,9 +99,20 @@ public class PickupCoin : Obstacle
 		m_QuadRenderer = null;
 		
 		if( m_Standard )
+		{
 			RL.m_Player.m_Coins += 1;
+			//Debug.Log ("Pickup standard coin");
+			// Pickup sound
+			//RL.m_SoundController.Play("Pickup_01");
+			RL.m_SoundController.PlaySting("Pickup_01");
+		}
 		else
+		{
 			RL.m_Player.m_Coins += 100;
+			//Debug.Log ("Pickup super coin");
+			// Pickup sound
+			RL.m_SoundController.Play("Pickup_02");
+		}
 	}
 	
 	
@@ -111,7 +122,7 @@ public class PickupCoin : Obstacle
 		if( m_collected )
 			return;
 		
-		m_animFrame -= Time.deltaTime;
+		m_animFrame -= GlobalData.Get.m_GlobalDTime;
 		
 		if( m_animFrame < 0.0f )
 		{			

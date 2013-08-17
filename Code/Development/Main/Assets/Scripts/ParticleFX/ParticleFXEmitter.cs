@@ -53,6 +53,7 @@ public class ParticleFXEmitter : MonoBehaviour
 	public float m_TimeToForget;
 	bool m_running;
 	
+	public bool m_Additive = true;
 	public int m_Texture;
 	
 	public float m_ParticleLifetimeMin;
@@ -222,7 +223,10 @@ public class ParticleFXEmitter : MonoBehaviour
 	void emitParticle( int index, float time )
 	{	
 		//	Try to get a quad from the particleFX batch
-		m_particleQuads[index] = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.FX_BATCH );
+		if( m_Additive )
+			m_particleQuads[index] = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.FX_BATCH );
+		else
+			m_particleQuads[index] = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.FX_ALPHA_BATCH );
 
 		//	If we didn't get one, then don't emit
 		if( m_particleQuads[index] == null )

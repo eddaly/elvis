@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:c388018bc15331fb25f6b2c3a18f0f80:1/1$ -->
+<!-- $TexturePacker:SmartUpdate:8cae418b22bdb214958f5e818705c7f6:1/1$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -13,7 +13,7 @@ oW => sprite's original width (only available if trimmed)
 oH => sprite's original height (only available if trimmed)
 r => 'y' only set if sprite is rotated
 -->
-<TextureAtlas imagePath="PostGame.png" width="4096" height="2048">
+<TextureAtlas imagePath="PostGame_Atlas.png" width="4096" height="2048">
     <sprite n="General_BackButton.png" x="1457" y="1734" w="194" h="192"/>
     <sprite n="General_Background.png" x="2" y="2" w="2048" h="1536"/>
     <sprite n="General_CoinDisplay.png" x="1159" y="1540" w="513" h="192"/>
