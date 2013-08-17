@@ -529,6 +529,8 @@ public sealed class PrimitiveLibrary
 		{
 			m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
 				Resources.Load( FrontEnd.instance.m_AtlasFile ) as Texture;
+			if (m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage == null)
+				Debug.Log ("Failed to load Atlas " + FrontEnd.instance.m_AtlasFile);
 		}
 		else
 		{
