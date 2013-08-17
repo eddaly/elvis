@@ -15,13 +15,14 @@ public class EntryScreen : MonoBehaviour
 	
 	GameObject m_backPlane;
 	GameObject m_elvis;
+	GameObject m_elvisText;
 	GameObject m_ribbons;
 	
 	GameObject m_tap;
 	GameObject m_tapGlow;
 	
-	GameObject[] m_letters = new GameObject[5];
-	GameObject[] m_letterGlows = new GameObject[5];
+	GameObject[] m_letters = new GameObject[6];
+	GameObject[] m_letterGlows = new GameObject[6];
 	
 	bool m_transitioningIn = false;
 	
@@ -104,6 +105,10 @@ public class EntryScreen : MonoBehaviour
 		foundTransform = transform.FindChild( "LetterSGlow" );
 		if( foundTransform != null )
 			m_letterGlows[4] = foundTransform.gameObject;
+		
+		foundTransform = transform.FindChild( "ElvisText" );
+		if( foundTransform != null )
+			m_elvisText = foundTransform.gameObject;
 		
 		
 		m_backPlaneY = -8000.0f;
@@ -280,22 +285,15 @@ public class EntryScreen : MonoBehaviour
 		
 		
 		//	Shine letters in left to right
-		for( int l = 0; l<5; l++ )
-		{
-			//	Stagger the normals
-			float letterNormal = phaseNormal[3] - ((float)l)*0.15f;
-			letterNormal /= 0.4f;
-			
-			if( letterNormal < 0.0f )	letterNormal = 0.0f;
-			if( letterNormal > 1.0f )	letterNormal = 1.0f;
-			
-			Material letterMaterial = m_letters[l].renderer.sharedMaterial;
-			letterMaterial.color = new Color( 1.0f, 1.0f, 1.0f, letterNormal );
-			
-			Material letterGlowMaterial = m_letterGlows[l].renderer.sharedMaterial;
-			letterGlowMaterial.color = new Color( letterNormal, letterNormal, letterNormal, 1.0f );
-		}
+		//	Stagger the normals
+		float letterNormal = phaseNormal[3] - ((float)0)*0.15f;
+		letterNormal /= 0.4f;
 		
+		if( letterNormal < 0.0f )	letterNormal = 0.0f;
+		if( letterNormal > 1.0f )	letterNormal = 1.0f;
+		
+		Material letterMaterial = m_elvisText.renderer.sharedMaterial;
+		letterMaterial.color = new Color( 1.0f, 1.0f, 1.0f, letterNormal );
 		
 		//	Stamp tap message in
 		stabNormal = phaseNormal[4]*1.5f;
@@ -339,7 +337,7 @@ public class EntryScreen : MonoBehaviour
 		pulser = Mathf.Abs( pulser*pulser*pulser );
 		
 		Vector3 scale = m_tap.transform.localScale;
-		scale.x = 100.0f*( 1.0f + pulser*0.15f );
+		scale.x = 100.0f*( 1.0f + pulser*0.1f );
 		scale.z = 15.0f*( 1.0f + pulser*0.075f );
 		m_tap.transform.localScale = scale;
 		m_tapGlow.transform.localScale = scale;
@@ -371,15 +369,12 @@ public class EntryScreen : MonoBehaviour
 		m_backPlane.SetActive( true );
 		m_elvis.SetActive( true );
 		m_ribbons.SetActive( true );
+		m_elvisText.SetActive( true );
 	
 		m_tap.SetActive( true );
 		m_tapGlow.SetActive( true );
 		
-		for( int l = 0; l<5; l++ )
-		{
-			m_letters[l].SetActive( true );
-			m_letterGlows[l].SetActive( true );
-		}	
+		
 	}
 	
 	void onDestroy()

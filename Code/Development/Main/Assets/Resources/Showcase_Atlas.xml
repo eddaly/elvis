@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:909baf3ab631c428e9113fe5d37df500:1/1$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="Showcase_Atlas.png" width="2048" height="2048">
+    <sprite n="Showcase_BuyButton.png" x="2" y="2" w="446" h="256"/>
+    <sprite n="Showcase_CancelButton.png" x="450" y="2" w="448" h="255"/>
+    <sprite n="Showcase_ItemDesc.png" x="900" y="2" w="1024" h="702"/>
+    <sprite n="Showcase_ItemPane.png" x="2" y="706" w="641" h="1088"/>
+</TextureAtlas>

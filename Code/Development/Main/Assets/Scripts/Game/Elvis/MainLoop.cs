@@ -110,6 +110,7 @@ public class MainLoop : MonoBehaviour
 		case GameState.COLLIDED:
 			// Play collision sound effect
 			RL.m_SoundController.Play("Collide_01");
+			Handheld.Vibrate();
 			
 			// End the music
 			RL.m_MusicPlayer.PlaySegment ("VLV_Outro_01", EPMusicPlayer.Flags.IsMaster, EPMusicSegment.CueType.GRID );

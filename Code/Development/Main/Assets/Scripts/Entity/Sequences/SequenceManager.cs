@@ -369,6 +369,10 @@ public class SequenceManager : MonoBehaviour
 				
 				dist = 0.5f;
 				m_ChargeZoom = true;
+				
+				// SpeedBoost sound effect
+				RL.m_SoundController.Play ("SpeedBoost_01");
+				
 			}
 			else if( runDist < 25.0f )
 			{
@@ -379,6 +383,9 @@ public class SequenceManager : MonoBehaviour
 				dist = 0.5f + judderZoom*0.025f;
 				judder = true;
 				m_ChargeZoom = true;
+				
+				// Vibration!!
+				Handheld.Vibrate();
 			}
 		}
 		
