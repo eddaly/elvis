@@ -24,7 +24,7 @@ public class PostGame : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		FastGUIElement.uvxmlFile = @"assets//resources//PostGame_Atlas.xml";
+		FastGUIElement.uvxmlFile = @"assets//resources//PostGame_AtlasUV.xml";
 		
 		//persistent
 		/*General_Background = new FastGUIElement (
@@ -57,9 +57,9 @@ public class PostGame : MonoBehaviour {
 			new Vector2 (192, 1024),
 			FastGUIElement.UVsFrom (@"PostGame_CoinsCollected.png"));
 		
-		PostGame_Level = new FastGUIElement (
-			new Vector2 (704, 896),
-			FastGUIElement.UVsFrom (@"PostGame_Level.png"));
+		//PostGame_Level = new FastGUIElement (
+		//	new Vector2 (704, 896),
+		//	FastGUIElement.UVsFrom (@"PostGame_Level.png"));
 		
 		PostGame_XPBar = new FastGUIElement (
 			new Vector2 (960, 896),
