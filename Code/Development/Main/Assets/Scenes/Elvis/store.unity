@@ -121,6 +121,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &23408414
 GameObject:
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &66634310
 GameObject:
@@ -2256,6 +2258,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &907296943
 GameObject:
@@ -3662,6 +3665,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &1273382125
 GameObject:
@@ -3968,6 +3972,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &1421537963
 GameObject:

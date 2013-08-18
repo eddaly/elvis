@@ -20,6 +20,8 @@ public class Store : MonoBehaviour {
 	// Tab selected flags
 	private bool wardrobeSelected = true, gearSelected = false, bankSelected = false;
 	
+	private GUIText aGUIText;
+	
 	// Use this for initialization
 	void Start ()
 	{	
@@ -41,6 +43,15 @@ public class Store : MonoBehaviour {
 		wardrobe = new StoreWardrobe ();
 		gear = new StoreGear ();
 		bank = new StoreBank ();
+		
+		// Create the GUITexts
+		//aGUIText = (GUIText)gameObject.AddComponent (typeof (GUIText));
+		GameObject go = Instantiate (Resources.Load ("Frontend_GUIText")) as GameObject;  // Note need to clone prefab as can't access pixel correct property from script
+		aGUIText = go.guiText;
+		aGUIText.transform.position = new Vector3 (.775f, .995f, 0);
+		aGUIText.transform.localScale = new Vector3 (.5f, .5f, 1);
+		aGUIText.text = "Coins\nGDs\nXP Level";
+		aGUIText.color = Color.red;
 	}
 		
 	// Update is called once per frame
@@ -105,6 +116,11 @@ public class Store : MonoBehaviour {
 		{
 			bank.UpdateTab ();
 		}
+		
+		// Update text
+		aGUIText.text = "Coins: " + PersistentData.coins + 
+			"\nGDs: " + PersistentData.goldDiscs + 
+			"\nXP Level: " + PersistentData.CurrentLevel ();
 	}
 	
 #if !UNITY_IPHONE && !UNITY_ANDROID

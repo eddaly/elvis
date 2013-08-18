@@ -236,6 +236,13 @@ public class StoreWardrobe
 				Store_Costume4DescPane.SetDisplayed (true);
 				Debug.Log ("Selected costume 4");
 			}
+			
+			// By default select Upgrade1
+			upgradeSelected = 1;
+			Store_Upgrade1Desc.SetDisplayed (true);
+			Store_Upgrade2Desc.SetDisplayed (false);
+			Store_Upgrade3Desc.SetDisplayed (false);
+			
 			needToUpdateStatus = true;
 		}
 		
@@ -351,7 +358,7 @@ public class StoreWardrobe
 		else
 		{
 			if (metagameUpgrade.unlockLevel > PersistentData.CurrentLevel()) {
-				Debug.Log ("Costume " + metagameUpgrade.name + " not owned and locked till XL level: " + metagameUpgrade.unlockLevel + " currently: " + PersistentData.CurrentLevel());
+				Debug.Log ("Costume " + metagameUpgrade.name + " not owned and locked till XP level: " + metagameUpgrade.unlockLevel + " currently: " + PersistentData.CurrentLevel());
 			}
 			else {
 				if (metagameUpgrade.priceCoins > PersistentData.coins ||
