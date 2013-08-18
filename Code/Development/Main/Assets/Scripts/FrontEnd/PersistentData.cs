@@ -71,7 +71,7 @@ public class PersistentData : MonoBehaviour {
 	//*************************************************************** Upgrades
 	static public Metagame.UpgradeItems upgradeItems
 	{
-		get {return (Metagame.UpgradeItems)SecuredPlayerPrefs.GetInt ("upgradeItems", 0);}
+		get {return (Metagame.UpgradeItems)SecuredPlayerPrefs.GetInt ("upgradeItems", (int)Metagame.UpgradeItems.COSTUME1_UPGRADE0);}
 		set {
 			SecuredPlayerPrefs.SetInt ("upgradeItems", (int)value);
 			Save ();	// Save here to ensure not lost if crash
@@ -82,6 +82,13 @@ public class PersistentData : MonoBehaviour {
 	}
 	static public bool IsUpgradeUnlocked (Metagame.Item item) {
 		return item.unlockLevel <= CurrentLevel();
+	}
+	
+	// Currently equippedCostume, 1, 2 or 3
+	static public int equippedCostume
+	{
+		get {return SecuredPlayerPrefs.GetInt ("equippedCostume", 0);}
+		set {SecuredPlayerPrefs.SetInt ("equippedCostume", value);}
 	}
 	
 	//*************************************************************** Consumables Unlocked

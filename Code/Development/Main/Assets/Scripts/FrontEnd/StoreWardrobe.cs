@@ -6,14 +6,29 @@ public class StoreWardrobe
 	// Wardrobe tab and child elements
 	public FastGUIElement Store_WardrobeScreen;	// Accessible by store to test if selected
     FastGUIElement Store_WardrobeScreen_InUse;
-	FastGUIElement Store_CostumePane;
-	FastGUIElement Store_CostumeDescPane;
+	FastGUIElement Store_Costume1Pane;
+	FastGUIElement Store_Costume1DescPane;
+	FastGUIElement Store_Costume2Pane;
+	FastGUIElement Store_Costume2DescPane;
+	FastGUIElement Store_Costume3Pane;
+	FastGUIElement Store_Costume3DescPane;
+	FastGUIElement Store_Costume4Pane;
+	FastGUIElement Store_Costume4DescPane;
+	FastGUIElement Store_CostumePrev;
+	FastGUIElement Store_CostumeNext;	
 	FastGUIElement Store_Upgrade1Tab;
 	FastGUIElement Store_Upgrade2Tab;
 	FastGUIElement Store_Upgrade3Tab;
 	FastGUIElement Store_Upgrade1Desc;
 	FastGUIElement Store_Upgrade2Desc;
 	FastGUIElement Store_Upgrade3Desc;
+	
+	FastGUIButton Store_UpgradeBuyButton;
+	FastGUIButton Store_UpgradeEquipButton;
+	FastGUIElement Store_UpgradeInUse;
+	
+	private int costumeSelected = 1;	// 1, 2, 3 or 4
+	private int upgradeSelected = 1;	// 1, 2 or 3
 
 	// Constructor, create elements
 	public StoreWardrobe ()
@@ -27,15 +42,61 @@ public class StoreWardrobe
 			new Vector2 (192, 0),
 			FastGUIElement.UVsFrom (@"Store_WardrobeScreen_InUse.png"));
 				
-		Store_CostumePane = new FastGUIElement (
+		Store_Costume1Pane = new FastGUIElement (
 			new Vector2 (64, 256),
 			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));
-		Store_WardrobeScreen_InUse.Add (Store_CostumePane);
+		Store_WardrobeScreen_InUse.Add (Store_Costume1Pane);
 			
-		Store_CostumeDescPane = new FastGUIElement (
+		Store_Costume1DescPane = new FastGUIElement (
 			new Vector2 (832, 256),
 			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png"));
-		Store_WardrobeScreen_InUse.Add (Store_CostumeDescPane);
+		Store_WardrobeScreen_InUse.Add (Store_Costume1DescPane);
+		
+		Store_Costume2Pane = new FastGUIElement (
+			new Vector2 (64, 256),
+			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
+		Store_WardrobeScreen_InUse.Add (Store_Costume2Pane);
+		Store_Costume2Pane.SetDisplayed (false);
+			
+		Store_Costume2DescPane = new FastGUIElement (
+			new Vector2 (832, 256),
+			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png"));	//*** Need new element and UVs
+		Store_WardrobeScreen_InUse.Add (Store_Costume2DescPane);
+		Store_Costume2DescPane.SetDisplayed (false);
+			
+		Store_Costume3Pane = new FastGUIElement (
+			new Vector2 (64, 256),
+			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
+		Store_WardrobeScreen_InUse.Add (Store_Costume3Pane);
+		Store_Costume3Pane.SetDisplayed (false);
+			
+		Store_Costume3DescPane = new FastGUIElement (
+			new Vector2 (832, 256),
+			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png")); //*** Need new element and UVs
+		Store_WardrobeScreen_InUse.Add (Store_Costume3DescPane);
+		Store_Costume3DescPane.SetDisplayed (false);
+		
+		Store_Costume4Pane = new FastGUIElement (
+			new Vector2 (64, 256),
+			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
+		Store_WardrobeScreen_InUse.Add (Store_Costume4Pane);
+		Store_Costume4Pane.SetDisplayed (false);
+			
+		Store_Costume4DescPane = new FastGUIElement (
+			new Vector2 (832, 256),
+			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png")); //*** Need new element and UVs
+		Store_WardrobeScreen_InUse.Add (Store_Costume4DescPane);
+		Store_Costume4DescPane.SetDisplayed (false);
+		
+		Store_CostumePrev = new FastGUIElement (
+			new Vector2 (1800, 256),	//*** Needs to be placed correctly
+			new Rect (0, 0, 100, 100)); //*** Need new element and UVs
+		Store_WardrobeScreen_InUse.Add (Store_CostumePrev);
+
+		Store_CostumeNext = new FastGUIElement (
+			new Vector2 (1900, 256),	//*** Needs to be placed correctly
+			new Rect (0, 0, 100, 100)); //*** Need new element and UVs
+		Store_WardrobeScreen_InUse.Add (Store_CostumeNext);
 		
 		Store_Upgrade1Tab = new FastGUIElement (
 			new Vector2 (64, 896),
@@ -68,6 +129,27 @@ public class StoreWardrobe
 			FastGUIElement.UVsFrom (@"Store_Upgrade3Desc.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade3Desc);
 		Store_Upgrade3Desc.SetDisplayed (false);
+		
+		// The upgrade button/status indicators
+		Store_UpgradeBuyButton = new FastGUIButton (
+			new Vector2 (1000, 1000),
+			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"),
+			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"));	//*** Updated with pressed button texture);
+		Store_WardrobeScreen_InUse.Add (Store_UpgradeBuyButton);
+		Store_UpgradeBuyButton.SetDisplayed (false);
+
+		Store_UpgradeEquipButton = new FastGUIButton (
+			new Vector2 (1000, 1000),
+			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"),
+			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"));	//*** Updated with pressed button texture
+		Store_WardrobeScreen_InUse.Add (Store_UpgradeEquipButton);
+		Store_UpgradeEquipButton.SetDisplayed (false);
+		
+		Store_UpgradeInUse = new FastGUIElement (
+			new Vector2 (1000, 1000),
+			FastGUIElement.UVsFrom (@"Store_UpgradeInUseButton.png"));
+		Store_WardrobeScreen_InUse.Add (Store_UpgradeInUse);
+		Store_UpgradeInUse.SetDisplayed (false);
 	}
 	
 	// Select the tab view
@@ -78,6 +160,7 @@ public class StoreWardrobe
 	
 		// By default select Upgrade1
 		if (isSelected)	{
+			upgradeSelected = 1;
 			Store_Upgrade1Desc.SetDisplayed (true);
 			Store_Upgrade2Desc.SetDisplayed (false);
 			Store_Upgrade3Desc.SetDisplayed (false);
@@ -87,19 +170,83 @@ public class StoreWardrobe
 	// Update is called once per frame
 	public void UpdateTab ()
 	{
+		bool needToUpdateStatus = false;
+		
 		// Update Wardrobe entries to show what is owned / available
-		UpdateWardrobeDescs ();			
-
-		// Upgrade 1
+		UpdateWardrobeStatus ();
+		
+		// Select costume
+		int newCostumeSelected = costumeSelected;
+		if (Store_CostumeNext.Tapped ())	{
+			if (++newCostumeSelected == 5)
+				newCostumeSelected = 1;
+		}
+		if (Store_CostumePrev.Tapped ())	{
+			if (--newCostumeSelected == 0)
+				newCostumeSelected = 3;
+		}
+		if (newCostumeSelected != costumeSelected)
+		{
+			if (costumeSelected == 1)
+			{
+				Store_Costume1Pane.SetDisplayed (false);
+				Store_Costume1DescPane.SetDisplayed (false);
+			}
+			else if (costumeSelected == 2)
+			{
+				Store_Costume2Pane.SetDisplayed (false);
+				Store_Costume2DescPane.SetDisplayed (false);
+			}
+			else if (costumeSelected == 3)
+			{
+				Store_Costume3Pane.SetDisplayed (false);
+				Store_Costume3DescPane.SetDisplayed (false);
+			}
+			else
+			{
+				Store_Costume4Pane.SetDisplayed (false);
+				Store_Costume4DescPane.SetDisplayed (false);
+			}
+			
+			costumeSelected = newCostumeSelected;	
+			if (costumeSelected == 1)
+			{
+				Store_Costume1Pane.SetDisplayed (true);
+				Store_Costume1DescPane.SetDisplayed (true);
+				Debug.Log ("Selected costume 1");
+			}
+			else if (costumeSelected == 2)
+			{
+				Store_Costume2Pane.SetDisplayed (true);
+				Store_Costume2DescPane.SetDisplayed (true);
+				Debug.Log ("Selected costume 2");
+			}
+			else if (costumeSelected == 3) 
+			{
+				Store_Costume3Pane.SetDisplayed (true);
+				Store_Costume3DescPane.SetDisplayed (true);
+				Debug.Log ("Selected costume 3");
+			}
+			else 
+			{
+				Store_Costume4Pane.SetDisplayed (true);
+				Store_Costume4DescPane.SetDisplayed (true);
+				Debug.Log ("Selected costume 4");
+			}
+			needToUpdateStatus = true;
+		}
+		
+		// Select upgrade
+		int newUpgradeSelected = upgradeSelected;		
 		if (Store_Upgrade1Tab.Tapped ())
 		{
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_01");
 			
-			Debug.Log ("Upgrade1 Tapped");
 			Store_Upgrade1Desc.SetDisplayed (true);
 			Store_Upgrade2Desc.SetDisplayed (false);
 			Store_Upgrade3Desc.SetDisplayed (false);
+			newUpgradeSelected = 1;
 		}
 		// Upgrade 2
 		else if (Store_Upgrade2Tab.Tapped ())
@@ -107,10 +254,10 @@ public class StoreWardrobe
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_02");
 			
-			Debug.Log ("Upgrade2 Tapped");
 			Store_Upgrade1Desc.SetDisplayed (false);
 			Store_Upgrade2Desc.SetDisplayed (true);
 			Store_Upgrade3Desc.SetDisplayed (false);
+			newUpgradeSelected = 2;
 		}
 		// Upgrade 3	
 		else if (Store_Upgrade3Tab.Tapped ())
@@ -118,73 +265,145 @@ public class StoreWardrobe
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_03");
 			
-			Debug.Log ("Upgrade3 Tapped");
 			Store_Upgrade1Desc.SetDisplayed (false);
 			Store_Upgrade2Desc.SetDisplayed (false);
 			Store_Upgrade3Desc.SetDisplayed (true);
+			newUpgradeSelected = 3;
 		}
-	
+		if (newUpgradeSelected != upgradeSelected)
+		{
+			if (upgradeSelected == 1)
+				Store_Upgrade1Desc.SetDisplayed (false);
+			else if (upgradeSelected == 2)
+				Store_Upgrade2Desc.SetDisplayed (false);
+			else
+				Store_Upgrade3Desc.SetDisplayed (false);
+			
+			upgradeSelected = newUpgradeSelected;
+			if (upgradeSelected == 1)
+				Store_Upgrade1Desc.SetDisplayed (true);
+			else if (upgradeSelected == 2)
+				Store_Upgrade2Desc.SetDisplayed (true);
+			else
+				Store_Upgrade3Desc.SetDisplayed (true);
+			
+			needToUpdateStatus = true;
+		}
+		
+		// Buy or equip the upgrade?
+		if (Store_UpgradeBuyButton.UpdateTestPressed ())
+		{
+			RL.m_SoundController.Play("FE_Confirm_01");
+			Debug.Log ("Buy the upgrade?");
+		}
+		else if (Store_UpgradeEquipButton.UpdateTestPressed ())
+		{
+			RL.m_SoundController.Play("FE_Confirm_01");
+			Debug.Log ("Equip the upgrade?");
+		}
+		
+		// Update Wardrobe entries to show what is owned / available if neccessary
+		if (needToUpdateStatus)
+			UpdateWardrobeStatus ();
 	}
 	
 	// Update Wardrobe entries to show what is owned / available
-	private void UpdateWardrobeDescs ()
+	private void UpdateWardrobeStatus ()
 	{
+		// First switch off the buttons etc. by default
+		Store_UpgradeBuyButton.SetDisplayed (false);
+		Store_UpgradeEquipButton.SetDisplayed (false);
+		Store_UpgradeInUse.SetDisplayed (false);
+		
+		// Update selected costume upgrade status/buttons
+		Metagame.UpgradeItems costumeUpgrade;
+		Metagame.Item metagameUpgrade;
+		if (costumeSelected == 1) {
+			if (upgradeSelected == 1) {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME1_UPGRADE0;
+				metagameUpgrade = Metagame.costume1_upgrade0;
+			}
+			else if (upgradeSelected == 2) {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME1_UPGRADE1;
+				metagameUpgrade = Metagame.costume1_upgrade1;
+			}
+			else {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME1_UPGRADE2;
+				metagameUpgrade = Metagame.costume1_upgrade2;
+			}
+		}
+		else if (costumeSelected == 2) {
+			if (upgradeSelected == 1) {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME2_UPGRADE0;
+				metagameUpgrade = Metagame.costume2_upgrade0;
+			}
+			else if (upgradeSelected == 2) {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME2_UPGRADE1;
+				metagameUpgrade = Metagame.costume2_upgrade1;
+			}
+			else {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME2_UPGRADE2;
+				metagameUpgrade = Metagame.costume2_upgrade2;
+			}
+		}
+		else if (costumeSelected == 3) {
+			if (upgradeSelected == 1) {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME3_UPGRADE0;
+				metagameUpgrade = Metagame.costume3_upgrade0;
+			}
+			else if (upgradeSelected == 2) {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME3_UPGRADE1;
+				metagameUpgrade = Metagame.costume3_upgrade1;
+			}
+			else {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME3_UPGRADE2;
+				metagameUpgrade = Metagame.costume3_upgrade2;
+			}
+		}
+		else {
+			if (upgradeSelected == 1) {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME4_UPGRADE0;
+				metagameUpgrade = Metagame.costume4_upgrade0;
+			}
+			else if (upgradeSelected == 2) {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME4_UPGRADE1;
+				metagameUpgrade = Metagame.costume4_upgrade1;
+			}
+			else {
+				costumeUpgrade = Metagame.UpgradeItems.COSTUME4_UPGRADE2;
+				metagameUpgrade = Metagame.costume4_upgrade2;
+			}
+		}
+		
 		// Do you own it?
-		if (PersistentData.HasItem (Metagame.UpgradeItems.COSTUME1_UPGRADE0)) {
-			//Store_Upgrade1Desc = owned
-		}
-		// Else is it unlocked, can you afford it?
-		else {
-			if (Metagame.costume1_upgrade0.unlockLevel > PersistentData.CurrentLevel()) {
-				// Store_Upgrade1Desc = locked, XP level too low
+		if (PersistentData.HasItem (costumeUpgrade))
+		{
+			// Is it equppied?
+			if (PersistentData.equippedCostume == costumeSelected) {
+				Debug.Log ("Costume " + metagameUpgrade.name + " owned and equipped");
+				Store_UpgradeInUse.SetDisplayed (true);
 			}
 			else {
-				if (Metagame.costume1_upgrade0.priceCoins > PersistentData.coins ||
-					Metagame.costume1_upgrade0.priceGoldDiscs > PersistentData.goldDiscs) {
-					// Store_Upgrade1Desc = not enough coins and/or GDs
-				}
-				else {
-					// Store_Upgrade1Desc = unlocked and affordable, buy it?
-				}
+				Debug.Log ("Costume " + metagameUpgrade.name + " owned but not equipped");
+				Store_UpgradeEquipButton.SetDisplayed (true);
 			}
-				
 		}
-		if (PersistentData.HasItem (Metagame.UpgradeItems.COSTUME1_UPGRADE1)) {
-			//Store_Upgrade2Desc = owned
-		}
-		// Else is it unlocked, can you afford it?
-		else {
-			if (Metagame.costume1_upgrade1.unlockLevel > PersistentData.CurrentLevel()) {
-				// Store_Upgrade2Desc = locked, XP level too low
+		// Else is it unlocked? can you afford it?
+		else
+		{
+			if (metagameUpgrade.unlockLevel > PersistentData.CurrentLevel()) {
+				Debug.Log ("Costume " + metagameUpgrade.name + " not owned and locked till XL level: " + metagameUpgrade.unlockLevel + " currently: " + PersistentData.CurrentLevel());
 			}
 			else {
-				if (Metagame.costume1_upgrade1.priceCoins > PersistentData.coins ||
-					Metagame.costume1_upgrade1.priceGoldDiscs > PersistentData.goldDiscs) {
-					// Store_Upgrade2Desc = not enough coins and/or GDs
+				if (metagameUpgrade.priceCoins > PersistentData.coins ||
+					metagameUpgrade.priceGoldDiscs > PersistentData.goldDiscs) {
+					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, is unlocked but too expensive, coins: " + metagameUpgrade.priceCoins + " GDs: " + metagameUpgrade.priceGoldDiscs);
 				}
 				else {
-					// Store_Upgrade2Desc = unlocked and affordable, buy it?
+					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, unlocked and affordable");
+					Store_UpgradeBuyButton.SetDisplayed (true);
 				}
-			}
-				
-		}
-		if (PersistentData.HasItem (Metagame.UpgradeItems.COSTUME1_UPGRADE2)) {
-			//Store_Upgrade3Desc = owned
-		}
-		// Else is it unlocked, can you afford it?
-		else {
-			if (Metagame.costume1_upgrade2.unlockLevel > PersistentData.CurrentLevel()) {
-				// Store_Upgrade3Desc = locked, XP level too low
-			}
-			else {
-				if (Metagame.costume1_upgrade2.priceCoins > PersistentData.coins ||
-					Metagame.costume1_upgrade2.priceGoldDiscs > PersistentData.goldDiscs) {
-					// Store_Upgrade3Desc = not enough coins and/or GDs
-				}
-				else {
-					// Store_Upgrade3Desc = unlocked and affordable, buy it?
-				}
-			}		
+			}				
 		}
 	}
 
