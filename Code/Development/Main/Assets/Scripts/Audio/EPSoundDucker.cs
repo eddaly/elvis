@@ -15,6 +15,6 @@ public class EPSoundDucker : EPSoundEvent {
 
 	public override void Play ( float volume, float pitch )
 	{
-		EPSoundController.Get ().m_DuckingAmount = volume;
+		RL.m_SoundController.m_DuckingAmount = volume;
 	}
 }
