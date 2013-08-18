@@ -405,6 +405,12 @@ public class Player : MonoBehaviour
 				{
 					if( m_animFrame > 10 )
 						m_animFrame = 0;
+				
+					// Footstep sounds
+					if ( m_animFrame == 2 || m_animFrame == 7 )
+					{
+						RL.m_SoundController.Play("FS_Elvis");
+					}
 				}
 			}
 			break;
