@@ -90,12 +90,12 @@ public class StoreWardrobe
 		
 		Store_CostumePrev = new FastGUIElement (
 			new Vector2 (1800, 256),	//*** Needs to be placed correctly
-			new Rect (0, 0, 100, 100)); //*** Need new element and UVs
+			new Rect (2048, 0, 100, 100)); //*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_CostumePrev);
 
 		Store_CostumeNext = new FastGUIElement (
 			new Vector2 (1900, 256),	//*** Needs to be placed correctly
-			new Rect (0, 0, 100, 100)); //*** Need new element and UVs
+			new Rect (2048, 0, 100, 100)); //*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_CostumeNext);
 		
 		Store_Upgrade1Tab = new FastGUIElement (
@@ -132,24 +132,27 @@ public class StoreWardrobe
 		
 		// The upgrade button/status indicators
 		Store_UpgradeBuyButton = new FastGUIButton (
-			new Vector2 (1000, 1000),
+			new Vector2 (1600, 1175),
 			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"),
-			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"));	//*** Updated with pressed button texture);
+			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"));	//*** Updated with pressed button texture);
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeBuyButton);
 		Store_UpgradeBuyButton.SetDisplayed (false);
 
 		Store_UpgradeEquipButton = new FastGUIButton (
-			new Vector2 (1000, 1000),
+			new Vector2 (1600, 1175),
 			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"),
-			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"));	//*** Updated with pressed button texture
+			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"));	//*** Updated with pressed button texture
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeEquipButton);
 		Store_UpgradeEquipButton.SetDisplayed (false);
 		
 		Store_UpgradeInUse = new FastGUIElement (
-			new Vector2 (1000, 1000),
+			new Vector2 (1600, 1175),
 			FastGUIElement.UVsFrom (@"Store_UpgradeInUseButton.png"));
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeInUse);
 		Store_UpgradeInUse.SetDisplayed (false);
+		
+		// Update the status in advance of the first UpdateTab() message
+		UpdateWardrobeStatus ();
 	}
 	
 	// Select the tab view
@@ -164,6 +167,9 @@ public class StoreWardrobe
 			Store_Upgrade1Desc.SetDisplayed (true);
 			Store_Upgrade2Desc.SetDisplayed (false);
 			Store_Upgrade3Desc.SetDisplayed (false);
+			
+			// Update the status in advance of the UpdateTab() message
+			UpdateWardrobeStatus ();
 		}
 	}
 	
@@ -171,17 +177,14 @@ public class StoreWardrobe
 	public void UpdateTab ()
 	{
 		bool needToUpdateStatus = false;
-		
-		// Update Wardrobe entries to show what is owned / available
-		UpdateWardrobeStatus ();
-		
+				
 		// Select costume
 		int newCostumeSelected = costumeSelected;
 		if (Store_CostumeNext.Tapped ())	{
 			if (++newCostumeSelected == 5)
 				newCostumeSelected = 1;
 		}
-		if (Store_CostumePrev.Tapped ())	{
+		else if (Store_CostumePrev.Tapped ())	{
 			if (--newCostumeSelected == 0)
 				newCostumeSelected = 3;
 		}
@@ -294,12 +297,22 @@ public class StoreWardrobe
 		if (Store_UpgradeBuyButton.UpdateTestPressed ())
 		{
 			RL.m_SoundController.Play("FE_Confirm_01");
-			Debug.Log ("Buy the upgrade?");
+			Debug.Log ("Bought the upgrade");
+			
+			Metagame.UpgradeItems costumeUpgrade;
+			Metagame.Item metagameUpgrade;
+			GetSelectedMetagameCostume (out costumeUpgrade, out metagameUpgrade);
+			PersistentData.upgradeItems |= costumeUpgrade;
+			PersistentData.coins -= metagameUpgrade.priceCoins;
+			PersistentData.goldDiscs -= metagameUpgrade.priceGoldDiscs;
+			needToUpdateStatus = true;
 		}
 		else if (Store_UpgradeEquipButton.UpdateTestPressed ())
 		{
 			RL.m_SoundController.Play("FE_Confirm_01");
-			Debug.Log ("Equip the upgrade?");
+			Debug.Log ("Equipped the upgrade");
+			PersistentData.equippedCostume = costumeSelected;
+			needToUpdateStatus = true;
 		}
 		
 		// Update Wardrobe entries to show what is owned / available if neccessary
@@ -308,7 +321,8 @@ public class StoreWardrobe
 	}
 	
 	// Update Wardrobe entries to show what is owned / available
-	private void UpdateWardrobeStatus ()
+	//*** public for now to allow for testing
+	public void UpdateWardrobeStatus ()
 	{
 		// First switch off the buttons etc. by default
 		Store_UpgradeBuyButton.SetDisplayed (false);
@@ -318,6 +332,43 @@ public class StoreWardrobe
 		// Update selected costume upgrade status/buttons
 		Metagame.UpgradeItems costumeUpgrade;
 		Metagame.Item metagameUpgrade;
+		GetSelectedMetagameCostume (out costumeUpgrade, out metagameUpgrade);
+		
+		// Do you own it?
+		if (PersistentData.HasItem (costumeUpgrade))
+		{
+			// Is it equppied?
+			if (PersistentData.equippedCostume == costumeSelected) {
+				Debug.Log ("Costume " + metagameUpgrade.name + " owned and equipped");
+				Store_UpgradeInUse.SetDisplayed (true);
+			}
+			else {
+				Debug.Log ("Costume " + metagameUpgrade.name + " owned but not equipped");
+				Store_UpgradeEquipButton.SetDisplayed (true);
+			}
+		}
+		// Else is it unlocked? can you afford it?
+		else
+		{
+			if (metagameUpgrade.unlockLevel > PersistentData.CurrentLevel()) {
+				Debug.Log ("Costume " + metagameUpgrade.name + " not owned and locked till XL level: " + metagameUpgrade.unlockLevel + " currently: " + PersistentData.CurrentLevel());
+			}
+			else {
+				if (metagameUpgrade.priceCoins > PersistentData.coins ||
+					metagameUpgrade.priceGoldDiscs > PersistentData.goldDiscs) {
+					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, is unlocked but too expensive, coins: " + metagameUpgrade.priceCoins + " GDs: " + metagameUpgrade.priceGoldDiscs);
+				}
+				else {
+					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, unlocked and affordable");
+					Store_UpgradeBuyButton.SetDisplayed (true);
+				}
+			}
+		}
+	}
+	
+	// Get Metagame types from costumeSelected and upgradeSelected
+	private void GetSelectedMetagameCostume (out Metagame.UpgradeItems costumeUpgrade, out Metagame.Item metagameUpgrade)
+	{	
 		if (costumeSelected == 1) {
 			if (upgradeSelected == 1) {
 				costumeUpgrade = Metagame.UpgradeItems.COSTUME1_UPGRADE0;
@@ -373,37 +424,6 @@ public class StoreWardrobe
 				costumeUpgrade = Metagame.UpgradeItems.COSTUME4_UPGRADE2;
 				metagameUpgrade = Metagame.costume4_upgrade2;
 			}
-		}
-		
-		// Do you own it?
-		if (PersistentData.HasItem (costumeUpgrade))
-		{
-			// Is it equppied?
-			if (PersistentData.equippedCostume == costumeSelected) {
-				Debug.Log ("Costume " + metagameUpgrade.name + " owned and equipped");
-				Store_UpgradeInUse.SetDisplayed (true);
-			}
-			else {
-				Debug.Log ("Costume " + metagameUpgrade.name + " owned but not equipped");
-				Store_UpgradeEquipButton.SetDisplayed (true);
-			}
-		}
-		// Else is it unlocked? can you afford it?
-		else
-		{
-			if (metagameUpgrade.unlockLevel > PersistentData.CurrentLevel()) {
-				Debug.Log ("Costume " + metagameUpgrade.name + " not owned and locked till XL level: " + metagameUpgrade.unlockLevel + " currently: " + PersistentData.CurrentLevel());
-			}
-			else {
-				if (metagameUpgrade.priceCoins > PersistentData.coins ||
-					metagameUpgrade.priceGoldDiscs > PersistentData.goldDiscs) {
-					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, is unlocked but too expensive, coins: " + metagameUpgrade.priceCoins + " GDs: " + metagameUpgrade.priceGoldDiscs);
-				}
-				else {
-					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, unlocked and affordable");
-					Store_UpgradeBuyButton.SetDisplayed (true);
-				}
-			}				
 		}
 	}
 

@@ -106,4 +106,25 @@ public class Store : MonoBehaviour {
 			bank.UpdateTab ();
 		}
 	}
+	
+#if !UNITY_IPHONE && !UNITY_ANDROID
+	void OnGUI ()
+	{
+		if (Application.isEditor)
+		{
+			GUIStyle guistyle = new GUIStyle (GUI.skin.GetStyle("button"));
+			guistyle.alignment = TextAnchor.MiddleLeft;
+			if (GUI.Button (new Rect (0, 50, 150, 20), "XP = " + PersistentData.xP + " .MORE?", guistyle))
+				PersistentData.xP += 100;
+			if (GUI.Button (new Rect (0, 70, 150, 20), "COINS = " + PersistentData.coins + " .MORE?", guistyle))
+				PersistentData.coins += 1000;
+			if (GUI.Button (new Rect (0, 90, 150, 20), "GDs = " + PersistentData.goldDiscs + " .MORE?", guistyle))
+				PersistentData.goldDiscs += 1;
+			if (GUI.Button (new Rect (0, 110, 150, 20), "RESET SAVE DATA?", guistyle))
+				PersistentData.ResetAll();
+			wardrobe.UpdateWardrobeStatus ();
+		}
+	}
+#endif
+
 }

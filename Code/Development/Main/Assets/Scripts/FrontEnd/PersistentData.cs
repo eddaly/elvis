@@ -83,11 +83,11 @@ public class PersistentData : MonoBehaviour {
 	static public bool IsUpgradeUnlocked (Metagame.Item item) {
 		return item.unlockLevel <= CurrentLevel();
 	}
-	
+
 	// Currently equippedCostume, 1, 2 or 3
 	static public int equippedCostume
 	{
-		get {return SecuredPlayerPrefs.GetInt ("equippedCostume", 0);}
+		get {return SecuredPlayerPrefs.GetInt ("equippedCostume", 1);}
 		set {SecuredPlayerPrefs.SetInt ("equippedCostume", value);}
 	}
 	
