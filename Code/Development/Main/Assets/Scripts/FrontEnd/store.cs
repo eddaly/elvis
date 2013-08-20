@@ -20,6 +20,7 @@ public class Store : MonoBehaviour {
 	// Tab selected flags
 	private bool wardrobeSelected = true, gearSelected = false, bankSelected = false;
 	
+	// The Coins/GD/Level display
 	private GUIText aGUIText;
 	
 	// Use this for initialization
