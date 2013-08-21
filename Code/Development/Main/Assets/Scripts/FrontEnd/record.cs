@@ -32,7 +32,7 @@ public class record: MonoBehaviour {
 	{
 			
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"assets//resources//record_Atlas.xml";
+		FastGUIElement.uvxmlFile = @"assets//resources//record_AtlasUV.xml";
 
 		/*		
 		FAST GUI BUTTON example

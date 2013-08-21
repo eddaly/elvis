@@ -121,6 +121,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &23408414
 GameObject:
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &66634310
 GameObject:
@@ -2256,6 +2258,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &907296943
 GameObject:
@@ -2727,6 +2730,44 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 746797368}
+--- !u!1 &996461327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 996461328}
+  - 114: {fileID: 996461329}
+  m_Layer: 0
+  m_Name: Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &996461328
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 996461327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &996461329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 996461327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052789d7d218a4255b332f713ddecc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &996678833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3478,6 +3519,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: m_AtlasFile
+      value: record_Atlas
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
   m_RootGameObject: {fileID: 1154770717}
@@ -3523,7 +3568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AtlasFile: Frontend_Atlas
+  persistentData: {fileID: 0}
+  m_AtlasFile: record_Atlas
   m_AtlasOriginalWidth: 4096
   m_AtlasOriginalHeight: 4096
 --- !u!1 &1196313688
@@ -3661,6 +3707,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &1273382125
 GameObject:
@@ -3967,6 +4014,7 @@ MonoBehaviour:
   m_PitchVariance: 0
   m_PlayOrder: 0
   m_MixGroup: 0
+  m_MinRepeatDelay: 0
   m_Fading: 0
 --- !u!1 &1421537963
 GameObject:
@@ -5324,6 +5372,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8e586b098418854ca9f8bf872cea904, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
 --- !u!4 &1922735876
 Transform:

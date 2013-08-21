@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Store : MonoBehaviour {
+public class store : MonoBehaviour {
 	
 #pragma warning disable 414
 	
@@ -27,7 +27,7 @@ public class Store : MonoBehaviour {
 	void Start ()
 	{	
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"assets//resources//Frontend_Atlas.xml";
+		FastGUIElement.uvxmlFile = @"assets//resources//Frontend_AtlasUV.xml";
 		
 		// Persistent across tabs
 		Store_Background = new FastGUIElement (
