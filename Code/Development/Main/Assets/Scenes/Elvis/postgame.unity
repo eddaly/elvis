@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_soundBanks:
-  - {fileID: 0}
+  - {fileID: 100012, guid: b23277ba40646488686c1dba2b5d6bd4, type: 2}
 --- !u!4 &522221722
 Transform:
   m_ObjectHideFlags: 0
@@ -233,6 +233,10 @@ Prefab:
       propertyPath: m_Name
       value: Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fedf7ee8b0acb40a0aa3cd4928e54284, type: 2}
+      propertyPath: m_soundBanks.Array.data[0]
+      value: 
+      objectReference: {fileID: 100012, guid: b23277ba40646488686c1dba2b5d6bd4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fedf7ee8b0acb40a0aa3cd4928e54284, type: 2}
   m_RootGameObject: {fileID: 522221720}
@@ -419,7 +423,7 @@ GameObject:
   - 4: {fileID: 1922735876}
   - 114: {fileID: 1922735875}
   m_Layer: 0
-  m_Name: Script
+  m_Name: UIScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
