@@ -9,8 +9,8 @@ public class FastGUIButton : FastGUIElement
 	public FastGUIButton (
 		FastGUIScrollWindow scrollWindow,	// Add this element to ScrollWindow
 		Vector2 scrollWindowPos,			// Position in window (origin is top-left) in pixels
-		Vector4 atlasRect, 					// Atlas rectangle (x,y is top-leftx, z,w is width and height) in pixels
-		Vector4 atlasRectPressedButton) 	// Atlas rectangle for the pressed Button
+		Rect	atlasRect, 					// Atlas rectangle in pixels
+		Rect	atlasRectPressedButton) 	// Atlas rectangle for the pressed Button
 		: base (scrollWindow, scrollWindowPos, atlasRect)
 	{
 		pressedButton = new FastGUIElement (scrollWindow, scrollWindowPos, atlasRectPressedButton);
@@ -20,8 +20,8 @@ public class FastGUIButton : FastGUIElement
 	// Make a Button, will immediately render
 	public FastGUIButton (
 		Vector2 screenPos,					// Position on screen (relative to Position)
-		Vector4 atlasRect, 					// Atlas rectangle (x,y is top-leftx, z,w is width and height) in pixels
-		Vector4 atlasRectPressedButton, 	// Atlas rectangle for the pressed Button
+		Rect	atlasRect, 					// Atlas rectangle in pixels
+		Rect	atlasRectPressedButton, 	// Atlas rectangle for the pressed Button
 		Position pos = Position.TOPLEFT)
 		: base (screenPos, atlasRect, pos)
 	{

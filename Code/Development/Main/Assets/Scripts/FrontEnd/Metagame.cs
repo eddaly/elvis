@@ -21,24 +21,35 @@ public class Metagame
 		500, 600, 700, 900, 1000, 1200, 1500, 1800, 2100, 2600, 3100, 3700, 4500, 5300, 6400, 7700, 9200, 11100, 13300};
 	static public int maxLevels = levelUpXP.Length;
 
-	// Upgrades (need both Coins and GDs)
-	static public Item [] upgradeItems = {
-		new Item {name = "costume1_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1},
-		new Item {name = "costume1_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5},
-		new Item {name = "costume1_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20},
+	// Upgrades (need both Coins and GDs)b
+	static public Item costume1_upgrade0 = 
+		new Item {name = "costume1_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
+	static public Item costume1_upgrade1 = 
+		new Item {name = "costume1_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
+	static public Item costume1_upgrade2 = 
+		new Item {name = "costume1_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20};
 
-		new Item {name = "costume2_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1},
-		new Item {name = "costume2_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5},
-		new Item {name = "costume2_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20},
+	static public Item costume2_upgrade0 = 
+		new Item {name = "costume2_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
+	static public Item costume2_upgrade1 = 
+		new Item {name = "costume2_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
+	static public Item costume2_upgrade2 = 
+		new Item {name = "costume2_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20};
 	
-		new Item {name = "costume3_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1},
-		new Item {name = "costume3_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5},
-		new Item {name = "costume3_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20},
-	
-		new Item {name = "costume4_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1},
-		new Item {name = "costume4_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5},
-		new Item {name = "costume4_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20}
-	};
+	static public Item costume3_upgrade0 = 
+		new Item {name = "costume3_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
+	static public Item costume3_upgrade1 = 
+		new Item {name = "costume3_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
+	static public Item costume3_upgrade2 = 
+		new Item {name = "costume3_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20};
+
+	static public Item costume4_upgrade0 = 
+		new Item {name = "costume4_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
+	static public Item costume4_upgrade1 = 
+		new Item {name = "costume4_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
+	static public Item costume4_upgrade2 = 
+		new Item {name = "costume4_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20};
+
 	// Note, bitfield to test for PersistentData.upgradeItems
 	public enum UpgradeItems
 	{
@@ -91,21 +102,25 @@ public class Metagame
 		SLOWMO			= 1 << 4
 	};
 	// Consumables Items (need both Coins and GDs), note unlock NA
-	static public Item [] consumableItems = {
-		new Item {name = "Sunglasses",		unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0},
-		new Item {name = "BeltBuckle",		unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0},
-		new Item {name = "BlueSuedeShoes", 	unlockLevel = 1,	priceCoins = 1000,		priceGoldDiscs = 1},
-		new Item {name = "EP",				unlockLevel = 1,	priceCoins = 2000,		priceGoldDiscs = 2},
-		new Item {name = "Slowmo",			unlockLevel = 1,	priceCoins = 4000,		priceGoldDiscs = 3}
-	};
+	static public Item shades = 
+		new Item {name = "Shades",			unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
+	static public Item beltBuckle = 
+		new Item {name = "BeltBuckle",		unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
+	static public Item shoes = 
+		new Item {name = "BlueSuedeShoes", 	unlockLevel = 1,	priceCoins = 1000,		priceGoldDiscs = 1};
+	static public Item ep = 
+		new Item {name = "EP",				unlockLevel = 1,	priceCoins = 2000,		priceGoldDiscs = 2};
+	static public Item rpm = 
+		new Item {name = "RPM",				unlockLevel = 1,	priceCoins = 4000,		priceGoldDiscs = 3};
+	
 	// Index into PersistentData.consumableItems
 	public enum ConsumableItems
 	{
-		SUNGLASSES = 0,
+		SHADES = 0,
 		BELTBUCKLE,
 		BLUESUEDESHOES,
 		EP,
-		SLOMO
+		RPM
 	};
 	
 	// Missions

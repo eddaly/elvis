@@ -3,7 +3,8 @@ using System.Collections;
 
 public class FrontEnd : MonoBehaviour {
 	
-	private PersistentData persistentData;
+	[HideInInspector]
+	public PersistentData persistentData;
 	public Metagame metagame;
 	public string m_AtlasFile = "Frontend_Atlas";
 	public int m_AtlasOriginalWidth = 4096;
@@ -19,7 +20,6 @@ public class FrontEnd : MonoBehaviour {
 			if (instance == null)
 				instance = this;
 		}
-		
 				
 		// Need to specify if want to set UVs with original pixels because Unity rescales texture on load
 		FastGUIElement.SetOriginalAtlasPixels (m_AtlasOriginalWidth, m_AtlasOriginalHeight);
@@ -39,13 +39,13 @@ public class FrontEnd : MonoBehaviour {
 		Debug.Log (persistentData);
 		
 		// Ensure camera as assumed by FastGUI
-		Camera.mainCamera.transform.position = new Vector3 (0, 0, -10);
-		Camera.mainCamera.transform.rotation = Quaternion.identity;
-		Camera.mainCamera.transform.localScale = new Vector3 (1, 1, 1);
-		Camera.mainCamera.orthographic = true;
-		Camera.mainCamera.orthographicSize = 768;
-		Camera.mainCamera.nearClipPlane = .3f;
-		Camera.mainCamera.farClipPlane = 11;
+		Camera.main.transform.position = new Vector3 (0, 0, -10);
+		Camera.main.transform.rotation = Quaternion.identity;
+		Camera.main.transform.localScale = new Vector3 (1, 1, 1);
+		Camera.main.orthographic = true;
+		Camera.main.orthographicSize = 768;
+		Camera.main.nearClipPlane = .3f;
+		Camera.main.farClipPlane = 11;
 	}
 	
 	// Update is called once per frame

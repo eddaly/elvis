@@ -65,6 +65,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
+  m_AtlasFile: Frontend_Atlas
+  m_AtlasOriginalWidth: 4096
+  m_AtlasOriginalHeight: 4096
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,6 +79,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b12dbba63ffa4cd2a49f5e614ae4e9f, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

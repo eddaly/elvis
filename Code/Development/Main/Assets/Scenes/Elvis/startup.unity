@@ -231,6 +231,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f3f1de4007bb44c997867ccd0ae6529, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &862715042
 Transform:
   m_ObjectHideFlags: 0
@@ -269,6 +270,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   m_AtlasFile: Frontend_Atlas
   m_AtlasOriginalWidth: 2048
   m_AtlasOriginalHeight: 1536
@@ -322,3 +324,4 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b12dbba63ffa4cd2a49f5e614ae4e9f, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 

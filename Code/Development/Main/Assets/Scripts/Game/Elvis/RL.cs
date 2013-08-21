@@ -18,11 +18,15 @@ using System.Collections;
 public class RL : MonoBehaviour 
 {
 	public static Camera m_MainCamera;
+	public static MainLoop m_MainLoop;
+	public static EntryScreen m_EntryScreen;
 	public static EnvironmentManager m_Environment;
 	public static ObstacleManager m_Obstacles;
 	public static SequenceManager m_Sequencer;
 	public static PrototypeConfiguration m_Prototype;
 	public static Player m_Player;
+	public static EPSoundController m_SoundController;
+	public static EPMusicPlayer m_MusicPlayer;
 	
 	public bool m_ForcePopulate = false;
 	
@@ -77,6 +81,14 @@ public class RL : MonoBehaviour
 		if( foundObject != null )
 			m_MainCamera = foundObject.GetComponent<Camera>();
 		
+		foundObject = GameObject.Find( "MainLoop" );
+		if( foundObject != null )
+			m_MainLoop = foundObject.GetComponent<MainLoop>();
+		
+		foundObject = GameObject.Find( "TitleScreen" );
+		if( foundObject != null )
+			m_EntryScreen = foundObject.GetComponent<EntryScreen>();
+				
 		foundObject = GameObject.Find( "Environment" );
 		if( foundObject != null )
 			m_Environment = foundObject.GetComponent<EnvironmentManager>();
@@ -95,7 +107,14 @@ public class RL : MonoBehaviour
 		
 		foundObject = GameObject.Find( "Player" );
 		if( foundObject != null )
-			m_Player = foundObject.GetComponent<Player>();		
+			m_Player = foundObject.GetComponent<Player>();			
+		
+		foundObject = GameObject.FindWithTag( "SoundController" );
+		if( foundObject != null )
+		{
+			m_SoundController = foundObject.GetComponent<EPSoundController>();
+			m_MusicPlayer = foundObject.GetComponent<EPMusicPlayer>();
+		}
 	}
 	
 	

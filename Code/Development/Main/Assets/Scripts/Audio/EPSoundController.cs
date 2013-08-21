@@ -21,13 +21,11 @@ public class EPSoundController : MonoBehaviour
 	[HideInInspector]
 	public float[] m_MixGroupVolumes;
 	[HideInInspector]
-	public float m_GlobalSFXVolume = 1.0f;
+	public float m_GlobalSFXVolume;
 	[HideInInspector]
-	public float m_GlobalMusicVolume = 1.0f;
+	public float m_GlobalMusicVolume;
 	[HideInInspector]
-	public float m_GlobalVOVolume = 1.0f;
-	[HideInInspector]
-	public float m_DuckingAmount = 1.0f;
+	public float m_DuckingAmount;
 	[HideInInspector]
 	public List<EPSoundEvent> m_StingQueue = new List<EPSoundEvent>();
 	
@@ -49,6 +47,7 @@ public class EPSoundController : MonoBehaviour
 		COUNT
 	}
 	
+	/*
 	//	Pseudo-singleton pattern
 	private static EPSoundController ms_soundController = null;
     public static EPSoundController Get()
@@ -57,7 +56,7 @@ public class EPSoundController : MonoBehaviour
 		if( ms_soundController != null )
 			return ms_soundController;
 
-		GameObject soundControllerObject = GameObject.Find( "SoundController" );
+		GameObject soundControllerObject = GameObject.FindWithTag( "SoundController" );
         if( soundControllerObject == null )
         {
             Debug.Log( "!** No sound controller object found (SoundController)" );
@@ -73,10 +72,19 @@ public class EPSoundController : MonoBehaviour
 		Debug.Log( "!** Couldn't get EPSoundController component" );
 		return null;
     }
+    */
+	
+	// On awake
+	void Awake()
+	{
+		DontDestroyOnLoad(transform.gameObject);
+	}
 	
 	// Use this for initialization
 	void Start()
 	{
+		gameObject.tag = "SoundController";
+		
 		populateLists();
 		
 		m_MixGroupVolumes = new float[(int)MixGroup.COUNT];
@@ -84,6 +92,11 @@ public class EPSoundController : MonoBehaviour
 		m_MixGroupVolumes[(int)MixGroup.SFX] = 1.0f;
 		m_MixGroupVolumes[(int)MixGroup.MUSIC] = 1.0f;
 		m_MixGroupVolumes[(int)MixGroup.VO] = 1.0f;
+		
+		// Initialise global volumes
+		m_GlobalSFXVolume = 1.0f;		// TODO: Take from savegame
+		m_GlobalMusicVolume = 1.0f;		// TODO: Take from savegame
+		m_DuckingAmount = 1.0f;
 		
 		/// Listen for EPMusicPlayer beat notifications
 		NotificationCenter.DefaultCenter.AddObserver(this, "NotifyBeat");
@@ -166,7 +179,7 @@ public class EPSoundController : MonoBehaviour
 	{
 		int soundIdx = GetIndex ( sound_name );
 		
-		if ( EPMusicPlayer.Get ().m_MasterSegment == null || !EPMusicPlayer.Get().m_MasterSegment.IsPlaying() )
+		if ( RL.m_MusicPlayer.m_MasterSegment == null || !RL.m_MusicPlayer.m_MasterSegment.IsPlaying() )
 			Play ( soundIdx );
 		else
 			AddToStingQueue ( soundIdx );
@@ -247,7 +260,7 @@ public class EPSoundController : MonoBehaviour
 	}
 	
 	// Functions for handling lists and sound name string checking
-	int populateLists()
+	public int populateLists()
 	{
 		ClearLists();
 		
@@ -266,7 +279,7 @@ public class EPSoundController : MonoBehaviour
 			}
 		}
 		
-		Debug.Log("Sound lists updated.");
+		Debug.Log("EPSoundController Lists updated.");
 		return 0;
 	}
 	

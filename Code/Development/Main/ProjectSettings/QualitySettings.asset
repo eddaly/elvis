@@ -17,7 +17,7 @@ QualitySettings:
     blendWeights: 4
     textureQuality: 0
     anisotropicTextures: 0
-    antiAliasing: 8
+    antiAliasing: 4
     softParticles: 0
     softVegetation: 1
     vSyncCount: 1
@@ -25,4 +25,8 @@ QualitySettings:
     maximumLODLevel: 0
     particleRaycastBudget: 1
     excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality: {}
+  m_PerPlatformDefaultQuality:
+    Android: 0
+    PS3: 0
+    Standalone: 0
+    Web: 0

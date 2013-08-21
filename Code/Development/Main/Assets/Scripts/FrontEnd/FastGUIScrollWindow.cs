@@ -14,15 +14,15 @@ public class FastGUIScrollWindow : FastGUIElement
 	// Make a ScrollWindow, will immediately render
 	public FastGUIScrollWindow (
 		Vector2 screenPos,			// Position on screen (relative to Position)
-		Vector4 atlasRectWindow, 	// Atlas rectangle window (x,y is top-leftx, z,w is width and height) in pixels
-		Vector4 atlasRectMax, 		// Atlas rectangle for the maximum scrollable area
+		Rect	atlasRectWindow, 	// Atlas rectangle window in pixels
+		Rect	atlasRectMax, 		// Atlas rectangle for the maximum scrollable area
 		Position pos = Position.TOPLEFT) : base (screenPos, atlasRectWindow, pos)
 	{
 		atlasRectMaxNormalised = new Vector4 (
 			atlasRectMax.x / originalAtlasPixelsWidth,
 			atlasRectMax.y / originalAtlasPixelsHeight, 
-			(atlasRectMax.x + atlasRectMax.z) / originalAtlasPixelsWidth, 
-			(atlasRectMax.y + atlasRectMax.w) / originalAtlasPixelsHeight);
+			(atlasRectMax.x + atlasRectMax.width) / originalAtlasPixelsWidth, 
+			(atlasRectMax.y + atlasRectMax.height) / originalAtlasPixelsHeight);
 	}
 	
 	// Update should be called once per frame to update
@@ -78,7 +78,7 @@ public class FastGUIScrollWindow : FastGUIElement
 		if (autoscroll)
 		{
 			Vector2 v2 = new Vector2 (velocity.x, velocity.y);
-			v2 *= Time.deltaTime;	// Scale scroll speed to framerate
+			v2 *= GlobalData.Get.m_GlobalDTime;	// Scale scroll speed to framerate
 			ScrollUVs (v2);
 			// Decelerate until stop
 			velocity = velocity * .9f;

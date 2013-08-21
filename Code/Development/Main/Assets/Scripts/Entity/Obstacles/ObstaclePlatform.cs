@@ -13,6 +13,7 @@ using System.Collections;
 public class ObstaclePlatform : Obstacle
 {
 	public float m_Width = 1.0f;
+	public bool m_PassThrough = false;
 
 	public void OnEnable() 
 	{
@@ -21,13 +22,22 @@ public class ObstaclePlatform : Obstacle
 			if( m_QuadRenderer != null )
 				Debug.Log( "!** Showing an already visible platform" );
 				
-			m_QuadRenderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.PLATFORM_BATCH );
-			
-			m_QuadRenderer.m_Colour = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
-			m_QuadRenderer.m_Position = transform.position;
-			m_QuadRenderer.m_Rotation = 0.0f;
-			m_QuadRenderer.m_Scale = new Vector2( m_Width, 0.1f );
-			m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.PASS_THROUGH;
+			//	Only render platforms that you can pass through - based on the assumption that no 
+			//	solid platforms float in mid air without an object beneath them
+			if( m_PassThrough )
+			{
+				m_QuadRenderer = PrimitiveLibrary.Get.GetQuadDefinition( PrimitiveLibrary.QuadBatch.PLATFORM_BATCH );
+				
+				m_QuadRenderer.m_Colour = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
+				m_QuadRenderer.m_Position = transform.position;
+				m_QuadRenderer.m_Rotation = 0.0f;
+				m_QuadRenderer.m_Scale = new Vector2( m_Width, 0.2f );
+				
+//				if( m_PassThrough )
+					m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.PASS_THROUGH;
+//				else
+//					m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Platforms.SOLID;
+			}
 		}
 	}	
 	
@@ -66,32 +76,23 @@ public class ObstaclePlatform : Obstacle
 		if( boxBottom.x > currentPos.x + m_Width*0.5f )
 			return;
 		
-		
 		//	Also discard velocities in positive y so we can jump through under platforms
-		if( boxVelocity.y > 0.0f )
+		if( m_PassThrough && boxVelocity.y > 0.0f )
 			return;
 		
 		//	So we coincide on the x-axis - do we penetrate on the y?
 		if( boxBottom.y > currentPos.y && boxBottom.y + boxVelocity.y > currentPos.y )
-		{
-//			Debug.Log( "out 1 " + boxVelocity.ToString() );
 			return;
-		}
 		
 		float thickness = 0.01f;
 		if( boxBottom.y < currentPos.y - thickness && boxBottom.y - boxVelocity.y < currentPos.y - thickness )
-		{
-//			Debug.Log( "out 2 " + boxVelocity.ToString() );
 			return;
-		}
 		
 		//	Collided, set the collision point to the top of the platform
 		playerBox.m_PlatformCollisionPoint = new Vector3( boxBottom.x, currentPos.y, 0.0f );
 		playerBox.m_PlatformCollision = this;
+
 		
-//		Debug.Log( "platform collide" + playerBox.m_PlatformCollisionPoint.ToString() + 
-//			"box: " + boxBottom.ToString() + ", box vel: " + boxVelocity.ToString() );
-				 
 		/*
 		//	Do line intersection on the line of movement of the center-bottom point on the box (call it x1, y1 to x2, y2)
 		//	and the line of the platform (call it x3, y3 to x4, y3).

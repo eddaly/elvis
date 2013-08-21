@@ -51,7 +51,7 @@ public class FastGUIElement
 	public FastGUIElement (
 		FastGUIScrollWindow scrollWindow,	// Add this element to ScrollWindow
 		Vector2 scrollWindowPos,			// Position in window (origin is top-left) in pixels
-		Vector4 atlasRect) 					// Atlas rectangle (x,y is top-leftx, z,w is width and height) in pixels
+		Rect	atlasRect) 					// Atlas rectangle in pixels
 		: this (scrollWindowPos, atlasRect, Position.TOPLEFT)
 	{
 		scrollWindow.Add (this, scrollWindowPos);
@@ -60,7 +60,7 @@ public class FastGUIElement
 	// Make a GUIElement, will immediately render
 	public FastGUIElement (
 		Vector2 screenPos,	// Position on screen (relative to Position)
-		Vector4 atlasRect, 	// Atlas rectangle (x,y is top-leftx, z,w is width and height) in pixels
+		Rect	atlasRect, 	// Atlas rectangle in pixels
 		Position pos = Position.TOPLEFT)
 	{
 		// There is a fixed number of possible FastGUIElements
@@ -75,9 +75,9 @@ public class FastGUIElement
 		// Initialise the UVs
 		frontendAtlas.m_UVSet[textureIdx] = new Vector4 (
 			atlasRect.x / originalAtlasPixelsWidth,
-			((originalAtlasPixelsHeight - atlasRect.y) - atlasRect.w) / originalAtlasPixelsHeight, // Note quad render has bottom zeroed Vs
-			(atlasRect.x + atlasRect.z) / originalAtlasPixelsWidth,	
-			(((originalAtlasPixelsHeight - atlasRect.y) - atlasRect.w) + atlasRect.w) / originalAtlasPixelsHeight);	
+			((originalAtlasPixelsHeight - atlasRect.y) - atlasRect.height) / originalAtlasPixelsHeight, // Note quad render has bottom zeroed Vs
+			(atlasRect.x + atlasRect.width) / originalAtlasPixelsWidth,	
+			(((originalAtlasPixelsHeight - atlasRect.y) - atlasRect.height) + atlasRect.height) / originalAtlasPixelsHeight);	
 		
 		// Setup the quad
 		quad = PrimitiveLibrary.Get.GetQuadDefinition (PrimitiveLibrary.QuadBatch.FRONTEND_BATCH);
@@ -87,8 +87,8 @@ public class FastGUIElement
 		// Use UVs for size
 		widthNormalised = frontendAtlas.m_UVSet[textureIdx].z - frontendAtlas.m_UVSet[textureIdx].x;
 		heightNormalised = frontendAtlas.m_UVSet[textureIdx].w - frontendAtlas.m_UVSet[textureIdx].y;
-		width = atlasRect.z;
-		height = atlasRect.w;		
+		width = atlasRect.width;
+		height = atlasRect.height;		
 		
 		// The centre of the quad in world space which is mapped by camera to the safeSceen size
 		if (pos == Position.TOPLEFT) {
@@ -112,6 +112,12 @@ public class FastGUIElement
 		quad.m_Scale.y = height;
 		UpdatedQuad ();
 		children = new List<FastGUIElement>();
+	}
+	
+	// Add a child Element at the it's current position
+	public void Add (FastGUIElement child)
+	{
+		children.Add (child);
 	}
 	
 	// Add a child Element at the provided position
@@ -170,6 +176,16 @@ public class FastGUIElement
 	{
 		tapPos = Vector2.zero;
 #if UNITY_IPHONE || UNITY_ANDROID
+				
+	if (Application.isEditor)
+	{
+		if (!Input.GetMouseButtonUp (0))
+			return false;
+		else
+			tapPos = Input.mousePosition;
+	}
+	else
+	{
 		int n, touchIdx = -1;
 		for (n = 0; n < Input.touchCount; n++)
 		{
@@ -181,12 +197,15 @@ public class FastGUIElement
 		if (touchIdx == -1)
 			return false;
 		tapPos = Input.GetTouch(n).position;
+	}
+		
 #else
 	if (!Input.GetMouseButtonUp (0))
 		return false;
 	else
 		tapPos = Input.mousePosition;
 #endif
+
 		return true;
 	}
 	
@@ -194,6 +213,16 @@ public class FastGUIElement
 	{
 		touchPos = Vector2.zero;
 #if UNITY_IPHONE || UNITY_ANDROID
+		
+	if (Application.isEditor)
+	{
+		if (!Input.GetMouseButton (0))
+			return false;
+		else
+			touchPos = Input.mousePosition;
+	}
+	else
+	{
 		int n, touchIdx = -1;
 		for (n = 0; n < Input.touchCount; n++)
 		{
@@ -207,12 +236,24 @@ public class FastGUIElement
 		if (touchIdx == -1)
 			return false;
 		touchPos = Input.GetTouch(n).position;
+	}
 #else
 	if (!Input.GetMouseButton (0))
 		return false;
 	else
 		touchPos = Input.mousePosition;
 #endif
+
+#if ELVIS_IOS_DEBUG
+		if (Application.isEditor)
+		{
+			if (!Input.GetMouseButton (0))
+				return false;
+			else
+				touchPos = Input.mousePosition;
+		}
+#endif
+		
 		return true;
 	}
 	
@@ -222,26 +263,26 @@ public class FastGUIElement
 		Vector3 wp0 = new Vector3 (quad.m_Position.x + -.5f * quad.m_Scale.x, quad.m_Position.y + -.5f * quad.m_Scale.y, 0);
 		Vector3 wp1 = new Vector3 (wp0.x + quad.m_Scale.x, wp0.y + quad.m_Scale.y, 0);
 		// Note unoptimal as assuming camera position elsewhere so could derive directly (person effort efficient if not CPU, and halfway toward supporting anywhere cameras!)
-		Vector3 sp0 = Camera.mainCamera.WorldToScreenPoint (wp0);
-		Vector3 sp1 = Camera.mainCamera.WorldToScreenPoint (wp1);
+		Vector3 sp0 = Camera.main.WorldToScreenPoint (wp0);
+		Vector3 sp1 = Camera.main.WorldToScreenPoint (wp1);
 
 		screenRect = new Rect (sp0.x, sp0.y, sp1.x - sp0.x, sp1.y - sp0.y);
 	}
 	
 	// Return UVs from provided textureFile (the original file used to create the xml), must first have set uvxmlFile
-	public static Vector4 UVsFrom (string textureFile)
+	public static Rect UVsFrom (string textureFile)
 	{
 		if (uvxmlFile.Length == 0)
 		{
 			Debug.LogError ("uvxmlFile not set, can't use UVsFrom");
-			return Vector4.zero;
+			return new Rect (0, 0, 0, 0);
 		}
 		
 		//*** Note could get/check/override atlas name and original width and size from this file
 		//*** Note could also read this into memory once then dump out rather than keep reading
 		
 		// Create an XmlReader
-		Vector4 v = Vector4.zero;
+		Rect r = new Rect (0, 0, 0, 0);
 		using (XmlReader reader = XmlReader.Create (uvxmlFile))
 		{
 			bool fail = true;
@@ -256,16 +297,16 @@ public class FastGUIElement
 				{
 					if (!reader.MoveToAttribute (@"x"))
 						break;
-					v.x = reader.ReadContentAsFloat();
+					r.x = reader.ReadContentAsFloat();
 					if (!reader.MoveToAttribute (@"y"))
 						break;
-					v.y = reader.ReadContentAsFloat();
+					r.y = reader.ReadContentAsFloat();
 					if (!reader.MoveToAttribute (@"w"))
 						break;
-					v.z = reader.ReadContentAsFloat();
+					r.width = reader.ReadContentAsFloat();
 					if (!reader.MoveToAttribute (@"h"))
 						break;
-					v.w = reader.ReadContentAsFloat();
+					r.height = reader.ReadContentAsFloat();
 					fail = false;
 					break;
 				}
@@ -273,7 +314,7 @@ public class FastGUIElement
 			if (fail)
 				Debug.LogError ("Error reading XML");
 		}
-		return v;
+		return r;
 	}
 
 }

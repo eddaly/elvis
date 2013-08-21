@@ -10,7 +10,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class KillCircle : Obstacle
+[ExecuteInEditMode]
+public class ObstacleKillCircle : Obstacle
 {
 	public float m_Radius = 1.0f;
 	
@@ -27,7 +28,7 @@ public class KillCircle : Obstacle
 			m_QuadRenderer.m_Position = transform.position;
 			m_QuadRenderer.m_Rotation = 0.0f;
 			m_QuadRenderer.m_Scale = new Vector2( m_Radius*2.0f, m_Radius*2.0f );
-			m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Obstacles.KILLCIRCLE;
+			m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Obstacles.BLOCK;
 		}
 	}
 	

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:622e13fbef0952d998e2b26c2b397a39:1/1$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="record_Atlas.png" width="4096" height="4096">
+    <sprite n="General_BackButton.png" x="2" y="2" w="194" h="192"/>
+    <sprite n="General_Background.png" x="198" y="2" w="2048" h="1536"/>
+    <sprite n="General_CoinDisplay.png" x="2248" y="2" w="513" h="192"/>
+    <sprite n="Record_Base.png" x="2" y="1540" w="1346" h="1088"/>
+    <sprite n="Record_Counts.png" x="1350" y="1540" w="384" h="192"/>
+    <sprite n="Record_Record.png" x="1736" y="1540" w="895" h="897"/>
+    <sprite n="Record_RightPane.png" x="2633" y="1540" w="512" h="1087"/>
+    <sprite n="Record_Sell.png" x="3147" y="1540" w="384" h="255"/>
+    <sprite n="Record_Sell_Tap.png" x="3533" y="1540" w="385" h="256"/>
+    <sprite n="Record_Stop.png" x="2" y="2630" w="319" h="192"/>
+    <sprite n="Record_Stop_Tap.png" x="323" y="2630" w="319" h="192"/>
+    <sprite n="Record_Tokens.png" x="644" y="2630" w="384" h="257"/>
+</TextureAtlas>

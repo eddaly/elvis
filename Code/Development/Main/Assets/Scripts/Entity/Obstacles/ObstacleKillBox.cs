@@ -15,7 +15,9 @@ public class ObstacleKillBox : Obstacle
 {
 	public float m_Width = 1.0f;
 	public float m_Height = 1.0f;
-
+	
+	public TextureAtlas.Obstacles m_Texture = TextureAtlas.Obstacles.BLOCK;
+	
 	public void OnEnable() 
 	{
 		if( Application.isPlaying )
@@ -29,16 +31,11 @@ public class ObstacleKillBox : Obstacle
 			m_QuadRenderer.m_Position = transform.position;
 			m_QuadRenderer.m_Rotation = 0.0f;
 			m_QuadRenderer.m_Scale = new Vector2( m_Width, m_Height );
-			m_QuadRenderer.m_TextureIdx = (int)TextureAtlas.Obstacles.KILLBOX;
+			m_QuadRenderer.m_TextureIdx = (int)m_Texture;
 		}
 	}	
 		 
-	void Update()
-	{
-		DebugRender();
-	}
-	
-	public void DebugRender()
+	public override void DebugRender()
 	{
 		if( m_HighlightColour )
 		{
@@ -53,7 +50,7 @@ public class ObstacleKillBox : Obstacle
 		}
 	}
 	
-	public void CollideWithPlayer()
+	public override void CollideWithPlayer()
 	{
 		Vector3 currentPos = transform.position;
 		
@@ -63,6 +60,11 @@ public class ObstacleKillBox : Obstacle
 		float halfMyWidth = m_Width*0.5f;
 		float halfMyHeight = m_Height*0.5f;
 		float halfBoxWidth = playerBox.m_CollisionBoxDimensions.x*0.5f;
+		
+		//	!TODO temp hacking the front panel smaller after making platforms invisible to
+		//	accomodate the new obstacle graphics
+		halfMyHeight -= 0.2f;
+		currentPos.y -= 0.1f;
 		
 		if( RL.m_Prototype.m_CollisionType == PrototypeConfiguration.CollisionTypes.FRONT_COLLISION )
 		{
@@ -89,5 +91,7 @@ public class ObstacleKillBox : Obstacle
 		
 		//	If we got this far, then there's some overlap, so set the collision
 		playerBox.m_KillCollision = this;
+		playerBox.m_KillCollisionPoint = currentPos;
+		playerBox.m_KillCollisionPoint.x -= halfMyWidth;
 	}
 }

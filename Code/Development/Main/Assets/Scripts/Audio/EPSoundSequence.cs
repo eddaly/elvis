@@ -28,8 +28,8 @@ public class EPSoundSequence : EPSoundEvent {
 	float m_FadeEndVol;
 	float m_FadeStartPitch;
 	float m_FadeEndPitch;
-	float m_FadeStartTime;
-	float m_FadeDuration;
+	double m_FadeStartTime;
+	double m_FadeDuration;
 	
 	// EPSoundTrigger
 	public class EPSoundTrigger
@@ -55,8 +55,8 @@ public class EPSoundSequence : EPSoundEvent {
 	public List<EPSoundTrigger> m_TriggerList = new List<EPSoundTrigger>();
 	
 	// A float to hold the timestamp of the last update, so we can evaluate whether an event should have occurred
-	float m_startTime = 0.0f;
-	float m_lastUpdate = -0.1f;
+	double m_startTime = 0.0f;
+	double m_lastUpdate = -0.1f;
 	bool m_isActive = false;
 	
 	// Use this for initialization
@@ -88,11 +88,11 @@ public class EPSoundSequence : EPSoundEvent {
 	// Work out if any sounds are due to start
 	void UpdateSequence()
 	{
-			float seqTime = Time.time - m_startTime;
+			double seqTime = AudioSettings.dspTime - m_startTime;
 			
 			for ( int i = 0; i < m_TriggerList.Count; i++)
 			{	
-				float t = m_TriggerList[i].m_time;
+				double t = (double)m_TriggerList[i].m_time;
 				
 				// Is the sound in the active time range?
 				if ( t <= seqTime && t > m_lastUpdate )
@@ -102,7 +102,7 @@ public class EPSoundSequence : EPSoundEvent {
 			}
 			
 			// Has the last sound in the sequence been triggered?
-			if (seqTime >= m_TriggerList[m_TriggerList.Count-1].m_time)
+			if (seqTime >= (double)m_TriggerList[m_TriggerList.Count-1].m_time)
 			{
 				m_isActive = false;
 			}
@@ -120,7 +120,7 @@ public class EPSoundSequence : EPSoundEvent {
 	{
 		m_InstanceVolume = m_MasterVolume * volume;
 		m_InstancePitch = m_MasterPitch * pitch;
-		m_startTime = Time.time;
+		m_startTime = AudioSettings.dspTime;
 		m_lastUpdate = -0.1f;
 		m_isActive = true;
 	}
@@ -157,9 +157,9 @@ public class EPSoundSequence : EPSoundEvent {
 		return m_MasterVolume;
 	}
 	
-	public override void SetFade( float endVol, float endPitch, float duration, bool isFadeOut )
+	public override void SetFade( float endVol, float endPitch, double duration, bool isFadeOut )
 	{
-		m_FadeStartTime = Time.time;
+		m_FadeStartTime = AudioSettings.dspTime;
 		m_FadeDuration = duration;
 		m_FadeStartVol = m_InstanceVolume;
 		m_FadeEndVol = endVol;
@@ -171,17 +171,17 @@ public class EPSoundSequence : EPSoundEvent {
 	
 	public override void ApplyFade()
 	{
-			float fadeClock = Time.time - m_FadeStartTime;
+			double fadeClock = AudioSettings.dspTime - m_FadeStartTime;
 			if ( fadeClock < m_FadeDuration )
 			{
 				if ( m_FadeStartVol != m_FadeEndVol )
 				{
-					float vol = m_FadeStartVol + (( fadeClock / m_FadeDuration ) * ( m_FadeEndVol - m_FadeStartVol ));
+					float vol = m_FadeStartVol + ((float)( fadeClock / m_FadeDuration ) * ( m_FadeEndVol - m_FadeStartVol ));
 					SetVolume ( vol );
 				}
 				if ( m_FadeStartPitch != m_FadeEndPitch )
 				{
-					float pitch = m_FadeStartPitch + (( fadeClock / m_FadeDuration ) * ( m_FadeEndPitch - m_FadeStartPitch ));
+					float pitch = m_FadeStartPitch + ((float)( fadeClock / m_FadeDuration ) * ( m_FadeEndPitch - m_FadeStartPitch ));
 					SetPitch ( pitch );
 				}
 			}
@@ -210,7 +210,7 @@ public class EPSoundSequence : EPSoundEvent {
 			return false;
 	}
 		
-	public override float time()
+	public override double time()
 	{
 		foreach ( EPSound sound in m_EPSounds )
 		{
@@ -220,12 +220,12 @@ public class EPSoundSequence : EPSoundEvent {
 		return 0.0f;
 	}
 	
-	public override void time( float time )
+	public override void time( double time )
 	{
 		foreach ( EPSound sound in m_EPSounds )
 		{
 			if ( sound != null && sound.IsPlaying() )
-				sound.time( time );
+				sound.time( (float)time );
 		}
 	}
 }

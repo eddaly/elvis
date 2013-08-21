@@ -2,172 +2,146 @@ using UnityEngine;
 using System.Collections;
 
 public class store : MonoBehaviour {
+	
 #pragma warning disable 414
-//	FastGUIElement Store_Background;
-	/* FastGUIElement General_BackButton;
-	FastGUIButton BackButton;
-	FastGUIElement Store_Upgrade1Tab;
-	FastGUIElement Store_Upgrade2Tab;
-	FastGUIElement Store_Upgrade3Tab;
 	
-	FastGUIElement descriptionTab;
-	FastGUIElement upgradesButton;
-	FastGUIElement descriptionButton;
+	// Persistent elements always on screen
+	private FastGUIElement Store_Background;
+	private FastGUIElement General_BackButton;
+	private FastGUIElement General_CoinDisplay;
 	
-	General_BackButton
-    General_CoinDisplay
-    Store_Background
-    Store_BankScreen
-    Store_BankScreen_InUse
-    Store_CostumeDescPane
-    Store_CostumePane
-    Store_GearScreen
-    Store_GearScreen_InUse
-    Store_Upgrade1Tab
-    Store_Upgrade2Tab
-    Store_Upgrade3Tab
-   Store_UpgradeBuyButton
-    <Store_UpgradeEquipButton
-    <sprite n="Store_UpgradeInUseButton */
-    FastGUIElement Store_WardrobeScreen;
-    FastGUIElement Store_WardrobeScreen_InUse;
-	FastGUIElement Store_BankScreen;
-    FastGUIElement Store_BankScreen_InUse;
-	FastGUIElement Store_GearScreen;
-    FastGUIElement Store_GearScreen_InUse;
-	FastGUIElement Store_CostumePane;
-	FastGUIElement Store_CostumeDescPane;
-	FastGUIElement Store_Upgrade1Tab;
-	FastGUIElement Store_Upgrade2Tab;
-	FastGUIElement Store_Upgrade3Tab;
 #pragma warning restore 414
 
+	// The tab panels
+	private StoreWardrobe wardrobe;
+	private StoreGear gear;
+	private StoreBank bank;
+	
+	// Tab selected flags
+	private bool wardrobeSelected = true, gearSelected = false, bankSelected = false;
+	
+	// The Coins/GD/Level display
+	private GUIText aGUIText;
+	
 	// Use this for initialization
-	void Start () {
-		
-		
+	void Start ()
+	{	
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"assets//resources//Elvis_StoreAtlas.xml";
+		FastGUIElement.uvxmlFile = @"assets//resources//Frontend_AtlasUV.xml";
 		
-		Store_WardrobeScreen = new FastGUIElement (
-			new Vector2 (192, 0),
-			FastGUIElement.UVsFrom (@"Store_WardrobeScreen.png"));
-		Store_WardrobeScreen.SetDisplayed (false);
+		// Persistent across tabs
+		Store_Background = new FastGUIElement (
+			new Vector2 (0, 0),
+			FastGUIElement.UVsFrom (@"Store_Background.png"));		
+		General_BackButton = new FastGUIElement (
+			new Vector2 (0, 0),
+			FastGUIElement.UVsFrom (@"General_BackButton.png"));
+		General_CoinDisplay = new FastGUIElement (
+			new Vector2 (1536, 0),
+			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
 		
-		Store_WardrobeScreen_InUse = new FastGUIElement (
-			new Vector2 (192, 0),
-			FastGUIElement.UVsFrom (@"Store_WardrobeScreen_InUse.png"));
+		// Create tabs
+		wardrobe = new StoreWardrobe ();
+		gear = new StoreGear ();
+		bank = new StoreBank ();
 		
-		Store_GearScreen = new FastGUIElement (
-			new Vector2 (640, 0),
-			FastGUIElement.UVsFrom (@"Store_GearScreen.png"));
+		// Create the GUITexts
+		//aGUIText = (GUIText)gameObject.AddComponent (typeof (GUIText));
+		GameObject go = Instantiate (Resources.Load ("Frontend_GUIText")) as GameObject;  // Note need to clone prefab as can't access pixel correct property from script
+		aGUIText = go.guiText;
+		aGUIText.transform.position = new Vector3 (.775f, .995f, 0);
+		aGUIText.transform.localScale = new Vector3 (.5f, .5f, 1);
+		aGUIText.text = "Coins\nGDs\nXP Level";
+		aGUIText.color = Color.red;
+	}
 		
-		Store_GearScreen_InUse = new FastGUIElement (
-			new Vector2 (640, 0),
-			FastGUIElement.UVsFrom (@"Store_GearScreen_InUse.png"));
-		Store_GearScreen_InUse.SetDisplayed (false);
+	// Update is called once per frame
+	void Update ()
+	{
+		// Back
+		if (General_BackButton.Tapped ())
+		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Back");			
+			Debug.Log ("EXIT");
+		}
 		
-		Store_BankScreen = new FastGUIElement (
-			new Vector2 (1088, 0),
-			FastGUIElement.UVsFrom (@"Store_BankScreen.png"));
-		
-		Store_BankScreen_InUse = new FastGUIElement (
-			new Vector2 (1088, 0),
-			FastGUIElement.UVsFrom (@"Store_BankScreen_InUse.png"));
-		Store_BankScreen_InUse.SetDisplayed (false);
-		
-		Store_CostumePane = new FastGUIElement (
-			new Vector2 (64, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));
-		
-		Store_CostumeDescPane = new FastGUIElement (
-			new Vector2 (832, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png"));
-		
-		Store_Upgrade1Tab = new FastGUIElement (
-			new Vector2 (64, 896),
-			FastGUIElement.UVsFrom (@"Store_Upgrade1Tab.png"));
-		
-		Store_Upgrade2Tab = new FastGUIElement (
-			new Vector2 (64, 896),
-			FastGUIElement.UVsFrom (@"Store_Upgrade2Tab.png"));
-		Store_Upgrade2Tab.SetDisplayed (false);
-		
-		Store_Upgrade3Tab = new FastGUIElement (
-			new Vector2 (64, 896),
-			FastGUIElement.UVsFrom (@"Store_Upgrade3Tab.png"));
-		Store_Upgrade3Tab.SetDisplayed (false);
+		// Test for change of tab
+		if (wardrobe.Store_WardrobeScreen.Tapped ())
+		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Navigation_01");
+			
+			// Select Wardrobe tab
+			wardrobe.SetSelect (true);
+			gear.SetSelect (false);
+			bank.SetSelect (false);
+			wardrobeSelected = true;
+			gearSelected = bankSelected = false;
+		}
+		else if (gear.Store_GearScreen.Tapped ())
+		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Navigation_01");
+			
+			// Select Gear tab
+			gear.SetSelect (true);
+			wardrobe.SetSelect (false);
+			bank.SetSelect (false);
+			gearSelected = true;
+			wardrobeSelected = bankSelected = false;
+		}
+		else if (bank.Store_BankScreen.Tapped ())
+		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Navigation_01");
+			
+			// Select Bank tab
+			bank.SetSelect (true);
+			wardrobe.SetSelect (false);
+			gear.SetSelect (false);
+			bankSelected = true;
+			gearSelected = wardrobeSelected = false;
+		}
 
-		//		backGround = new FastGUIElement (
-		//	new Vector2 (0, 0),					// Screen position
-		//	FastGUIElement.UVsFrom (@"Elvis_FE_Test.psd"));
+		// Update selected tab
+		if (wardrobeSelected)
+		{
+			wardrobe.UpdateTab ();
+		}
+		else if (gearSelected)
+		{
+			gear.UpdateTab ();
+		}
+		else if (bankSelected)
+		{
+			bank.UpdateTab ();
+		}
 		
-
+		// Update text
+		aGUIText.text = "Coins: " + PersistentData.coins + 
+			"\nGDs: " + PersistentData.goldDiscs + 
+			"\nXP Level: " + PersistentData.CurrentLevel ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-		/*if (backButton.UpdateTestPressed ())
+#if !UNITY_IPHONE && !UNITY_ANDROID
+	void OnGUI ()
+	{
+		if (Application.isEditor)
 		{
-			Debug.Log ("BACK");
-		}
-		else if (descriptionButton.Tapped ())
-		{
-			descriptionTab.SetDisplayed (true);
-			upgradesTab.SetDisplayed (false);			
-		}
-		else if (upgradesButton.Tapped ())
-		{
-			descriptionTab.SetDisplayed (false);
-			upgradesTab.SetDisplayed (true);			
-		}*/
-		if (Store_WardrobeScreen.Tapped ())
-		{
-			Store_WardrobeScreen.SetDisplayed (false);
-			Store_WardrobeScreen_InUse.SetDisplayed (true);
-			Store_BankScreen.SetDisplayed (true);
-			Store_BankScreen_InUse.SetDisplayed (false);
-			Store_GearScreen.SetDisplayed (true);
-			Store_GearScreen_InUse.SetDisplayed (false);
-			Store_CostumePane.SetDisplayed (true);
-			Store_CostumeDescPane.SetDisplayed (true);
-			Store_Upgrade1Tab.SetDisplayed (true);
-		}
-		
-		if (Store_BankScreen.Tapped ())
-		{
-			Store_WardrobeScreen.SetDisplayed (true);
-			Store_WardrobeScreen_InUse.SetDisplayed (false);
-			Store_BankScreen.SetDisplayed (false);
-			Store_BankScreen_InUse.SetDisplayed (true);
-			Store_GearScreen.SetDisplayed (true);
-			Store_GearScreen_InUse.SetDisplayed (false);
-			Store_CostumePane.SetDisplayed (false);
-			Store_CostumeDescPane.SetDisplayed (false);
-			Store_Upgrade1Tab.SetDisplayed (false);
-			Store_Upgrade2Tab.SetDisplayed (false);
-			Store_Upgrade3Tab.SetDisplayed (false);
-		}
-		
-		if (Store_GearScreen.Tapped ())
-		{
-			Store_WardrobeScreen.SetDisplayed (true);
-			Store_WardrobeScreen_InUse.SetDisplayed (false);
-			Store_BankScreen.SetDisplayed (true);
-			Store_BankScreen_InUse.SetDisplayed (false);
-			Store_GearScreen.SetDisplayed (false);
-			Store_GearScreen_InUse.SetDisplayed (true);
-			Store_CostumePane.SetDisplayed (false);
-			Store_CostumeDescPane.SetDisplayed (false);
-			Store_Upgrade1Tab.SetDisplayed (false);
-			Store_Upgrade2Tab.SetDisplayed (false);
-			Store_Upgrade3Tab.SetDisplayed (false);
-		}
-		
-		if (Store_Upgrade1Tab.Tapped ())
-		{
-			Debug.Log ("Upgrade1 Tapped");
+			GUIStyle guistyle = new GUIStyle (GUI.skin.GetStyle("button"));
+			guistyle.alignment = TextAnchor.MiddleLeft;
+			if (GUI.Button (new Rect (0, 50, 150, 20), "XP = " + PersistentData.xP + " .MORE?", guistyle))
+				PersistentData.xP += 100;
+			if (GUI.Button (new Rect (0, 70, 150, 20), "COINS = " + PersistentData.coins + " .MORE?", guistyle))
+				PersistentData.coins += 1000;
+			if (GUI.Button (new Rect (0, 90, 150, 20), "GDs = " + PersistentData.goldDiscs + " .MORE?", guistyle))
+				PersistentData.goldDiscs += 1;
+			if (GUI.Button (new Rect (0, 110, 150, 20), "RESET SAVE DATA?", guistyle))
+				PersistentData.ResetAll();
+			wardrobe.UpdateWardrobeStatus ();
 		}
 	}
+#endif
+
 }

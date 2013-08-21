@@ -49,12 +49,15 @@ public class Obstacle : MonoBehaviour
 			
 			if( RL.m_Sequencer.m_ShowObstacles )
 				UpdateRenderer();
+			
+			ObstacleUpdate();
 		}
 	}
 
 	public virtual void CollideWithPlayer() {}
 	
 	public virtual void DebugRender() {}
+	public virtual void ObstacleUpdate() {}
 	
 	public void UpdateRenderer()
 	{
@@ -80,7 +83,7 @@ public class PlayerCollisionDef
 	public Obstacle m_KillCollision;
 	public Vector3 m_KillCollisionPoint;
 	
-	public Obstacle m_PlatformCollision;
+	public ObstaclePlatform m_PlatformCollision;
 	public Vector3 m_PlatformCollisionPoint;		
 }
 	
