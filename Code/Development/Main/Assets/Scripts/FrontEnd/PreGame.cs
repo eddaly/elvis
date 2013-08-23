@@ -51,18 +51,21 @@ public class PreGame : MonoBehaviour {
 			new Vector2 (1536,0),
 			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
 		
+		/* Duplicate of the one above
 		General_CoinDisplay = new FastGUIElement (
 			new Vector2 (1536,0),
 			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
+		*/
 		
 		//stuff
 		PreGame_Play = new FastGUIElement (
 			new Vector2 (448, 256),
-			FastGUIElement.UVsFrom (@"ReGame_Play.png"));
+			FastGUIElement.UVsFrom (@"PreGame_Play.png"));
 		
+		// This one doesn't work
 		PreGame_Shades_No = new FastGUIElement (
 			new Vector2 (448, 256),
-			FastGUIElement.UVsFrom (@"Shades_No.png"));
+			FastGUIElement.UVsFrom (@"PreGame_Shades_No.png"));
 		//to add.
 		
 		//
