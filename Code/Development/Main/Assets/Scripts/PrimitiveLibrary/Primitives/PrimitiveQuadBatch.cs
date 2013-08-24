@@ -69,7 +69,7 @@ public class PrimitiveQuadBatch
 	// Method:	MakeQuadVB()
 	// Desc:	Creates a new quad buffer of maximum size and creates the material
 	public static GameObject MakeQuadBatch( int num_quads, TextureAtlas atlas, int atlas_idx, 
-		bool rotate, bool uniform_scale, bool additive, int layer )
+		bool rotate, bool uniform_scale, bool additive, int layer, int renderQueue = 3500 )
 	{
 		GameObject gameObject = new GameObject();
 		gameObject.layer = layer;
@@ -165,7 +165,7 @@ public class PrimitiveQuadBatch
 		meshRenderer.sharedMaterial.mainTexture = atlas.m_TexturePage;
 		meshRenderer.sharedMaterial.color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
 		
-		meshRenderer.sharedMaterial.renderQueue = 3500;
+		meshRenderer.sharedMaterial.renderQueue = renderQueue;
 		
 		return gameObject;
 	}	
