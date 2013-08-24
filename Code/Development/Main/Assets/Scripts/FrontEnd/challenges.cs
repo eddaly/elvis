@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Challenges : MonoBehaviour {
+public class challenges : MonoBehaviour {
 	
 #pragma warning disable 414
 
@@ -52,7 +52,7 @@ public class Challenges : MonoBehaviour {
 	{
 			
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"assets//resources//Challenges_Atlas.xml";
+		FastGUIElement.uvxmlFile = @"assets//resources//Challenges_AtlasUV.xml";
 
 		/*		
 		FAST GUI BUTTON example
