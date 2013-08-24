@@ -21,7 +21,7 @@ public class Store : MonoBehaviour {
 	private bool wardrobeSelected = true, gearSelected = false, bankSelected = false;
 	
 	// The Coins/GD/Level display
-	private GUIText aGUIText;
+	private GameObject myGUITextObject;
 	
 	// Use this for initialization
 	void Start ()
@@ -45,14 +45,12 @@ public class Store : MonoBehaviour {
 		gear = new StoreGear ();
 		bank = new StoreBank ();
 		
-		// Create the GUITexts
-		//aGUIText = (GUIText)gameObject.AddComponent (typeof (GUIText));
-		GameObject go = Instantiate (Resources.Load ("Frontend_GUIText")) as GameObject;  // Note need to clone prefab as can't access pixel correct property from script
-		aGUIText = go.guiText;
-		aGUIText.transform.position = new Vector3 (.775f, .995f, 0);
-		aGUIText.transform.localScale = new Vector3 (.5f, .5f, 1);
-		aGUIText.text = "Coins\nGDs\nXP Level";
-		aGUIText.color = Color.red;
+		// Create the GUIText
+		myGUITextObject = Instantiate (Resources.Load ("Frontend_GUIText")) as GameObject;  // Note need to clone prefab as can't access pixel correct property from script
+		myGUITextObject.guiText.transform.position = new Vector3 (.775f, .995f, 0);
+		myGUITextObject.guiText.transform.localScale = new Vector3 (.5f, .5f, 1);
+		myGUITextObject.guiText.text = "Coins\nGDs\nXP Level";
+		myGUITextObject.guiText.color = Color.red;
 	}
 		
 	// Update is called once per frame
@@ -119,11 +117,12 @@ public class Store : MonoBehaviour {
 		}
 		
 		// Update text
-		aGUIText.text = "Coins: " + PersistentData.coins + 
+		myGUITextObject.guiText.text = 
+			"Coins: " + PersistentData.coins + 
 			"\nGDs: " + PersistentData.goldDiscs + 
 			"\nXP Level: " + PersistentData.CurrentLevel ();
 	}
-	
+		
 #if !UNITY_IPHONE && !UNITY_ANDROID
 	void OnGUI ()
 	{
@@ -139,7 +138,10 @@ public class Store : MonoBehaviour {
 				PersistentData.goldDiscs += 1;
 			if (GUI.Button (new Rect (0, 110, 150, 20), "RESET SAVE DATA?", guistyle))
 				PersistentData.ResetAll();
-			wardrobe.UpdateWardrobeStatus ();
+			if (wardrobeSelected)
+				wardrobe.UpdateWardrobeStatus ();
+			if (gearSelected)
+				gear.UpdateGearStatus ();
 		}
 	}
 #endif
