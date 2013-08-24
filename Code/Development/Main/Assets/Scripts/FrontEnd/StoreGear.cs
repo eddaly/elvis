@@ -21,6 +21,12 @@ public class StoreGear
 	FastGUIElement Store_GearBuy2;
 	FastGUIElement Store_GearBuy3;
 	
+	// The counters
+#pragma warning disable 414	
+	GameObject shadesCounter_go, beltBuckleCounter_go, shoesCounter_go, epCounter_go, rpmCounter_go;
+	FontNumber shadesCounter, beltBuckleCounter, shoesCounter, epCounter, rpmCounter;
+#pragma warning restore 414
+
 	// Constructor, create elements
 	public StoreGear ()
 	{
@@ -101,9 +107,46 @@ public class StoreGear
 			new Vector2 (1600, 1344),
 			FastGUIElement.UVsFrom (@"Store_GearBuy3.png"));
 		Store_GearScreen_InUse.Add (Store_GearBuy3);
-		
+				
 		// Don't display Gear screen by default, note this calls SetDisplay() on child elements
-		Store_GearScreen_InUse.SetDisplayed (false);	
+		Store_GearScreen_InUse.SetDisplayed (false);
+		
+		// Set up the counters (trial and errored rather than offset from element for now, at least)
+		int x = -600, xStep = 384, y = 175, z = 0;
+		SetupFontNumber (out epCounter, out epCounter_go, new Vector3 (x + xStep * 0, y, z));
+		SetupFontNumber (out beltBuckleCounter, out beltBuckleCounter_go, new Vector3 (x + xStep * 1, y, z));
+		SetupFontNumber (out rpmCounter, out rpmCounter_go, new Vector3 (x + xStep * 2, y, z));
+		SetupFontNumber (out shoesCounter, out shoesCounter_go, new Vector3 (x + xStep * 3, y, z));
+		SetupFontNumber (out shadesCounter, out shadesCounter_go, new Vector3 (x + xStep * 4, y, z));
+	}
+	
+	//***check when called
+	~StoreGear ()
+	{
+		epCounter.Release ();
+		beltBuckleCounter.Release ();
+		rpmCounter.Release ();
+		shoesCounter.Release ();
+		shadesCounter.Release();
+	}
+	
+	private void SetupFontNumber (out FontNumber fontNumber, out GameObject go, Vector3 position)
+	{
+		go = new GameObject ();
+		fontNumber = go.AddComponent<FontNumber>();		
+		go.transform.position = position; 
+		fontNumber.m_Number = 0;
+		fontNumber.m_Multiplier = true;
+		fontNumber.m_DisplayLeadingDigits = false;
+		fontNumber.m_NumDigits = 5;
+		fontNumber.m_Anchor = 2;
+		fontNumber.m_ScaleX = 100.0f;
+		fontNumber.m_ScaleY = 100.0f;
+		fontNumber.m_Spacing = 64.0f;
+		fontNumber.m_Colour = new Color (1.0f, 1.0f, 1.0f, 1.0f);
+		fontNumber.InitialiseDigits();
+		fontNumber.Hide ();
+		go.SetActive (false);	// Need to disable object or Hide() doesn't work correctly
 	}
 	
 	// Select the tab view
@@ -111,20 +154,46 @@ public class StoreGear
 	{
 		Store_GearScreen.SetDisplayed (!isSelected);
 		Store_GearScreen_InUse.SetDisplayed (isSelected);
+		
+		epCounter_go.SetActive (isSelected);
+		beltBuckleCounter_go.SetActive (isSelected);
+		rpmCounter_go.SetActive (isSelected);
+		shoesCounter_go.SetActive (isSelected);
+		shadesCounter_go.SetActive (isSelected);
+		
+		if (isSelected) {
+			UpdateGearStatus ();
+			epCounter.Show ();
+			beltBuckleCounter.Show ();
+			rpmCounter.Show ();
+			shoesCounter.Show ();
+			shadesCounter.Show ();
+		}
+		else {
+			epCounter.Hide ();
+			beltBuckleCounter.Hide ();
+			rpmCounter.Hide ();
+			shoesCounter.Hide ();
+			shadesCounter.Hide ();
+		}
 	}
 	
 	// Update is called once per frame
 	public void UpdateTab ()
 	{
-		// Update Gear entries to show what is owned / available
-		UpdateGearDescs ();
-
 		// Buy 1
 		if (Store_GearBuy1.Tapped ())
 		{
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_01");
-			Debug.Log ("GEAR TAPPED!");
+			
+			// Buy it
+			PersistentData.SetConsumableItem (Metagame.ConsumableItems.EP, 
+				PersistentData.GetConsumableItem(Metagame.ConsumableItems.EP) + 1);		
+			PersistentData.coins -= Metagame.ep.priceCoins;
+			PersistentData.goldDiscs -= Metagame.ep.priceGoldDiscs;
+
+			UpdateGearStatus ();
 		}
 		// Buy 2
 		else if (Store_GearBuy2.Tapped ())
@@ -132,48 +201,68 @@ public class StoreGear
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_02");
 			
-			Debug.Log ("GEAR TAPPED!");
+			// Buy it
+			PersistentData.SetConsumableItem (Metagame.ConsumableItems.BELTBUCKLE, 
+				PersistentData.GetConsumableItem(Metagame.ConsumableItems.BELTBUCKLE) + 1);		
+			PersistentData.coins -= Metagame.beltBuckle.priceCoins;
+			PersistentData.goldDiscs -= Metagame.beltBuckle.priceGoldDiscs;
+
+			UpdateGearStatus ();
 		}
 		//Buy 3
 		else if (Store_GearBuy3.Tapped ())
 		{
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_03");
-			Debug.Log ("GEAR TAPPED!");
+			
+			// Buy it
+			PersistentData.SetConsumableItem (Metagame.ConsumableItems.RPM, 
+				PersistentData.GetConsumableItem(Metagame.ConsumableItems.RPM) + 1);		
+			PersistentData.coins -= Metagame.rpm.priceCoins;
+			PersistentData.goldDiscs -= Metagame.rpm.priceGoldDiscs;
+
+			UpdateGearStatus ();
 		}
 	
 	}
-	
+
 	// Update Gear entries to show what is owned / available
-	private void UpdateGearDescs ()
+	//*** public for now to allow for testing
+	public void UpdateGearStatus ()
 	{
-		//*** Ignored bought unlocked until clarified whether feature exists
-		
 		// How many of each do you own?
+		epCounter.m_Number = PersistentData.GetConsumableItem (Metagame.ConsumableItems.EP);
+		beltBuckleCounter.m_Number = PersistentData.GetConsumableItem (Metagame.ConsumableItems.BELTBUCKLE);
+		rpmCounter.m_Number = PersistentData.GetConsumableItem (Metagame.ConsumableItems.RPM);
+		shoesCounter.m_Number = PersistentData.GetConsumableItem (Metagame.ConsumableItems.BLUESUEDESHOES);
+		shadesCounter.m_Number = PersistentData.GetConsumableItem (Metagame.ConsumableItems.SHADES);
+		 
+		// Display or hide the buy buttons for gear based on XP lock and affordable status
+		Store_GearBuy1.SetDisplayed (IsGearItemAvailable (Metagame.ep));
+		Store_GearBuy2.SetDisplayed (IsGearItemAvailable (Metagame.beltBuckle));
+		Store_GearBuy3.SetDisplayed (IsGearItemAvailable (Metagame.rpm));
+		//Store_GearBuy4.SetDisplayed (IsGearItemAvailable (Metagame.shoes));
+		//Store_GearBuy5.SetDisplayed (IsGearItemAvailable (Metagame.shades));		
+	}
 
-    	//*** Store_EPIcon count = PersistentData.consumableItems [(int) Metagame.ConsumableItems.EP];
-		//*** Store_BuckleIcon count = PersistentData.consumableItems [(int) Metagame.ConsumableItems.BELTBUCKLE];
-		//*** Store_RPMIcon count = PersistentData.consumableItems [(int) Metagame.ConsumableItems.RPM];
-		//*** Store_ShoesIcon count = PersistentData.consumableItems [(int) Metagame.ConsumableItems.BLUESUEDESHOES];
-		//*** Store_ShadesIcon count = PersistentData.consumableItems [(int) Metagame.ConsumableItems.SHADES];
-
-		// Is it unlocked, can you afford it?
-		if (Metagame.shades.unlockLevel > PersistentData.CurrentLevel()) {
-				// Store_GearDesc1 = locked, XP level too low
-				// Store_GearBuy1 = no can do
-			}
+	// Is gear available to buy based on XP lock and affordable status
+	private bool IsGearItemAvailable (Metagame.Item item)
+	{	
+		// Is it unlocked? can you afford it?
+		if (item.unlockLevel > PersistentData.CurrentLevel()) {
+			Debug.Log (item.name + " locked till XP level: " + item.unlockLevel + " currently: " + PersistentData.CurrentLevel());
+		}
 		else {
-			if (Metagame.shades.priceCoins > PersistentData.coins ||
-				Metagame.shades.priceGoldDiscs > PersistentData.goldDiscs) {
-				// Store_GearDesc1 = not enough coins and/or GDs
-				// Store_GearBuy1 = no can do
+			if (item.priceCoins > PersistentData.coins ||
+				item.priceGoldDiscs > PersistentData.goldDiscs) {
+				Debug.Log (item.name + " is unlocked but too expensive, coins: " + item.priceCoins + " GDs: " + item.priceGoldDiscs);
 			}
 			else {
-				// Store_GearDesc1 = unlocked and affordable
-				// Store_GearBuy1 = buy it?
+				Debug.Log (item.name + " unlocked and affordable");
+				return true;
 			}
 		}
-		//*** etc for the others but why only 3 choices and 5 types of items?		
+		return false;
 	}
 	
 }
