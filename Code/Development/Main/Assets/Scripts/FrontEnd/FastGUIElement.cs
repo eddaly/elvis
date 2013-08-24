@@ -280,10 +280,12 @@ public class FastGUIElement
 		
 		//*** Note could get/check/override atlas name and original width and size from this file
 		//*** Note could also read this into memory once then dump out rather than keep reading
-		
-		// Create an XmlReader
+				
+		// Create an XmlReader, note converting from a TextAsset as Unity doesn't support XML Resources
+		// And I want to load with Resources.Load() for correct loading on iOS etc.
 		Rect r = new Rect (0, 0, 0, 0);
-		using (XmlReader reader = XmlReader.Create (uvxmlFile))
+		TextAsset textAsset = (TextAsset)Resources.Load (uvxmlFile, typeof (TextAsset));
+		using (XmlReader reader = XmlReader.Create (new StringReader(textAsset.text)))
 		{
 			bool fail = true;
 			do {
