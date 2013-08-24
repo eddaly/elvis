@@ -27,7 +27,7 @@ public class Store : MonoBehaviour {
 	void Start ()
 	{	
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"assets//resources//Frontend_Atlas.xml";
+		FastGUIElement.uvxmlFile = @"assets//resources//Frontend_AtlasUV.xml";
 		
 		// Persistent across tabs
 		Store_Background = new FastGUIElement (
