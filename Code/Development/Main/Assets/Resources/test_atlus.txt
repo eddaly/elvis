@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:d633f546a30679fd458cc02c75f48d0b$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="test_atlus.png" width="4096" height="4096">
+    <sprite n="Elvis_FE_Store_DescriptionTab.png" x="2" y="2" w="896" h="768"/>
+    <sprite n="Elvis_FE_Store_UpgradesTab.png" x="900" y="2" w="896" h="768"/>
+    <sprite n="Elvis_FE_Test.psd" x="1798" y="2" w="2048" h="1536"/>
+</TextureAtlas>
