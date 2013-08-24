@@ -11,9 +11,9 @@ public class StoreBank
 	FastGUIElement Store_BankIcon3;
 	FastGUIElement Store_BankIcon4;
 	FastGUIButton Store_BuyItem1;
-	FastGUIElement Store_BuyItem2;
-	FastGUIElement Store_BuyItem3;
-	FastGUIElement Store_BuyItem4;
+	FastGUIButton Store_BuyItem2;
+	FastGUIButton Store_BuyItem3;
+	FastGUIButton Store_BuyItem4;
 	FastGUIElement Store_CoinsDesc1;
 	FastGUIElement Store_CoinsDesc2;
 	FastGUIElement Store_CoinsDesc3;
@@ -70,9 +70,10 @@ public class StoreBank
 			FastGUIElement.UVsFrom (@"Store_CoinsPrice2.png"));
 		Store_BankScreen_InUse.Add (Store_CoinsPrice2);
 		
-		Store_BuyItem2 = new FastGUIElement (
+		Store_BuyItem2 = new FastGUIButton (
 			new Vector2 (1600, 576),
-			FastGUIElement.UVsFrom (@"Store_BuyItem2.png"));
+			FastGUIElement.UVsFrom (@"Store_BuyItem2.png"),
+			FastGUIElement.UVsFrom (@"Store_Bank_Icon2.png")); //***REPLACE THIS WITH THE PRESSED BUTTON IMAGE UVs
 		Store_BankScreen_InUse.Add (Store_BuyItem2);
 		
 		Store_BankIcon3 = new FastGUIElement (
@@ -90,9 +91,10 @@ public class StoreBank
 			FastGUIElement.UVsFrom (@"Store_CoinsPrice3.png"));
 		Store_BankScreen_InUse.Add (Store_CoinsPrice3);
 		
-		Store_BuyItem3 = new FastGUIElement (
+		Store_BuyItem3 = new FastGUIButton (
 			new Vector2 (1600, 896),
-			FastGUIElement.UVsFrom (@"Store_BuyItem3.png"));
+			FastGUIElement.UVsFrom (@"Store_BuyItem3.png"),
+			FastGUIElement.UVsFrom (@"Store_Bank_Icon2.png")); //***REPLACE THIS WITH THE PRESSED BUTTON IMAGE UVs
 		Store_BankScreen_InUse.Add (Store_BuyItem3);
 
 		Store_BankIcon4 = new FastGUIElement (
@@ -110,9 +112,10 @@ public class StoreBank
 			FastGUIElement.UVsFrom (@"Store_CoinsPrice4.png"));
 		Store_BankScreen_InUse.Add (Store_CoinsPrice4);
 		
-		Store_BuyItem4 = new FastGUIElement (
+		Store_BuyItem4 = new FastGUIButton (
 			new Vector2 (1600, 1216),
-			FastGUIElement.UVsFrom (@"Store_BuyItem4.png"));
+			FastGUIElement.UVsFrom (@"Store_BuyItem4.png"),
+			FastGUIElement.UVsFrom (@"Store_Bank_Icon2.png")); //***REPLACE THIS WITH THE PRESSED BUTTON IMAGE UVs
 		Store_BankScreen_InUse.Add (Store_BuyItem4);
 		
 		// Don't display Gear screen by default, note this calls SetDisplay() on child elements
@@ -129,21 +132,52 @@ public class StoreBank
 	// Update is called once per frame
 	public void UpdateTab ()
 	{
-		// Update Bank entries to show what is owned / available?
-		UpdateBankDescs ();
+		// Update Bank entries to show what is available?
+		UpdateBankStatus ();
 	
-		// Buy item 1
+		// Buy something?
 		if (Store_BuyItem1.UpdateTestPressed ())
 		{
 			RL.m_SoundController.Play("FE_Confirm_01");
-			Debug.Log ("BUYITEM1 BUTTON PRESSED!");			
+			
+			// Buy 1 GD for cash
+			//*** take the money
+			PersistentData.goldDiscs++;
+			Debug.Log ("Bought 1 GD for cash");
+		}
+		else if (Store_BuyItem2.UpdateTestPressed ())
+		{
+			RL.m_SoundController.Play("FE_Confirm_02");
+
+			// Buy 5 GDs for cash
+			//*** take the money
+			PersistentData.goldDiscs += 5;
+			Debug.Log ("Bought 5 GDs for cash");			
+		}
+		else if (Store_BuyItem3.UpdateTestPressed ())
+		{
+			RL.m_SoundController.Play("FE_Confirm_03");
+
+			// Buy 1000 Coins for cash
+			//*** take the money
+			PersistentData.coins += 1000;
+			Debug.Log ("Bought 1000 Coins for cash");			
+		}
+		else if (Store_BuyItem4.UpdateTestPressed ())
+		{
+			RL.m_SoundController.Play("FE_Confirm_01");
+			
+			// Earn 1 GD for watching an Ad
+			//*** take the money
+			PersistentData.goldDiscs++;
+			Debug.Log ("Earn 1 GD for watching Ad");			
 		}
 	}
 	
-	// Update Bank entries to show what is owned / available?
-	private void UpdateBankDescs ()
+	// Update Bank entries to show what is available?
+	private void UpdateBankStatus ()
 	{
-		//*** (not started as unclear on connection with Metagame)
+		// No such designed behaviour currently
 	}
 
 }
