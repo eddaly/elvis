@@ -90,47 +90,47 @@ public class PersistentData : MonoBehaviour {
 		get {return SecuredPlayerPrefs.GetInt ("equippedCostume", 1);}
 		set {SecuredPlayerPrefs.SetInt ("equippedCostume", value);}
 	}
-	
-	//*************************************************************** Consumables Unlocked
-	static public Metagame.ConsumableUnlocked consumableUnlocked
-	{
-		get {return (Metagame.ConsumableUnlocked)SecuredPlayerPrefs.GetInt ("consumableUnlocked", 0);}
-		set {
-			SecuredPlayerPrefs.SetInt ("consumableUnlocked", (int)value);
-			Save ();	// Save here to ensure not lost if crash
-		}
-	}
-	static public bool HasItem (Metagame.ConsumableUnlocked item) {
-		return ((int)consumableUnlocked & (int)item) != 0;
-	}
-	
+
 	//*************************************************************** Consumable Items
-	static public int [] consumableItems // indexed by Metagame.ConsumableItem
+	static int [] zeroArray;
+	static public int GetConsumableItem (Metagame.ConsumableItems index)
 	{
-		get {return SecuredPlayerPrefs.GetIntArray ("consumableItems", zeroArray);}
-		set {
-			SecuredPlayerPrefs.SetIntArray ("consumableItems", zeroArray);
+		return SecuredPlayerPrefs.GetIntArray ("consumableItems", zeroArray) [(int)index];
+	}
+	static public void SetConsumableItem (Metagame.ConsumableItems index, int value)
+	{
+		int []tempCopy = SecuredPlayerPrefs.GetIntArray ("consumableItems", zeroArray);
+		if (tempCopy[(int)index] != value)
+		{
+			tempCopy[(int)index] = value;
+			SecuredPlayerPrefs.SetIntArray ("consumableItems", tempCopy);
 			Save ();	// Save here to ensure not lost if crash
 		}
 	}
+	
 
 	//*************************************************************** Missions
-	static int [] zeroArray = {};
-	static public int [] missionsComplete // 0 or 1, done or not done
+	static public bool IsMissionsComplete (int mission)
 	{
-		get {return SecuredPlayerPrefs.GetIntArray ("missionsComplete", zeroArray);}
-		set {
-			SecuredPlayerPrefs.SetIntArray ("missionsComplete", value);
-			Save ();	// Save here to ensure not lost if crash
-		}
+		return SecuredPlayerPrefs.GetIntArray ("missionsComplete", zeroArray)[mission] == 1;
 	}
-	static public int [] missionsActive // index into Metagame.missions
+	static public void SetMissionComplete (int mission, bool isComplete)
 	{
-		get {return SecuredPlayerPrefs.GetIntArray ("missionsActive", zeroArray);}
-		set {
-			SecuredPlayerPrefs.SetIntArray ("missionsActive", value);
-			Save ();	// Save here to ensure not lost if crash
-		}
+		int []tempCopy = SecuredPlayerPrefs.GetIntArray ("missionsComplete", zeroArray);
+		tempCopy[mission] = isComplete ? 1 : 0;
+		SecuredPlayerPrefs.SetIntArray ("missionsComplete", tempCopy);
+		Save ();	// Save here to ensure not lost if crash
+	}
+	static public bool IsMissionsActive (int mission)
+	{
+		return SecuredPlayerPrefs.GetIntArray ("missionsActive", zeroArray)[mission] == 1;
+	}
+	static public void SetMissionActive (int mission, bool isActive)
+	{
+		int []tempCopy = SecuredPlayerPrefs.GetIntArray ("missionsActive", zeroArray);
+		tempCopy[mission] = isActive ? 1 : 0;
+		SecuredPlayerPrefs.SetIntArray ("missionsActive", tempCopy);
+		Save ();	// Save here to ensure not lost if crash
 	}
 	
 	//*************************************************************** Public API
@@ -152,6 +152,12 @@ public class PersistentData : MonoBehaviour {
 		// Initialise the encryption (don't change the key!)
 		SecuredPlayerPrefs.SetSecretKey("kqcgLEJFUxUSFkWhUrjC6");
 		//Debug.Log (Application. persistentDataPath); Note the savefile stored here
+		
+		// Instatiate default array
+		int maxArraySize = Mathf.Max (Metagame.missions.Length, (int)Metagame.ConsumableItems.COUNT); 
+		zeroArray = new int [maxArraySize];
+		for (int n = 0; n < zeroArray.Length; n++)
+			zeroArray[n] = 0;
 		
 		// Test
 		Debug.Log (SecuredPlayerPrefs.ToPrettyString());
