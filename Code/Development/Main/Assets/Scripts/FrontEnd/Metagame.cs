@@ -84,43 +84,27 @@ public class Metagame
 		ARMYGUN			= 1 << 2
 	};*/
 
-	// Consumables Unlocked (need both Coins and GDs)
-	static public Item [] consumableUnlocked = {
-		new Item {name = "Sunglasses",		unlockLevel = 1,	priceCoins = 0,			priceGoldDiscs = 0},
-		new Item {name = "BeltBuckle",		unlockLevel = 1,	priceCoins = 0,			priceGoldDiscs = 0},
-		new Item {name = "BlueSuedeShoes", 	unlockLevel = 4,	priceCoins = 10000,		priceGoldDiscs = 3},
-		new Item {name = "EP",				unlockLevel = 8,	priceCoins = 20000,		priceGoldDiscs = 5},
-		new Item {name = "Slowmo",			unlockLevel = 12,	priceCoins = 40000,		priceGoldDiscs = 10}
-	};
-	// Note, bitfield to test for PersistentData.consumableUnlocked
-	public enum ConsumableUnlocked
-	{
-		SUNGLASSES		= 1 << 0,
-		BELTBUCKLE		= 1 << 1,
-		BLUESUEDESHOES	= 1 << 2,
-		EP				= 1 << 3,
-		SLOWMO			= 1 << 4
-	};
-	// Consumables Items (need both Coins and GDs), note unlock NA
-	static public Item shades = 
-		new Item {name = "Shades",			unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
+	// Consumables Items (need both Coins and GDs)
+	static public Item ep = 
+		new Item {name = "EP",				unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
 	static public Item beltBuckle = 
 		new Item {name = "BeltBuckle",		unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
-	static public Item shoes = 
-		new Item {name = "BlueSuedeShoes", 	unlockLevel = 1,	priceCoins = 1000,		priceGoldDiscs = 1};
-	static public Item ep = 
-		new Item {name = "EP",				unlockLevel = 1,	priceCoins = 2000,		priceGoldDiscs = 2};
 	static public Item rpm = 
-		new Item {name = "RPM",				unlockLevel = 1,	priceCoins = 4000,		priceGoldDiscs = 3};
+		new Item {name = "RPM",				unlockLevel = 4,	priceCoins = 1000,		priceGoldDiscs = 1};
+	static public Item shoes = 
+		new Item {name = "BlueSuedeShoes", 	unlockLevel = 8,	priceCoins = 2000,		priceGoldDiscs = 2};
+	static public Item shades = 
+		new Item {name = "Shades",			unlockLevel = 12,	priceCoins = 4000,		priceGoldDiscs = 3};
 	
 	// Index into PersistentData.consumableItems
 	public enum ConsumableItems
 	{
-		SHADES = 0,
+		EP = 0,
 		BELTBUCKLE,
+		RPM,
 		BLUESUEDESHOES,
-		EP,
-		RPM
+		SHADES,
+		COUNT	// Number of items
 	};
 	
 	// Missions
@@ -135,5 +119,6 @@ public class Metagame
 		new Mission {name = "Mission1", 	coinsPrize = 50,	coinsPrice = 500,		goldDiscsPrice = 1},
 		new Mission {name = "Mission2", 	coinsPrize = 100,	coinsPrice = 1000,		goldDiscsPrice = 2}
 	};
+	
 }
 
