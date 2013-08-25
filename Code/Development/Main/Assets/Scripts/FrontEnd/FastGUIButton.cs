@@ -42,21 +42,31 @@ public class FastGUIButton : FastGUIElement
 	// Update to see if pressed, display the pressed texture, return true when press complete
 	public bool UpdateTestPressed ()
 	{
+		// Required by FrontEnd to support DisplayMessage()
+		if (FrontEnd.IgnoreInputs ())
+			return false;
+		
 		if (!displayed)
 			return false;
 		
 		// Get position
 		Vector3 pos;		
 #if UNITY_IPHONE || UNITY_ANDROID
-		if (Input.touchCount == 0)
-			return false;
-		pos = Input.GetTouch(0).position;
+		if (!Application.isEditor) {
+			if (Input.touchCount != 0)
+				pos = Input.GetTouch(0).position;
+			else
+				return false;
+		}
+		else
+			pos = Input.mousePosition;
 #else
 		pos = Input.mousePosition;
 #endif			
 		
 #if UNITY_IPHONE || UNITY_ANDROID
-		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+		if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) ||
+			(Application.isEditor && Input.GetMouseButton(0)))
 #else
 		if (Input.GetMouseButton(0))
 #endif
@@ -65,7 +75,8 @@ public class FastGUIButton : FastGUIElement
 			pressedButton.SetDisplayed (screenRect.Contains (pos));
 		}
 #if UNITY_IPHONE || UNITY_ANDROID			
-		else if (Input.GetTouch(0).phase == TouchPhase.Moved)
+		else if (!Application.isEditor && 
+			Input.GetTouch(0).phase == TouchPhase.Moved)
 		{
 			// If moved away from button, don't display pressed button texture
 			if (!screenRect.Contains (pos))
@@ -74,7 +85,9 @@ public class FastGUIButton : FastGUIElement
 #endif							
 
 #if UNITY_IPHONE || UNITY_ANDROID			
-		else if (Input.GetTouch(0).phase == TouchPhase.Ended)
+		else if (pressedButton.IsDisplayed() &&	// Need to ignore 'ended' taps/clicks if button not already pressed as they could come from FrontEnd.DisplayMessage()
+			((!Application.isEditor && Input.GetTouch(0).phase == TouchPhase.Ended) ||
+			(Input.GetMouseButtonUp(0))))
 #else
 		else if (Input.GetMouseButtonUp(0))
 #endif

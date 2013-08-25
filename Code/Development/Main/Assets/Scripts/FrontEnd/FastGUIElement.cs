@@ -7,23 +7,24 @@ using System.IO;
 public class FastGUIElement
 {
 	// Screen and Frontend Atlas size
-	static public float safeScreenWidth = 2048f, safeScreenHeight = 1536f;
+	static readonly public float safeScreenWidth = 2048f, safeScreenHeight = 1536f;
 	static protected TextureAtlas frontendAtlas;
 	static protected float originalAtlasPixelsWidth, originalAtlasPixelsHeight;
 	private static int instanceCount = 0;			// Number of FastGUIElement instances
 	
 	// Size of element
-	public float widthNormalised, heightNormalised;	// Normalised within bounds of safeScreenWidth / Height, e.g. width of .5 means half the safe width
-	public float width, height; 					// In pixels
+	public readonly float widthNormalised, heightNormalised;	// Normalised within bounds of safeScreenWidth / Height, e.g. width of .5 means half the safe width
+	public readonly float width, height; 					// In pixels
 	
 	// Relative position for screen position
 	public enum Position {XCENTRED, YCENTRED, XYCENTRED, TOPLEFT};
 		
 	// Other stuff
 	protected internal BatchedQuadDef quad;			// The quad that's rendered
-	protected internal int textureIdx;				// Index in the Frontend Atlas
+	protected readonly internal int textureIdx;		// Index in the Frontend Atlas
 	protected Rect screenRect;						// Screen co-ordinates rect
 	protected bool displayed = true;				// Is Element diplayed
+	private bool touched = false;					// Was element touched (started tap/click)?
 	
 	// Child elements
 	protected List <FastGUIElement> children;
@@ -158,18 +159,39 @@ public class FastGUIElement
 			child.SetDisplayed (show);
 		}
 	}
+	public bool IsDisplayed ()
+	{
+		return displayed;
+	}
 	
 	// Was the GUIElement tapped
 	public bool Tapped ()
 	{
+		// Required by FrontEnd to support DisplayMessage()
+		if (FrontEnd.IgnoreInputs ())
+			return false;
+		
 		if (!displayed)
 			return false;
 		
-		Vector2 tapPos;
-		if (!getTapPos (out tapPos))
-			return false;
+		Vector2 pos;
+
+		// If touched (ie. tap/click begun)
+		if (touched)
+		{
+			// And if tapped (ie. tap/click complete), return whether or not inside the element
+			if (getTapPos (out pos)) {
+				touched = false;
+				return (screenRect.Contains (pos));
+			}
+		}
+		// Else see if touched (ie. tap/click begun)
+		else {
+			touched = getTouchPos (out pos) && screenRect.Contains (pos);
+		}
 		
-		return (screenRect.Contains (tapPos));
+		// Didn't tap	
+		return false;		
 	}
 
 	protected bool getTapPos (out Vector2 tapPos)
