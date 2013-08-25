@@ -11,43 +11,39 @@ public class Metagame
 		public int priceCoins;
 		public int priceGoldDiscs;
 	};
-
-	// Hard currency price (either Coins or cash)
-	public int m_GoldDiscsPriceCoins = 10000;
-	public float m_GoldDiscsPriceCashGBP = .99f;
 	
 	// Level-up cost (20pc increase rounded), note for convienience level[0] is meaningless and level[1] is free
-	static public int [] levelUpXP = {-1, 0, 
+	static public readonly int [] levelUpXP = {-1, 0, 
 		500, 600, 700, 900, 1000, 1200, 1500, 1800, 2100, 2600, 3100, 3700, 4500, 5300, 6400, 7700, 9200, 11100, 13300};
-	static public int maxLevels = levelUpXP.Length;
+	readonly static public int maxLevels = levelUpXP.Length;
 
 	// Upgrades (need both Coins and GDs)b
-	static public Item costume1_upgrade0 = 
+	static public readonly Item costume1_upgrade0 = 
 		new Item {name = "costume1_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
-	static public Item costume1_upgrade1 = 
+	static public readonly Item costume1_upgrade1 = 
 		new Item {name = "costume1_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
-	static public Item costume1_upgrade2 = 
+	static public readonly Item costume1_upgrade2 = 
 		new Item {name = "costume1_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20};
 
-	static public Item costume2_upgrade0 = 
+	static public readonly Item costume2_upgrade0 = 
 		new Item {name = "costume2_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
-	static public Item costume2_upgrade1 = 
+	static public readonly Item costume2_upgrade1 = 
 		new Item {name = "costume2_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
-	static public Item costume2_upgrade2 = 
+	static public readonly Item costume2_upgrade2 = 
 		new Item {name = "costume2_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20};
 	
-	static public Item costume3_upgrade0 = 
+	static public readonly Item costume3_upgrade0 = 
 		new Item {name = "costume3_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
-	static public Item costume3_upgrade1 = 
+	static public readonly Item costume3_upgrade1 = 
 		new Item {name = "costume3_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
-	static public Item costume3_upgrade2 = 
+	static public readonly Item costume3_upgrade2 = 
 		new Item {name = "costume3_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20};
 
-	static public Item costume4_upgrade0 = 
+	static public readonly Item costume4_upgrade0 = 
 		new Item {name = "costume4_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
-	static public Item costume4_upgrade1 = 
+	static public readonly Item costume4_upgrade1 = 
 		new Item {name = "costume4_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
-	static public Item costume4_upgrade2 = 
+	static public readonly Item costume4_upgrade2 = 
 		new Item {name = "costume4_upgrade2", 		unlockLevel = 20,	priceCoins = 150000,	priceGoldDiscs = 20};
 
 	// Note, bitfield to test for PersistentData.upgradeItems
@@ -85,15 +81,15 @@ public class Metagame
 	};*/
 
 	// Consumables Items (need both Coins and GDs)
-	static public Item ep = 
+	static public readonly Item ep = 
 		new Item {name = "EP",				unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
-	static public Item beltBuckle = 
+	static public readonly Item beltBuckle = 
 		new Item {name = "BeltBuckle",		unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
-	static public Item rpm = 
+	static public readonly Item rpm = 
 		new Item {name = "RPM",				unlockLevel = 4,	priceCoins = 1000,		priceGoldDiscs = 1};
-	static public Item shoes = 
+	static public readonly Item shoes = 
 		new Item {name = "BlueSuedeShoes", 	unlockLevel = 8,	priceCoins = 2000,		priceGoldDiscs = 2};
-	static public Item shades = 
+	static public readonly Item shades = 
 		new Item {name = "Shades",			unlockLevel = 12,	priceCoins = 4000,		priceGoldDiscs = 3};
 	
 	// Index into PersistentData.consumableItems
@@ -115,7 +111,7 @@ public class Metagame
 		public int coinsPrice;
 		public int goldDiscsPrice;
 	};
-	static public Mission [] missions = {
+	static public readonly Mission [] missions = {
 		new Mission {name = "Mission1", 	coinsPrize = 50,	coinsPrice = 500,		goldDiscsPrice = 1},
 		new Mission {name = "Mission2", 	coinsPrize = 100,	coinsPrice = 1000,		goldDiscsPrice = 2}
 	};
