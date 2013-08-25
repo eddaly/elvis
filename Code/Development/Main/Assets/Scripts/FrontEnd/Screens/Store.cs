@@ -47,15 +47,17 @@ public class Store : MonoBehaviour {
 		
 		// Create the GUIText
 		myGUITextObject = Instantiate (Resources.Load ("Frontend_GUIText")) as GameObject;  // Note need to clone prefab as can't access pixel correct property from script
-		myGUITextObject.guiText.transform.position = new Vector3 (.775f, .995f, 0);
-		myGUITextObject.guiText.transform.localScale = new Vector3 (.5f, .5f, 1);
+		myGUITextObject.guiText.anchor = TextAnchor.UpperLeft;
+		myGUITextObject.guiText.pixelOffset = new Vector2 (General_CoinDisplay.screenRect.x + 10, 
+			General_CoinDisplay.screenRect.y + General_CoinDisplay.screenRect.height - 5);
+		myGUITextObject.guiText.transform.position = Vector3.zero;
 		myGUITextObject.guiText.text = "Coins\nGDs\nXP Level";
 		myGUITextObject.guiText.color = Color.red;
 	}
 		
 	// Update is called once per frame
 	void Update ()
-	{
+	{			
 		// Back
 		if (General_BackButton.Tapped ())
 		{
@@ -144,6 +146,11 @@ public class Store : MonoBehaviour {
 				gear.UpdateGearStatus ();
 		}
 	}
+#else
+	void OnGUI()
+	{
+		bank.OnGUI();
+	}
 #endif
-
+		
 }
