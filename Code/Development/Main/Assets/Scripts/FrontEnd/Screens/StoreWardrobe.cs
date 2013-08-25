@@ -364,6 +364,7 @@ public class StoreWardrobe
 				if (metagameUpgrade.priceCoins > PersistentData.coins ||
 					metagameUpgrade.priceGoldDiscs > PersistentData.goldDiscs) {
 					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, is unlocked but too expensive, coins: " + metagameUpgrade.priceCoins + " GDs: " + metagameUpgrade.priceGoldDiscs);
+					//***TBD FRICTIONLESS TOP-UP PATH
 				}
 				else {
 					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, unlocked and affordable");

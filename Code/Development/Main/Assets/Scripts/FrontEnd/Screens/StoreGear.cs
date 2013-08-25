@@ -256,6 +256,7 @@ public class StoreGear
 			if (item.priceCoins > PersistentData.coins ||
 				item.priceGoldDiscs > PersistentData.goldDiscs) {
 				Debug.Log (item.name + " is unlocked but too expensive, coins: " + item.priceCoins + " GDs: " + item.priceGoldDiscs);
+				//***TBD FRICTIONLESS TOP-UP PATH
 			}
 			else {
 				Debug.Log (item.name + " unlocked and affordable");
