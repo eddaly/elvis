@@ -22,7 +22,7 @@ public class FastGUIElement
 	// Other stuff
 	protected internal BatchedQuadDef quad;			// The quad that's rendered
 	protected readonly internal int textureIdx;		// Index in the Frontend Atlas
-	protected Rect screenRect;						// Screen co-ordinates rect
+	public Rect screenRect;						// Screen co-ordinates rect
 	protected bool displayed = true;				// Is Element diplayed
 	private bool touched = false;					// Was element touched (started tap/click)?
 	
