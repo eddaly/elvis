@@ -50,7 +50,7 @@ public class ObstacleTrackMaker
 		StartPlayMode();
 	}
 	
-	bool coino = false;
+	//bool coino = false; ED commented out to remove annoying warning
 	
 	void randomisePieceList()
 	{

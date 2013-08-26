@@ -60,7 +60,7 @@ public class SetRenderQueue : MonoBehaviour
 			renderer.sharedMaterials = materials;
 		}
 		
-		for( int i = 0; i < transform.GetChildCount(); i++ )
+		for( int i = 0; i < transform.childCount; i++ )
 		{
 			renderer = transform.GetChild(i).gameObject.GetComponent<MeshRenderer>();
 			
