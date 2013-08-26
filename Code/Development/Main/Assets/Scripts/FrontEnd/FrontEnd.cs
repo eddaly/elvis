@@ -6,9 +6,9 @@ public class FrontEnd : MonoBehaviour {
 	[HideInInspector]
 	public PersistentData persistentData;
 	private Metagame metagame;
-	public readonly string m_AtlasFile = "Frontend_Atlas";
-	public readonly int m_AtlasOriginalWidth = 4096;
-	public readonly int m_AtlasOriginalHeight = 4096;
+	public string m_AtlasFile = "Frontend_Atlas";
+	public int m_AtlasOriginalWidth = 4096;
+	public int m_AtlasOriginalHeight = 4096;
 	private static string displayMessage = null;
 	private static GUISkin displayMessageGUISkin;
 	
