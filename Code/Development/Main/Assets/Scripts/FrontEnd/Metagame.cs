@@ -19,7 +19,7 @@ public class Metagame
 
 	// Upgrades (need both Coins and GDs)b
 	static public readonly Item costume1_upgrade0 = 
-		new Item {name = "costume1_upgrade0",		unlockLevel = 1,	priceCoins = 5000,		priceGoldDiscs = 1};
+		new Item {name = "costume1_upgrade0",		unlockLevel = 1,	priceCoins = 0,			priceGoldDiscs = 0};
 	static public readonly Item costume1_upgrade1 = 
 		new Item {name = "costume1_upgrade1",		unlockLevel = 10,	priceCoins = 25000,		priceGoldDiscs = 5};
 	static public readonly Item costume1_upgrade2 = 
@@ -84,13 +84,13 @@ public class Metagame
 	static public readonly Item ep = 
 		new Item {name = "EP",				unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
 	static public readonly Item beltBuckle = 
-		new Item {name = "BeltBuckle",		unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 0};
+		new Item {name = "BeltBuckle",		unlockLevel = 1,	priceCoins = 500,		priceGoldDiscs = 1};
 	static public readonly Item rpm = 
-		new Item {name = "RPM",				unlockLevel = 4,	priceCoins = 1000,		priceGoldDiscs = 1};
+		new Item {name = "RPM",				unlockLevel = 4,	priceCoins = 1000,		priceGoldDiscs = 2};
 	static public readonly Item shoes = 
-		new Item {name = "BlueSuedeShoes", 	unlockLevel = 8,	priceCoins = 2000,		priceGoldDiscs = 2};
+		new Item {name = "BlueSuedeShoes", 	unlockLevel = 8,	priceCoins = 2000,		priceGoldDiscs = 3};
 	static public readonly Item shades = 
-		new Item {name = "Shades",			unlockLevel = 12,	priceCoins = 4000,		priceGoldDiscs = 3};
+		new Item {name = "Shades",			unlockLevel = 12,	priceCoins = 4000,		priceGoldDiscs = 4};
 	
 	// Index into PersistentData.consumableItems
 	public enum ConsumableItems
