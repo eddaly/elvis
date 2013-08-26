@@ -40,7 +40,6 @@ public class StoreWardrobe
 		Store_WardrobeScreen = new FastGUIElement (
 			new Vector2 (192, 0),
 			FastGUIElement.UVsFrom (@"Store_WardrobeScreen.png"));
-		Store_WardrobeScreen.SetDisplayed (false);
 		
 		Store_WardrobeScreen_InUse = new FastGUIElement (
 			new Vector2 (192, 0),
@@ -60,37 +59,31 @@ public class StoreWardrobe
 			new Vector2 (64, 256),
 			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume2Pane);
-		Store_Costume2Pane.SetDisplayed (false);
 			
 		Store_Costume2DescPane = new FastGUIElement (
 			new Vector2 (832, 256),
 			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png"));	//*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume2DescPane);
-		Store_Costume2DescPane.SetDisplayed (false);
 			
 		Store_Costume3Pane = new FastGUIElement (
 			new Vector2 (64, 256),
 			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume3Pane);
-		Store_Costume3Pane.SetDisplayed (false);
 			
 		Store_Costume3DescPane = new FastGUIElement (
 			new Vector2 (832, 256),
 			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png")); //*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume3DescPane);
-		Store_Costume3DescPane.SetDisplayed (false);
 		
 		Store_Costume4Pane = new FastGUIElement (
 			new Vector2 (64, 256),
 			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume4Pane);
-		Store_Costume4Pane.SetDisplayed (false);
 			
 		Store_Costume4DescPane = new FastGUIElement (
 			new Vector2 (832, 256),
 			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png")); //*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume4DescPane);
-		Store_Costume4DescPane.SetDisplayed (false);
 		
 		Store_CostumePrev = new FastGUIElement (
 			new Vector2 (1800, 256),	//*** Needs to be placed correctly
@@ -121,7 +114,6 @@ public class StoreWardrobe
 			new Vector2 (832, 896), 
 			FastGUIElement.UVsFrom (@"Store_Upgrade2Desc.png"));	
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade2Desc);
-		Store_Upgrade2Desc.SetDisplayed (false);
 		
 		Store_Upgrade3Tab = new FastGUIElement (
 			new Vector2 (64, 1280),
@@ -132,7 +124,6 @@ public class StoreWardrobe
 			new Vector2 (832, 896), 
 			FastGUIElement.UVsFrom (@"Store_Upgrade3Desc.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade3Desc);
-		Store_Upgrade3Desc.SetDisplayed (false);
 		
 		// The upgrade button/status indicators
 		Store_UpgradeBuyButton = new FastGUIButton (
@@ -140,23 +131,68 @@ public class StoreWardrobe
 			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"),
 			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"));	//*** Updated with pressed button texture);
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeBuyButton);
-		Store_UpgradeBuyButton.SetDisplayed (false);
 
 		Store_UpgradeEquipButton = new FastGUIButton (
 			new Vector2 (1600, 1175),
 			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"),
 			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"));	//*** Updated with pressed button texture
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeEquipButton);
-		Store_UpgradeEquipButton.SetDisplayed (false);
 		
 		Store_UpgradeInUse = new FastGUIElement (
 			new Vector2 (1600, 1175),
 			FastGUIElement.UVsFrom (@"Store_UpgradeInUseButton.png"));
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeInUse);
-		Store_UpgradeInUse.SetDisplayed (false);
+		
+		// Hide the unselected and display the select costume and upgrade
+		SetDisplayForCostumesAndUpgrade ();
 		
 		// Update the status in advance of the first UpdateTab() message
 		UpdateWardrobeStatus ();
+	}
+	
+	// Hide the unselected and display the select costume and upgrade
+	private void SetDisplayForCostumesAndUpgrade ()
+	{
+		// First the costumes...
+		Store_Costume1Pane.SetDisplayed (false);
+		Store_Costume1DescPane.SetDisplayed (false);
+		Store_Costume2Pane.SetDisplayed (false);
+		Store_Costume2DescPane.SetDisplayed (false);
+		Store_Costume3Pane.SetDisplayed (false);
+		Store_Costume3DescPane.SetDisplayed (false);
+		Store_Costume4Pane.SetDisplayed (false);
+		Store_Costume4DescPane.SetDisplayed (false);
+		if (costumeSelected == 1)
+		{
+			Store_Costume1Pane.SetDisplayed (true);
+			Store_Costume1DescPane.SetDisplayed (true);
+		}
+		else if (costumeSelected == 2)
+		{
+			Store_Costume2Pane.SetDisplayed (true);
+			Store_Costume2DescPane.SetDisplayed (true);
+		}
+		else if (costumeSelected == 3)
+		{
+			Store_Costume3Pane.SetDisplayed (true);
+			Store_Costume3DescPane.SetDisplayed (true);
+		}
+		else
+		{
+			Store_Costume4Pane.SetDisplayed (true);
+			Store_Costume4DescPane.SetDisplayed (true);
+		}
+		
+		// Then the upgrades
+		Store_Upgrade1Desc.SetDisplayed (false);
+		Store_Upgrade2Desc.SetDisplayed (false);
+		Store_Upgrade3Desc.SetDisplayed (false);
+		if (upgradeSelected == 1)
+			Store_Upgrade1Desc.SetDisplayed (true);
+		else if (upgradeSelected == 2)
+			Store_Upgrade2Desc.SetDisplayed (true);
+		else if (upgradeSelected == 3)
+			Store_Upgrade3Desc.SetDisplayed (true);		
 	}
 	
 	// Select the tab view
@@ -168,33 +204,8 @@ public class StoreWardrobe
 		// Restore selections (as if just went to bank to top-up need to find it easily)
 		if (isSelected)
 		{
-			if (costumeSelected == 1)
-			{
-				Store_Costume1Pane.SetDisplayed (true);
-				Store_Costume1DescPane.SetDisplayed (true);
-			}
-			else if (costumeSelected == 2)
-			{
-				Store_Costume2Pane.SetDisplayed (true);
-				Store_Costume2DescPane.SetDisplayed (true);
-			}
-			else if (costumeSelected == 3)
-			{
-				Store_Costume3Pane.SetDisplayed (true);
-				Store_Costume3DescPane.SetDisplayed (true);
-			}
-			else
-			{
-				Store_Costume4Pane.SetDisplayed (true);
-				Store_Costume4DescPane.SetDisplayed (true);
-			}
-			
-			if (upgradeSelected == 1)
-				Store_Upgrade1Desc.SetDisplayed (true);
-			else if (upgradeSelected == 2)
-				Store_Upgrade2Desc.SetDisplayed (true);
-			else if (upgradeSelected == 3)
-				Store_Upgrade3Desc.SetDisplayed (true);
+			// Hide the unselected and display the select costume and upgrade
+			SetDisplayForCostumesAndUpgrade ();
 			
 			// Update the status in advance of the UpdateTab() message
 			UpdateWardrobeStatus ();
@@ -218,59 +229,11 @@ public class StoreWardrobe
 		}
 		if (newCostumeSelected != costumeSelected)
 		{
-			if (costumeSelected == 1)
-			{
-				Store_Costume1Pane.SetDisplayed (false);
-				Store_Costume1DescPane.SetDisplayed (false);
-			}
-			else if (costumeSelected == 2)
-			{
-				Store_Costume2Pane.SetDisplayed (false);
-				Store_Costume2DescPane.SetDisplayed (false);
-			}
-			else if (costumeSelected == 3)
-			{
-				Store_Costume3Pane.SetDisplayed (false);
-				Store_Costume3DescPane.SetDisplayed (false);
-			}
-			else
-			{
-				Store_Costume4Pane.SetDisplayed (false);
-				Store_Costume4DescPane.SetDisplayed (false);
-			}
-			
 			costumeSelected = newCostumeSelected;	
-			if (costumeSelected == 1)
-			{
-				Store_Costume1Pane.SetDisplayed (true);
-				Store_Costume1DescPane.SetDisplayed (true);
-				Debug.Log ("Selected costume 1");
-			}
-			else if (costumeSelected == 2)
-			{
-				Store_Costume2Pane.SetDisplayed (true);
-				Store_Costume2DescPane.SetDisplayed (true);
-				Debug.Log ("Selected costume 2");
-			}
-			else if (costumeSelected == 3) 
-			{
-				Store_Costume3Pane.SetDisplayed (true);
-				Store_Costume3DescPane.SetDisplayed (true);
-				Debug.Log ("Selected costume 3");
-			}
-			else 
-			{
-				Store_Costume4Pane.SetDisplayed (true);
-				Store_Costume4DescPane.SetDisplayed (true);
-				Debug.Log ("Selected costume 4");
-			}
-			
+
 			// By default select Upgrade1
 			upgradeSelected = 1;
-			Store_Upgrade1Desc.SetDisplayed (true);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Desc.SetDisplayed (false);
-			
+						
 			needToUpdateStatus = true;
 		}
 		
@@ -281,9 +244,6 @@ public class StoreWardrobe
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_01");
 			
-			Store_Upgrade1Desc.SetDisplayed (true);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Desc.SetDisplayed (false);
 			newUpgradeSelected = 1;
 		}
 		// Upgrade 2
@@ -292,9 +252,6 @@ public class StoreWardrobe
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_02");
 			
-			Store_Upgrade1Desc.SetDisplayed (false);
-			Store_Upgrade2Desc.SetDisplayed (true);
-			Store_Upgrade3Desc.SetDisplayed (false);
 			newUpgradeSelected = 2;
 		}
 		// Upgrade 3	
@@ -303,28 +260,11 @@ public class StoreWardrobe
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_03");
 			
-			Store_Upgrade1Desc.SetDisplayed (false);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Desc.SetDisplayed (true);
 			newUpgradeSelected = 3;
 		}
 		if (newUpgradeSelected != upgradeSelected)
-		{
-			if (upgradeSelected == 1)
-				Store_Upgrade1Desc.SetDisplayed (false);
-			else if (upgradeSelected == 2)
-				Store_Upgrade2Desc.SetDisplayed (false);
-			else
-				Store_Upgrade3Desc.SetDisplayed (false);
-			
-			upgradeSelected = newUpgradeSelected;
-			if (upgradeSelected == 1)
-				Store_Upgrade1Desc.SetDisplayed (true);
-			else if (upgradeSelected == 2)
-				Store_Upgrade2Desc.SetDisplayed (true);
-			else
-				Store_Upgrade3Desc.SetDisplayed (true);
-			
+		{			
+			upgradeSelected = newUpgradeSelected;			
 			needToUpdateStatus = true;
 		}
 		
@@ -358,9 +298,37 @@ public class StoreWardrobe
 			}
 			else
 			{
-				Debug.Log ("Bought the upgrade");
+				Debug.Log ("Bought and equipped the upgrade");
 				
 				PersistentData.upgradeItems |= costumeUpgrade;
+				PersistentData.equippedCostume = costumeSelected;
+				
+				// Includes any unowned lower upgrades of same costume
+				switch (costumeUpgrade)
+				{
+				case Metagame.UpgradeItems.COSTUME1_UPGRADE2:
+					PersistentData.upgradeItems |= Metagame.UpgradeItems.COSTUME1_UPGRADE1;
+					break;
+				case Metagame.UpgradeItems.COSTUME2_UPGRADE1:
+					PersistentData.upgradeItems |= Metagame.UpgradeItems.COSTUME2_UPGRADE0;
+					break;
+				case Metagame.UpgradeItems.COSTUME2_UPGRADE2:
+					PersistentData.upgradeItems |= Metagame.UpgradeItems.COSTUME2_UPGRADE0 & Metagame.UpgradeItems.COSTUME2_UPGRADE1;
+					break;
+				case Metagame.UpgradeItems.COSTUME3_UPGRADE1:
+					PersistentData.upgradeItems |= Metagame.UpgradeItems.COSTUME3_UPGRADE0;
+					break;
+				case Metagame.UpgradeItems.COSTUME3_UPGRADE2:
+					PersistentData.upgradeItems |= Metagame.UpgradeItems.COSTUME3_UPGRADE0 & Metagame.UpgradeItems.COSTUME3_UPGRADE1;
+					break;
+				case Metagame.UpgradeItems.COSTUME4_UPGRADE1:
+					PersistentData.upgradeItems |= Metagame.UpgradeItems.COSTUME4_UPGRADE0;
+					break;
+				case Metagame.UpgradeItems.COSTUME4_UPGRADE2:
+					PersistentData.upgradeItems |= Metagame.UpgradeItems.COSTUME4_UPGRADE0 & Metagame.UpgradeItems.COSTUME4_UPGRADE1;
+					break;
+				}
+				
 				PersistentData.coins -= metagameUpgrade.priceCoins;
 				PersistentData.goldDiscs -= metagameUpgrade.priceGoldDiscs;
 				needToUpdateStatus = true;
@@ -377,7 +345,12 @@ public class StoreWardrobe
 		
 		// Update Wardrobe entries to show what is owned / available if neccessary
 		if (needToUpdateStatus)
+		{
+			// Hide the unselected and display the select costume and upgrade
+			SetDisplayForCostumesAndUpgrade ();
+
 			UpdateWardrobeStatus ();
+		}
 	}	
 	
 	// Update Wardrobe entries to show what is owned / available
