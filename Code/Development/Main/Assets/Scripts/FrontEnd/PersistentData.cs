@@ -47,7 +47,7 @@ public class PersistentData : MonoBehaviour {
 	static public int CurrentLevel ()
 	{
 		int n;
-		for (n = 1; n < Metagame.maxLevels; n++)
+		for (n = 1; n < Metagame.maxLevels - 1; n++)
 		{
 			if (xP < Metagame.levelUpXP[n + 1])
 				break;		
