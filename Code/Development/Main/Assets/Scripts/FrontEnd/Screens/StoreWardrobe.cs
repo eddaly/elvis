@@ -29,10 +29,14 @@ public class StoreWardrobe
 	
 	private int costumeSelected = 1;	// 1, 2, 3 or 4
 	private int upgradeSelected = 1;	// 1, 2 or 3
+	
+	private Store store;
 
 	// Constructor, create elements
-	public StoreWardrobe ()
+	public StoreWardrobe (Store aStore)
 	{
+		store = aStore;
+		
 		Store_WardrobeScreen = new FastGUIElement (
 			new Vector2 (192, 0),
 			FastGUIElement.UVsFrom (@"Store_WardrobeScreen.png"));
@@ -161,12 +165,36 @@ public class StoreWardrobe
 		Store_WardrobeScreen.SetDisplayed (!isSelected);
 		Store_WardrobeScreen_InUse.SetDisplayed (isSelected);
 	
-		// By default select Upgrade1
-		if (isSelected)	{
-			upgradeSelected = 1;
-			Store_Upgrade1Desc.SetDisplayed (true);
-			Store_Upgrade2Desc.SetDisplayed (false);
-			Store_Upgrade3Desc.SetDisplayed (false);
+		// Restore selections (as if just went to bank to top-up need to find it easily)
+		if (isSelected)
+		{
+			if (costumeSelected == 1)
+			{
+				Store_Costume1Pane.SetDisplayed (true);
+				Store_Costume1DescPane.SetDisplayed (true);
+			}
+			else if (costumeSelected == 2)
+			{
+				Store_Costume2Pane.SetDisplayed (true);
+				Store_Costume2DescPane.SetDisplayed (true);
+			}
+			else if (costumeSelected == 3)
+			{
+				Store_Costume3Pane.SetDisplayed (true);
+				Store_Costume3DescPane.SetDisplayed (true);
+			}
+			else
+			{
+				Store_Costume4Pane.SetDisplayed (true);
+				Store_Costume4DescPane.SetDisplayed (true);
+			}
+			
+			if (upgradeSelected == 1)
+				Store_Upgrade1Desc.SetDisplayed (true);
+			else if (upgradeSelected == 2)
+				Store_Upgrade2Desc.SetDisplayed (true);
+			else if (upgradeSelected == 3)
+				Store_Upgrade3Desc.SetDisplayed (true);
 			
 			// Update the status in advance of the UpdateTab() message
 			UpdateWardrobeStatus ();
@@ -300,20 +328,45 @@ public class StoreWardrobe
 			needToUpdateStatus = true;
 		}
 		
-		// Buy or equip the upgrade?
+		// Attempt to buy the upgrade
 		if (Store_UpgradeBuyButton.UpdateTestPressed ())
 		{
 			RL.m_SoundController.Play("FE_Confirm_01");
-			Debug.Log ("Bought the upgrade");
-			
+
+			// Get selected
 			Metagame.UpgradeItems costumeUpgrade;
 			Metagame.Item metagameUpgrade;
 			GetSelectedMetagameCostume (out costumeUpgrade, out metagameUpgrade);
-			PersistentData.upgradeItems |= costumeUpgrade;
-			PersistentData.coins -= metagameUpgrade.priceCoins;
-			PersistentData.goldDiscs -= metagameUpgrade.priceGoldDiscs;
-			needToUpdateStatus = true;
+
+			// If can't afford it
+			if (metagameUpgrade.priceCoins > PersistentData.coins || metagameUpgrade.priceGoldDiscs > PersistentData.goldDiscs)
+			{
+				// Display message and send to bank
+				string message = "YOU CAN'T AFFORD IT!\nNEED ";
+				if (metagameUpgrade.priceCoins > PersistentData.coins)
+					message += (metagameUpgrade.priceCoins - PersistentData.coins) + " MORE COINS";
+				if (metagameUpgrade.priceCoins > PersistentData.coins && metagameUpgrade.priceGoldDiscs > PersistentData.goldDiscs)
+					message += "\nAND ";
+				if (metagameUpgrade.priceGoldDiscs > PersistentData.goldDiscs)
+					message += (metagameUpgrade.priceGoldDiscs - PersistentData.goldDiscs) + " MORE GOLD DISC";
+				if ((metagameUpgrade.priceGoldDiscs - PersistentData.goldDiscs) > 1)
+					message += "S";
+				
+				FrontEnd.DisplayMessage (message);
+				
+				store.SelectBank ();	
+			}
+			else
+			{
+				Debug.Log ("Bought the upgrade");
+				
+				PersistentData.upgradeItems |= costumeUpgrade;
+				PersistentData.coins -= metagameUpgrade.priceCoins;
+				PersistentData.goldDiscs -= metagameUpgrade.priceGoldDiscs;
+				needToUpdateStatus = true;
+			}
 		}
+		// Equip the costume
 		else if (Store_UpgradeEquipButton.UpdateTestPressed ())
 		{
 			RL.m_SoundController.Play("FE_Confirm_01");
@@ -325,7 +378,7 @@ public class StoreWardrobe
 		// Update Wardrobe entries to show what is owned / available if neccessary
 		if (needToUpdateStatus)
 			UpdateWardrobeStatus ();
-	}
+	}	
 	
 	// Update Wardrobe entries to show what is owned / available
 	//*** public for now to allow for testing
@@ -364,7 +417,7 @@ public class StoreWardrobe
 				if (metagameUpgrade.priceCoins > PersistentData.coins ||
 					metagameUpgrade.priceGoldDiscs > PersistentData.goldDiscs) {
 					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, is unlocked but too expensive, coins: " + metagameUpgrade.priceCoins + " GDs: " + metagameUpgrade.priceGoldDiscs);
-					//***TBD FRICTIONLESS TOP-UP PATH
+					Store_UpgradeBuyButton.SetDisplayed (true);// Make button available anyway and top-up if needed
 				}
 				else {
 					Debug.Log ("Costume " + metagameUpgrade.name + " not owned, unlocked and affordable");
