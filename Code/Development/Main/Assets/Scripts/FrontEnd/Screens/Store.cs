@@ -41,8 +41,8 @@ public class Store : MonoBehaviour {
 			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
 		
 		// Create tabs
-		wardrobe = new StoreWardrobe ();
-		gear = new StoreGear ();
+		wardrobe = new StoreWardrobe (this);
+		gear = new StoreGear (this);
 		bank = new StoreBank ();
 		
 		// Create the GUIText
@@ -97,11 +97,7 @@ public class Store : MonoBehaviour {
 			RL.m_SoundController.Play("FE_Navigation_01");
 			
 			// Select Bank tab
-			bank.SetSelect (true);
-			wardrobe.SetSelect (false);
-			gear.SetSelect (false);
-			bankSelected = true;
-			gearSelected = wardrobeSelected = false;
+			SelectBank ();
 		}
 
 		// Update selected tab
@@ -123,6 +119,17 @@ public class Store : MonoBehaviour {
 			"Coins: " + PersistentData.coins + 
 			"\nGDs: " + PersistentData.goldDiscs + 
 			"\nXP Level: " + PersistentData.CurrentLevel ();
+	}
+	
+	// Select the Bank screen (can be called by other tabs if need more currency)
+	public void SelectBank ()
+	{
+		// Select Bank tab
+		bank.SetSelect (true);
+		wardrobe.SetSelect (false);
+		gear.SetSelect (false);
+		bankSelected = true;
+		gearSelected = wardrobeSelected = false;		
 	}
 		
 #if !UNITY_IPHONE && !UNITY_ANDROID
