@@ -336,7 +336,7 @@ public class FastGUIElement
 				}
 			} while (true);
 			if (fail)
-				Debug.LogError ("Error reading XML");
+				Debug.LogError ("Error reading XML " + uvxmlFile + " texture: " +  textureFile);
 		}
 		return r;
 	}
