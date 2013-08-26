@@ -46,10 +46,10 @@ public class Store : MonoBehaviour {
 		bank = new StoreBank ();
 		
 		// Create the GUIText
-		myGUITextObject = Instantiate (Resources.Load ("Frontend_GUIText")) as GameObject;  // Note need to clone prefab as can't access pixel correct property from script
-		myGUITextObject.guiText.anchor = TextAnchor.UpperLeft;
-		myGUITextObject.guiText.pixelOffset = new Vector2 (General_CoinDisplay.screenRect.x + 10, 
-			General_CoinDisplay.screenRect.y + General_CoinDisplay.screenRect.height - 5);
+		myGUITextObject = Instantiate (Resources.Load ("Frontend_GUIText")) as GameObject;
+		myGUITextObject.guiText.anchor = TextAnchor.MiddleCenter;
+		myGUITextObject.guiText.pixelOffset = new Vector2 (General_CoinDisplay.screenRect.x + General_CoinDisplay.screenRect.width/2, 
+			General_CoinDisplay.screenRect.y + General_CoinDisplay.screenRect.height/2);
 		myGUITextObject.guiText.transform.position = Vector3.zero;
 		myGUITextObject.guiText.text = "Coins\nGDs\nXP Level";
 		myGUITextObject.guiText.color = Color.red;
