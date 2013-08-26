@@ -114,11 +114,16 @@ public class Store : MonoBehaviour {
 			bank.UpdateTab ();
 		}
 		
-		// Update text
-		myGUITextObject.guiText.text = 
-			"Coins: " + PersistentData.coins + 
-			"\nGDs: " + PersistentData.goldDiscs + 
-			"\nXP Level: " + PersistentData.CurrentLevel ();
+		// Update text (preventing freak scores exceed alloted space)
+		if (PersistentData.coins <= 999999)
+			myGUITextObject.guiText.text =	"Coins: " + PersistentData.coins;
+		else
+			myGUITextObject.guiText.text = "Coins: 999999+";
+		if (PersistentData.goldDiscs <= 999999)
+			myGUITextObject.guiText.text +=	"\nGDs: " + PersistentData.goldDiscs;
+		else
+			myGUITextObject.guiText.text += "\nGDs: 999999+";
+		myGUITextObject.guiText.text += "\nXP Level: " + PersistentData.CurrentLevel ();
 	}
 	
 	// Select the Bank screen (can be called by other tabs if need more currency)
@@ -132,32 +137,40 @@ public class Store : MonoBehaviour {
 		gearSelected = wardrobeSelected = false;		
 	}
 		
-#if !UNITY_IPHONE && !UNITY_ANDROID
+	// Debug GUI stuff
 	void OnGUI ()
 	{
-		if (Application.isEditor)
+		if (Debug.isDebugBuild && Application.isEditor)
 		{
 			GUIStyle guistyle = new GUIStyle (GUI.skin.GetStyle("button"));
 			guistyle.alignment = TextAnchor.MiddleLeft;
-			if (GUI.Button (new Rect (0, 50, 150, 20), "XP = " + PersistentData.xP + " .MORE?", guistyle))
+			bool update = false;
+			if (GUI.Button (new Rect (0, 50, 150, 20), "XP = " + PersistentData.xP + " .MORE?", guistyle)) {
 				PersistentData.xP += 100;
-			if (GUI.Button (new Rect (0, 70, 150, 20), "COINS = " + PersistentData.coins + " .MORE?", guistyle))
+				update = true;
+			}
+			if (GUI.Button (new Rect (0, 70, 150, 20), "COINS = " + PersistentData.coins + " .MORE?", guistyle)) {
 				PersistentData.coins += 1000;
-			if (GUI.Button (new Rect (0, 90, 150, 20), "GDs = " + PersistentData.goldDiscs + " .MORE?", guistyle))
+				update = true;
+			}
+			if (GUI.Button (new Rect (0, 90, 150, 20), "GDs = " + PersistentData.goldDiscs + " .MORE?", guistyle)) {
 				PersistentData.goldDiscs += 1;
-			if (GUI.Button (new Rect (0, 110, 150, 20), "RESET SAVE DATA?", guistyle))
+				update = true;
+			}
+			if (GUI.Button (new Rect (0, 110, 150, 20), "RESET SAVE DATA?", guistyle)) {
 				PersistentData.ResetAll();
-			if (wardrobeSelected)
-				wardrobe.UpdateWardrobeStatus ();
-			if (gearSelected)
-				gear.UpdateGearStatus ();
+				update = true;
+			}
+			if (update) {
+				if (wardrobeSelected)
+					wardrobe.UpdateWardrobeStatus ();
+				if (gearSelected)
+					gear.UpdateGearStatus ();
+			}
+		
+			if (bankSelected)
+				bank.OnGUI();
 		}
 	}
-#else
-	void OnGUI()
-	{
-		bank.OnGUI();
-	}
-#endif
 		
 }
