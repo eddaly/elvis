@@ -36,80 +36,80 @@ public class StoreGear
 		
 		Store_GearScreen = new FastGUIElement (
 			new Vector2 (640, 0),
-			FastGUIElement.UVsFrom (@"Store_GearScreen.png"));
+			FastGUIElement.UVsFrom ("Store_GearScreen.png"));
 		
 		Store_GearScreen_InUse = new FastGUIElement (
 			new Vector2 (640, 0),
-			FastGUIElement.UVsFrom (@"Store_GearScreen_InUse.png"));
+			FastGUIElement.UVsFrom ("Store_GearScreen_InUse.png"));
 
 		Store_EPIcon = new FastGUIElement (
 			new Vector2 (64, 256),
-			FastGUIElement.UVsFrom (@"Store_EPIcon.png"));
+			FastGUIElement.UVsFrom ("Store_EPIcon.png"));
 		Store_GearScreen_InUse.Add (Store_EPIcon);
 		
 		Store_BuckleIcon = new FastGUIElement (
 			new Vector2 (448, 256),
-			FastGUIElement.UVsFrom (@"Store_BuckleIcon.png"));
+			FastGUIElement.UVsFrom ("Store_BuckleIcon.png"));
 		Store_GearScreen_InUse.Add (Store_BuckleIcon);
 		
 		Store_RPMIcon = new FastGUIElement (
 			new Vector2 (832, 256),
-			FastGUIElement.UVsFrom (@"Store_RPMIcon.png"));
+			FastGUIElement.UVsFrom ("Store_RPMIcon.png"));
 		Store_GearScreen_InUse.Add (Store_RPMIcon);
 		
 		Store_ShoesIcon = new FastGUIElement (
 			new Vector2 (1216, 256),
-			FastGUIElement.UVsFrom (@"Store_ShoesIcon.png"));
+			FastGUIElement.UVsFrom ("Store_ShoesIcon.png"));
 		Store_GearScreen_InUse.Add (Store_ShoesIcon);
 		
 		Store_ShadesIcon = new FastGUIElement (
 			new Vector2 (1600, 256),
-			FastGUIElement.UVsFrom (@"Store_ShadesIcon.png"));
+			FastGUIElement.UVsFrom ("Store_ShadesIcon.png"));
 		Store_GearScreen_InUse.Add (Store_ShadesIcon);
 		
 		Store_GearIcon1 = new FastGUIElement (
 			new Vector2 (64, 704),
-			FastGUIElement.UVsFrom (@"Store_GearIcon1.png"));
+			FastGUIElement.UVsFrom ("Store_GearIcon1.png"));
 		Store_GearScreen_InUse.Add (Store_GearIcon1);
 		
 		Store_GearDesc1 = new FastGUIElement (
 			new Vector2 (320, 704),
-			FastGUIElement.UVsFrom (@"Store_GearDesc1.png"));
+			FastGUIElement.UVsFrom ("Store_GearDesc1.png"));
 		Store_GearScreen_InUse.Add (Store_GearDesc1);
 		
 		Store_GearBuy1 = new FastGUIElement (
 			new Vector2 (1600, 704),
-			FastGUIElement.UVsFrom (@"Store_GearBuy1.png"));
+			FastGUIElement.UVsFrom ("Store_GearBuy1.png"));
 		Store_GearScreen_InUse.Add (Store_GearBuy1);
 		
 		Store_GearIcon2 = new FastGUIElement (
 			new Vector2 (64, 1024),
-			FastGUIElement.UVsFrom (@"Store_GearIcon2.png"));
+			FastGUIElement.UVsFrom ("Store_GearIcon2.png"));
 		Store_GearScreen_InUse.Add (Store_GearIcon2);
 		
 		Store_GearDesc2 = new FastGUIElement (
 			new Vector2 (320, 1024),
-			FastGUIElement.UVsFrom (@"Store_GearDesc2.png"));
+			FastGUIElement.UVsFrom ("Store_GearDesc2.png"));
 		Store_GearScreen_InUse.Add (Store_GearDesc2);
 		
 		Store_GearBuy2 = new FastGUIElement (
 			new Vector2 (1600, 1024),
-			FastGUIElement.UVsFrom (@"Store_GearBuy2.png"));
+			FastGUIElement.UVsFrom ("Store_GearBuy2.png"));
 		Store_GearScreen_InUse.Add (Store_GearBuy2);
 		
 		Store_GearIcon3 = new FastGUIElement (
 			new Vector2 (64, 1344),
-			FastGUIElement.UVsFrom (@"Store_GearIcon3.png"));
+			FastGUIElement.UVsFrom ("Store_GearIcon3.png"));
 		Store_GearScreen_InUse.Add (Store_GearIcon3);
 		
 		Store_GearDesc3 = new FastGUIElement (
 			new Vector2 (320, 1344),
-			FastGUIElement.UVsFrom (@"Store_GearDesc3.png"));
+			FastGUIElement.UVsFrom ("Store_GearDesc3.png"));
 		Store_GearScreen_InUse.Add (Store_GearDesc3);
 		
 		Store_GearBuy3 = new FastGUIElement (
 			new Vector2 (1600, 1344),
-			FastGUIElement.UVsFrom (@"Store_GearBuy3.png"));
+			FastGUIElement.UVsFrom ("Store_GearBuy3.png"));
 		Store_GearScreen_InUse.Add (Store_GearBuy3);
 				
 		// Don't display Gear screen by default, note this calls SetDisplay() on child elements

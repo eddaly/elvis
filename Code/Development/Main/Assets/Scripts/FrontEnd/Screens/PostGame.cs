@@ -24,64 +24,64 @@ public class PostGame : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		FastGUIElement.uvxmlFile = @"assets//resources//PostGame_AtlasUV.xml";
+		FastGUIElement.uvxmlFile = "PostGame_AtlasUV";
 		
 		//persistent
 		/*General_Background = new FastGUIElement (
 			new Vector2 (0, 0),
-			FastGUIElement.UVsFrom (@"General_Background.png"));
+			FastGUIElement.UVsFrom ("General_Background.png"));
 		*/
 		
 		General_BackButton = new FastGUIElement (
 			new Vector2 (0,0),
-			FastGUIElement.UVsFrom (@"General_BackButton.png"));
+			FastGUIElement.UVsFrom ("General_BackButton.png"));
 		
 		General_CoinDisplay = new FastGUIElement (
 			new Vector2 (1536,0),
-			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
+			FastGUIElement.UVsFrom ("General_CoinDisplay.png"));
 		
 		General_CoinDisplay = new FastGUIElement (
 			new Vector2 (1536,0),
-			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
+			FastGUIElement.UVsFrom ("General_CoinDisplay.png"));
 		
 		//stuff
 		PostGame_Distance = new FastGUIElement (
 			new Vector2 (448, 256),
-			FastGUIElement.UVsFrom (@"PostGame_Distance.png"));
+			FastGUIElement.UVsFrom ("PostGame_Distance.png"));
 		
 		PostGame_Enemies = new FastGUIElement (
 			new Vector2 (192, 896),
-			FastGUIElement.UVsFrom (@"PostGame_Enemies.png"));	
+			FastGUIElement.UVsFrom ("PostGame_Enemies.png"));	
 
 		PostGame_CoinsCollected = new FastGUIElement (
 			new Vector2 (192, 1024),
-			FastGUIElement.UVsFrom (@"PostGame_CoinsCollected.png"));
+			FastGUIElement.UVsFrom ("PostGame_CoinsCollected.png"));
 		
 		//PostGame_Level = new FastGUIElement (
 		//	new Vector2 (704, 896),
-		//	FastGUIElement.UVsFrom (@"PostGame_Level.png"));
+		//	FastGUIElement.UVsFrom ("PostGame_Level.png"));
 		
 		PostGame_XPBar = new FastGUIElement (
 			new Vector2 (960, 896),
-			FastGUIElement.UVsFrom (@"PostGame_XPBar.png"));	
+			FastGUIElement.UVsFrom ("PostGame_XPBar.png"));	
 		
 		PostGame_FB = new FastGUIElement (
 			new Vector2 (192, 1216),
-			FastGUIElement.UVsFrom (@"PostGame_FB.png"));
+			FastGUIElement.UVsFrom ("PostGame_FB.png"));
 		
 		PostGame_Twitter = new FastGUIElement (
 			new Vector2 (448, 1216),
-			FastGUIElement.UVsFrom (@"PostGame_Twitter.png"));
+			FastGUIElement.UVsFrom ("PostGame_Twitter.png"));
 		
 		PostGame_Continue = new FastGUIElement (
 			new Vector2 (768, 1216),
-			FastGUIElement.UVsFrom (@"PostGame_Continue.png"));
+			FastGUIElement.UVsFrom ("PostGame_Continue.png"));
 		
 		//
 		/*
 		PostGame_XPFill = new FastGUIElement (
 			new Vector2 (970, 906),
-			FastGUIElement.UVsFrom (@"PostGame_XPFill.png"));		
+			FastGUIElement.UVsFrom ("PostGame_XPFill.png"));		
 		*/
 	}
 	

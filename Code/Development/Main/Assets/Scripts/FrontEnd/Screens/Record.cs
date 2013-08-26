@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class record: MonoBehaviour {
+public class Record: MonoBehaviour {
 	
 #pragma warning disable 414
 
@@ -32,14 +32,14 @@ public class record: MonoBehaviour {
 	{
 			
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"assets//resources//record_AtlasUV.xml";
+		FastGUIElement.uvxmlFile = "Record_AtlasUV";
 
 		/*		
 		FAST GUI BUTTON example
 		Store_WardrobeButton = new FastGUIButton (
  			new Vector2 (192, 0),
- 			FastGUIElement.UVsFrom (@"Store_WardrobeButtonUp.png"),
- 			FastGUIElement.UVsFrom (@"Store_WardrobeButtonDown.png"));
+ 			FastGUIElement.UVsFrom ("Store_WardrobeButtonUp.png"),
+ 			FastGUIElement.UVsFrom ("Store_WardrobeButtonDown.png"));
  
   		Store_WardrobeButton.SetDisplayed (false);
   		*/
@@ -47,51 +47,51 @@ public class record: MonoBehaviour {
 		//persistent
 		General_Background = new FastGUIElement (
 			new Vector2 (0, 0),
-			FastGUIElement.UVsFrom (@"General_Background.png"));
+			FastGUIElement.UVsFrom ("General_Background.png"));
 		
 		General_BackButton = new FastGUIElement (
 			new Vector2 (0,0),
-			FastGUIElement.UVsFrom (@"General_BackButton.png"));
+			FastGUIElement.UVsFrom ("General_BackButton.png"));
 		
 		General_CoinDisplay = new FastGUIElement (
 			new Vector2 (1536,0),
-			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
+			FastGUIElement.UVsFrom ("General_CoinDisplay.png"));
 		
 		//body
 		
 		Record_Base = new FastGUIElement (
 			new Vector2 (64, 320),
-			FastGUIElement.UVsFrom (@"Record_Base.png"));
+			FastGUIElement.UVsFrom ("Record_Base.png"));
 		Record_Base.SetDisplayed (true);
 		
 		Record_Record = new FastGUIElement (
 			new Vector2 (128, 384),
-			FastGUIElement.UVsFrom (@"Record_Record.png"));
+			FastGUIElement.UVsFrom ("Record_Record.png"));
 		Record_Record.SetDisplayed (true);
 		
 		Record_Stop = new FastGUIElement (
 			new Vector2 (1024, 1152),
-			FastGUIElement.UVsFrom (@"Record_Stop.png"));
+			FastGUIElement.UVsFrom ("Record_Stop.png"));
 		Record_Stop.SetDisplayed (true);
 		
 		Record_RightPane = new FastGUIElement (
 			new Vector2 (1472, 320),
-			FastGUIElement.UVsFrom (@"Record_RightPane.png"));
+			FastGUIElement.UVsFrom ("Record_RightPane.png"));
 		Record_RightPane.SetDisplayed (true);
 		
 		Record_Tokens = new FastGUIElement (
 			new Vector2 (1536, 384),
-			FastGUIElement.UVsFrom (@"Record_Tokens.png"));
+			FastGUIElement.UVsFrom ("Record_Tokens.png"));
 		Record_Tokens.SetDisplayed (true);
 		
 		Record_Sell = new FastGUIElement (
 			new Vector2 (1536, 768),
-			FastGUIElement.UVsFrom (@"Record_Sell.png"));
+			FastGUIElement.UVsFrom ("Record_Sell.png"));
 		Record_Sell.SetDisplayed (true);
 		
 		Record_Counts = new FastGUIElement (
 			new Vector2 (1536, 1024),
-			FastGUIElement.UVsFrom (@"Record_Counts.png"));
+			FastGUIElement.UVsFrom ("Record_Counts.png"));
 		Record_Counts.SetDisplayed (true);
 		
 	}

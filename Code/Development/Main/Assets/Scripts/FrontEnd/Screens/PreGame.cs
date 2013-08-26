@@ -35,7 +35,7 @@ public class PreGame : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		FastGUIElement.uvxmlFile = @"assets//resources//PreGame_AtlasUV.xml";
+		FastGUIElement.uvxmlFile = @"PreGame_AtlasUV";
 		
 		//persistent
 		/*General_Background = new FastGUIElement (

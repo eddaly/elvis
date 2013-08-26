@@ -39,50 +39,50 @@ public class StoreWardrobe
 		
 		Store_WardrobeScreen = new FastGUIElement (
 			new Vector2 (192, 0),
-			FastGUIElement.UVsFrom (@"Store_WardrobeScreen.png"));
+			FastGUIElement.UVsFrom ("Store_WardrobeScreen.png"));
 		
 		Store_WardrobeScreen_InUse = new FastGUIElement (
 			new Vector2 (192, 0),
-			FastGUIElement.UVsFrom (@"Store_WardrobeScreen_InUse.png"));
+			FastGUIElement.UVsFrom ("Store_WardrobeScreen_InUse.png"));
 				
 		Store_Costume1Pane = new FastGUIElement (
 			new Vector2 (64, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));
+			FastGUIElement.UVsFrom ("Store_CostumePane.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Costume1Pane);
 			
 		Store_Costume1DescPane = new FastGUIElement (
 			new Vector2 (832, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png"));
+			FastGUIElement.UVsFrom ("Store_CostumeDescPane.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Costume1DescPane);
 		
 		Store_Costume2Pane = new FastGUIElement (
 			new Vector2 (64, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
+			FastGUIElement.UVsFrom ("Store_CostumePane.png"));	//*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume2Pane);
 			
 		Store_Costume2DescPane = new FastGUIElement (
 			new Vector2 (832, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png"));	//*** Need new element and UVs
+			FastGUIElement.UVsFrom ("Store_CostumeDescPane.png"));	//*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume2DescPane);
 			
 		Store_Costume3Pane = new FastGUIElement (
 			new Vector2 (64, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
+			FastGUIElement.UVsFrom ("Store_CostumePane.png"));	//*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume3Pane);
 			
 		Store_Costume3DescPane = new FastGUIElement (
 			new Vector2 (832, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png")); //*** Need new element and UVs
+			FastGUIElement.UVsFrom ("Store_CostumeDescPane.png")); //*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume3DescPane);
 		
 		Store_Costume4Pane = new FastGUIElement (
 			new Vector2 (64, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumePane.png"));	//*** Need new element and UVs
+			FastGUIElement.UVsFrom ("Store_CostumePane.png"));	//*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume4Pane);
 			
 		Store_Costume4DescPane = new FastGUIElement (
 			new Vector2 (832, 256),
-			FastGUIElement.UVsFrom (@"Store_CostumeDescPane.png")); //*** Need new element and UVs
+			FastGUIElement.UVsFrom ("Store_CostumeDescPane.png")); //*** Need new element and UVs
 		Store_WardrobeScreen_InUse.Add (Store_Costume4DescPane);
 		
 		Store_CostumePrev = new FastGUIElement (
@@ -97,50 +97,50 @@ public class StoreWardrobe
 		
 		Store_Upgrade1Tab = new FastGUIElement (
 			new Vector2 (64, 896),
-			FastGUIElement.UVsFrom (@"Store_Upgrade1Tab.png"));
+			FastGUIElement.UVsFrom ("Store_Upgrade1Tab.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade1Tab);
 		
 		Store_Upgrade1Desc = new FastGUIElement (
 			new Vector2 (832, 896), 
-			FastGUIElement.UVsFrom (@"Store_Upgrade1Desc.png"));
+			FastGUIElement.UVsFrom ("Store_Upgrade1Desc.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade1Desc);
 		
 		Store_Upgrade2Tab = new FastGUIElement (
 			new Vector2 (64, 1088),
-			FastGUIElement.UVsFrom (@"Store_Upgrade2Tab.png"));
+			FastGUIElement.UVsFrom ("Store_Upgrade2Tab.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade2Tab);
 		
 		Store_Upgrade2Desc = new FastGUIElement (
 			new Vector2 (832, 896), 
-			FastGUIElement.UVsFrom (@"Store_Upgrade2Desc.png"));	
+			FastGUIElement.UVsFrom ("Store_Upgrade2Desc.png"));	
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade2Desc);
 		
 		Store_Upgrade3Tab = new FastGUIElement (
 			new Vector2 (64, 1280),
-			FastGUIElement.UVsFrom (@"Store_Upgrade3Tab.png"));
+			FastGUIElement.UVsFrom ("Store_Upgrade3Tab.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade3Tab);
 		
 		Store_Upgrade3Desc = new FastGUIElement (
 			new Vector2 (832, 896), 
-			FastGUIElement.UVsFrom (@"Store_Upgrade3Desc.png"));
+			FastGUIElement.UVsFrom ("Store_Upgrade3Desc.png"));
 		Store_WardrobeScreen_InUse.Add (Store_Upgrade3Desc);
 		
 		// The upgrade button/status indicators
 		Store_UpgradeBuyButton = new FastGUIButton (
 			new Vector2 (1600, 1175),
-			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"),
-			FastGUIElement.UVsFrom (@"Store_UpgradeBuyButton.png"));	//*** Updated with pressed button texture);
+			FastGUIElement.UVsFrom ("Store_UpgradeBuyButton.png"),
+			FastGUIElement.UVsFrom ("Store_UpgradeBuyButton.png"));	//*** Updated with pressed button texture);
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeBuyButton);
 
 		Store_UpgradeEquipButton = new FastGUIButton (
 			new Vector2 (1600, 1175),
-			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"),
-			FastGUIElement.UVsFrom (@"Store_UpgradeEquipButton.png"));	//*** Updated with pressed button texture
+			FastGUIElement.UVsFrom ("Store_UpgradeEquipButton.png"),
+			FastGUIElement.UVsFrom ("Store_UpgradeEquipButton.png"));	//*** Updated with pressed button texture
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeEquipButton);
 		
 		Store_UpgradeInUse = new FastGUIElement (
 			new Vector2 (1600, 1175),
-			FastGUIElement.UVsFrom (@"Store_UpgradeInUseButton.png"));
+			FastGUIElement.UVsFrom ("Store_UpgradeInUseButton.png"));
 		Store_WardrobeScreen_InUse.Add (Store_UpgradeInUse);
 		
 		// Hide the unselected and display the select costume and upgrade

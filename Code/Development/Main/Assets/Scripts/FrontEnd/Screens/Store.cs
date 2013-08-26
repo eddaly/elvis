@@ -27,18 +27,18 @@ public class Store : MonoBehaviour {
 	void Start ()
 	{	
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = @"Frontend_AtlasUV";//"assets//resources//Frontend_AtlasUV.xml";
+		FastGUIElement.uvxmlFile = "Frontend_AtlasUV";//"assets//resources//Frontend_AtlasUV.xml";
 		
 		// Persistent across tabs
 		Store_Background = new FastGUIElement (
 			new Vector2 (0, 0),
-			FastGUIElement.UVsFrom (@"Store_Background.png"));		
+			FastGUIElement.UVsFrom ("Store_Background.png"));		
 		General_BackButton = new FastGUIElement (
 			new Vector2 (0, 0),
-			FastGUIElement.UVsFrom (@"General_BackButton.png"));
+			FastGUIElement.UVsFrom ("General_BackButton.png"));
 		General_CoinDisplay = new FastGUIElement (
 			new Vector2 (1536, 0),
-			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
+			FastGUIElement.UVsFrom ("General_CoinDisplay.png"));
 		
 		// Create tabs
 		wardrobe = new StoreWardrobe (this);
