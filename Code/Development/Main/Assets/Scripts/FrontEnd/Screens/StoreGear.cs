@@ -26,10 +26,14 @@ public class StoreGear
 	GameObject shadesCounter_go, beltBuckleCounter_go, shoesCounter_go, epCounter_go, rpmCounter_go;
 	FontNumber shadesCounter, beltBuckleCounter, shoesCounter, epCounter, rpmCounter;
 #pragma warning restore 414
+	
+	private Store store;
 
 	// Constructor, create elements
-	public StoreGear ()
+	public StoreGear (Store aStore)
 	{
+		store = aStore;
+		
 		Store_GearScreen = new FastGUIElement (
 			new Vector2 (640, 0),
 			FastGUIElement.UVsFrom (@"Store_GearScreen.png"));
@@ -111,16 +115,15 @@ public class StoreGear
 		// Don't display Gear screen by default, note this calls SetDisplay() on child elements
 		Store_GearScreen_InUse.SetDisplayed (false);
 		
-		// Set up the counters (trial and errored rather than offset from element for now, at least)
-		int x = -600, xStep = 384, y = 175, z = 0;
-		SetupFontNumber (out epCounter, out epCounter_go, new Vector3 (x + xStep * 0, y, z));
-		SetupFontNumber (out beltBuckleCounter, out beltBuckleCounter_go, new Vector3 (x + xStep * 1, y, z));
-		SetupFontNumber (out rpmCounter, out rpmCounter_go, new Vector3 (x + xStep * 2, y, z));
-		SetupFontNumber (out shoesCounter, out shoesCounter_go, new Vector3 (x + xStep * 3, y, z));
-		SetupFontNumber (out shadesCounter, out shadesCounter_go, new Vector3 (x + xStep * 4, y, z));
+		// Set up the counters
+		SetupFontNumber (out epCounter, out epCounter_go, CounterToWorldPos (Store_EPIcon));
+		SetupFontNumber (out beltBuckleCounter, out beltBuckleCounter_go, CounterToWorldPos (Store_BuckleIcon));
+		SetupFontNumber (out rpmCounter, out rpmCounter_go, CounterToWorldPos (Store_RPMIcon));
+		SetupFontNumber (out shoesCounter, out shoesCounter_go, CounterToWorldPos (Store_ShoesIcon));
+		SetupFontNumber (out shadesCounter, out shadesCounter_go, CounterToWorldPos (Store_ShadesIcon));
 	}
 	
-	//***check when called
+	// Release the FontNumbers
 	~StoreGear ()
 	{
 		epCounter.Release ();
@@ -130,6 +133,17 @@ public class StoreGear
 		shadesCounter.Release();
 	}
 	
+	// Get the world position used by FontNumber to display counter on provided element
+	private Vector3 CounterToWorldPos (FastGUIElement guiElement)
+	{
+		Vector3 p = Camera.main.ScreenToWorldPoint (new Vector3 (
+			guiElement.screenRect.x + guiElement.screenRect.width*.9f, 
+			guiElement.screenRect.y + guiElement.screenRect.height*.15f, 0));
+		p.z = 0;
+		return p;
+	}
+	
+	// Setup the FontNumbers and containing objets used as counters
 	private void SetupFontNumber (out FontNumber fontNumber, out GameObject go, Vector3 position)
 	{
 		go = new GameObject ();
@@ -178,6 +192,38 @@ public class StoreGear
 		}
 	}
 	
+	// Clicked on buy, get it or top-up currency
+	private void AttemptBuyItem (Metagame.Item item, Metagame.ConsumableItems itemIdx)
+	{
+		// If can't afford it
+		if (item.priceCoins > PersistentData.coins || item.priceGoldDiscs > PersistentData.goldDiscs)
+		{
+			// Display message and send to bank
+			string message = "YOU CAN'T AFFORD IT!\nNEED ";
+			if (item.priceCoins > PersistentData.coins)
+				message += (item.priceCoins - PersistentData.coins) + " MORE COINS";
+			if (item.priceCoins > PersistentData.coins && item.priceGoldDiscs > PersistentData.goldDiscs)
+				message += "\nAND ";
+			if (item.priceGoldDiscs > PersistentData.goldDiscs)
+				message += (item.priceGoldDiscs - PersistentData.goldDiscs) + " MORE GOLD DISC";
+			if ((item.priceGoldDiscs - PersistentData.goldDiscs) > 1)
+				message += "S";
+			
+			FrontEnd.DisplayMessage (message);
+			
+			store.SelectBank ();			
+		}
+		// If can afford it, buy
+		else
+		{				
+			PersistentData.SetConsumableItem (itemIdx, PersistentData.GetConsumableItem (itemIdx) + 1);		
+			PersistentData.coins -= item.priceCoins;
+			PersistentData.goldDiscs -= item.priceGoldDiscs;
+
+			UpdateGearStatus ();
+		}		
+	}
+	
 	// Update is called once per frame
 	public void UpdateTab ()
 	{
@@ -187,13 +233,8 @@ public class StoreGear
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_01");
 			
-			// Buy it
-			PersistentData.SetConsumableItem (Metagame.ConsumableItems.EP, 
-				PersistentData.GetConsumableItem(Metagame.ConsumableItems.EP) + 1);		
-			PersistentData.coins -= Metagame.ep.priceCoins;
-			PersistentData.goldDiscs -= Metagame.ep.priceGoldDiscs;
-
-			UpdateGearStatus ();
+			// Attempt to buy it
+			AttemptBuyItem (Metagame.ep, Metagame.ConsumableItems.EP);
 		}
 		// Buy 2
 		else if (Store_GearBuy2.Tapped ())
@@ -201,13 +242,8 @@ public class StoreGear
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_02");
 			
-			// Buy it
-			PersistentData.SetConsumableItem (Metagame.ConsumableItems.BELTBUCKLE, 
-				PersistentData.GetConsumableItem(Metagame.ConsumableItems.BELTBUCKLE) + 1);		
-			PersistentData.coins -= Metagame.beltBuckle.priceCoins;
-			PersistentData.goldDiscs -= Metagame.beltBuckle.priceGoldDiscs;
-
-			UpdateGearStatus ();
+			// Attempt to buy it
+			AttemptBuyItem (Metagame.beltBuckle, Metagame.ConsumableItems.BELTBUCKLE);
 		}
 		//Buy 3
 		else if (Store_GearBuy3.Tapped ())
@@ -215,14 +251,27 @@ public class StoreGear
 			// Play sound
 			RL.m_SoundController.Play("FE_Confirm_03");
 			
-			// Buy it
-			PersistentData.SetConsumableItem (Metagame.ConsumableItems.RPM, 
-				PersistentData.GetConsumableItem(Metagame.ConsumableItems.RPM) + 1);		
-			PersistentData.coins -= Metagame.rpm.priceCoins;
-			PersistentData.goldDiscs -= Metagame.rpm.priceGoldDiscs;
-
-			UpdateGearStatus ();
+			// Attempt to buy it
+			AttemptBuyItem (Metagame.rpm, Metagame.ConsumableItems.RPM);
 		}
+		//Buy 4
+		/*else if (Store_GearBuy4.Tapped ())
+		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Confirm_01");
+			
+			// Attempt to buy it
+			AttemptBuyItem (Metagame.shoes, Metagame.ConsumableItems.BLUESUEDESHOES);
+		}
+		//Buy 5
+		else if (Store_GearBuy5.Tapped ())
+		{
+			// Play sound
+			RL.m_SoundController.Play("FE_Confirm_02");
+			
+			// Attempt to buy it
+			AttemptBuyItem (Metagame.shades, Metagame.ConsumableItems.SHADES);
+		}*/
 	
 	}
 
@@ -256,7 +305,7 @@ public class StoreGear
 			if (item.priceCoins > PersistentData.coins ||
 				item.priceGoldDiscs > PersistentData.goldDiscs) {
 				Debug.Log (item.name + " is unlocked but too expensive, coins: " + item.priceCoins + " GDs: " + item.priceGoldDiscs);
-				//***TBD FRICTIONLESS TOP-UP PATH
+				return true;	// Make button available anyway and top-up if needed
 			}
 			else {
 				Debug.Log (item.name + " unlocked and affordable");
