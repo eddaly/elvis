@@ -37,9 +37,10 @@ public class AudioLauncher : MonoBehaviour {
 		if ( RL.m_SoundController == null )
 		{
 			RL.m_SoundController = ((GameObject)Instantiate(Resources.Load("SoundController"))).GetComponent<EPSoundController>();
-			RL.m_SoundController.m_StingGrid = EPSoundController.StingGrid.QUARTERBEAT;	
 			RL.m_MusicPlayer = RL.m_SoundController.gameObject.GetComponent<EPMusicPlayer>();
-			//DontDestroyOnLoad(RL.m_SoundController);
+			
+			// Tidy this up later, shouldn't really be set here
+			RL.m_SoundController.m_StingGrid = EPSoundController.StingGrid.QUARTERBEAT;	
 		}
 	}
 	
@@ -60,5 +61,9 @@ public class AudioLauncher : MonoBehaviour {
 			if ( GameObject.Find( sb.name ) != null )
 				sb.transform.parent = RL.m_SoundController.transform;
 		}
+		
+		// Update Lists
+		RL.m_SoundController.populateLists();
+		RL.m_MusicPlayer.UpdateSegmentList();
 	}
 }

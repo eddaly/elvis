@@ -85,9 +85,8 @@ public class EPMusicPlayer : MonoBehaviour {
 			if ( !m_MasterSegment.IsPlaying() )
 				m_MasterSegment.Stop();
 		}
-		
-		
-		DebugInputs();
+			
+		//DebugInputs();
 	}
 	
 	// Play functions
