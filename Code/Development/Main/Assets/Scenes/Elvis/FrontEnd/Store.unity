@@ -3485,6 +3485,10 @@ Prefab:
       propertyPath: m_AtlasFile
       value: Frontend_Atlas
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
+      propertyPath: atlasesUsed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 739eb2a32befe4907958e898de1ee35d, type: 2}
   m_RootGameObject: {fileID: 1154770717}
@@ -3530,10 +3534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistentData: {fileID: 0}
-  m_AtlasFile: Frontend_Atlas
-  m_AtlasOriginalWidth: 4096
-  m_AtlasOriginalHeight: 4096
 --- !u!1 &1196313688
 GameObject:
   m_ObjectHideFlags: 0
