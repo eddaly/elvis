@@ -26,8 +26,10 @@ public class Store : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{	
+		FrontEnd.instance.SelectAtlas ("Frontend_Atlas");
+
 		// The XML file containing the atlas UVs
-		FastGUIElement.uvxmlFile = "Frontend_AtlasUV";//"assets//resources//Frontend_AtlasUV.xml";
+		FastGUIElement.uvxmlFile = "Frontend_AtlasUV";
 		
 		// Persistent across tabs
 		Store_Background = new FastGUIElement (
@@ -54,7 +56,7 @@ public class Store : MonoBehaviour {
 		myGUITextObject.guiText.text = "Coins\nGDs\nXP Level";
 		myGUITextObject.guiText.color = Color.red;
 	}
-		
+
 	// Update is called once per frame
 	void Update ()
 	{			
@@ -62,7 +64,8 @@ public class Store : MonoBehaviour {
 		if (General_BackButton.Tapped ())
 		{
 			// Play sound
-			RL.m_SoundController.Play("FE_Back");			
+			RL.m_SoundController.Play("FE_Back");
+			Application.LoadLevel ("Startup");	//Test
 			Debug.Log ("EXIT");
 		}
 		

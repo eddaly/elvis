@@ -8,8 +8,12 @@ public class FastGUIElement
 {
 	// Screen and Frontend Atlas size
 	static readonly public float safeScreenWidth = 2048f, safeScreenHeight = 1536f;
+	
+	// The contents of the FrontEnd.Atlas
 	static protected TextureAtlas frontendAtlas;
 	static protected float originalAtlasPixelsWidth, originalAtlasPixelsHeight;
+	static private GameObject quadBatch;
+	
 	private static int instanceCount = 0;			// Number of FastGUIElement instances
 	
 	// Size of element
@@ -30,10 +34,13 @@ public class FastGUIElement
 	protected List <FastGUIElement> children;
 	
 	// To enable specifying UVs in original pixels need to provide as Unity will rescale Texture
-	static public void SetOriginalAtlasPixels (int width, int height)
+	public static void SelectAtlas (TextureAtlas atlas, int width, int height, GameObject _quadBatch)
 	{
+		frontendAtlas = atlas;
 		originalAtlasPixelsWidth = width;
 		originalAtlasPixelsHeight = height;
+		quadBatch = _quadBatch;
+		instanceCount = 0;	// Reset for new Atlas
 	}
 	
 	// Set if using UV data from XML file
@@ -65,7 +72,6 @@ public class FastGUIElement
 		Position pos = Position.TOPLEFT)
 	{
 		// There is a fixed number of possible FastGUIElements
-		frontendAtlas = PrimitiveLibrary.Get.m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND];		
 		if (instanceCount + 1 > frontendAtlas.m_NumElements)		
 		{
 			Debug.LogError ("Need to increase frontendAtlas.m_NumElements and PrimitiveLibrary.g_FrontendBatchSize");
@@ -81,7 +87,7 @@ public class FastGUIElement
 			(((originalAtlasPixelsHeight - atlasRect.y) - atlasRect.height) + atlasRect.height) / originalAtlasPixelsHeight);	
 		
 		// Setup the quad
-		quad = PrimitiveLibrary.Get.GetQuadDefinition (PrimitiveLibrary.QuadBatch.FRONTEND_BATCH);
+		quad = PrimitiveQuadBatch.GetQuadDef (quadBatch);//PrimitiveLibrary.Get.GetQuadDefinition (PrimitiveLibrary.QuadBatch.FRONTEND_BATCH);
 		quad.m_TextureIdx = textureIdx;
 		quad.m_Colour = Color.white;
 		

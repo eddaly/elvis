@@ -45,6 +45,7 @@ public class PrimitiveQuadBatchInfo : MonoBehaviour
 	public int m_NumQuads;
 	public int m_QuadSearchCursor;
 	
+	public TextureAtlas m_Atlas;	// Used by FrontEnd
 	public int m_AltasIdx;
 	
 	public bool m_Rotating;
@@ -54,7 +55,7 @@ public class PrimitiveQuadBatchInfo : MonoBehaviour
 	public Vector2[] m_UVs;
 	public Color[] m_Colours;
 	
-	public BatchedQuadDef[] m_QuadDefs;
+	public BatchedQuadDef[] m_QuadDefs;	
 }
 
 public class PrimitiveQuadBatch 
@@ -81,6 +82,7 @@ public class PrimitiveQuadBatch
 		info.m_NumQuads = num_quads;
 		info.m_QuadSearchCursor = 0;
 		
+		info.m_Atlas = atlas;
 		info.m_AltasIdx = atlas_idx;
 		
 		info.m_Rotating = rotate;
@@ -245,7 +247,8 @@ public class PrimitiveQuadBatch
 		
 		//	Do the uvs and colours first
 		int vert = 0;
-		TextureAtlas atlas = PrimitiveLibrary.Get.m_Atlases[info.m_AltasIdx];
+		// FrontEnd doesn't use PrimitiveLibrary atlas array, it's stored in info
+		TextureAtlas atlas = (info.m_AltasIdx == -1) ? info.m_Atlas :  PrimitiveLibrary.Get.m_Atlases[info.m_AltasIdx];
 		for( int q = 0; q<maxQuads; q++ )
 		{
 			BatchedQuadDef quadDef = info.m_QuadDefs[q];

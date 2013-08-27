@@ -31,7 +31,7 @@ public sealed class PrimitiveLibrary
 	Transform m_HierarchyTopLevel;
 	Transform m_HierarchyQuadPool;
 	Transform m_HierarchyTextPool;
-	Transform m_HierarchyQuadBatches;
+	public Transform m_HierarchyQuadBatches;
 
 
 	//	The quad pool. An array of GameObjects with the quads attached as
@@ -55,7 +55,6 @@ public sealed class PrimitiveLibrary
 		FX_BATCH = 0,
 		FX_ALPHA_BATCH,
 		NUMBERS_BATCH,
-		FRONTEND_BATCH,
 		PLAYER_BATCH,
 		ELVIS_BATCH,
 		OBSTACLE_BATCH,
@@ -67,7 +66,6 @@ public sealed class PrimitiveLibrary
 	const int g_FXBatchSize = 512;
 	const int g_FXAlphaBatchSize = 512;
 	const int g_NumbersBatchSize = 70;
-	const int g_FrontendBatchSize = 256;
 	const int g_PlayerBatchSize = 16;
 	const int g_ElvisBatchSize = 16;
 	const int g_ObstacleBatchSize = 256;
@@ -160,14 +158,6 @@ public sealed class PrimitiveLibrary
 			);
 		m_quadBatches[(int)QuadBatch.NUMBERS_BATCH].transform.localPosition = Vector3.zero;
 		
-		m_quadBatches[(int)QuadBatch.FRONTEND_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
-			g_FrontendBatchSize, 
-			m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND], 
-			(int)TextureAtlas.AtlasID.FRONTEND, 
-			false, false, false, 0 
-			);
-		m_quadBatches[(int)QuadBatch.FRONTEND_BATCH].transform.localPosition = Vector3.zero;
-
 		m_quadBatches[(int)QuadBatch.PLAYER_BATCH] = PrimitiveQuadBatch.MakeQuadBatch( 
 			g_PlayerBatchSize, 
 			m_Atlases[(int)TextureAtlas.AtlasID.PLAYER],
@@ -523,22 +513,7 @@ public sealed class PrimitiveLibrary
 		m_Atlases[(int)TextureAtlas.AtlasID.PARTICLE_FX_ALPHA].m_TexturePage =
 			Resources.Load( "FX_Alpha_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.NUMBERS].m_TexturePage =
-			Resources.Load( "Numbers_Atlas" ) as Texture;
-		
-		if( FrontEnd.instance != null )
-		{
-			m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
-				Resources.Load( FrontEnd.instance.m_AtlasFile ) as Texture;
-			if (m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage == null)
-				Debug.Log ("Failed to load Atlas " + FrontEnd.instance.m_AtlasFile);
-		}
-		else
-		{
-			m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND].m_TexturePage =
-				Resources.Load( "Numbers_Atlas" ) as Texture;
-		}
-		
-		
+			Resources.Load( "Numbers_Atlas" ) as Texture;		
 		m_Atlases[(int)TextureAtlas.AtlasID.PLAYER].m_TexturePage =
 			Resources.Load( "Player_Atlas" ) as Texture;
 		m_Atlases[(int)TextureAtlas.AtlasID.ELVIS].m_TexturePage =
@@ -587,12 +562,6 @@ public sealed class PrimitiveLibrary
 		numbersAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_COLON] = new Vector4( 0.0f, 0.0f, 0.25f, 0.25f );
 		numbersAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_PERCENT] = new Vector4( 0.75f, 0.25f, 1.0f, 0.5f );
 		numbersAtlas.m_UVSet[(int)TextureAtlas.Numbers.NUM_TIMES] = new Vector4( 0.5f, 0.25f, 0.75f, 0.5f );		
-
-		// And the front-end
-		TextureAtlas frontendAtlas = m_Atlases[(int)TextureAtlas.AtlasID.FRONTEND];		
-		frontendAtlas.m_NumElements = TextureAtlas.maxFrontendElements;		
-		frontendAtlas.m_UVSet = new Vector4[frontendAtlas.m_NumElements]; // Setup dynamically by FastGUIElement
-		
 		
 		//	The player atlas - just break it up in pieces for now to leave it open for animation
 		TextureAtlas playerAtlas = m_Atlases[(int)TextureAtlas.AtlasID.PLAYER];
@@ -690,7 +659,6 @@ public class TextureAtlas
 		PARTICLE_FX = 0,
 		PARTICLE_FX_ALPHA,
 		NUMBERS,
-		FRONTEND,
 		PLAYER,
 		ELVIS,
 		OBSTACLES,
@@ -735,8 +703,6 @@ public class TextureAtlas
 		
 		NUM
 	}	
-	
-	static public int maxFrontendElements = 256;
 	
 	public enum Obstacles
 	{
