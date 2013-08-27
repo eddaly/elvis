@@ -17,3 +17,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Elvis/FrontEnd.unity
   - enabled: 1
     path: Assets/Scenes/Elvis/RunningProto3.unity
+  - enabled: 1
+    path: Assets/Scenes/Test/startup.unity
+  - enabled: 0
+    path: Assets/Scenes/Elvis/FrontEnd/Challenges.unity
+  - enabled: 0
+    path: Assets/Scenes/Elvis/FrontEnd/FrontEnd.unity
+  - enabled: 0
+    path: Assets/Scenes/Elvis/FrontEnd/PostGame.unity
+  - enabled: 0
+    path: Assets/Scenes/Elvis/FrontEnd/PreGame.unity
+  - enabled: 0
+    path: Assets/Scenes/Elvis/FrontEnd/Record.unity
+  - enabled: 1
+    path: Assets/Scenes/Elvis/FrontEnd/Store.unity
