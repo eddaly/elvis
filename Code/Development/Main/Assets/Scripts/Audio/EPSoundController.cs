@@ -28,6 +28,8 @@ public class EPSoundController : MonoBehaviour
 	public float m_DuckingAmount;
 	[HideInInspector]
 	public List<EPSoundEvent> m_StingQueue = new List<EPSoundEvent>();
+	[HideInInspector]
+	public List<GameObject> m_SoundBankList = new List<GameObject>();
 	
 	public enum StingGrid
 	{
@@ -78,6 +80,7 @@ public class EPSoundController : MonoBehaviour
 	void Awake()
 	{
 		DontDestroyOnLoad(transform.gameObject);
+		//Debug.Log("EPSoundController Awakes");
 	}
 	
 	// Use this for initialization
@@ -85,7 +88,7 @@ public class EPSoundController : MonoBehaviour
 	{
 		gameObject.tag = "SoundController";
 		
-		populateLists();
+		//populateLists();				// Now handled by AudioLauncher
 		
 		m_MixGroupVolumes = new float[(int)MixGroup.COUNT];
 		
@@ -108,34 +111,15 @@ public class EPSoundController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		/* If live list update required in Editor, re-enable this
+		 * 
 		if( m_PopulateList )
 		{
 			populateLists();			
 			m_PopulateList = false;
-		}
+		}*/
 
-
-		/*// Play sound with spacebar
-		if (Input.GetKeyUp(KeyCode.Space))
-		{
-			Play("Motion_special_rise_01");
-		}//*/
-		
-		/*// Play sound with return
-		if (Input.GetKeyUp(KeyCode.Return))
-		{
-			Play("Motion_long_super_01");
-		}//*/
-		
-		/*
-		// Pause sounds
-		if (Input.GetKeyUp (KeyCode.P))
-			Pause();
-		
-		// Resume sounds
-		if (Input.GetKeyUp (KeyCode.R))
-			Resume();
-		*/
+		// DebugInputs();
 	}
 	
 	// Play sound by name
@@ -313,5 +297,24 @@ public class EPSoundController : MonoBehaviour
 		
 		Debug.Log("Sound name not found");
 		return 0;
+	}
+	
+	void DebugInputs()
+	{
+		/*// Play sound with spacebar
+		if (Input.GetKeyUp(KeyCode.Space))
+		{
+			Play("NAME");
+		}//*/
+		
+		/*
+		// Pause sounds
+		if (Input.GetKeyUp (KeyCode.P))
+			Pause();
+		
+		// Resume sounds
+		if (Input.GetKeyUp (KeyCode.R))
+			Resume();
+		*/
 	}
 }

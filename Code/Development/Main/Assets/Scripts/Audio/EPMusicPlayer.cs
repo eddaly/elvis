@@ -523,7 +523,15 @@ public class EPMusicPlayer : MonoBehaviour {
 		EPMusicSegment[] segments = GetComponentsInChildren<EPMusicSegment>();
 		foreach( EPMusicSegment child in segments )
 		{
-			m_Segments.Add( child.GetComponent<EPMusicSegment>() );
+			if ( child != null )
+			{
+				m_Segments.Add( child.GetComponent<EPMusicSegment>() );
+			}
+			else
+			{
+				Debug.Log("Null component found" + child.name);
+				DestroyObject(child);
+			}
 		}
 		
 		Debug.Log("EPMusicPlayer SegmentList updated.");
@@ -554,5 +562,13 @@ public class EPMusicPlayer : MonoBehaviour {
 		{
 			StopAll();
 		}//*/
+		if ( Input.GetKeyDown (KeyCode.L) )
+		{
+			Application.LoadLevel("Store");
+		}
+		if ( Input.GetKeyDown (KeyCode.R) )
+		{
+			Application.LoadLevel("RunningProto3");
+		}
 	}
 }
