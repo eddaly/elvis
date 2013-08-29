@@ -20,8 +20,14 @@ public class FrontEnd : MonoBehaviour
 		internal GameObject quadBatch;
 	};
 	private static Atlas[] atlases = {
-		new Atlas {file = "EdTestAtlas",		originalWidth = 2048, originalHeight = 1536, textureAtlas = null},
+		new Atlas {file = "EdTestAtlas",		originalWidth = 2048, originalHeight = 1536, textureAtlas = null},//TEST
 		new Atlas {file = "Frontend_Atlas",		originalWidth = 4096, originalHeight = 4096, textureAtlas = null},
+		new Atlas {file = "Challenges_Atlas",	originalWidth = 4096, originalHeight = 2048, textureAtlas = null},
+		new Atlas {file = "PreGame_Atlas",		originalWidth = 2048, originalHeight = 2048, textureAtlas = null},
+		new Atlas {file = "Record_Atlas",		originalWidth = 4096, originalHeight = 4096, textureAtlas = null},
+		new Atlas {file = "PostGame_Atlas",		originalWidth = 4096, originalHeight = 2048, textureAtlas = null},
+		//new Atlas {file = "Missions_Atlas",		originalWidth = 4096, originalHeight = 4096, textureAtlas = null},
+		//new Atlas {file = "HUB",		originalWidth = 4096, originalHeight = 4096, textureAtlas = null},
 	};
 		
 	// This is effectively a singleton

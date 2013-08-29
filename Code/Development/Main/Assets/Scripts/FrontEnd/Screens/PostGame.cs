@@ -23,6 +23,8 @@ public class PostGame : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		
+		FrontEnd.instance.SelectAtlas ("PostGame_Atlas");
 	
 		FastGUIElement.uvxmlFile = "PostGame_AtlasUV";
 		

@@ -34,45 +34,47 @@ public class PreGame : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		
+		FrontEnd.instance.SelectAtlas ("PreGame_Atlas");
 	
-		FastGUIElement.uvxmlFile = @"PreGame_AtlasUV";
+		FastGUIElement.uvxmlFile = "PreGame_AtlasUV";
 		
 		//persistent
 		/*General_Background = new FastGUIElement (
 			new Vector2 (0, 0),
-			FastGUIElement.UVsFrom (@"General_Background.png"));
+			FastGUIElement.UVsFrom ("General_Background.png"));
 		*/
 		
 		General_BackButton = new FastGUIElement (
 			new Vector2 (0,0),
-			FastGUIElement.UVsFrom (@"General_BackButton.png"));
+			FastGUIElement.UVsFrom ("General_BackButton.png"));
 		
 		General_CoinDisplay = new FastGUIElement (
 			new Vector2 (1536,0),
-			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
+			FastGUIElement.UVsFrom ("General_CoinDisplay.png"));
 		
 		/* Duplicate of the one above
 		General_CoinDisplay = new FastGUIElement (
 			new Vector2 (1536,0),
-			FastGUIElement.UVsFrom (@"General_CoinDisplay.png"));
+			FastGUIElement.UVsFrom ("General_CoinDisplay.png"));
 		*/
 		
 		//stuff
 		PreGame_Play = new FastGUIElement (
 			new Vector2 (448, 256),
-			FastGUIElement.UVsFrom (@"PreGame_Play.png"));
+			FastGUIElement.UVsFrom ("PreGame_Play.png"));
 		
 		// This one doesn't work
 		PreGame_Shades_No = new FastGUIElement (
 			new Vector2 (448, 256),
-			FastGUIElement.UVsFrom (@"PreGame_Shades_No.png"));
+			FastGUIElement.UVsFrom ("PreGame_Shades_No.png"));
 		//to add.
 		
 		//
 		/*
 		PostGame_XPFill = new FastGUIElement (
 			new Vector2 (970, 906),
-			FastGUIElement.UVsFrom (@"PostGame_XPFill.png"));		
+			FastGUIElement.UVsFrom ("PostGame_XPFill.png"));		
 		*/
 	}
 	

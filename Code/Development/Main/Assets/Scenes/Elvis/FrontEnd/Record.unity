@@ -439,7 +439,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca59d43a816784907af2242861f89621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistentData: {fileID: 0}
-  m_AtlasFile: record_Atlas
-  m_AtlasOriginalWidth: 4096
-  m_AtlasOriginalHeight: 4096

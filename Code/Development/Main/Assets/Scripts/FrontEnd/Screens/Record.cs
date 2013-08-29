@@ -29,8 +29,9 @@ public class Record: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () 
-	{
-			
+	{	
+		FrontEnd.instance.SelectAtlas ("Record_Atlas");
+		
 		// The XML file containing the atlas UVs
 		FastGUIElement.uvxmlFile = "Record_AtlasUV";
 

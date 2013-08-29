@@ -50,6 +50,7 @@ public class Challenges : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		FrontEnd.instance.SelectAtlas ("Challenges_Atlas");
 			
 		// The XML file containing the atlas UVs
 		FastGUIElement.uvxmlFile = "Challenges_AtlasUV";
