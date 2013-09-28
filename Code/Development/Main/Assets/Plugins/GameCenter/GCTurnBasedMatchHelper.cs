@@ -18,6 +18,8 @@ public class GCTurnBasedMatchHelper : MonoBehaviour
 	[DllImport ("__Internal")]
 	private static extern void _SendTurn (int score);
 
+	[DllImport ("__Internal")]
+	private static extern void _EndMatch ();
 	
 	/* Public interface for use inside C# / JS code */
 	
