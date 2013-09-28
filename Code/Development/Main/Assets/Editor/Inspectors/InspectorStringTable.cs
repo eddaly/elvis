@@ -6,6 +6,8 @@
 // Copyright Echo Peak Ltd 2013
 // <Paul Sinnett>
 //-----------------------------------------------------------------------------
+#if !UNITY_IPHONE
+
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
@@ -219,3 +221,5 @@ public class InspectorStringTable : Editor
 		}
 	}
 }
+
+#endif

@@ -7,6 +7,8 @@
 // <Paul Sinnett>
 //-----------------------------------------------------------------------------
 
+#if !UNITY_IPHONE
+
 using UnityEditor;
 using UnityEngine;
 
@@ -18,3 +20,5 @@ public class BitmapFontAsset
         CustomAssetUtility.CreateAsset<BitmapFont> ();
     }
 }
+
+#endif

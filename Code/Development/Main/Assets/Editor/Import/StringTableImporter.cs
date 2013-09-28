@@ -6,6 +6,7 @@
 //
 // Copyright Echo Peak Ltd 2013
 //-----------------------------------------------------------------------------
+#if !UNITY_IPHONE
 
 using UnityEditor;
 using UnityEngine;
@@ -60,3 +61,5 @@ public class StringTableImporter : ScriptableObject
 		}		
 	}
 }
+
+#endif

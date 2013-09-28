@@ -7,6 +7,8 @@
 // <Paul Sinnett>
 //-----------------------------------------------------------------------------
 
+#if !UNITY_IPHONE
+
 using UnityEditor;
 using UnityEngine;
 
@@ -24,3 +26,5 @@ public class StringTableAsset
         CustomAssetUtility.CreateAsset<StringTableImporter> ();
     }
 }
+
+#endif
