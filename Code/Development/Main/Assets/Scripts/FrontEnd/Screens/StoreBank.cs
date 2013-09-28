@@ -159,9 +159,9 @@ public class StoreBank
 		StoreKitManager.purchaseSuccessfulEvent += PurchaseSuccessful;
 		StoreKitManager.purchaseFailedEvent += PurchaseFailed;
 		
-		// array of product ID's from iTunesConnect.  MUST match exactly what you have there!
-		//var productIdentifiers = new string[] { SKPID_1GD };
-		//StoreKitBinding.requestProductData (productIdentifiers);
+		// Request the product data
+		string[] productIdentifiers = new string[] {SKPID_1GD, SKPID_5GD, SKPID_1kC};
+		StoreKitBinding.requestProductData (productIdentifiers);
 #endif		
 	}
 	
@@ -310,31 +310,43 @@ public class StoreBank
 	public void OnGUI()
 	{
 		string []price = {"Unknown", "Unknown", "Unknown"};
+		string []desc = {"Unknown", "Unknown", "Unknown"};
 		
 #if UNITY_IPHONE
 		if (_products != null) {
 			foreach (StoreKitProduct product in _products)
 			{
 				if (product.productIdentifier == SKPID_1GD)
+				{
 					price[0] = product.formattedPrice;
+					desc[0] = product.title;
+				}
 				else if (product.productIdentifier == SKPID_5GD)
+				{
 					price[1] = product.formattedPrice;
+					desc[1] = product.title;
+				}
 				else if (product.productIdentifier == SKPID_1kC)
+				{
 					price[2] = product.formattedPrice;
+					desc[2] = product.title;
+				}
 			}
 		}
 #endif
 		
+		GUI.Label (ScreenToGUI (Store_CoinsDesc1.screenRect), desc[0], fontGUISkin.GetStyle ("Label"));
 		GUI.Label (ScreenToGUI (Store_CoinsPrice1.screenRect), price[0], fontGUISkin.GetStyle ("Label")); 
+		GUI.Label (ScreenToGUI (Store_CoinsDesc2.screenRect), desc[1], fontGUISkin.GetStyle ("Label"));
 		GUI.Label (ScreenToGUI (Store_CoinsPrice2.screenRect), price[1], fontGUISkin.GetStyle ("Label")); 
+		GUI.Label (ScreenToGUI (Store_CoinsDesc3.screenRect), desc[2], fontGUISkin.GetStyle ("Label"));
 		GUI.Label (ScreenToGUI (Store_CoinsPrice3.screenRect), price[2], fontGUISkin.GetStyle ("Label")); 
 		GUI.Label (ScreenToGUI (Store_CoinsPrice4.screenRect), "WATCH AD", fontGUISkin.GetStyle ("Label")); 
-				
+	
 #if UNITY_IPHONE
-		
-		
+
 		// TEST CODE TO REMOVE
-		if (Debug.isDebugBuild && !Application.isEditor)
+		/*if (Debug.isDebugBuild && !Application.isEditor)
 		{ 
 			GUILayout.MinHeight (350);
 			
@@ -348,8 +360,8 @@ public class StoreBank
 			if( GUILayout.Button( "Get Product Data" ) )
 			{
 				// array of product ID's from iTunesConnect.  MUST match exactly what you have there!
-				var productIdentifiers = new string[] { "com.echopeak.elvis.1gd" };
-				StoreKitBinding.requestProductData( productIdentifiers );
+				string[] productIdentifiers = new string[] {SKPID_1GD, SKPID_5GD, SKPID_1kC};
+				StoreKitBinding.requestProductData (productIdentifiers);
 			}
 			
 			
@@ -399,7 +411,7 @@ public class StoreBank
 			{
 				StoreKitBinding.displayStoreWithProductId( "693265148" );//From iTunes
 			}
-		}
+		}*/
 #endif
 	}
 	
