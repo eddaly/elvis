@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class Store : MonoBehaviour {
-	
+
 #pragma warning disable 414
 	
 	// Persistent elements always on screen
@@ -169,11 +169,10 @@ public class Store : MonoBehaviour {
 					wardrobe.UpdateWardrobeStatus ();
 				if (gearSelected)
 					gear.UpdateGearStatus ();
-			}
-		
-			if (bankSelected)
-				bank.OnGUI();
+			}		
 		}
+		if (bankSelected)
+			bank.OnGUI();
 	}
-		
+
 }
