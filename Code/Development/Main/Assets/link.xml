@@ -1,0 +1,7 @@
+<!-- Used for Secured PlayerPrefs plugin -->
+<linker>
+  <assembly fullname="mscorlib">
+    <namespace fullname="System.Security.Cryptography" preserve="all"/>
+    <namespace fullname="System.Text" preserve="all"/>
+  </assembly>
+</linker>
