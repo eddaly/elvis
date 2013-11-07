@@ -4,9 +4,31 @@
 
 #include "iPhone_View.h"
 #include "iPhone_OrientationSupport.h"
+#include "Unity/UnityInterface.h"
+
+@class GCController;
+typedef void (^ControllerPausedHandler)(GCController *controller);
+static NSArray* QueryControllerCollection();
 
 static bool gCompensateSensors = true;
 bool gEnableGyroscope = false;
+static bool gJoysticksInited = false;
+#define MAX_JOYSTICKS 4
+static bool gPausedJoysticks[MAX_JOYSTICKS] = {false, false, false, false};
+static id gGameControllerClass = nil;
+static ControllerPausedHandler gControllerHandler = ^(GCController *controller) 
+{
+	NSArray* list = QueryControllerCollection();
+	if (list != nil)
+	{
+		NSUInteger idx = [list indexOfObject:controller];
+		if (idx < MAX_JOYSTICKS)
+		{
+			gPausedJoysticks[idx] = !gPausedJoysticks[idx];
+		}
+	}
+};
+
 bool IsCompensatingSensors() { return gCompensateSensors; }
 void SetCompensatingSensors(bool val) { gCompensateSensors = val;}
 
@@ -298,6 +320,201 @@ bool IsGyroAvailable()
 
 	return false;
 }
+
+// -- Joystick stuff --
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-method-access"
+enum JoystickButtonNumbers
+{
+	BTN_PAUSE = 0,
+	BTN_DPAD_UP = 4,
+	BTN_DPAD_RIGHT = 5,
+	BTN_DPAD_DOWN = 6,
+	BTN_DPAD_LEFT = 7,
+	BTN_Y = 12,
+	BTN_B = 13,
+	BTN_A = 14,
+	BTN_X = 15,
+	BTN_L1 = 8,
+	BTN_L2 = 10,
+	BTN_R1 = 9,
+	BTN_R2 = 11
+};
+
+
+@interface GCControllerAxisInput : NSObject
+	@property (readonly) float value;
+@end
+
+@interface GCControllerButtonInput : NSObject
+	@property (readonly, getter = isPressed) BOOL pressed;
+@end
+
+@interface GCController : NSObject
+	@property(copy) void (^controllerPausedHandler)(GCController *controller);
+	@property (readonly, getter = isAttachedToDevice) BOOL attachedToDevice;
+@end
+
+static float GetAxisValue(GCControllerAxisInput* axis)
+{
+	return axis.value;
+}
+
+static BOOL GetButtonPressed(GCControllerButtonInput* button)
+{
+	return button.pressed;
+}
+
+void UnityInitJoysticks()
+{
+	if (!gJoysticksInited)
+	{
+		NSBundle* bundle = [NSBundle bundleWithPath:@"/System/Library/Frameworks/GameController.framework"];
+		if(bundle)
+		{
+			[bundle load];
+			Class retClass = [bundle classNamed:@"GCController"];
+			if(		retClass
+				&&	[retClass respondsToSelector:@selector(controllers)]
+			  )
+			{
+				gGameControllerClass = retClass;
+			}
+		}
+
+		gJoysticksInited = true;
+	}
+}
+
+static NSArray* QueryControllerCollection()
+{
+	return gGameControllerClass != nil ? (NSArray*)[gGameControllerClass performSelector:@selector(controllers)] : nil;
+}
+
+static void SetJoystickButtonState (int joyNum, int buttonNum, int state)
+{
+	char buf[128];
+	sprintf (buf, "joystick %d button %d", joyNum, buttonNum);
+	UnitySetKeyState (UnityStringToKey (buf), state);
+	
+	// Mirror button input into virtual joystick 0
+	sprintf (buf, "joystick button %d", buttonNum);
+	UnitySetKeyState (UnityStringToKey (buf), state);
+}
+
+static void ReportJoystick(GCController* controller, int idx)
+{
+	if (controller.controllerPausedHandler == nil)
+		controller.controllerPausedHandler = gControllerHandler;
+
+	// For basic profile map hatch to Vertical + Horizontal axes
+	if ([controller extendedGamepad] == nil)
+	{
+		id gamepad = [controller gamepad];
+		id dpad = [gamepad dpad];
+
+		UnitySetJoystickPosition(idx + 1, 0, GetAxisValue([dpad xAxis]));
+		UnitySetJoystickPosition(idx + 1, 1, -GetAxisValue([dpad yAxis]));
+		
+		SetJoystickButtonState(idx + 1, BTN_DPAD_UP, GetButtonPressed([dpad up]));
+		SetJoystickButtonState(idx + 1, BTN_DPAD_RIGHT, GetButtonPressed([dpad right]));
+		SetJoystickButtonState(idx + 1, BTN_DPAD_DOWN, GetButtonPressed([dpad down]));
+		SetJoystickButtonState(idx + 1, BTN_DPAD_LEFT, GetButtonPressed([dpad left]));
+
+		SetJoystickButtonState(idx + 1, BTN_A, GetButtonPressed([gamepad buttonA]));
+		SetJoystickButtonState(idx + 1, BTN_B, GetButtonPressed([gamepad buttonB]));
+		SetJoystickButtonState(idx + 1, BTN_Y, GetButtonPressed([gamepad buttonY]));
+		SetJoystickButtonState(idx + 1, BTN_X, GetButtonPressed([gamepad buttonX]));
+
+		SetJoystickButtonState(idx + 1, BTN_L1, GetButtonPressed([gamepad leftShoulder]));
+		SetJoystickButtonState(idx + 1, BTN_R1, GetButtonPressed([gamepad rightShoulder]));
+	}
+	else
+	{
+		id extendedPad = [controller extendedGamepad];
+		id dpad = [extendedPad dpad];
+		id leftStick = [extendedPad leftThumbstick];
+		id rightStick = [extendedPad rightThumbstick];
+
+		UnitySetJoystickPosition(idx + 1, 0, GetAxisValue([leftStick xAxis]));
+		UnitySetJoystickPosition(idx + 1, 1, -GetAxisValue([leftStick yAxis]));
+		
+		UnitySetJoystickPosition(idx + 1, 2, GetAxisValue([rightStick xAxis]));
+		UnitySetJoystickPosition(idx + 1, 3, -GetAxisValue([rightStick yAxis]));
+		
+
+		SetJoystickButtonState(idx + 1, BTN_DPAD_UP, GetButtonPressed([dpad up]));
+		SetJoystickButtonState(idx + 1, BTN_DPAD_RIGHT, GetButtonPressed([dpad right]));
+		SetJoystickButtonState(idx + 1, BTN_DPAD_DOWN, GetButtonPressed([dpad down]));
+		SetJoystickButtonState(idx + 1, BTN_DPAD_LEFT, GetButtonPressed([dpad left]));
+
+		SetJoystickButtonState(idx + 1, BTN_A, GetButtonPressed([extendedPad buttonA]));
+		SetJoystickButtonState(idx + 1, BTN_B, GetButtonPressed([extendedPad buttonB]));
+		SetJoystickButtonState(idx + 1, BTN_Y, GetButtonPressed([extendedPad buttonY]));
+		SetJoystickButtonState(idx + 1, BTN_X, GetButtonPressed([extendedPad buttonX]));
+
+		SetJoystickButtonState(idx + 1, BTN_L1, GetButtonPressed([extendedPad leftShoulder]));
+		SetJoystickButtonState(idx + 1, BTN_R1, GetButtonPressed([extendedPad rightShoulder]));
+		SetJoystickButtonState(idx + 1, BTN_L2, GetButtonPressed([extendedPad leftTrigger]));
+		SetJoystickButtonState(idx + 1, BTN_R2, GetButtonPressed([extendedPad rightTrigger]));
+	}
+
+	// Map pause button
+	SetJoystickButtonState(idx + 1, BTN_PAUSE, gPausedJoysticks[idx]);
+
+	// Reset pause button
+	gPausedJoysticks[idx] = false;
+}
+
+extern "C" void UnityUpdateJoystickData()
+{
+	NSArray* list = QueryControllerCollection();
+	if (list != nil)
+	{
+		for (int i = 0; i < [list count]; i++)
+		{
+			id controller = [list objectAtIndex:i];
+			ReportJoystick(controller, i);
+		}
+	}
+}
+
+extern "C" int 	UnityGetJoystickCount()
+{
+	NSArray* list = QueryControllerCollection();
+	return list != nil ? [list count] : 0;
+}
+
+extern "C" void UnityGetJoystickName(int idx, char* buffer, int maxLen)
+{
+	GCController* controller = [QueryControllerCollection() objectAtIndex:idx];
+
+	if (controller != nil)
+	{
+		snprintf(buffer, maxLen, "[%s,%s] joystick %d by %s", 
+					([controller extendedGamepad] != nil ? "extended" : "basic"),
+					(controller.attachedToDevice ? "wired" : "wireless"), 
+				 	idx + 1,
+				 	[[controller vendorName] UTF8String]);
+	}
+	else
+	{
+		strncpy(buffer, "unknown", maxLen);
+	}
+}
+
+extern "C" void UnityGetJoystickAxisName(int idx, int axis, char* buffer, int maxLen)
+{
+
+}
+
+extern "C" void UnityGetNiceKeyname(int key, char* buffer, int maxLen)
+{
+
+}
+#pragma clang diagnostic pop
+
+
 
 @interface LocationServiceDelegate : NSObject <CLLocationManagerDelegate>
 @end

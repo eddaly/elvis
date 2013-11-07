@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		08B24F76137BFDFA00FBA309 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B24F75137BFDFA00FBA309 /* iAd.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		2AB01875512341FF803E5A65 /* libStoreKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 609D4CDE6A1149649658FE77 /* libStoreKit.a */; };
+		3109AC5220E8440AB3001859 /* libStoreKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DF7700C85B4BA5A3E9C6E1 /* libStoreKit.a */; };
 		5682F4B20F3B34FF007A219C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682F4B10F3B34FF007A219C /* MediaPlayer.framework */; };
 		5692F3DD0FA9D8E500EBA2F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5692F3DC0FA9D8E500EBA2F1 /* CoreLocation.framework */; };
 		56B7959B1442E0F20026B3DD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B7959A1442E0F20026B3DD /* CoreGraphics.framework */; };
@@ -18,11 +18,13 @@
 		56BCBA390FCF049A0030C3B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BCBA380FCF049A0030C3B2 /* SystemConfiguration.framework */; };
 		56DBF99D15E3CDC9007A4A8D /* iPhone_Sensors.mm in Sources */ = {isa = PBXBuildFile; fileRef = 56DBF99C15E3CDC9007A4A8D /* iPhone_Sensors.mm */; };
 		56FD43960ED4745200FE3770 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FD43950ED4745200FE3770 /* CFNetwork.framework */; };
-		64C6A59417F745CA0010EDDB /* GCTurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A59217F745CA0010EDDB /* GCTurnBasedMatchHelper.m */; };
-		7520F5AAED514D499ACBD7A2 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4EB289CCD64F92A915648F /* libFlurry.a */; };
+		5987CD33797C4BACA7401BDB /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBE47F5CE2244798A25CD7CD /* libFlurry.a */; };
+		5ADEACC36BBD4315A9BBCC5D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD46881572D4797B5CF4B50 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		64C41371182BF75F0099923F /* GCTurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C41370182BF75F0099923F /* GCTurnBasedMatchHelper.m */; };
 		7F36C11113C5C673007FBDD9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F36C10E13C5C673007FBDD9 /* CoreMedia.framework */; };
 		7F36C11213C5C673007FBDD9 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F36C10F13C5C673007FBDD9 /* CoreVideo.framework */; };
 		7F36C11313C5C673007FBDD9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F36C11013C5C673007FBDD9 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8037923D030B4408A186FC0F /* libFlurryAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47602BEDDA64051A4414796 /* libFlurryAds.a */; };
 		830B5C110E5ED4C100C7819F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830B5C100E5ED4C100C7819F /* UIKit.framework */; };
 		8358D1B80ED1CC3700E3A684 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8358D1B70ED1CC3700E3A684 /* AudioToolbox.framework */; };
 		83B256E20E62FEA000468741 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B256E10E62FEA000468741 /* OpenGLES.framework */; };
@@ -48,11 +50,10 @@
 		8AB3CB3E16D390BB00697AD5 /* VideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AB3CB3D16D390BB00697AD5 /* VideoPlayer.mm */; };
 		8ADF4E1C1779B92C00949AA7 /* DeviceSettings.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF4E1B1779B92C00949AA7 /* DeviceSettings.mm */; };
 		8AFA69D9161605E7009663A5 /* iPhone_OrientationSupport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA69D8161605E7009663A5 /* iPhone_OrientationSupport.mm */; };
-		AF8BD1810DB34069BFFB881F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B0E5C15B6492BB5C1D95D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-w"; }; };
-		B2E7957A8BF04582A6275A6D /* libFlurryAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DACB63319CC74B71B5B5ADDE /* libFlurryAds.a */; };
+		CBCDE0C3C9084CD7B826A33B /* FlurryManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D26A2ED0741148C633DC2 /* FlurryManager.mm */; };
+		D527D070421D4B57AFD29B6A /* FlurryBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249D816987340D8934FA44C /* FlurryBinding.m */; };
 		D82DCFC30E8000A5005D6AD8 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D82DCFBB0E8000A5005D6AD8 /* main.mm */; };
 		D82DCFC50E8000A5005D6AD8 /* RegisterClasses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82DCFBD0E8000A5005D6AD8 /* RegisterClasses.cpp */; };
-		D89BE21353D64F8AA7EF4E58 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CD92B50724D4EBEFDBD04 /* StoreKit.framework */; };
 		D8A1C7000E80637F000160D4 /* Assembly-CSharp-firstpass.dll.s in Sources */ = {isa = PBXBuildFile; fileRef = D8A1C7000E80637F100160D4 /* Assembly-CSharp-firstpass.dll.s */; };
 		D8A1C7001E80637F000160D4 /* Assembly-CSharp.dll.s in Sources */ = {isa = PBXBuildFile; fileRef = D8A1C7001E80637F100160D4 /* Assembly-CSharp.dll.s */; };
 		D8A1C7002E80637F000160D4 /* Mono.Security.dll.s in Sources */ = {isa = PBXBuildFile; fileRef = D8A1C7002E80637F100160D4 /* Mono.Security.dll.s */; };
@@ -74,8 +75,7 @@
 		D8A1C7012E80637F000160D4 /* Icon-144.png in Sources */ = {isa = PBXBuildFile; fileRef = D8A1C7012E80637F100160D4 /* Icon-144.png */; };
 		D8A1C7280E80637F000160D3 /* RegisterMonoModules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8A1C7240E80637F000160D3 /* RegisterMonoModules.cpp */; };
 		D8A1C72B0E8063A1000160D3 /* libiPhone-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A1C72A0E8063A1000160D3 /* libiPhone-lib.a */; };
-		EB63F874F9174530B0E6EED6 /* FlurryManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = C8708C78BD9E49B9A283463C /* FlurryManager.mm */; };
-		F36B79F0B70A4E6F98EA1414 /* FlurryBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D647CC6F7E246C9A802B13F /* FlurryBinding.m */; };
+		EC1142C4DF8C4134A53CA894 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AEDAB3E5CA45FAA6CAE0AA /* StoreKit.framework */; };
 		FC85CCBB16C3ED8000BAF7C7 /* CrashReporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC85CCB916C3ED8000BAF7C7 /* CrashReporter.mm */; };
 /* End PBXBuildFile section */
 
@@ -92,11 +92,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00622D8189ED4AF0B1D9830E /* JSONKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/JSONKit.h; sourceTree = "<group>"; };
+		0249D816987340D8934FA44C /* FlurryBinding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FlurryBinding.m; path = ../../Code/Development/Main/Assets/Editor/Flurry/FlurryBinding.m; sourceTree = "<group>"; };
+		03E9BBE80BAC4FF991D13DD3 /* FlurryCustomAdNetworkProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryCustomAdNetworkProperties.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Mediation/FlurryCustomAdNetworkProperties.h; sourceTree = "<group>"; };
 		08B24F75137BFDFA00FBA309 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		12AEDAB3E5CA45FAA6CAE0AA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* elvis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elvis.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D647CC6F7E246C9A802B13F /* FlurryBinding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FlurryBinding.m; path = ../../Code/Development/Main/Assets/Editor/Flurry/FlurryBinding.m; sourceTree = "<group>"; };
-		22F685ADC71E48C5814544DC /* FlurryAds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryAds.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/FlurryAds/FlurryAds.h; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Unity-Target-New.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Unity-Target-New.app"; path = elvis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		21592ADBCEC64249BF0A73F5 /* FlurryCustomAdNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryCustomAdNetwork.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Mediation/FlurryCustomAdNetwork.h; sourceTree = "<group>"; };
+		22DF7700C85B4BA5A3E9C6E1 /* libStoreKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStoreKit.a; path = ../../Code/Development/Main/Assets/Editor/StoreKit/libStoreKit.a; sourceTree = "<group>"; };
+		2B3AC523BBD3430490E41127 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Flurry/Flurry.h; sourceTree = "<group>"; };
 		5682F4B10F3B34FF007A219C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		5692F3DC0FA9D8E500EBA2F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		56B7959A1442E0F20026B3DD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,24 +111,20 @@
 		56DBF99C15E3CDC9007A4A8D /* iPhone_Sensors.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iPhone_Sensors.mm; sourceTree = "<group>"; };
 		56DBF99E15E3CE85007A4A8D /* iPhone_Sensors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhone_Sensors.h; sourceTree = "<group>"; };
 		56FD43950ED4745200FE3770 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		609D4CDE6A1149649658FE77 /* libStoreKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStoreKit.a; path = ../../Code/Development/Main/Assets/Editor/StoreKit/libStoreKit.a; sourceTree = "<group>"; };
-		64C6A59217F745CA0010EDDB /* GCTurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCTurnBasedMatchHelper.m; path = ../../../Code/Development/Main/Assets/Plugins/GameCenter/iOS/GCTurnBasedMatchHelper.m; sourceTree = "<group>"; };
-		64C6A59317F745CA0010EDDB /* GCTurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCTurnBasedMatchHelper.h; path = ../../../Code/Development/Main/Assets/Plugins/GameCenter/iOS/GCTurnBasedMatchHelper.h; sourceTree = "<group>"; };
-		659C746B055F48CA98EAC765 /* FlurryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryManager.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/FlurryManager.h; sourceTree = "<group>"; };
+		64C4136F182BF75F0099923F /* GCTurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCTurnBasedMatchHelper.h; path = ../../../Code/Development/Main/Assets/Plugins/GameCenter/iOS/GCTurnBasedMatchHelper.h; sourceTree = "<group>"; };
+		64C41370182BF75F0099923F /* GCTurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCTurnBasedMatchHelper.m; path = ../../../Code/Development/Main/Assets/Plugins/GameCenter/iOS/GCTurnBasedMatchHelper.m; sourceTree = "<group>"; };
 		7F36C10E13C5C673007FBDD9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		7F36C10F13C5C673007FBDD9 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		7F36C11013C5C673007FBDD9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		80A04769366C469195AC6F69 /* FlurryCustomAdNetworkProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryCustomAdNetworkProperties.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Mediation/FlurryCustomAdNetworkProperties.h; sourceTree = "<group>"; };
 		830B5C100E5ED4C100C7819F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8358D1B70ED1CC3700E3A684 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		838CD92B50724D4EBEFDBD04 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		83659E955BC04AECAAB04EE7 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryAdDelegate.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/FlurryAds/FlurryAdDelegate.h; sourceTree = "<group>"; };
 		83B256E10E62FEA000468741 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		83B2570A0E62FF8A00468741 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		83B2574B0E63022200468741 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		83B2574E0E63025400468741 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = usr/lib/libiconv.2.dylib; sourceTree = SDKROOT; };
 		83DEA7410EACED0700D8A291 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		83DEA7420EACED0700D8A291 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		842B0E5C15B6492BB5C1D95D /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../../Code/Development/Main/Assets/Editor/Flurry/JSONKit.m; sourceTree = "<group>"; };
 		8A0FED471649699200E9727D /* EAGLContextHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLContextHelper.h; sourceTree = "<group>"; };
 		8A0FED481649699200E9727D /* EAGLContextHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLContextHelper.mm; sourceTree = "<group>"; };
 		8A142DC41636943E00DD87CA /* Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyboard.h; sourceTree = "<group>"; };
@@ -160,9 +161,10 @@
 		8AFA69D7161605E7009663A5 /* iPhone_OrientationSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhone_OrientationSupport.h; sourceTree = "<group>"; };
 		8AFA69D8161605E7009663A5 /* iPhone_OrientationSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iPhone_OrientationSupport.mm; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9167C46E19F44472AEBEC7CB /* FlurryAdDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryAdDelegate.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/FlurryAds/FlurryAdDelegate.h; sourceTree = "<group>"; };
-		BB4EB289CCD64F92A915648F /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry.a; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Flurry/libFlurry.a; sourceTree = "<group>"; };
-		C8708C78BD9E49B9A283463C /* FlurryManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = FlurryManager.mm; path = ../../Code/Development/Main/Assets/Editor/Flurry/FlurryManager.mm; sourceTree = "<group>"; };
+		94CBB23CDE0A4B6E882F1BA0 /* FlurryAds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryAds.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/FlurryAds/FlurryAds.h; sourceTree = "<group>"; };
+		9BD46881572D4797B5CF4B50 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../../Code/Development/Main/Assets/Editor/Flurry/JSONKit.m; sourceTree = "<group>"; };
+		9D6D26A2ED0741148C633DC2 /* FlurryManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = FlurryManager.mm; path = ../../Code/Development/Main/Assets/Editor/Flurry/FlurryManager.mm; sourceTree = "<group>"; };
+		B47602BEDDA64051A4414796 /* libFlurryAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurryAds.a; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/FlurryAds/libFlurryAds.a; sourceTree = "<group>"; };
 		D82DCFBA0E8000A5005D6AD8 /* iPhone_target_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPhone_target_Prefix.pch; path = Classes/iPhone_target_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		D82DCFBB0E8000A5005D6AD8 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = Classes/main.mm; sourceTree = SOURCE_ROOT; };
 		D82DCFBD0E8000A5005D6AD8 /* RegisterClasses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegisterClasses.cpp; path = Classes/RegisterClasses.cpp; sourceTree = SOURCE_ROOT; };
@@ -189,11 +191,9 @@
 		D8A1C7240E80637F000160D3 /* RegisterMonoModules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegisterMonoModules.cpp; path = Libraries/RegisterMonoModules.cpp; sourceTree = SOURCE_ROOT; };
 		D8A1C7250E80637F000160D3 /* RegisterMonoModules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterMonoModules.h; path = Libraries/RegisterMonoModules.h; sourceTree = SOURCE_ROOT; };
 		D8A1C72A0E8063A1000160D3 /* libiPhone-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libiPhone-lib.a"; path = "Libraries/libiPhone-lib.a"; sourceTree = SOURCE_ROOT; };
-		D925B894A89A4F1C827CAA57 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Flurry/Flurry.h; sourceTree = "<group>"; };
-		DACB63319CC74B71B5B5ADDE /* libFlurryAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurryAds.a; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/FlurryAds/libFlurryAds.a; sourceTree = "<group>"; };
-		E872149A9FD249FCA9112EBF /* JSONKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/JSONKit.h; sourceTree = "<group>"; };
-		EE2A160BB6134CC4A9A887D0 /* FlurryCustomAdNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryCustomAdNetwork.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Mediation/FlurryCustomAdNetwork.h; sourceTree = "<group>"; };
-		F8F854414E644DF89E3FA5D3 /* FlurryCustomAdNetworkDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryCustomAdNetworkDelegate.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Mediation/FlurryCustomAdNetworkDelegate.h; sourceTree = "<group>"; };
+		DDCE224725C9473F84ABAFF6 /* FlurryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryManager.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/FlurryManager.h; sourceTree = "<group>"; };
+		E567C8391D244466B0E931A6 /* FlurryCustomAdNetworkDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlurryCustomAdNetworkDelegate.h; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Mediation/FlurryCustomAdNetworkDelegate.h; sourceTree = "<group>"; };
+		EBE47F5CE2244798A25CD7CD /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry.a; path = ../../Code/Development/Main/Assets/Editor/Flurry/SDK/Flurry/libFlurry.a; sourceTree = "<group>"; };
 		FC3D7EBE16D2621600D1BD0D /* CrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashReporter.h; sourceTree = "<group>"; };
 		FC85CCB916C3ED8000BAF7C7 /* CrashReporter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CrashReporter.mm; sourceTree = "<group>"; };
 		FC85CCBA16C3ED8000BAF7C7 /* PLCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReporter.h; sourceTree = "<group>"; };
@@ -223,10 +223,10 @@
 				56B7959B1442E0F20026B3DD /* CoreGraphics.framework in Frameworks */,
 				56B7960F1442E1770026B3DD /* CoreMotion.framework in Frameworks */,
 				56B7961A1442E1B80026B3DD /* GameKit.framework in Frameworks */,
-				7520F5AAED514D499ACBD7A2 /* libFlurry.a in Frameworks */,
-				B2E7957A8BF04582A6275A6D /* libFlurryAds.a in Frameworks */,
-				D89BE21353D64F8AA7EF4E58 /* StoreKit.framework in Frameworks */,
-				2AB01875512341FF803E5A65 /* libStoreKit.a in Frameworks */,
+				5987CD33797C4BACA7401BDB /* libFlurry.a in Frameworks */,
+				8037923D030B4408A186FC0F /* libFlurryAds.a in Frameworks */,
+				EC1142C4DF8C4134A53CA894 /* StoreKit.framework in Frameworks */,
+				3109AC5220E8440AB3001859 /* libStoreKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +236,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* elvis.app */,
+				1D6058910D05DD3D006BFB54 /* Unity-Target-New.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,8 +244,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				3B7ECD92071A4FB587E59F24 /* StoreKit */,
-				D77C9525012A4B5CA4AD466A /* Flurry */,
+				C43E0D36BDAB4BCEBDDAF8DC /* StoreKit */,
+				49EF1F70F9554AA7A2EB0DC9 /* Flurry */,
 				56BCBA380FCF049A0030C3B2 /* SystemConfiguration.framework */,
 				5692F3DC0FA9D8E500EBA2F1 /* CoreLocation.framework */,
 				5682F4B10F3B34FF007A219C /* MediaPlayer.framework */,
@@ -277,35 +277,54 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				838CD92B50724D4EBEFDBD04 /* StoreKit.framework */,
+				12AEDAB3E5CA45FAA6CAE0AA /* StoreKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2D856A6437A9421C8DE7824F /* Mediation */ = {
+		49EF1F70F9554AA7A2EB0DC9 /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
-				80A04769366C469195AC6F69 /* FlurryCustomAdNetworkProperties.h */,
-				F8F854414E644DF89E3FA5D3 /* FlurryCustomAdNetworkDelegate.h */,
-				EE2A160BB6134CC4A9A887D0 /* FlurryCustomAdNetwork.h */,
+				EBE47F5CE2244798A25CD7CD /* libFlurry.a */,
+				2B3AC523BBD3430490E41127 /* Flurry.h */,
+				9BD46881572D4797B5CF4B50 /* JSONKit.m */,
+				00622D8189ED4AF0B1D9830E /* JSONKit.h */,
+				9D6D26A2ED0741148C633DC2 /* FlurryManager.mm */,
+				DDCE224725C9473F84ABAFF6 /* FlurryManager.h */,
+				0249D816987340D8934FA44C /* FlurryBinding.m */,
+				5DE47633E2954FA1BEEF323D /* Mediation */,
+				5BFC9CF8C37444B3BA19BD58 /* FlurryAds */,
+				9596EDC07CF342D08F676165 /* SDK */,
+			);
+			name = Flurry;
+			sourceTree = "<group>";
+		};
+		5BFC9CF8C37444B3BA19BD58 /* FlurryAds */ = {
+			isa = PBXGroup;
+			children = (
+				B47602BEDDA64051A4414796 /* libFlurryAds.a */,
+				94CBB23CDE0A4B6E882F1BA0 /* FlurryAds.h */,
+				83659E955BC04AECAAB04EE7 /* FlurryAdDelegate.h */,
+			);
+			name = FlurryAds;
+			sourceTree = "<group>";
+		};
+		5DE47633E2954FA1BEEF323D /* Mediation */ = {
+			isa = PBXGroup;
+			children = (
+				03E9BBE80BAC4FF991D13DD3 /* FlurryCustomAdNetworkProperties.h */,
+				E567C8391D244466B0E931A6 /* FlurryCustomAdNetworkDelegate.h */,
+				21592ADBCEC64249BF0A73F5 /* FlurryCustomAdNetwork.h */,
 			);
 			name = Mediation;
 			sourceTree = "<group>";
 		};
-		3B7ECD92071A4FB587E59F24 /* StoreKit */ = {
+		64C4136E182BF7230099923F /* Echo Peak */ = {
 			isa = PBXGroup;
 			children = (
-				609D4CDE6A1149649658FE77 /* libStoreKit.a */,
-			);
-			name = StoreKit;
-			sourceTree = "<group>";
-		};
-		64C6A59117F745AF0010EDDB /* Echo Peak */ = {
-			isa = PBXGroup;
-			children = (
-				64C6A59217F745CA0010EDDB /* GCTurnBasedMatchHelper.m */,
-				64C6A59317F745CA0010EDDB /* GCTurnBasedMatchHelper.h */,
+				64C4136F182BF75F0099923F /* GCTurnBasedMatchHelper.h */,
+				64C41370182BF75F0099923F /* GCTurnBasedMatchHelper.m */,
 			);
 			name = "Echo Peak";
 			sourceTree = "<group>";
@@ -350,37 +369,25 @@
 			path = Unity;
 			sourceTree = "<group>";
 		};
-		C9A1E08B0E874FC19D05CE79 /* FlurryAds */ = {
+		9596EDC07CF342D08F676165 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				DACB63319CC74B71B5B5ADDE /* libFlurryAds.a */,
-				22F685ADC71E48C5814544DC /* FlurryAds.h */,
-				9167C46E19F44472AEBEC7CB /* FlurryAdDelegate.h */,
 			);
-			name = FlurryAds;
+			name = SDK;
 			sourceTree = "<group>";
 		};
-		D77C9525012A4B5CA4AD466A /* Flurry */ = {
+		C43E0D36BDAB4BCEBDDAF8DC /* StoreKit */ = {
 			isa = PBXGroup;
 			children = (
-				BB4EB289CCD64F92A915648F /* libFlurry.a */,
-				D925B894A89A4F1C827CAA57 /* Flurry.h */,
-				842B0E5C15B6492BB5C1D95D /* JSONKit.m */,
-				E872149A9FD249FCA9112EBF /* JSONKit.h */,
-				C8708C78BD9E49B9A283463C /* FlurryManager.mm */,
-				659C746B055F48CA98EAC765 /* FlurryManager.h */,
-				1D647CC6F7E246C9A802B13F /* FlurryBinding.m */,
-				2D856A6437A9421C8DE7824F /* Mediation */,
-				C9A1E08B0E874FC19D05CE79 /* FlurryAds */,
-				D83113404A1C4486AAB7A97C /* SDK */,
+				22DF7700C85B4BA5A3E9C6E1 /* libStoreKit.a */,
 			);
-			name = Flurry;
+			name = StoreKit;
 			sourceTree = "<group>";
 		};
 		D82DCFB50E8000A5005D6AD8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				64C6A59117F745AF0010EDDB /* Echo Peak */,
+				64C4136E182BF7230099923F /* Echo Peak */,
 				8AF18FE316490981007B4420 /* Unity */,
 				8A3EDDC51615B7C1001839E9 /* UI */,
 				FC3D7EBE16D2621600D1BD0D /* CrashReporter.h */,
@@ -404,13 +411,6 @@
 			);
 			path = Classes;
 			sourceTree = SOURCE_ROOT;
-		};
-		D83113404A1C4486AAB7A97C /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SDK;
-			sourceTree = "<group>";
 		};
 		D8A1C7220E80637F000160D3 /* Libraries */ = {
 			isa = PBXGroup;
@@ -460,7 +460,7 @@
 			);
 			name = "Unity-iPhone";
 			productName = "iPhone-target";
-			productReference = 1D6058910D05DD3D006BFB54 /* elvis.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Unity-Target-New.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -555,7 +555,7 @@
 				8A142DC61636943E00DD87CA /* Keyboard.mm in Sources */,
 				8A0FED491649699200E9727D /* EAGLContextHelper.mm in Sources */,
 				8A1FFFAD16512A9000DD0934 /* GlesHelper.mm in Sources */,
-				64C6A59417F745CA0010EDDB /* GCTurnBasedMatchHelper.m in Sources */,
+				64C41371182BF75F0099923F /* GCTurnBasedMatchHelper.m in Sources */,
 				8A5E0B9116849D1800CBB6FE /* DisplayManager.mm in Sources */,
 				8A367F5B16A6D36F0012ED11 /* CVTextureCache.mm in Sources */,
 				FC85CCBB16C3ED8000BAF7C7 /* CrashReporter.mm in Sources */,
@@ -564,9 +564,9 @@
 				8A851BA716FB2F6D00E911DB /* UnityView.mm in Sources */,
 				8A851BAA16FB3AD000E911DB /* UnityAppController.mm in Sources */,
 				8ADF4E1C1779B92C00949AA7 /* DeviceSettings.mm in Sources */,
-				F36B79F0B70A4E6F98EA1414 /* FlurryBinding.m in Sources */,
-				EB63F874F9174530B0E6EED6 /* FlurryManager.mm in Sources */,
-				AF8BD1810DB34069BFFB881F /* JSONKit.m in Sources */,
+				D527D070421D4B57AFD29B6A /* FlurryBinding.m in Sources */,
+				CBCDE0C3C9084CD7B826A33B /* FlurryManager.mm in Sources */,
+				5ADEACC36BBD4315A9BBCC5D /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -59171,7 +59171,7 @@ mono_image_table:
 
 	.long 1,2,0,5,0
 	.asciz "UnityEngine"
-	.asciz "EC3961BD-D272-4318-B7F1-4BD17E361FBF"
+	.asciz "6529F4FE-769C-47FB-A455-758B6533D859"
 	.asciz ""
 	.asciz ""
 	.align 3

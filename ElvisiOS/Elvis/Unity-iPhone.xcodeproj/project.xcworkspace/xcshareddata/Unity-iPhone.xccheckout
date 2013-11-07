@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2A465013-1A37-4DB1-AEE4-9AA59C273AB8</string>
+	<string>0D64A555-D531-47E8-BA0B-D0C2A8F497C0</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Unity-iPhone</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F285C6DA-C535-401F-93F7-6018436F4E36</key>
+		<key>BD7657F3-931D-4A4C-BB83-BD72CAD64965</key>
 		<string>https://github.com/eddaly/elvis.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ElvisiOS/Elvis/Unity-iPhone.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F285C6DA-C535-401F-93F7-6018436F4E36</key>
+		<key>BD7657F3-931D-4A4C-BB83-BD72CAD64965</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F285C6DA-C535-401F-93F7-6018436F4E36</string>
+	<string>BD7657F3-931D-4A4C-BB83-BD72CAD64965</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F285C6DA-C535-401F-93F7-6018436F4E36</string>
+			<string>BD7657F3-931D-4A4C-BB83-BD72CAD64965</string>
 			<key>IDESourceControlWCCName</key>
 			<string>elvis</string>
 		</dict>

@@ -9688,14 +9688,14 @@ mono_image_table:
 
 	.long 6
 	.asciz "Assembly-CSharp-firstpass"
-	.asciz "286C04C9-19FD-4F50-8480-BC70469DF18D"
+	.asciz "8185B9A3-9350-4879-86EF-81E8C93DBF06"
 	.asciz ""
 	.asciz ""
 	.align 3
 
 	.long 0,0,0,0,0
 	.asciz "UnityEngine"
-	.asciz "EC3961BD-D272-4318-B7F1-4BD17E361FBF"
+	.asciz "6529F4FE-769C-47FB-A455-758B6533D859"
 	.asciz ""
 	.asciz ""
 	.align 3
@@ -9748,7 +9748,7 @@ mono_aot_file_info:
 .text
 	.align 2
 mono_assembly_guid:
-	.asciz "286C04C9-19FD-4F50-8480-BC70469DF18D"
+	.asciz "8185B9A3-9350-4879-86EF-81E8C93DBF06"
 .text
 	.align 2
 mono_aot_version:

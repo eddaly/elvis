@@ -21,6 +21,20 @@ ScreenOrientation	UnityRequestedScreenOrientation();
 void				UnitySetScreenOrientation(ScreenOrientation orientation);
 bool				UnityUseAnimatedAutorotation();
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void    UnitySetJoystickPosition (int joyNum, int axis, float pos);
+extern int     UnityStringToKey(const char *name);
+
+#ifdef __cplusplus
+extern void    UnitySetKeyState (int key, bool state);
+#endif
+
+#ifdef __cplusplus
+}
+#endif
 
 // player settings
 extern bool UnityUse32bitDisplayBuffer();

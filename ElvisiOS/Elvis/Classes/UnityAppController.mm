@@ -81,6 +81,7 @@ int UnityGetDeviceGeneration();
 void UnityRequestRenderingResolution(unsigned w, unsigned h);
 
 void SensorsCleanup();
+void UnityInitJoysticks();
 
 bool    _ios43orNewer       = false;
 bool    _ios50orNewer       = false;
@@ -249,6 +250,8 @@ void UnityInitTrampoline()
 	fprintf(stdout, "\n");
 	if (ftell(stdout) < 0)
 		SetLogEntryHandler(LogToNSLogHandler);
+
+	UnityInitJoysticks();
 }
 
 
